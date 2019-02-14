@@ -1,0 +1,37 @@
+package:
+  name: mstmap
+  version: 0.1
+
+build:
+  number: 0
+  skip: True  # [py<35]
+  script_env:
+    - CC
+    - CXX
+
+source:
+  path: ..
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - python
+    - setuptools
+    - pybind11
+    - ogdf
+  host:
+    - python
+    - pip
+    - ogdf
+  run:
+    - python
+    - ogdf
+
+about:
+  home: http://gdb.tools
+  license: MIT
+  # license_file: LICENSE
+  summary: 'A Python package for visualizing large, high-dimensional data sets.'
+  description: 'A Python package for visualizing large, high-dimensional data sets.'
+  dev_url: https://github.com/reymondgroup/mstmap
