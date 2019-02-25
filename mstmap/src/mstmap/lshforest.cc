@@ -1,6 +1,7 @@
 #include "lshforest.hh"
 
-LSHForest::LSHForest(unsigned int d, unsigned int l, bool store) : d_(d), l_(l), store_(store), hashtables_(l),
+LSHForest::LSHForest(unsigned int d, unsigned int l, bool store) : d_(d), l_(l), store_(store), hashtable_keys_(l),
+                                                                   hashtable_values_(l), hashmaps_(l), sort_maps_(l), 
                                                                    hashranges_(l), sorted_hashtables_(l)
 {
     if (l_ > d_)
@@ -8,19 +9,11 @@ LSHForest::LSHForest(unsigned int d, unsigned int l, bool store) : d_(d), l_(l),
 
     k_ = (unsigned int)(d_ / l_);
 
-    hashtable_keys_ = std::vector<std::vector<std::vector<uint8_t>>>(l_);
-    hashtable_values_ = std::vector<std::vector<std::vector<uint32_t>>>(l_);
-    sort_maps_ = std::vector<std::vector<size_t>>(l_);
-    sorted_hashtables_test_ = std::vector<std::vector<std::vector<uint8_t>>>(l_);
-
     for (unsigned int i = 0; i < l_; i++)
     {
-        hashtables_[i] = std::map<std::vector<uint8_t>, std::vector<uint32_t>>();
-
         hashtable_keys_[i] = std::vector<std::vector<uint8_t>>();
         hashtable_values_[i] = std::vector<std::vector<uint32_t>>();
         sort_maps_[i] = std::vector<size_t>();
-        sorted_hashtables_test_[i] = std::vector<std::vector<uint8_t>>();
 
         hashranges_[i] = std::make_tuple(i * k_, (i + 1) * k_);
         sorted_hashtables_[i] = std::vector<std::vector<uint8_t>>();
@@ -32,18 +25,16 @@ void LSHForest::Add(std::vector<uint32_t> &vec)
     if (store_)
         data_.emplace_back(vec);
 
-    for (size_t i = 0; i < hashtables_.size(); i++)
+    for (size_t i = 0; i < l_; i++)
     {
         std::vector<uint32_t> range(vec.begin() + std::get<0>(hashranges_[i]),
                                     vec.begin() + std::get<1>(hashranges_[i]));
-        
-        hashtables_[i][Hash(Swap(range))].emplace_back(data_.size() - 1);
 
         auto hash = Hash(Swap(range));
         auto it = std::find(hashtable_keys_[i].begin(), hashtable_keys_[i].end(), hash);
         if (it == hashtable_keys_[i].end())
         {
-            hashtable_keys_[i].emplace_back(Hash(Swap(range)));
+            hashtable_keys_[i].emplace_back(hash);
             std::vector<uint32_t> new_keys(1);
             new_keys[0] = data_.size() - 1;
             hashtable_values_[i].emplace_back(new_keys);
@@ -76,21 +67,21 @@ void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
 
 
     size_t i, j;
-    // #pragma omp parallel for private(j)
-    for (i = 0; i < hashtables_.size(); i++)
+    #pragma omp parallel for private(j)
+    for (i = 0; i < l_; i++)
     {
         for (j = 0; j < keys.size(); j++)
         {
             std::vector<uint32_t> range(vecs[j].begin() + std::get<0>(hashranges_[i]),
                                         vecs[j].begin() + std::get<1>(hashranges_[i]));
         
-            hashtables_[i][Hash(Swap(range))].emplace_back(keys[j]);
 
             auto hash = Hash(Swap(range));
             auto it = std::find(hashtable_keys_[i].begin(), hashtable_keys_[i].end(), hash);
+            std::cout << hash.size() << std::endl;
             if (it == hashtable_keys_[i].end())
             {
-                hashtable_keys_[i].emplace_back(Hash(Swap(range)));
+                hashtable_keys_[i].emplace_back(hash);
                 std::vector<uint32_t> new_keys(1);
                 new_keys[0] = keys[j];
                 hashtable_values_[i].emplace_back(new_keys);
@@ -110,19 +101,15 @@ void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
 
 void LSHForest::Index()
 {
-    // #pragma omp parallel for
-    for (size_t i = 0; i < hashtables_.size(); i++)
+    #pragma omp parallel for
+    for (size_t i = 0; i < l_; i++)
     {
-        sorted_hashtables_[i] = GetKeysFromHashtable(hashtables_[i]);
-        
-        sorted_hashtables_test_[i] = std::vector<std::vector<uint8_t>>(hashtable_keys_[i]);
+        sorted_hashtables_[i] = std::vector<std::vector<uint8_t>>(hashtable_keys_[i]);
 
         sort_maps_[i].clear();
-        for (size_t j = 0; j < sorted_hashtables_test_[i].size(); j++) sort_maps_[i].emplace_back(j);
+        for (size_t j = 0; j < sorted_hashtables_[i].size(); j++) sort_maps_[i].emplace_back(j);
         
         std::sort(sorted_hashtables_[i].begin(), sorted_hashtables_[i].end());
-        std::sort(sorted_hashtables_test_[i].begin(), sorted_hashtables_test_[i].end());
-
         std::sort(sort_maps_[i].begin(), sort_maps_[i].end(), [&](size_t a, size_t b) { return hashtable_keys_[i][a] < hashtable_keys_[i][b]; });
     }
 
@@ -138,14 +125,14 @@ void LSHForest::Store(const std::string &path)
 {
     std::ofstream file(path, std::ios::binary);
     cereal::BinaryOutputArchive output(file);
-    output(hashtable_keys_, hashtable_values_, hashtables_, hashranges_, sorted_hashtables_, data_, store_);
+    output(hashtable_keys_, hashtable_values_, hashranges_, sort_maps_, sorted_hashtables_, data_, store_);
 }
 
 void LSHForest::Restore(const std::string &path)
 {
     std::ifstream file(path, std::ios::binary);
     cereal::BinaryInputArchive input(file);
-    input(hashtable_keys_, hashtable_values_, hashtables_, hashranges_, sorted_hashtables_, data_, store_);
+    input(hashtable_keys_, hashtable_values_, hashranges_, sort_maps_, sorted_hashtables_, data_, store_);
 }
 
 std::vector<uint32_t> LSHForest::GetHash(uint32_t id)
@@ -313,9 +300,67 @@ void LSHForest::QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::s
     
     for (size_t i = 0; i < sorted_hashtables_.size(); i++)
     {
-        auto &hashtable = hashtables_[i];
+        auto &hashtable_value = hashtable_values_[i];
+        auto &sort_map = sort_maps_[i];
 
-        auto &hashtable_key = hashtable_keys_[i];
+        auto &sorted_hashtable = sorted_hashtables_[i];
+        auto &prefix = prefixes[i];
+
+        unsigned int j = BinarySearch(sorted_hashtable.size(), [&](unsigned int x) {
+            auto &sh = sorted_hashtable[x];
+            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
+
+            return range >= prefix;
+        });
+
+        
+        if (j < sorted_hashtable.size())
+        {
+            auto &sh = sorted_hashtable[j];
+            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
+            
+            if (range != prefix) 
+                continue;
+        }
+
+
+        for (unsigned int l = j; l < sorted_hashtable.size(); l++)
+        {
+            auto &sh = sorted_hashtable[l];
+            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
+            
+            if (range != prefix) 
+                break;
+            
+            auto &keys = hashtable_value[sort_map[l]];
+            
+            for (size_t m = 0; m < keys.size(); m++)
+            {
+                results.insert(keys[m]);
+
+                if (results.size() >= k)
+                    return;
+            }
+        }
+    }
+}
+
+void LSHForest::QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
+{
+    std::vector<std::vector<uint8_t>> prefixes;
+
+    for (size_t i = 0; i < hashranges_.size(); i++)
+    {
+        std::vector<uint32_t> range(vec.begin() + std::get<0>(hashranges_[i]),
+                                    vec.begin() + std::get<0>(hashranges_[i]) + r);
+
+        prefixes.emplace_back(Hash(Swap(range)));
+    }
+
+    std::size_t prefix_size = prefixes[0].size();
+    
+    for (size_t i = 0; i < sorted_hashtables_.size(); i++)
+    {
         auto &hashtable_value = hashtable_values_[i];
         auto &sort_map = sort_maps_[i];
 
@@ -348,68 +393,7 @@ void LSHForest::QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::s
             if (range != prefix) 
                 break;
 
-            auto &keys = hashtable[sorted_hashtable[l]];
-            
-            // auto &keys = hashtable_value[sort_map[l]];
-            
-            for (size_t m = 0; m < keys.size(); m++)
-            {
-                results.insert(keys[m]);
-
-                if (results.size() >= k)
-                    return;
-            }
-        }
-    }
-}
-
-void LSHForest::QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
-{
-    std::vector<std::vector<uint8_t>> prefixes;
-
-    for (size_t i = 0; i < hashranges_.size(); i++)
-    {
-        std::vector<uint32_t> range(vec.begin() + std::get<0>(hashranges_[i]),
-                                    vec.begin() + std::get<0>(hashranges_[i]) + r);
-
-        prefixes.emplace_back(Hash(Swap(range)));
-    }
-
-    std::size_t prefix_size = prefixes[0].size();
-    
-    for (size_t i = 0; i < sorted_hashtables_.size(); i++)
-    {
-        auto &hashtable = hashtables_[i];
-        auto &sorted_hashtable = sorted_hashtables_[i];
-        auto &prefix = prefixes[i];
-
-        unsigned int j = BinarySearch(sorted_hashtable.size(), [&](unsigned int x) {
-            auto &sh = sorted_hashtable[x];
-            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
-
-            return range >= prefix;
-        });
-
-        
-        if (j < sorted_hashtable.size())
-        {
-            auto &sh = sorted_hashtable[j];
-            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
-            
-            if (range != prefix) 
-                continue;
-        }
-
-
-        for (unsigned int l = j; l < sorted_hashtable.size(); l++)
-        {
-            auto &sh = sorted_hashtable[l];
-            std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
-            
-            if (range != prefix) 
-                break;
-
-            auto &keys = hashtable[sorted_hashtable[l]];
+            auto &keys = hashtable_value[sort_map[l]];
             
             for (size_t m = 0; m < keys.size(); m++)
             {

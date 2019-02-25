@@ -19,6 +19,8 @@
 #include "cereal/types/map.hpp"
 #include "cereal/types/tuple.hpp"
 
+#include <sparsepp/spp.h>
+
 class Timer
 {
 public:
@@ -68,16 +70,16 @@ class LSHForest
     private:
         unsigned int d_, l_, k_;
         bool clean_, store_;
-        std::vector<std::map<std::vector<uint8_t>, std::vector<uint32_t>>> hashtables_;
-
+        
         std::vector<std::vector<std::vector<uint8_t>>> hashtable_keys_;
         std::vector<std::vector<std::vector<uint32_t>>> hashtable_values_;
         std::vector<std::vector<size_t>> sort_maps_;
-        std::vector<std::vector<std::vector<uint8_t>>> sorted_hashtables_test_;
 
         std::vector<std::tuple<uint32_t, uint32_t>> hashranges_;
         std::vector<std::vector<std::vector<uint8_t>>> sorted_hashtables_;
         std::vector<std::vector<uint32_t>> data_;
+
+        std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>>> hashmaps_;
 
         uint32_t Swap(uint32_t i);
         std::vector<uint32_t> Swap(std::vector<uint32_t> vec);
@@ -85,6 +87,7 @@ class LSHForest
         std::vector<uint8_t> Hash(std::vector<uint32_t> vec);
         std::vector<uint8_t> Hash(std::vector<std::vector<uint32_t>> vecs);
         std::vector<std::vector<uint8_t>> GetKeysFromHashtable(std::map<std::vector<uint8_t>, std::vector<uint32_t>> hashtable);
+        
         unsigned int BinarySearch(unsigned int n, const std::function<bool(unsigned int)> &fn);
         void QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k);
         void QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude);

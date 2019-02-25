@@ -55,7 +55,10 @@ for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';',
         fps.append(record[2])
         index += 1
 
+    start = timer()
     lf.batch_add(fps)
+    end = timer()
+    print(end - start)
 
 lf.index()
 

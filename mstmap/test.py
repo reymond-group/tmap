@@ -29,7 +29,7 @@ else:
     fps = pickle.load(open('fps.dat', 'rb'))
 
 
-r = fps[2222] # enc.encode('CNCNCNCNC')
+r = fps[0] # enc.encode('CNCNCNCNC')
 
 
 lf_classic = LSHForestHelper(512, 128)
@@ -74,17 +74,7 @@ end = timer()
 print(end - start)
 
 start = timer()
-# for _ in range(100):
-#     result_ls = lf.query_linear_scan(mstmap.VectorUint(r), 5)
-# result = lf.query(r, 5)
-
-# result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
-result_ls = lf.query(mstmap.VectorUint(r), 5)
-print(result_ls)
-
-for i in result_ls:
-    print(lf.get_distance(lf.get_hash(i), mstmap.VectorUint(r)))
-
+result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
 end = timer()
 print(end - start)
 
