@@ -8,6 +8,7 @@
 #include <ogdf/basic/Graph.h>
 #include <ogdf/fileformats/GraphIO.h>
 #include <ogdf/basic/GraphAttributes.h>
+#include <ogdf/basic/extended_graph_alg.h>
 
 #include <ogdf/energybased/FastMultipoleEmbedder.h>
 #include <ogdf/energybased/multilevel_mixer/ScalingLayout.h>
@@ -31,6 +32,8 @@
 #include <iostream>
 #include <fstream>
 #include <typeinfo>
+
+#include "lshforest.hh"
 
 enum struct Placer
 {
@@ -61,15 +64,16 @@ static const std::string scaling_types_values[] = {"Absolute", "RelativeToAvgLen
 
 struct LayoutConfiguration
 {
-    LayoutConfiguration() : fme_iterations(1000), fme_randomize(false), fme_threads(4),
-                            sl_repeats(10), sl_extra_scaling_steps(5), sl_scaling_x(5.0), sl_scaling_y(25.0),
-                            sl_scaling_type(ScalingType::RelativeToAvgLength),
+    LayoutConfiguration() : k(10), fme_iterations(1000), fme_randomize(false), fme_threads(4),
+                            sl_repeats(1), sl_extra_scaling_steps(1), sl_scaling_x(5.0), sl_scaling_y(20.0),
+                            sl_scaling_type(ScalingType::RelativeToDesiredLength),
                             mmm_repeats(1),
                             placer(Placer::Barycenter),
-                            merger(Merger::EdgeCover), merger_factor(2.0), merger_adjustment(0) {}
+                            merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0) {}
     std::string ToString() const
     {
-        return std::string("fme_iterations: ") + std::to_string(fme_iterations) + '\n' +
+        return std::string("k: ") + std::to_string(k) + '\n' +
+               "fme_iterations: " + std::to_string(fme_iterations) + '\n' +
                "fme_randomize: " + std::to_string(fme_randomize) + '\n' +
                "fme_threads: " + std::to_string(fme_threads) + '\n' +
                "sl_repeats: " + std::to_string(sl_repeats) + '\n' +
@@ -84,6 +88,7 @@ struct LayoutConfiguration
                "merger_adjustment: " + std::to_string(merger_adjustment);
     }
 
+    int k;
     int fme_iterations;
     bool fme_randomize;
     int fme_threads;
@@ -99,9 +104,15 @@ struct LayoutConfiguration
     int merger_adjustment;
 };
 
-std::tuple<std::vector<double>, std::vector<double>>
-Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vector<uint32_t> &to,
-       LayoutConfiguration config = LayoutConfiguration(), 
-       const std::vector<float> &weight = std::vector<float>());
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config = LayoutConfiguration(), 
+       bool create_mst = true);
+
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
+       LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true);
+
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutInternal(ogdf::Graph &g, uint32_t vertex_count, LayoutConfiguration config);
 
 #endif

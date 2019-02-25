@@ -3,16 +3,21 @@
 #include <pybind11/stl_bind.h>
 #include "layout.hh"
 #include "lshforest.hh"
+#include "minhash.hh"
 
 namespace py = pybind11;
 
+PYBIND11_MAKE_OPAQUE(std::vector<uint8_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint32_t>);
+PYBIND11_MAKE_OPAQUE(std::vector<uint64_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<float>);
 
 PYBIND11_MODULE(mstmap, m)
 {
+    py::bind_vector<std::vector<uint8_t>>(m, "VectorUchar");
     py::bind_vector<std::vector<uint32_t>>(m, "VectorUint");
     py::bind_vector<std::vector<float>>(m, "VectorFloat");
+    py::bind_vector<std::vector<uint64_t>>(m, "VectorUlong");
 
     py::enum_<ScalingType>(m, "ScalingType", py::arithmetic())
         .value("Absolute", ScalingType::Absolute)
@@ -39,6 +44,7 @@ PYBIND11_MODULE(mstmap, m)
 
     py::class_<LayoutConfiguration>(m, "LayoutConfiguration")
         .def(py::init())
+        .def_readwrite("k", &LayoutConfiguration::k)
         .def_readwrite("fme_iterations", &LayoutConfiguration::fme_iterations)
         .def_readwrite("fme_randomize", &LayoutConfiguration::fme_randomize)
         .def_readwrite("fme_threads", &LayoutConfiguration::fme_threads)
@@ -54,15 +60,52 @@ PYBIND11_MODULE(mstmap, m)
         .def_readwrite("merger_adjustment", &LayoutConfiguration::merger_adjustment)
         .def("__repr__", &LayoutConfiguration::ToString);
 
-    m.def("layout", &Layout,
-          py::arg("vertex_count"), py::arg("from"), py::arg("to"),
+    m.def("layout_from_lsh_forest", &LayoutFromLSHForest,
+          py::arg("lsh_forest"),
           py::arg("config") = LayoutConfiguration(),
-          py::arg("weight") = std::vector<float>());
+          py::arg("create_mst") = true);
+
+    m.def("layout_from_edge_list", &LayoutFromEdgeList,
+          py::arg("vertex_count"), py::arg("edges"),
+          py::arg("config") = LayoutConfiguration(),
+          py::arg("create_mst") = true);
 
     py::class_<LSHForest>(m, "LSHForest")
-        .def(py::init<int, int>(), py::arg("d") = 128, py::arg("l") = 8)
+        .def(py::init<unsigned int, unsigned int, bool>(), py::arg("d") = 128, py::arg("l") = 8, py::arg("store") = false)
         .def("add", &LSHForest::Add)
+        .def("batch_add", &LSHForest::BatchAdd)
         .def("index", &LSHForest::Index)
         .def("is_clean", &LSHForest::IsClean)
-        .def("query", &LSHForest::Query);
+        .def("query_linear_scan", &LSHForest::QueryLinearScan, py::arg("vec"), py::arg("k"), py::arg("kc") = 10, py::arg("weighted") = false)
+        .def("query_linear_scan_exclude", &LSHForest::QueryLinearScanExclude, py::arg("vec"), py::arg("k"), py::arg("exclude"), py::arg("kc") = 10, py::arg("weighted") = false)
+        .def("query_linear_scan_by_id", &LSHForest::QueryLinearScanById, py::arg("id"), py::arg("k"), py::arg("kc") = 10, py::arg("weighted") = false)
+        .def("query_linear_scan_exclude_by_id", &LSHForest::QueryLinearScanExcludeById, py::arg("id"), py::arg("k"), py::arg("exclude"), py::arg("kc") = 10, py::arg("weighted") = false)
+        .def("linear_scan", &LSHForest::LinearScan, py::arg("vec"), py::arg("indices"), py::arg("k") = 0, py::arg("weighted") = false)
+        .def("query", &LSHForest::Query)
+        .def("queryExclude", &LSHForest::QueryExclude)
+        .def("query_by_id", &LSHForest::QueryById)
+        .def("query_exclude_by_id", &LSHForest::QueryExcludeById)
+        .def("batch_query", &LSHForest::BatchQuery)
+        .def("get_knn_graph", &LSHForest::GetKNNGraph, py::arg("k"), py::arg("kc") = 10, py::arg("weighted") = false)
+        .def("get_distance", &LSHForest::GetDistance)
+        .def("get_weighted_distance", &LSHForest::GetWeightedDistance)
+        .def("get_distance_by_id", &LSHForest::GetDistanceById)
+        .def("get_weighted_distance_by_id", &LSHForest::GetWeightedDistanceById)
+        .def("store", &LSHForest::Store)
+        .def("restore", &LSHForest::Restore)
+        .def("size", &LSHForest::size)
+        .def("get_hash", &LSHForest::GetHash);
+
+    py::class_<Minhash>(m, "Minhash")
+        .def(py::init<unsigned int, unsigned int, unsigned int>(), py::arg("d") = 128, py::arg("seed") = 42, py::arg("sample_size") = 128)
+        .def("from_binary_array", &Minhash::FromBinaryArray)
+        .def("batch_from_binary_array", &Minhash::BatchFromBinaryArray)
+        .def("from_sparse_binary_array", &Minhash::FromSparseBinaryArray)
+        .def("batch_from_sparse_binary_array", &Minhash::BatchFromSparseBinaryArray)
+        .def("from_string_array", &Minhash::FromStringArray)
+        .def("batch_from_string_array", &Minhash::BatchFromStringArray)
+        .def("from_weight_array", &Minhash::FromWeightArray)
+        .def("batch_from_weight_array", &Minhash::BatchFromWeightArray)
+        .def("get_distance", &Minhash::GetDistance)
+        .def("get_weighted_distance", &Minhash::GetWeightedDistance);
 }

@@ -148,3 +148,18 @@ dmypy.json
 *.exe
 *.out
 *.app
+
+
+
+
+
+# Custom stuff
+
+python-mnist
+*.html
+*.js
+*.dat
+*.tmp
+*.labels
+*.index
+*.smi

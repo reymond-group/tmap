@@ -83,4 +83,5 @@ setup(
     cmdclass=dict(build_ext=CMakeBuild),
     test_suite='tests',
     zip_safe=False,
+    include_package_data=True
 )

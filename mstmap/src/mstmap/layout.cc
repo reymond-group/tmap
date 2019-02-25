@@ -56,30 +56,55 @@ static InitialPlacer *GetZeroPlacer()
 	return placer;
 }
 
-std::tuple<std::vector<double>, std::vector<double>>
-Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vector<uint32_t> &to,
-	   LayoutConfiguration config, const std::vector<float> &weight)
+std::vector<std::vector<uint32_t>> GetTreesFromForest(const Graph &g)
 {
-	bool weighted = false;
+	NodeArray<int> connected_component_ids(g);
+	List<node> isolated_nodes;
+	int n_connected_components = connectedComponents(g, connected_component_ids, &isolated_nodes);
 
-	// from and to vectors have to have equal length
-	if (from.size() != to.size())
-	{
-		throw std::length_error("From and to vectors are not of equal size");
-	}
+	std::vector<std::vector<uint32_t>> connected_components(n_connected_components);
 
-	// Also throw error if weight is set but not matching in length
-	if (weight.size() > 0 && weight.size() != from.size())
-	{
-		throw std::length_error("Weight vector length does not match edge count");
-	}
-	else if (weight.size() == from.size())
-	{
-		weighted = true;
-	}
+	for (int i = 0; i < n_connected_components; i++)
+		connected_components[i] = std::vector<uint32_t>();
 
-	EdgeWeightedGraph<double> g;
-	GraphAttributes ga(g);
+	uint32_t i = 0;
+	for (auto id : connected_component_ids)
+		connected_components[id].emplace_back(i++);
+
+	std::sort(connected_components.begin(), connected_components.end(), 
+			  [](const std::vector<uint32_t> & a, const std::vector<uint32_t> & b){ return a.size() > b.size(); });
+
+	return connected_components;
+}
+
+void ConnectGraph(Graph &g, std::map<uint32_t, node> &index_to_node, LSHForest &lsh_forest)
+{
+	auto trees = GetTreesFromForest(g);
+
+	for (size_t i = 1; i < trees.size(); i++)
+	{
+		for (uint32_t v : trees[i])
+		{
+			auto nns = lsh_forest.QueryLinearScanExcludeById(v, 1, trees[i], 10);
+			
+			if (nns.size() == 0)
+				continue;
+
+			g.newEdge(index_to_node[v], index_to_node[std::get<1>(nns[0])], std::get<0>(nns[0]));
+		}
+
+		trees = GetTreesFromForest(g);
+	}
+}
+
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst)
+{
+	uint32_t vertex_count = lsh_forest.size();
+	auto edges = lsh_forest.GetKNNGraph(config.k);
+
+	EdgeWeightedGraph<float> g;
+	
 	std::map<uint32_t, node> index_to_node;
 
 	for (uint32_t i = 0; i < vertex_count; i++)
@@ -87,17 +112,60 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 		index_to_node[i] = g.newNode();
 	}
 
-	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
+	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
 	{
-		if (weighted)
-		{
-			g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
-		}
-		else 
-		{
-			g.newEdge(index_to_node[from[i]], index_to_node[to[i]], 1.0);
-		}
+		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
 	}
+
+	if (create_mst)
+	{
+		ConnectGraph(g, index_to_node, lsh_forest);
+
+		float weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+		std::cout << "Weight: " << weight << std::endl;
+
+		auto connected_components = GetTreesFromForest(g);
+	}
+
+	return LayoutInternal(g, vertex_count, config);
+}
+
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
+       LayoutConfiguration config, bool create_mst)
+{
+	EdgeWeightedGraph<float> g;
+	
+	std::map<uint32_t, node> index_to_node;
+
+	for (uint32_t i = 0; i < vertex_count; i++)
+	{
+		index_to_node[i] = g.newNode();
+	}
+
+	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
+	{
+		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
+	}
+
+	if (create_mst)
+	{
+		float weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+		std::cout << "Weight: " << weight << std::endl;
+
+		auto connected_components = GetTreesFromForest(g);
+		
+		for (auto cc : connected_components)
+			std::cout << cc.size() << std::endl;
+	}
+
+	return LayoutInternal(g, vertex_count, config);
+}
+
+std::tuple<std::vector<float>, std::vector<float>>
+LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
+{
+	GraphAttributes ga(g);
 
 	for (node v : g.nodes)
 	{
@@ -109,6 +177,8 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 	NodeArray<int> connected_components(g);
 	List<node> isolated_nodes;
 	int n_connected_components = connectedComponents(g, connected_components, &isolated_nodes);
+	std::cout << "Connected components: " << n_connected_components << std::endl;
+	std::cout << "Isolated nodes: " << isolated_nodes.size() << std::endl;
 
 	// Starting the layout
 	MultilevelGraph mlg(ga);
@@ -131,16 +201,22 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 	{
 	case Placer::Barycenter:
 		placer = GetBarycenterPlacer();
+		break;
 	case Placer::Circle:
 		placer = GetCirclePlacer();
+		break;
 	case Placer::Median:
 		placer = GetMedianPlacer();
+		break;
 	case Placer::Random:
 		placer = GetRandomPlacer();
+		break;
 	case Placer::Solar:
 		placer = GetSolarPlacer();
+		break;
 	case Placer::Zero:
 		placer = GetZeroPlacer();
+		break;
 	}
 
 	// Used for the coarsening phase.
@@ -149,12 +225,16 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 	{
 	case Merger::EdgeCover:
 		merger = GetFactoredAdjustedMerger<EdgeCoverMerger>(config.merger_factor, config.merger_adjustment);
+		break;
 	case Merger::LocalBiconnected:
 		merger = GetFactoredAdjustedMerger<LocalBiconnectedMerger>(config.merger_factor, config.merger_adjustment);
+		break;
 	case Merger::Solar:
 		merger = GetAdjustedMerger<SolarMerger>(config.merger_adjustment);
+		break;
 	case Merger::IndependentSet:
 		merger = GetAdjustedMerger<IndependentSetMerger>(config.merger_adjustment);
+		break;
 	}
 
 	// Get the scaling type. As I do not want to expose any OGDF to Python,
@@ -164,12 +244,16 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 	{
 	case ScalingType::Absolute:
 		scaling_type = ScalingLayout::ScalingType::Absolute;
+		break;
 	case ScalingType::RelativeToAvgLength:
 		scaling_type = ScalingLayout::ScalingType::RelativeToAvgLength;
+		break;
 	case ScalingType::RelativeToDesiredLength:
 		scaling_type = ScalingLayout::ScalingType::RelativeToDesiredLength;
+		break;
 	case ScalingType::RelativeToDrawing:
 		scaling_type = ScalingLayout::ScalingType::RelativeToDrawing;
+		break;
 	}
 
 	// Postprocessing is applied at each level after the single level layout.
@@ -211,8 +295,8 @@ Layout(uint32_t vertex_count, const std::vector<uint32_t> &from, const std::vect
 
 	mlg.exportAttributes(ga);
 
-	std::vector<double> x(vertex_count);
-	std::vector<double> y(vertex_count);
+	std::vector<float> x(vertex_count);
+	std::vector<float> y(vertex_count);
 
 	int i = 0;
 	for (node v : g.nodes)
