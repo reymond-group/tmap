@@ -69,6 +69,12 @@ class LSHForest
         unsigned int d_, l_, k_;
         bool clean_, store_;
         std::vector<std::map<std::vector<uint8_t>, std::vector<uint32_t>>> hashtables_;
+
+        std::vector<std::vector<std::vector<uint8_t>>> hashtable_keys_;
+        std::vector<std::vector<std::vector<uint32_t>>> hashtable_values_;
+        std::vector<std::vector<size_t>> sort_maps_;
+        std::vector<std::vector<std::vector<uint8_t>>> sorted_hashtables_test_;
+
         std::vector<std::tuple<uint32_t, uint32_t>> hashranges_;
         std::vector<std::vector<std::vector<uint8_t>>> sorted_hashtables_;
         std::vector<std::vector<uint32_t>> data_;

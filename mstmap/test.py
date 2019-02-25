@@ -29,7 +29,7 @@ else:
     fps = pickle.load(open('fps.dat', 'rb'))
 
 
-r = fps[0] # enc.encode('CNCNCNCNC')
+r = fps[2222] # enc.encode('CNCNCNCNC')
 
 
 lf_classic = LSHForestHelper(512, 128)
@@ -48,6 +48,9 @@ print(end - start)
 start = timer()
 for _ in range(100):
     result = lf_classic.query(r, 5, fps)
+
+for i in result:
+    print(enc.distance(r, fps[i]))
 end = timer()
 print(end - start)
 
@@ -60,9 +63,10 @@ for fp in fps:
 
 lf = mstmap.LSHForest(512, 128, store=True)
 start = timer()
-lf.batch_add(mstmap.VectorUint(list(range(len(fps_e)))), fps_e)
+lf.batch_add(fps_e)
 end = timer()
 print(end - start)
+
 
 start = timer()
 lf.index()
@@ -74,10 +78,17 @@ start = timer()
 #     result_ls = lf.query_linear_scan(mstmap.VectorUint(r), 5)
 # result = lf.query(r, 5)
 
-result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
+# result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
+result_ls = lf.query(mstmap.VectorUint(r), 5)
+print(result_ls)
+
+for i in result_ls:
+    print(lf.get_distance(lf.get_hash(i), mstmap.VectorUint(r)))
 
 end = timer()
 print(end - start)
+
+sys.exit()
 
 print("Excluding example")
 print(lf.query_linear_scan(mstmap.VectorUint(r), 5))
