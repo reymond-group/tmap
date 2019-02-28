@@ -77,7 +77,7 @@ std::vector<std::vector<uint32_t>> GetTreesFromForest(const Graph &g)
 	return connected_components;
 }
 
-void ConnectGraph(Graph &g, std::map<uint32_t, node> &index_to_node, LSHForest &lsh_forest)
+void ConnectGraph(Graph &g, std::vector<node> &index_to_node, LSHForest &lsh_forest)
 {
 	auto trees = GetTreesFromForest(g);
 
@@ -101,21 +101,21 @@ std::tuple<std::vector<float>, std::vector<float>>
 LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst)
 {
 	uint32_t vertex_count = lsh_forest.size();
-	auto edges = lsh_forest.GetKNNGraph(config.k);
+	std::vector<uint32_t> from;
+	std::vector<uint32_t> to;
+	std::vector<float> weight;
+
+	lsh_forest.GetKNNGraph(from, to, weight, config.k);
 
 	EdgeWeightedGraph<float> g;
 	
-	std::map<uint32_t, node> index_to_node;
+	std::vector<node> index_to_node(lsh_forest.size());
 
 	for (uint32_t i = 0; i < vertex_count; i++)
-	{
 		index_to_node[i] = g.newNode();
-	}
 
-	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
-	{
-		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
-	}
+	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
+		g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
 
 	if (create_mst)
 	{

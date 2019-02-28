@@ -33,16 +33,16 @@ def convert_the_panda(value):
     return mstmap.VectorUint(list(map(int, value.split(','))))
 
 out_name = 'chembl'
-f = 128
-lf = mstmap.LSHForest(f, 32, store=True)
+f = 8
+lf = mstmap.LSHForest(f, 8, store=True)
 enc = mstmap.Minhash(f)
 
 print('Loading CHEBML data ...')
 
-smiles = []
+# smiles = []
 index = 0
 chunk_id = 0
-for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=50000):
+for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=2000):
     print(chunk_id)
     if chunk_id > 9: break
     chunk_id += 1
@@ -51,7 +51,7 @@ for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';',
     chunk[2] = chunk[2].apply(convert_the_panda)
 
     for _, record in chunk.iterrows():
-        smiles.append(record[0])
+        # smiles.append(record[0])
         fps.append(record[2])
         index += 1
 
@@ -60,9 +60,15 @@ for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';',
     end = timer()
     print(end - start)
 
+start = timer()
 lf.index()
+end = timer()
 
+print('indexing', end - start)
 lf.store('test.tmp')
+
+lf = mstmap.LSHForest(f, 8, store=True)
+lf.restore('test.tmp')
 
 print("Getting knn graph")
 
@@ -73,13 +79,13 @@ start = timer()
 coords = mstmap.layout_from_lsh_forest(lf, config)
 end = timer()
 
-print(end - start)
+# print(end - start)
 
-x = coords[0]
-y = coords[1]
+# x = coords[0]
+# y = coords[1]
 
-values = np.array(list(map(len, smiles)))
-values = values / max(values)
+# values = np.array(list(map(len, smiles)))
+# values = values / max(values)
 
-faerun = Faerun(view='front', shader='legacyCircle', coords=False, point_size=0.5, tree_color='#ff0000')
-faerun.plot({ 'x': x, 'y': y, 'c': values, 'smiles': smiles }, colormap='rainbow')#, tree=edges)
+# faerun = Faerun(view='front', shader='legacyCircle', coords=False, point_size=0.5, tree_color='#ff0000')
+# faerun.plot({ 'x': x, 'y': y, 'c': values, 'smiles': smiles }, colormap='rainbow')#, tree=edges)

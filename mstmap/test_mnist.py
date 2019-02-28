@@ -27,8 +27,8 @@ print('Loading MNIST data ...')
 mn = MNIST('./python-mnist/data')
 images, labels = mn.load_training()
 
-# images = images[:20000]
-# labels = labels[:20000]
+# images = images[:2000]
+# labels = labels[:2000]
 
 image_count = len(images)
 
@@ -41,27 +41,26 @@ for i, image in enumerate(images):
     # tmp.append(mstmap.VectorFloat([x / 255.0 for x in image]))
     bar.next()
 
-mhs = enc.batch_from_binary_array(tmp)
 # mhs = enc.batch_from_weight_array(tmp)
-lf.batch_add(mhs)
+lf.batch_add(enc.batch_from_binary_array(tmp))
 
 bar.finish()
 
-lf.index()
+# lf.index()
 
-lf.store('test.dat')
+# lf.store('test.dat')
 
-coords = mstmap.layout_from_lsh_forest(lf)
+# coords = lf.get_layout()
 
-with open('mnist.labels', 'w+') as f:
-    for label in labels: f.write(str(label) + '\n')
+# with open('mnist.labels', 'w+') as f:
+#     for label in labels: f.write(str(label) + '\n')
 
 
-x = coords[0]
-y = coords[1]
-z = [0] * len(coords[0])
+# x = coords[0]
+# y = coords[1]
+# z = [0] * len(coords[0])
 
-faerun = Faerun(view='front', shader='legacyCircle', coords=False, point_size=0.25, tree_color='#ff0000')
+# faerun = Faerun(view='front', shader='legacyCircle', coords=False, point_size=0.25, tree_color='#ff0000')
 
-print("Plotting")
-faerun.plot({ 'x': x, 'y': y, 'c': labels, 'smiles': [''] * len(x) }, colormap='tab10')#, tree=edges)
+# print("Plotting")
+# faerun.plot({ 'x': x, 'y': y, 'c': labels, 'smiles': [''] * len(x) }, colormap='tab10')#, tree=edges)

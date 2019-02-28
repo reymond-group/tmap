@@ -73,10 +73,18 @@ lf.index()
 end = timer()
 print(end - start)
 
+lf.store('test.bin')
+lf.restore('test.bin')
+
 start = timer()
-result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
+# result_ls = lf.batch_query([mstmap.VectorUint(r)] * 100, 5)
+result_ls = lf.query_linear_scan(mstmap.VectorUint(r), 5)
 end = timer()
 print(end - start)
+
+print(result_ls)
+for i in result_ls:
+    print(i)
 
 sys.exit()
 

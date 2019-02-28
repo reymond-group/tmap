@@ -19,7 +19,30 @@
 #include "cereal/types/map.hpp"
 #include "cereal/types/tuple.hpp"
 
-#include <sparsepp/spp.h>
+
+#include "sparsepp/spp.h"
+
+
+struct MyHash {
+    size_t operator()(std::vector<uint8_t> vec) const 
+    {   
+        std::size_t seed = vec.size();
+        for(auto& i : vec) {
+            seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        }
+        return seed;
+    }
+};
+
+struct MapKeyPointer
+{
+  typedef spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>>::iterator iterator;
+  MapKeyPointer(iterator i) : it(i) {}
+  MapKeyPointer() {}
+  const std::vector<uint8_t>& operator*() const { return it->first; }
+  const std::vector<uint8_t>* operator->() const { return &it->first; }
+  iterator it;
+};
 
 class Timer
 {
@@ -49,12 +72,13 @@ class LSHForest
         void Store(const std::string &path);
         void Restore(const std::string &path);
         std::vector<uint32_t> GetHash(uint32_t id);
-        std::vector<std::tuple<uint32_t, uint32_t, float>> GetKNNGraph(unsigned int k, unsigned int kc = 10, bool weighted = false);
+        void GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &to, std::vector<float> &weight, unsigned int k, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScan(std::vector<uint32_t> &vec, unsigned int k, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScanExclude(std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScanById(uint32_t id, unsigned int k, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScanExcludeById(uint32_t id, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc = 10, bool weighted = false);
-        std::vector<std::pair<float, uint32_t>> LinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> indices, unsigned int k = 0, bool weighted = false);
+        std::vector<std::pair<float, uint32_t>> LinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k = 0, bool weighted = false);
+        void FastLinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k = 0, bool weighted = false);
         std::vector<uint32_t> Query(std::vector<uint32_t> &vec, unsigned int k);
         std::vector<uint32_t> QueryExclude(std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k);
         std::vector<uint32_t> QueryById(uint32_t id, unsigned int k);
@@ -70,24 +94,16 @@ class LSHForest
     private:
         unsigned int d_, l_, k_;
         bool clean_, store_;
-        
-        std::vector<std::vector<std::vector<uint8_t>>> hashtable_keys_;
-        std::vector<std::vector<std::vector<uint32_t>>> hashtable_values_;
-        std::vector<std::vector<size_t>> sort_maps_;
-
+        std::vector<spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> hashtables_;
         std::vector<std::tuple<uint32_t, uint32_t>> hashranges_;
-        std::vector<std::vector<std::vector<uint8_t>>> sorted_hashtables_;
+        std::vector<std::vector<MapKeyPointer>> sorted_hashtable_pointers_;
         std::vector<std::vector<uint32_t>> data_;
-
-        std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>>> hashmaps_;
 
         uint32_t Swap(uint32_t i);
         std::vector<uint32_t> Swap(std::vector<uint32_t> vec);
         std::vector<std::vector<uint32_t>> Swap(std::vector<std::vector<uint32_t>> vecs);
         std::vector<uint8_t> Hash(std::vector<uint32_t> vec);
         std::vector<uint8_t> Hash(std::vector<std::vector<uint32_t>> vecs);
-        std::vector<std::vector<uint8_t>> GetKeysFromHashtable(std::map<std::vector<uint8_t>, std::vector<uint32_t>> hashtable);
-        
         unsigned int BinarySearch(unsigned int n, const std::function<bool(unsigned int)> &fn);
         void QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k);
         void QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude);
