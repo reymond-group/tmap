@@ -133,7 +133,7 @@ std::vector<uint32_t> Minhash::FromStringArray(std::vector<std::string> &vec)
 
         for (size_t j = 0; j < mh.size(); j++)
         {
-            mh[j] = std::min(tmp[j], mh[j]);
+            mh[j] = std::min(tmp[j], mh[j]); 
         }
     }
 

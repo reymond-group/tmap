@@ -19,13 +19,13 @@ requirements:
 
 
       
-# test:
-#   files:
-#     - test.cc
-
 test:
-    commands:
-        - test -f ${PREFIX}/lib/libOGDF.so  # [unix]
+  files:
+    - test.cc
+
+# test:
+#     commands:
+#         - test -f ${PREFIX}/lib/libOGDF.so  # [unix]
 
 about:
     home: http://www.ogdf.net/
