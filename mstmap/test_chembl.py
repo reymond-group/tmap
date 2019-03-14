@@ -6,7 +6,9 @@ import numpy as np
 import pandas as pd
 import multiprocessing as mp
 import networkx as nx
+import scipy.stats as ss
 
+from rdkit.Chem import AllChem, Descriptors
 from timeit import default_timer as timer
 from mnist import MNIST
 from progress.bar import Bar
@@ -33,17 +35,17 @@ def convert_the_panda(value):
     return mstmap.VectorUint(list(map(int, value.split(','))))
 
 out_name = 'chembl'
-f = 2048
-lf = mstmap.LSHForest(f, 32, store=True)
+f = 512
+lf = mstmap.LSHForest(f, 64, store=True)
 
 print('Loading CHEBML data ...')
 
 smiles = []
 index = 0
 chunk_id = 0
-for chunk in pd.read_csv('/media/daenu/Even More Data/chembl_db/chembl.mhfp6', sep=';', header=None, chunksize=10000):
+for chunk in pd.read_csv('/media/daenu/Even More Data/chembl_db/chembl.mhfp6', sep=';', header=None, chunksize=200000):
     print(chunk_id)
-    if chunk_id > 5: break
+    if chunk_id > 10: break
     chunk_id += 1
     fps = []
 
@@ -58,17 +60,36 @@ for chunk in pd.read_csv('/media/daenu/Even More Data/chembl_db/chembl.mhfp6', s
 
 lf.index()
 
-lf.store('test.tmp')
+# lf.restore('chembl.dat')
+# smiles, vals = pickle.load(open('chembl.pickle', 'rb'))
 
 print("Getting knn graph")
 
 config = mstmap.LayoutConfiguration()
 config.k = 10
-coords = mstmap.layout_from_lsh_forest(lf, config)
+config.kc = 25
+config.sl_scaling_x = 5
+config.sl_scaling_y = 25
+config.placer = mstmap.Placer.Solar
+config.merger = mstmap.Merger.EdgeCover
+config.merger_factor = 2.0
+config.sl_scaling_type = mstmap.ScalingType.RelativeToAvgLength
 
-x = coords[0]
-y = coords[1]
-z = [0] * len(coords[0])
+x, y, s, t = mstmap.layout_from_lsh_forest(lf, config)
 
-faerun = Faerun(view='front', shader='legacyCircle', coords=False, point_size=0.5, tree_color='#ff0000')
-faerun.plot({ 'x': x, 'y': y, 'c': [0] * index, 'smiles': smiles }, colormap='tab10')#, tree=edges)
+vals = []
+
+for smile in smiles:
+    mol = AllChem.MolFromSmiles(smile)
+    vals.append(Descriptors.MolLogP(mol))
+
+vals = ss.rankdata(1.0 - np.array(vals) / max(vals)) / len(vals)
+
+lf.store('chembl.dat')
+with open('chembl.pickle', 'wb+') as handle:
+    pickle.dump((smiles, vals), handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+faerun = Faerun(view='front', coords=False, title='ChEMBL')
+faerun.add_scatter('chembl', { 'x': x, 'y': y, 'c': vals, 'labels': smiles }, colormap='rainbow', point_scale=0.75)
+faerun.add_tree('chembl_tree', { 'from': s, 'to': t }, point_helper='chembl')
+faerun.plot('chembl', template='smiles')

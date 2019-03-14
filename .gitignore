@@ -163,3 +163,6 @@ python-mnist
 *.labels
 *.index
 *.smi
+*.pickle
+*.bin
+*.png

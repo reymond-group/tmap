@@ -198,7 +198,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromWeightArray(std::vector<std
 
 float Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
 {
-    unsigned int intersect = 0;
+    float intersect = 0;
     size_t length = vec_a.size();
 
     for (unsigned int i = 0; i < length; i++)
@@ -207,12 +207,12 @@ float Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &
             intersect++;
     }
 
-    return 1.0f - intersect / (float)length;
+    return 1.0f - intersect / length;
 }
 
 float Minhash::GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
 {
-    unsigned int intersect = 0;
+    float intersect = 0;
     size_t length = vec_a.size();
 
     for (unsigned int i = 0; i < length; i += 2)
@@ -221,5 +221,5 @@ float Minhash::GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uin
             intersect++;
     }
 
-    return 1.0f - 2.0f * intersect / (float)length;
+    return 1.0f - 2.0f * intersect / length;
 }

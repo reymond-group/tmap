@@ -55,6 +55,7 @@
         "variant": "cpp",
         "condition_variable": "cpp",
         "mutex": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "hash_map": "cpp"
     }
 }

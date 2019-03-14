@@ -1,4 +1,5 @@
 #include "layout.hh"
+#include "lshforest.hh"
 
 using namespace ogdf;
 
@@ -97,17 +98,17 @@ void ConnectGraph(Graph &g, std::vector<node> &index_to_node, LSHForest &lsh_for
 	}
 }
 
-std::tuple<std::vector<float>, std::vector<float>>
-LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst)
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc, bool weighted)
 {
+	EdgeWeightedGraph<float> g;
 	uint32_t vertex_count = lsh_forest.size();
+
 	std::vector<uint32_t> from;
 	std::vector<uint32_t> to;
 	std::vector<float> weight;
 
-	lsh_forest.GetKNNGraph(from, to, weight, config.k);
-
-	EdgeWeightedGraph<float> g;
+	lsh_forest.GetKNNGraph(from, to, weight, k, kc, weighted);
 	
 	std::vector<node> index_to_node(lsh_forest.size());
 
@@ -117,20 +118,55 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
 		g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
 
-	if (create_mst)
+
+	ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+
+	std::vector<uint32_t> x;
+	std::vector<uint32_t> y;
+
+	for (edge e : g.edges)
 	{
-		ConnectGraph(g, index_to_node, lsh_forest);
-
-		float weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
-		std::cout << "Weight: " << weight << std::endl;
-
-		auto connected_components = GetTreesFromForest(g);
+		x.emplace_back(e->source()->index());
+		y.emplace_back(e->target()->index());	
 	}
 
+	return std::make_tuple(x, y);
+}
+
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst, bool clear_lsh_forest, bool weighted)
+{
+	EdgeWeightedGraph<float> g;
+	uint32_t vertex_count = lsh_forest.size();
+
+	std::vector<uint32_t> from;
+	std::vector<uint32_t> to;
+	std::vector<float> weight;
+
+	lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc, weighted);
+
+	if (clear_lsh_forest)
+		lsh_forest.Clear();
+	
+	std::vector<node> index_to_node(lsh_forest.size());
+
+	for (uint32_t i = 0; i < vertex_count; i++)
+		index_to_node[i] = g.newNode();
+
+	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
+		g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
+
+
+	if (create_mst)
+	{
+		float w = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+	}
+
+	// return std::tuple<std::vector<float>, std::vector<float>>();
 	return LayoutInternal(g, vertex_count, config);
 }
 
-std::tuple<std::vector<float>, std::vector<float>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
 LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
        LayoutConfiguration config, bool create_mst)
 {
@@ -139,14 +175,10 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 	std::map<uint32_t, node> index_to_node;
 
 	for (uint32_t i = 0; i < vertex_count; i++)
-	{
 		index_to_node[i] = g.newNode();
-	}
 
 	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
-	{
 		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
-	}
 
 	if (create_mst)
 	{
@@ -162,15 +194,13 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 	return LayoutInternal(g, vertex_count, config);
 }
 
-std::tuple<std::vector<float>, std::vector<float>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
 LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 {
 	GraphAttributes ga(g);
 
 	for (node v : g.nodes)
-	{
-		ga.width(v) = ga.height(v) = 1.0;
-	}
+		ga.width(v) = ga.height(v) = config.node_size;
 
 	// Check for isolated nodes. If there are isolated nodes,
 	// call placement step later on.
@@ -298,6 +328,9 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 	std::vector<float> x(vertex_count);
 	std::vector<float> y(vertex_count);
 
+	std::vector<uint32_t> s(g.edges.size());
+	std::vector<uint32_t> t(g.edges.size());
+
 	int i = 0;
 	for (node v : g.nodes)
 	{
@@ -306,5 +339,13 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 		i++;
 	}
 
-	return std::make_tuple(x, y);
+	i = 0;
+	for (edge e : g.edges)
+	{
+		s[i] = e->source()->index();
+		t[i] = e->target()->index();
+		i++;
+	}
+
+	return std::make_tuple(x, y, s, t);
 }

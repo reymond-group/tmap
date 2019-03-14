@@ -21,7 +21,7 @@
 
 
 #include "sparsepp/spp.h"
-
+#include "layout.hh"
 
 struct MyHash {
     size_t operator()(std::vector<uint8_t> vec) const 
@@ -62,8 +62,8 @@ private:
 class LSHForest
 {
     public:
-        LSHForest(unsigned int d = 128, unsigned int l = 8, bool store = false);
-        ~LSHForest() {}
+        LSHForest(unsigned int d = 128, unsigned int l = 8, bool store = false, bool file_backed = false);
+        ~LSHForest() { }
         void AddFromFile(std::string path);
         void Add(std::vector<uint32_t> &vec);
         void BatchAdd(std::vector<std::vector<uint32_t>> &vecs);
@@ -73,40 +73,49 @@ class LSHForest
         void Restore(const std::string &path);
         std::vector<uint32_t> GetHash(uint32_t id);
         void GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &to, std::vector<float> &weight, unsigned int k, unsigned int kc = 10, bool weighted = false);
-        std::vector<std::pair<float, uint32_t>> QueryLinearScan(std::vector<uint32_t> &vec, unsigned int k, unsigned int kc = 10, bool weighted = false);
-        std::vector<std::pair<float, uint32_t>> QueryLinearScanExclude(std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc = 10, bool weighted = false);
+        std::vector<std::pair<float, uint32_t>> QueryLinearScan(const std::vector<uint32_t> &vec, unsigned int k, unsigned int kc = 10, bool weighted = false);
+        std::vector<std::pair<float, uint32_t>> QueryLinearScanExclude(const std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScanById(uint32_t id, unsigned int k, unsigned int kc = 10, bool weighted = false);
         std::vector<std::pair<float, uint32_t>> QueryLinearScanExcludeById(uint32_t id, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc = 10, bool weighted = false);
-        std::vector<std::pair<float, uint32_t>> LinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k = 0, bool weighted = false);
-        void FastLinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k = 0, bool weighted = false);
-        std::vector<uint32_t> Query(std::vector<uint32_t> &vec, unsigned int k);
-        std::vector<uint32_t> QueryExclude(std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k);
+        std::vector<std::pair<float, uint32_t>> LinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k = 0, bool weighted = false);
+        void FastLinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k = 0, bool weighted = false);
+        std::vector<uint32_t> Query(const std::vector<uint32_t> &vec, unsigned int k);
+        std::vector<uint32_t> QueryExclude(const std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k);
         std::vector<uint32_t> QueryById(uint32_t id, unsigned int k);
         std::vector<uint32_t> QueryExcludeById(uint32_t id, std::vector<uint32_t> &exclude, unsigned int k);
-        std::vector<std::vector<uint32_t>> BatchQuery(std::vector<std::vector<uint32_t>> &vecs, unsigned int k);
+        std::vector<std::vector<uint32_t>> BatchQuery(const std::vector<std::vector<uint32_t>> &vecs, unsigned int k);
+        
+        std::vector<uint32_t> GetData(uint32_t id);
 
-        float GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
-        float GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
+        float GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b);
+        float GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b);
         float GetDistanceById(uint32_t a, uint32_t b);
         float GetWeightedDistanceById(uint32_t a, uint32_t b);
 
+        std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+        GetLayout(LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true, bool mem_dump = true);
+
+        void Clear();
         size_t size();
     private:
         unsigned int d_, l_, k_;
-        bool clean_, store_;
-        std::vector<spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> hashtables_;
+        unsigned long size_;
+        bool clean_, store_, file_backed_;
+        // std::vector<spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> hashtables_;
+        std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> hashtables_;
         std::vector<std::tuple<uint32_t, uint32_t>> hashranges_;
         std::vector<std::vector<MapKeyPointer>> sorted_hashtable_pointers_;
         std::vector<std::vector<uint32_t>> data_;
 
         uint32_t Swap(uint32_t i);
+        std::vector<std::vector<uint8_t>> GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash> hashtable);
         std::vector<uint32_t> Swap(std::vector<uint32_t> vec);
         std::vector<std::vector<uint32_t>> Swap(std::vector<std::vector<uint32_t>> vecs);
         std::vector<uint8_t> Hash(std::vector<uint32_t> vec);
         std::vector<uint8_t> Hash(std::vector<std::vector<uint32_t>> vecs);
         unsigned int BinarySearch(unsigned int n, const std::function<bool(unsigned int)> &fn);
-        void QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k);
-        void QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude);
+        void QueryInternal(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k);
+        void QueryInternalExclude(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude);
 };
 
 #endif

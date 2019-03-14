@@ -33,7 +33,8 @@
 #include <fstream>
 #include <typeinfo>
 
-#include "lshforest.hh"
+// Forward declaration of LSHForest.
+class LSHForest;
 
 enum struct Placer
 {
@@ -64,15 +65,17 @@ static const std::string scaling_types_values[] = {"Absolute", "RelativeToAvgLen
 
 struct LayoutConfiguration
 {
-    LayoutConfiguration() : k(10), fme_iterations(1000), fme_randomize(false), fme_threads(4),
+    LayoutConfiguration() : k(10), kc(10), fme_iterations(1000), fme_randomize(false), fme_threads(4),
                             sl_repeats(1), sl_extra_scaling_steps(1), sl_scaling_x(5.0), sl_scaling_y(20.0),
                             sl_scaling_type(ScalingType::RelativeToDesiredLength),
                             mmm_repeats(1),
                             placer(Placer::Barycenter),
-                            merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0) {}
+                            merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0),
+                            node_size(1.0) {}
     std::string ToString() const
     {
         return std::string("k: ") + std::to_string(k) + '\n' +
+               "kc: " + std::to_string(kc) + '\n' +
                "fme_iterations: " + std::to_string(fme_iterations) + '\n' +
                "fme_randomize: " + std::to_string(fme_randomize) + '\n' +
                "fme_threads: " + std::to_string(fme_threads) + '\n' +
@@ -85,10 +88,12 @@ struct LayoutConfiguration
                "placer: " + placer_values[(int)placer] + '\n' +
                "merger: " + merger_values[(int)merger] + '\n' +
                "merger_factor: " + std::to_string(merger_factor) + '\n' +
-               "merger_adjustment: " + std::to_string(merger_adjustment);
+               "merger_adjustment: " + std::to_string(merger_adjustment)  + '\n' +
+               "node_size" + std::to_string(node_size);
     }
 
     int k;
+    int kc;
     int fme_iterations;
     bool fme_randomize;
     int fme_threads;
@@ -102,17 +107,21 @@ struct LayoutConfiguration
     Merger merger;
     double merger_factor;
     int merger_adjustment;
+    float node_size;
 };
 
-std::tuple<std::vector<float>, std::vector<float>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
 LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config = LayoutConfiguration(), 
-       bool create_mst = true);
+       bool create_mst = true, bool clear_lsh_forest = false, bool weighted = false);
 
-std::tuple<std::vector<float>, std::vector<float>>
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc = 10, bool weighted = false);
+
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
 LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
        LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true);
 
-std::tuple<std::vector<float>, std::vector<float>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
 LayoutInternal(ogdf::Graph &g, uint32_t vertex_count, LayoutConfiguration config);
 
 #endif

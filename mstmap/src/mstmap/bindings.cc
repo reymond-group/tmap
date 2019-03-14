@@ -8,6 +8,7 @@
 namespace py = pybind11;
 
 PYBIND11_MAKE_OPAQUE(std::vector<uint8_t>);
+PYBIND11_MAKE_OPAQUE(std::vector<uint16_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint32_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint64_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<float>);
@@ -15,6 +16,7 @@ PYBIND11_MAKE_OPAQUE(std::vector<float>);
 PYBIND11_MODULE(mstmap, m)
 {
     py::bind_vector<std::vector<uint8_t>>(m, "VectorUchar");
+    py::bind_vector<std::vector<uint16_t>>(m, "VectorUsmall");
     py::bind_vector<std::vector<uint32_t>>(m, "VectorUint");
     py::bind_vector<std::vector<float>>(m, "VectorFloat");
     py::bind_vector<std::vector<uint64_t>>(m, "VectorUlong");
@@ -45,6 +47,7 @@ PYBIND11_MODULE(mstmap, m)
     py::class_<LayoutConfiguration>(m, "LayoutConfiguration")
         .def(py::init())
         .def_readwrite("k", &LayoutConfiguration::k)
+        .def_readwrite("kc", &LayoutConfiguration::kc)
         .def_readwrite("fme_iterations", &LayoutConfiguration::fme_iterations)
         .def_readwrite("fme_randomize", &LayoutConfiguration::fme_randomize)
         .def_readwrite("fme_threads", &LayoutConfiguration::fme_threads)
@@ -58,12 +61,21 @@ PYBIND11_MODULE(mstmap, m)
         .def_readwrite("merger", &LayoutConfiguration::merger)
         .def_readwrite("merger_factor", &LayoutConfiguration::merger_factor)
         .def_readwrite("merger_adjustment", &LayoutConfiguration::merger_adjustment)
+        .def_readwrite("node_size", &LayoutConfiguration::node_size)
         .def("__repr__", &LayoutConfiguration::ToString);
 
     m.def("layout_from_lsh_forest", &LayoutFromLSHForest,
           py::arg("lsh_forest"),
           py::arg("config") = LayoutConfiguration(),
-          py::arg("create_mst") = true);
+          py::arg("create_mst") = true,
+          py::arg("clear_lsh_forest") = false,
+          py::arg("weighted") = false);
+
+    m.def("mst_from_lsh_forest", &MSTFromLSHForest,
+          py::arg("lsh_forest"),
+          py::arg("k"),
+          py::arg("kc") = 10,
+          py::arg("weighted") = false);
 
     m.def("layout_from_edge_list", &LayoutFromEdgeList,
           py::arg("vertex_count"), py::arg("edges"),
@@ -71,7 +83,7 @@ PYBIND11_MODULE(mstmap, m)
           py::arg("create_mst") = true);
 
     py::class_<LSHForest>(m, "LSHForest")
-        .def(py::init<unsigned int, unsigned int, bool>(), py::arg("d") = 128, py::arg("l") = 8, py::arg("store") = false)
+        .def(py::init<unsigned int, unsigned int, bool, bool>(), py::arg("d") = 128, py::arg("l") = 8, py::arg("store") = false, py::arg("file_backed") = false)
         .def("add", &LSHForest::Add)
         .def("batch_add", &LSHForest::BatchAdd)
         .def("index", &LSHForest::Index)
@@ -94,7 +106,9 @@ PYBIND11_MODULE(mstmap, m)
         .def("store", &LSHForest::Store)
         .def("restore", &LSHForest::Restore)
         .def("size", &LSHForest::size)
-        .def("get_hash", &LSHForest::GetHash);
+        .def("get_hash", &LSHForest::GetHash)
+        .def("get_layout", &LSHForest::GetLayout, py::arg("config") = LayoutConfiguration(), py::arg("create_mst") = true, py::arg("mem_dump") = true)
+        .def("clear", &LSHForest::Clear);
 
     py::class_<Minhash>(m, "Minhash")
         .def(py::init<unsigned int, unsigned int, unsigned int>(), py::arg("d") = 128, py::arg("seed") = 42, py::arg("sample_size") = 128)

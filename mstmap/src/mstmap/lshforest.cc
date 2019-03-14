@@ -1,7 +1,7 @@
 #include "lshforest.hh"
 
-LSHForest::LSHForest(unsigned int d, unsigned int l, bool store) : d_(d), l_(l), store_(store), hashtables_(l),
-                                                                   hashranges_(l), sorted_hashtable_pointers_(l) //, sorted_hashtables_(l)
+LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backed) 
+: d_(d), l_(l), size_(0), store_(store), file_backed_(file_backed), hashtables_(l), hashranges_(l), sorted_hashtable_pointers_(l)
 {
     if (l_ > d_)
         throw std::invalid_argument("l must be equal to or greater than d");
@@ -10,40 +10,59 @@ LSHForest::LSHForest(unsigned int d, unsigned int l, bool store) : d_(d), l_(l),
 
     for (unsigned int i = 0; i < l_; i++)
     {
-        hashtables_[i] = spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>();
+        hashtables_[i] = spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>();
         hashranges_[i] = std::make_tuple(i * k_, (i + 1) * k_);
-        sorted_hashtable_pointers_[i] = std::vector<MapKeyPointer>();
     }
 }
 
 void LSHForest::Add(std::vector<uint32_t> &vec)
 {
     if (store_)
-        data_.emplace_back(vec);
+    {
+        if (file_backed_)
+        {
+            std::ofstream fout("data.dat", std::ios::ate | std::ios::app | std::ios::binary);
+            fout.write((char*)&vec[0], vec.size() * sizeof(uint32_t));
+            fout.close();
+        }
+        else
+            data_.emplace_back(vec);
+    }
 
     for (size_t i = 0; i < hashtables_.size(); i++)
     {
         std::vector<uint32_t> range(vec.begin() + std::get<0>(hashranges_[i]),
                                     vec.begin() + std::get<1>(hashranges_[i]));
         
-        hashtables_[i][Hash(Swap(range))].emplace_back(data_.size() - 1);
+        hashtables_[i][Hash(Swap(range))].emplace_back(size_);
     }
 
+    size_++;
     clean_ = false;
 }
 
 void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
 {
     size_t length = vecs.size();
-    size_t data_length = data_.size();
+    size_t data_length = size_;
+
     std::vector<uint32_t> keys(length);
+    for (size_t i = 0; i < length; i++)
+        keys[i] = data_length + i;
 
     if (store_) 
     {
-        for (size_t i = 0; i < length; i++)
+        if (file_backed_)
         {
-            data_.emplace_back(vecs[i]);
-            keys[i] = data_length + i;
+            std::ofstream fout("data.dat", std::ios::ate | std::ios::app | std::ios::binary);
+            for (size_t i = 0; i < length; i++)
+                fout.write((char*)&vecs[i][0], vecs[i].size() * sizeof(uint32_t));
+            fout.close();
+        }
+        else 
+        {
+            for (size_t i = 0; i < length; i++)
+                data_.emplace_back(vecs[i]);
         }
     }
 
@@ -61,6 +80,7 @@ void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
         }
     }
 
+    size_ += length;
     clean_ = false;
 }
 
@@ -81,6 +101,25 @@ void LSHForest::Index()
     clean_ = true;
 }
 
+std::vector<uint32_t> LSHForest::GetData(uint32_t id)
+{
+    if (file_backed_)
+    {
+        std::ifstream fin("data.dat", std::ios::in | std::ios::binary);
+
+        size_t pos = id * d_ * sizeof(uint32_t);
+        fin.seekg(pos);
+        std::vector<uint32_t> result(d_);
+        fin.read((char*)&result[0], result.size() * sizeof(uint32_t));
+        fin.close();
+        return result;
+    } 
+    else 
+    {
+        return data_[id];
+    }
+}
+
 bool LSHForest::IsClean()
 {
     return clean_;
@@ -88,49 +127,31 @@ bool LSHForest::IsClean()
 
 void LSHForest::Store(const std::string &path)
 {
-    // Workaround to not serialize const types
-    std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> tmp;
-
-    for (size_t i = 0; i < hashtables_.size(); i++)
-        for (const auto &pair : hashtables_[i])
-            hashtables_[i][pair.first] = pair.second;
-
     std::ofstream file(path, std::ios::binary);
     cereal::BinaryOutputArchive output(file);
-    output(tmp, hashranges_, data_, store_, d_, l_, k_);
+    output(hashtables_, hashranges_, data_, store_, l_, d_, k_, clean_, size_);
+    file.close();
 }
 
 void LSHForest::Restore(const std::string &path)
 {
-    std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>> tmp;
-
+    Clear();
     std::ifstream file(path, std::ios::binary);
     cereal::BinaryInputArchive input(file);
-    input(tmp, hashranges_, data_, store_, d_, l_, k_);
+    input(hashtables_, hashranges_, data_, store_, l_, d_, k_, clean_, size_);
+    file.close();
 
-    
-    hashtables_ = std::vector<spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>>(tmp.size());
-    for (size_t i = 0; i < tmp.size(); i++)
-    {
-        hashtables_[i] = spp::sparse_hash_map<const std::vector<uint8_t>, std::vector<uint32_t>, MyHash>();
-        for (const auto &pair : tmp[i])
-            hashtables_[i][pair.first] = pair.second;
-    }
+    sorted_hashtable_pointers_ = std::vector<std::vector<MapKeyPointer>>(l_);
 
-
-    // Reinitialize the sorted indices and index again
-    for (unsigned int i = 0; i < l_; i++)
-        sorted_hashtable_pointers_[i] = std::vector<MapKeyPointer>();
-    
     Index();
 }
 
 std::vector<uint32_t> LSHForest::GetHash(uint32_t id)
 {
-    return data_[id];
+    return GetData(id);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScan(std::vector<uint32_t> &vec, unsigned int k, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScan(const std::vector<uint32_t> &vec, unsigned int k, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -139,7 +160,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScan(std::vector<u
     return LinearScan(vec, tmp, k, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExclude(std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExclude(const std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -153,7 +174,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanById(uint32_t 
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
     
-    return QueryLinearScan(data_[id], k, kc, weighted);
+    return QueryLinearScan(GetData(id), k, kc, weighted);
 }
 
 std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExcludeById(uint32_t id, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
@@ -161,10 +182,10 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExcludeById(ui
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
     
-    return QueryLinearScanExclude(data_[id], k, exclude, kc, weighted);
+    return QueryLinearScanExclude(GetData(id), k, exclude, kc, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k, bool weighted)
+std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -176,10 +197,11 @@ std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(std::vector<uint32
 
     for (size_t i = 0; i < indices.size(); i++)
     {
+        auto data = GetData(indices[i]);
         if (weighted)
-            result[i] = std::pair<float, uint32_t>(GetWeightedDistance(vec, data_[indices[i]]), indices[i]);
+            result[i] = std::pair<float, uint32_t>(GetWeightedDistance(vec, data), indices[i]);
         else
-            result[i] = std::pair<float, uint32_t>(GetDistance(vec, data_[indices[i]]), indices[i]);
+            result[i] = std::pair<float, uint32_t>(GetDistance(vec, data), indices[i]);
     }
 
     std::sort(result.begin(), result.end());
@@ -188,7 +210,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(std::vector<uint32
     return result;
 }
 
-void LSHForest::FastLinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k, bool weighted)
+void LSHForest::FastLinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -201,14 +223,14 @@ void LSHForest::FastLinearScan(std::vector<uint32_t> &vec, std::vector<uint32_t>
     for (size_t i = 0; i < indices.size(); i++)
     {
         if (weighted)
-            weights[i] = GetWeightedDistance(vec, data_[indices[i]]);
+            weights[i] = GetWeightedDistance(vec, GetData(indices[i]));
         else
-            weights[i] = GetDistance(vec, data_[indices[i]]);
+            weights[i] = GetDistance(vec, GetData(indices[i]));
     }
 }
 
 // Does not always return k items. Is this expected?
-std::vector<uint32_t> LSHForest::Query(std::vector<uint32_t> &vec, unsigned int k)
+std::vector<uint32_t> LSHForest::Query(const std::vector<uint32_t> &vec, unsigned int k)
 {
     std::set<uint32_t> results;
 
@@ -225,7 +247,7 @@ std::vector<uint32_t> LSHForest::Query(std::vector<uint32_t> &vec, unsigned int 
     return std::vector<uint32_t>(results.begin(), results.end());
 }
 
-std::vector<uint32_t> LSHForest::QueryExclude(std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k)
+std::vector<uint32_t> LSHForest::QueryExclude(const std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k)
 {
     std::set<uint32_t> results;
 
@@ -247,7 +269,7 @@ std::vector<uint32_t> LSHForest::QueryById(uint32_t id, unsigned int k)
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
 
-    return Query(data_[id], k);
+    return Query(GetData(id), k);
 }
 
 std::vector<uint32_t> LSHForest::QueryExcludeById(uint32_t id, std::vector<uint32_t> &exclude, unsigned int k)
@@ -255,10 +277,10 @@ std::vector<uint32_t> LSHForest::QueryExcludeById(uint32_t id, std::vector<uint3
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
 
-    return QueryExclude(data_[id], exclude, k);
+    return QueryExclude(GetData(id), exclude, k);
 }
 
-std::vector<std::vector<uint32_t>> LSHForest::BatchQuery(std::vector<std::vector<uint32_t>> &vecs, unsigned int k)
+std::vector<std::vector<uint32_t>> LSHForest::BatchQuery(const std::vector<std::vector<uint32_t>> &vecs, unsigned int k)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -275,14 +297,14 @@ void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
 
-    from.resize(data_.size() * k);
-    to.resize(data_.size() * k);
-    weight.resize(data_.size() * k);
+    from.resize(size_ * k);
+    to.resize(size_ * k);
+    weight.resize(size_ * k);
 
     #pragma omp parallel for
-    for(size_t i = 0; i < data_.size(); i++)
+    for(size_t i = 0; i < size_; i++)
     {
-        auto result = QueryLinearScan(data_[i], k, kc, weighted);
+        auto result = QueryLinearScan(GetData(i), k, kc, weighted);
 
         for (size_t j = 0; j < result.size(); j++)
         {
@@ -293,7 +315,7 @@ void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &
     }
 }
 
-void LSHForest::QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k)
+void LSHForest::QueryInternal(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k)
 {
     std::vector<std::vector<uint8_t>> prefixes;
 
@@ -326,7 +348,7 @@ void LSHForest::QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::s
             auto &sh = *sorted_hashtable[j];
             std::vector<uint8_t> range(sh.begin(), sh.begin() + prefix_size);
             
-            if (range != prefix) 
+            if (range != prefix)
                 continue;
         }
 
@@ -352,7 +374,7 @@ void LSHForest::QueryInternal(std::vector<uint32_t> &vec, unsigned int r, std::s
     }
 }
 
-void LSHForest::QueryInternalExclude(std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
+void LSHForest::QueryInternalExclude(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
 {
     std::vector<std::vector<uint8_t>> prefixes;
 
@@ -483,32 +505,30 @@ unsigned int LSHForest::BinarySearch(unsigned int n, const std::function<bool(un
     return i;
 }
 
-float LSHForest::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
+float LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
-    unsigned int intersect = 0;
-    size_t length = vec_a.size();
+    float intersect = 0;
 
-    for (unsigned int i = 0; i < length; i++)
+    for (unsigned int i = 0; i < d_; i++)
     {
         if (vec_a[i] == vec_b[i])
             intersect++;
     }
 
-    return 1.0f - intersect / (float)length;
+    return 1.0f - intersect / d_;
 }
 
-float LSHForest::GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
+float LSHForest::GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
-    unsigned int intersect = 0;
-    size_t length = vec_a.size();
+    float intersect = 0;
 
-    for (unsigned int i = 0; i < length; i += 2)
+    for (unsigned int i = 0; i < d_; i += 2)
     {
         if (vec_a[i] == vec_b[i] && vec_a[i + 1] == vec_b[i + 1])
             intersect++;
     }
 
-    return 1.0f -  2.0f * intersect / (float)length;
+    return 1.0f -  2.0f * intersect / d_;
 }
 
 float LSHForest::GetDistanceById(uint32_t a, uint32_t b)
@@ -516,7 +536,7 @@ float LSHForest::GetDistanceById(uint32_t a, uint32_t b)
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
 
-    return GetDistance(data_[a], data_[b]);
+    return GetDistance(GetData(a), GetData(b));
 }
 
 float LSHForest::GetWeightedDistanceById(uint32_t a, uint32_t b)
@@ -524,10 +544,65 @@ float LSHForest::GetWeightedDistanceById(uint32_t a, uint32_t b)
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
 
-    return GetWeightedDistance(data_[a], data_[b]);
+    return GetWeightedDistance(GetData(a), GetData(b));
 }
 
 size_t LSHForest::size()
 {
-    return data_.size();
+    return size_;
+}
+
+void LSHForest::Clear()
+{
+    hashtables_ = std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>>();
+    hashranges_ = std::vector<std::tuple<uint32_t, uint32_t>>();
+    data_ = std::vector<std::vector<uint32_t>>();
+    sorted_hashtable_pointers_ = std::vector<std::vector<MapKeyPointer>>();
+
+    hashtables_.clear();
+    hashtables_.shrink_to_fit();
+
+    hashranges_.clear();
+    hashranges_.shrink_to_fit();
+
+    data_.clear();
+    data_.shrink_to_fit();
+
+    sorted_hashtable_pointers_.clear();
+    sorted_hashtable_pointers_.shrink_to_fit();
+
+    std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>>().swap(hashtables_);
+    std::vector<std::tuple<uint32_t, uint32_t>>().swap(hashranges_);
+    std::vector<std::vector<uint32_t>>().swap(data_);
+    std::vector<std::vector<MapKeyPointer>>().swap(sorted_hashtable_pointers_);
+}
+
+std::vector<std::vector<uint8_t>> 
+LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash> hashtable)
+{
+    std::vector<std::vector<uint8_t>> keys;
+
+    for (auto pair : hashtable)
+        keys.emplace_back(pair.first);
+
+    return keys;
+}
+
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
+{
+    std::string tmp_path = std::tmpnam(nullptr);
+    if (mem_dump) {
+        Store(tmp_path);
+    }
+
+    auto result = LayoutFromLSHForest(*this, config, create_mst, mem_dump);
+
+    if (mem_dump)
+    {
+        Restore(tmp_path);
+        std::remove(tmp_path.c_str());
+    }
+
+    return result;
 }
