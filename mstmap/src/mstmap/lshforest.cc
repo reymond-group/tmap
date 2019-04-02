@@ -505,6 +505,19 @@ unsigned int LSHForest::BinarySearch(unsigned int n, const std::function<bool(un
     return i;
 }
 
+std::vector<float> LSHForest::GetAllDistances(const std::vector<uint32_t> &vec)
+{
+    std::vector<float> dists(size_);
+
+    #pragma omp parallel for
+    for (size_t i = 0; i < size_; i++) 
+    {
+        dists[i] = GetDistance(vec, GetData(i));
+    }
+
+    return dists;
+}
+
 float LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
     float intersect = 0;

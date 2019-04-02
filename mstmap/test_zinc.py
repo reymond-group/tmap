@@ -38,30 +38,30 @@ enc = mstmap.Minhash(f)
 
 print('Loading CHEBML data ...')
 
-smiles = []
-index = 0
-chunk_id = 0
-for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=500000):
-    print(chunk_id)
-    if chunk_id > 9: break
-    chunk_id += 1
-    fps = []
+# smiles = []
+# index = 0
+# chunk_id = 0
+# for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=40000):
+#     print(chunk_id)
+#     if chunk_id > 9: break
+#     chunk_id += 1
+#     fps = []
 
-    chunk[2] = chunk[2].apply(convert_the_panda)
+#     chunk[2] = chunk[2].apply(convert_the_panda)
 
-    for _, record in chunk.iterrows():
-        smiles.append(record[0])
-        fps.append(record[2])
-        index += 1
+#     for _, record in chunk.iterrows():
+#         smiles.append(record[0])
+#         fps.append(record[2])
+#         index += 1
 
-    start = timer()
-    lf.batch_add(fps)
-    end = timer()
-    print(end - start)
+#     start = timer()
+#     lf.batch_add(fps)
+#     end = timer()
+#     print(end - start)
 
-start = timer()
-lf.index()
-end = timer()
+# start = timer()
+# lf.index()
+# end = timer()
 
 print("Getting knn graph")
 
@@ -69,16 +69,20 @@ print("Getting knn graph")
 config = mstmap.LayoutConfiguration()
 config.k = 10
 config.kc = 100
-config.sl_scaling_x = 5
-config.sl_scaling_y = 25
-config.placer = mstmap.Placer.Solar
+config.sl_scaling_x = 1.0
+config.sl_scaling_y = 1.0
+config.placer = mstmap.Placer.Barycenter
 config.merger = mstmap.Merger.EdgeCover
+config.sl_extra_scaling_steps = 1
 config.merger_factor = 2.0
-config.sl_scaling_type = mstmap.ScalingType.RelativeToAvgLength
+config.sl_scaling_type = mstmap.ScalingType.RelativeToDrawing
+config.fme_iterations = 100
+config.node_size = 1.0 / 100.0
 
+lf.restore('zinc_subset.dat')
 start = timer()
 x, y, s, t = mstmap.layout_from_lsh_forest(lf, config)
-lf.store('zinc.dat')
+# lf.store('zinc_subset.dat')
 lf.clear()
 end = timer()
 
@@ -86,19 +90,19 @@ print(end - start)
 
 vals = []
 i = 0
-l = len(smiles)
-for smile in smiles:
-    i += 1
-    if l % i == 0: print(i / l)
-    mol = AllChem.MolFromSmiles(smile)
-    vals.append(Descriptors.MolLogP(mol))
+# l = len(smiles)
+# for smile in smiles:
+#    i += 1
+#    if i % 10000 == 0: print(i / l)
+#    mol = AllChem.MolFromSmiles(smile)
+#    vals.append(mol.GetNumAtoms())
 
-with open('zinc.pickle', 'wb+') as handle:
-   pickle.dump((smiles, vals), handle, protocol=pickle.HIGHEST_PROTOCOL)
+# with open('zinc_subset.pickle', 'wb+') as handle:
+#     pickle.dump((smiles, vals), handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-# smiles, vals = pickle.load(open('zinc.pickle', 'rb'))
+smiles, vals = pickle.load(open('zinc_subset.pickle', 'rb'))
 
-vals = ss.rankdata(1.0 - np.array(vals) / max(vals)) / len(vals)
+# vals = ss.rankdata(1.0 - np.array(vals) / max(vals)) / len(vals)
 
 faerun = Faerun(view='front', coords=False, title='ZINC')
 faerun.add_scatter('zinc', { 'x': x, 'y': y, 'c': vals, 'labels': smiles }, colormap='rainbow', point_scale=0.75)

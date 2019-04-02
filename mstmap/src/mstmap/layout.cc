@@ -78,6 +78,39 @@ std::vector<std::vector<uint32_t>> GetTreesFromForest(const Graph &g)
 	return connected_components;
 }
 
+void RemoveDisconnectedComponents(Graph &g)
+{
+	GraphCopy t;
+	Graph::CCsInfo info(g);
+
+	int max = -1;
+	int cc = 0;
+	int num_ccs = info.numberOfCCs();
+
+	for (int i = 0; i < num_ccs; i++)
+	{
+		int cc_size = info.numberOfNodes(i);
+		std::cout << i << " " << cc_size << std::endl;
+		if (cc_size > max)
+		{
+			max = cc_size;
+			cc = i;
+		}
+	}
+
+	for (int i = 0; i < num_ccs; i++)
+	{
+		if (i == cc) continue;
+
+		std::cout << "Removing " << i << std::endl;
+
+		for (int j = info.startNode(i); j < info.stopNode(i); ++j) {
+			node v = info.v(j);
+			g.delNode(v);
+		}
+	}
+}
+
 void ConnectGraph(Graph &g, std::vector<node> &index_to_node, LSHForest &lsh_forest)
 {
 	auto trees = GetTreesFromForest(g);
@@ -159,6 +192,7 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 
 	if (create_mst)
 	{
+		// RemoveDisconnectedComponents(g);
 		float w = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
 	}
 
@@ -195,12 +229,15 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 }
 
 std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
-LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
+LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config)
 {
 	GraphAttributes ga(g);
 
-	for (node v : g.nodes)
-		ga.width(v) = ga.height(v) = config.node_size;
+	ga.setAllHeight(config.node_size);
+	ga.setAllWidth(config.node_size);
+
+	for (edge e : g.edges)
+		g.setWeight(e, 1.0);
 
 	// Check for isolated nodes. If there are isolated nodes,
 	// call placement step later on.
@@ -217,7 +254,10 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 	FastMultipoleEmbedder *fme = new FastMultipoleEmbedder();
 	fme->setNumIterations(config.fme_iterations);
 	fme->setRandomize(config.fme_randomize);
-	fme->setNumberOfThreads(config.fme_threads);
+	// fme->setNumberOfThreads(config.fme_threads);
+	fme->setMultipolePrec(config.fme_precision);
+	fme->setDefaultEdgeLength(1);
+	fme->setDefaultNodeSize(1);
 
 	// To minimize dispersion of the graph when more nodes are added, a
 	// ScalingLayout can be used to scale up the graph on each level.
@@ -269,7 +309,7 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 
 	// Get the scaling type. As I do not want to expose any OGDF to Python,
 	// there is this intermediate step.
-	ScalingLayout::ScalingType scaling_type = ScalingLayout::ScalingType::RelativeToAvgLength;
+	ScalingLayout::ScalingType scaling_type = ScalingLayout::ScalingType::RelativeToDrawing;
 	switch (config.sl_scaling_type)
 	{
 	case ScalingType::Absolute:
@@ -290,15 +330,20 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 	// In this example a FastMultipoleEmbedder with zero iterations is used for postprocessing.
 	sl->setExtraScalingSteps(config.sl_extra_scaling_steps);
 	sl->setScalingType(scaling_type);
-	sl->setScaling(config.sl_scaling_x, config.sl_scaling_y);
+	sl->setScaling(config.sl_scaling_min, config.sl_scaling_max);
 
 	// Then the ModularMultilevelMixer is created.
 	ModularMultilevelMixer *mmm = new ModularMultilevelMixer;
-	mmm->setLayoutRepeats(1);
+	mmm->setLayoutRepeats(config.mmm_repeats);
 	// The single level layout, the placer and the merger are set.
 	mmm->setLevelLayoutModule(sl);
 	mmm->setInitialPlacer(placer);
 	mmm->setMultilevelBuilder(merger);
+
+	if (config.sl_scaling_type == ScalingType::Absolute) 
+	{
+		sl->setMMM(mmm);
+	}
 
 	if (n_connected_components > 1)
 	{
@@ -314,7 +359,7 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 		// At last the PreprocessorLayout removes double edges and loops.
 		PreprocessorLayout ppl;
 		ppl.setLayoutModule(csl);
-		ppl.setRandomizePositions(true);
+		ppl.setRandomizePositions(false);
 
 		ppl.call(mlg);
 	}
@@ -324,6 +369,7 @@ LayoutInternal(Graph &g, uint32_t vertex_count, LayoutConfiguration config)
 	}
 
 	mlg.exportAttributes(ga);
+	
 
 	std::vector<float> x(vertex_count);
 	std::vector<float> y(vertex_count);

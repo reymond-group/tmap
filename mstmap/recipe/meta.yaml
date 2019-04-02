@@ -27,7 +27,6 @@ requirements:
   run:
     - python
     - ogdf
-    - leveldb
 
 about:
   home: http://gdb.tools

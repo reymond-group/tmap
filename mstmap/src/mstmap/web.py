@@ -2,7 +2,9 @@ import os
 import sys
 import cherrypy
 import mstmap
+import pickle
 
+import numpy as np
 import matplotlib.pyplot as plt
 
 def index_file(path, out_path):
@@ -116,8 +118,65 @@ class MstmapWeb(object):
         # colors = np.round(colors * 255.0)
         
         
+class MstmapWebStatic(object):
+    def __init__(self, path):
+        if not os.path.isfile(path):
+            print('File not found: ' + path)
+            sys.exit(1)
+
+        self.data = pickle.load(open(path, 'rb'))
+        
+    @cherrypy.expose
+    def index(self):
+        return open(mstmap.get_asset('index_static.html'))
+
+    @cherrypy.expose
+    @cherrypy.tools.allow(methods=['POST'])
+    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_in()
+    def get_names(self):
+        names = []
+
+        for name in self.data:
+            names.append(name)
+
+        return names
+
+    @cherrypy.expose
+    @cherrypy.tools.allow(methods=['POST'])
+    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_in()
+    def get_coords(self):
+        input_json = cherrypy.request.json
+        name = input_json["name"]
+
+        return [self.data[name]['x'].tolist(), self.data[name]['y'].tolist()]#, self.data[name]['z'][:8000000].tolist() ]
+
+    @cherrypy.expose
+    @cherrypy.tools.allow(methods=['POST'])
+    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_in()
+    def get_label(self):
+        input_json = cherrypy.request.json
+        index = input_json["id"]
+        name = input_json["name"]
+        return self.data[name]['labels'][index]
+        
+
+    @cherrypy.expose
+    @cherrypy.tools.allow(methods=['POST'])
+    @cherrypy.tools.json_out()
+    @cherrypy.tools.json_in()
+    def get_colors(self):
+        input_json = cherrypy.request.json
+        name = input_json["name"]
+        return [self.data[name]['r'].tolist(), self.data[name]['g'].tolist(), self.data[name]['b'].tolist()]
+        
 
 
 
 def host(path, labels_path = ''):
     cherrypy.quickstart(MstmapWeb(path, labels_path))
+
+def host_static(path):
+    cherrypy.quickstart(MstmapWebStatic(path))

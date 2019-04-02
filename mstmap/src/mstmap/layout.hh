@@ -29,6 +29,9 @@
 #include <ogdf/packing/ComponentSplitterLayout.h>
 #include <ogdf/packing/TileToRowsCCPacker.h>
 
+#include <ogdf/energybased/FMMMLayout.h>
+#include <ogdf/energybased/SpringEmbedderGridVariant.h>
+
 #include <iostream>
 #include <fstream>
 #include <typeinfo>
@@ -65,9 +68,9 @@ static const std::string scaling_types_values[] = {"Absolute", "RelativeToAvgLen
 
 struct LayoutConfiguration
 {
-    LayoutConfiguration() : k(10), kc(10), fme_iterations(1000), fme_randomize(false), fme_threads(4),
-                            sl_repeats(1), sl_extra_scaling_steps(1), sl_scaling_x(5.0), sl_scaling_y(20.0),
-                            sl_scaling_type(ScalingType::RelativeToDesiredLength),
+    LayoutConfiguration() : k(10), kc(10), fme_iterations(1000), fme_randomize(false), fme_threads(4), fme_precision(4),
+                            sl_repeats(1), sl_extra_scaling_steps(1), sl_scaling_min(5.0), sl_scaling_max(20.0),
+                            sl_scaling_type(ScalingType::RelativeToDrawing),
                             mmm_repeats(1),
                             placer(Placer::Barycenter),
                             merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0),
@@ -79,10 +82,11 @@ struct LayoutConfiguration
                "fme_iterations: " + std::to_string(fme_iterations) + '\n' +
                "fme_randomize: " + std::to_string(fme_randomize) + '\n' +
                "fme_threads: " + std::to_string(fme_threads) + '\n' +
+               "fme_precision: " + std::to_string(fme_threads) + '\n' +
                "sl_repeats: " + std::to_string(sl_repeats) + '\n' +
                "sl_extra_scaling_steps: " + std::to_string(sl_extra_scaling_steps) + '\n' +
-               "sl_scaling_x: " + std::to_string(sl_scaling_x) + '\n' +
-               "sl_scaling_y: " + std::to_string(sl_scaling_y) + '\n' +
+               "sl_scaling_x: " + std::to_string(sl_scaling_min) + '\n' +
+               "sl_scaling_y: " + std::to_string(sl_scaling_max) + '\n' +
                "sl_scaling_type: " + scaling_types_values[(int)sl_scaling_type] + '\n' +
                "mmm_repeats: " + std::to_string(mmm_repeats) + '\n' +
                "placer: " + placer_values[(int)placer] + '\n' +
@@ -97,10 +101,12 @@ struct LayoutConfiguration
     int fme_iterations;
     bool fme_randomize;
     int fme_threads;
+    int fme_precision;
+
     int sl_repeats;
     int sl_extra_scaling_steps;
-    double sl_scaling_x;
-    double sl_scaling_y;
+    double sl_scaling_min;
+    double sl_scaling_max;
     ScalingType sl_scaling_type;
     int mmm_repeats;
     Placer placer;
@@ -122,6 +128,6 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
        LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true);
 
 std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
-LayoutInternal(ogdf::Graph &g, uint32_t vertex_count, LayoutConfiguration config);
+LayoutInternal(ogdf::EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config);
 
 #endif

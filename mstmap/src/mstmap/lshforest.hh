@@ -87,6 +87,7 @@ class LSHForest
         
         std::vector<uint32_t> GetData(uint32_t id);
 
+        std::vector<float> GetAllDistances(const std::vector<uint32_t> &vec);
         float GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b);
         float GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b);
         float GetDistanceById(uint32_t a, uint32_t b);

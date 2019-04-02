@@ -154,7 +154,8 @@ dmypy.json
 
 
 # Custom stuff
-
+coil_20
+fashion_mnist
 python-mnist
 *.html
 *.js
@@ -166,3 +167,7 @@ python-mnist
 *.pickle
 *.bin
 *.png
+*.faerun
+
+#vscode
+.vscode

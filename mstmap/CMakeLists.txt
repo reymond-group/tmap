@@ -1,10 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+# set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O3 -funroll-loops")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops")
 
 project(mstmap)
+
+
+if (DEFINED ENV{CONDA_PREFIX})
+    SET(OGDF_INCLUDE "$ENV{CONDA_PREFIX}/include")
+    SET(OGDF_LIB "$ENV{CONDA_PREFIX}/lib")
+
+    include_directories(${OGDF_INCLUDE})
+    link_directories(${OGDF_LIB})
+endif()
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
