@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O3 -funroll-loops")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops")
 
-project(mstmap)
+project(tmap)
 
 
 if (DEFINED ENV{CONDA_PREFIX})
@@ -25,13 +25,13 @@ endif()
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
-SET(SOURCE_DIR "src/mstmap")
+SET(SOURCE_DIR "src/tmap")
 # Tell cmake that headers are in alse in source_dir
 include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc")
 
 # Generate python module
 add_subdirectory(lib/pybind11)
-pybind11_add_module(mstmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
-target_link_libraries(mstmap PRIVATE OGDF COIN)
-target_link_libraries(mstmap PRIVATE Threads::Threads)
+pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
+target_link_libraries(tmap PRIVATE OGDF COIN)
+target_link_libraries(tmap PRIVATE Threads::Threads)

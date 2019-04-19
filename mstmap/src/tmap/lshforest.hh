@@ -93,7 +93,7 @@ class LSHForest
         float GetDistanceById(uint32_t a, uint32_t b);
         float GetWeightedDistanceById(uint32_t a, uint32_t b);
 
-        std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+        std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
         GetLayout(LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true, bool mem_dump = true);
 
         void Clear();

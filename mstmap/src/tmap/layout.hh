@@ -116,18 +116,26 @@ struct LayoutConfiguration
     float node_size;
 };
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+struct GraphProperties
+{
+    float mst_weight = 0.0;
+    uint32_t n_connected_components = 0;
+    uint32_t n_isolated_vertices = 0;
+    std::vector<uint32_t> degrees;
+};
+
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
 LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config = LayoutConfiguration(), 
        bool create_mst = true, bool clear_lsh_forest = false, bool weighted = false);
 
 std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
 MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc = 10, bool weighted = false);
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
 LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
        LayoutConfiguration config = LayoutConfiguration(), bool create_mst = true);
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
-LayoutInternal(ogdf::EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config);
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+LayoutInternal(ogdf::EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &gp);
 
 #endif

@@ -48,29 +48,29 @@ chembl_id = []
 activity = []
 target_class = []
 
-for chunk in pd.read_csv('/media/daenu/Even More Data/chembl_db/chembl_targets.mhfp6', sep=';', header=None, chunksize=1000):
-    print(chunk_id)
-    if chunk_id > 10: break
-    chunk_id += 1
-    fps = []
+# for chunk in pd.read_csv('/media/daenu/Even More Data/chembl_db/chembl_targets.mhfp6', sep=';', header=None, chunksize=100000):
+#     print(chunk_id)
+#     # if chunk_id > 10: break
+#     chunk_id += 1
+#     fps = []
 
-    chunk[6] = chunk[6].apply(convert_the_panda)
+#     chunk[6] = chunk[6].apply(convert_the_panda)
 
-    for _, record in chunk.iterrows():
-        chembl_id.append(record[0])
-        smiles.append(record[3])
-        activity.append(record[4])
-        fps.append(record[6])
-        tc = record[5].split('  ')[0]
-        if tc == 'enzyme' and len(record[5].split('  ')) > 1: tc = record[5].split('  ')[1]
-        target_class.append(tc)
-        index += 1
+#     for _, record in chunk.iterrows():
+#         chembl_id.append(record[0])
+#         smiles.append(record[3])
+#         activity.append(record[4])
+#         fps.append(record[6])
+#         tc = record[5].split('  ')[0]
+#         if tc == 'enzyme' and len(record[5].split('  ')) > 1: tc = record[5].split('  ')[1]
+#         target_class.append(tc)
+#         index += 1
 
-    lf.batch_add(fps)
+#     lf.batch_add(fps)
 
 
-# smiles, target_class, activity, chembl_id = pickle.load(open('chembl.pickle', 'rb'))
-# lf.restore('chembl.dat')
+smiles, target_class, activity, chembl_id = pickle.load(open('chembl.pickle', 'rb'))
+lf.restore('chembl.dat')
 lf.index()
 
 tmp = pd.DataFrame({ 'target_class': target_class })
@@ -106,7 +106,7 @@ print("Getting knn graph")
 for i in [1]:
     for j in [0]:
         config = mstmap.LayoutConfiguration()
-        config.k = 25
+        config.k = 20
         config.kc = 20
         config.sl_scaling_min = 1.0
         config.sl_scaling_max = 1.0
@@ -124,10 +124,11 @@ for i in [1]:
 
 
         start = timer()
-        x, y, s, t = mstmap.layout_from_lsh_forest(lf, config)
+        x, y, s, t, _ = mstmap.layout_from_lsh_forest(lf, config)
         end = timer()
         print(end - start)
 
+        lf.clear()
 
         activity = np.array(activity)
         activity = np.maximum(0.0, activity)
@@ -137,12 +138,12 @@ for i in [1]:
         legend_labels = [(0, 'Cytochrome p450'), (1, 'Other Enzyme'), (2, 'Epigenetic Regulator'), (3, 'Ion Channel'), (4, 'Kinase'), 
                         (5, 'Membrane Receptor'), (6, 'Protease'), (8, 'Transcription Factor'), (9, 'Transporter'), (7, 'Other')]
 
-        # vals = [int(target_class_map[x]) for x in target_class]
+        vals = [int(target_class_map[x]) for x in target_class]
         # vals = ss.rankdata(1.0 - np.array(distances) / max(distances)) / len(distances)
-        vals = 1 - np.array(distances)
+        # vals = 1 - np.array(distances)
 
         faerun = Faerun(view='front', coords=False, title='ChEMBL')
-        faerun.add_scatter('chembl', { 'x': x, 'y': y, 'c': vals, 'labels': smiles }, #colormap='tab10', 
-                        point_scale=2.5, max_point_size=10, has_legend=True)#, categorical=True, legend_labels=legend_labels)
+        faerun.add_scatter('chembl', { 'x': x, 'y': y, 'c': vals, 'labels': smiles }, colormap='tab10', 
+                        point_scale=2.5, max_point_size=10, has_legend=True, categorical=True, legend_labels=legend_labels)
         faerun.add_tree('chembl_tree', { 'from': s, 'to': t }, point_helper='chembl', color='#222222')
         faerun.plot('chembl' + str(i) + str(j), template='smiles')

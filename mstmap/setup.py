@@ -71,7 +71,7 @@ class CMakeBuild(build_ext):
         print()  # Add an empty line for cleaner output
 
 setup(
-    name='mstmap',
+    name='tmap',
     version='0.1',
     author='Daniel Probst',
     author_email='daenuprobst@gmail.com',
@@ -79,7 +79,7 @@ setup(
     long_description='',
     packages=find_packages('src'),
     package_dir={'':'src'},
-    ext_modules=[CMakeExtension('mstmap/mstmap')],
+    ext_modules=[CMakeExtension('tmap/tmap')],
     cmdclass=dict(build_ext=CMakeBuild),
     test_suite='tests',
     zip_safe=False,

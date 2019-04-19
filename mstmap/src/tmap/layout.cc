@@ -166,15 +166,17 @@ MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc, bool weighted)
 	return std::make_tuple(x, y);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
 LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst, bool clear_lsh_forest, bool weighted)
 {
+	GraphProperties gp;
 	EdgeWeightedGraph<float> g;
 	uint32_t vertex_count = lsh_forest.size();
 
 	std::vector<uint32_t> from;
 	std::vector<uint32_t> to;
 	std::vector<float> weight;
+	std::vector<uint32_t> degrees(vertex_count);
 
 	lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc, weighted);
 
@@ -188,22 +190,30 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 
 	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
 		g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
+	
+	ogdf::makeLoopFree(g);
+	ogdf::makeParallelFreeUndirected(g);
 
-
-	if (create_mst)
+	uint32_t i = 0;
+	for (node v : g.nodes) 
 	{
-		// RemoveDisconnectedComponents(g);
-		float w = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+		degrees[i] = v->degree();
+		i++;
 	}
 
-	// return std::tuple<std::vector<float>, std::vector<float>>();
-	return LayoutInternal(g, vertex_count, config);
+	gp.degrees = degrees;
+
+	if (create_mst)
+		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+
+	return LayoutInternal(g, vertex_count, config, gp);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
 LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
        LayoutConfiguration config, bool create_mst)
 {
+	GraphProperties gp;
 	EdgeWeightedGraph<float> g;
 	
 	std::map<uint32_t, node> index_to_node;
@@ -214,22 +224,17 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
 		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
 
+	ogdf::makeLoopFree(g);
+	ogdf::makeParallelFreeUndirected(g);
+
 	if (create_mst)
-	{
-		float weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
-		std::cout << "Weight: " << weight << std::endl;
+		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
 
-		auto connected_components = GetTreesFromForest(g);
-		
-		for (auto cc : connected_components)
-			std::cout << cc.size() << std::endl;
-	}
-
-	return LayoutInternal(g, vertex_count, config);
+	return LayoutInternal(g, vertex_count, config, gp);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
-LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config)
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &gp)
 {
 	GraphAttributes ga(g);
 
@@ -244,8 +249,8 @@ LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfigu
 	NodeArray<int> connected_components(g);
 	List<node> isolated_nodes;
 	int n_connected_components = connectedComponents(g, connected_components, &isolated_nodes);
-	std::cout << "Connected components: " << n_connected_components << std::endl;
-	std::cout << "Isolated nodes: " << isolated_nodes.size() << std::endl;
+	gp.n_connected_components = n_connected_components;
+	gp.n_isolated_vertices = isolated_nodes.size();
 
 	// Starting the layout
 	MultilevelGraph mlg(ga);
@@ -385,6 +390,21 @@ LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfigu
 		i++;
 	}
 
+	// Also norm distances, as units are meaningless
+	// Center on 0
+	float max_x = *max_element(x.begin(), x.end());
+	float max_y = *max_element(y.begin(), y.end());
+	float min_x = *min_element(x.begin(), x.end());
+	float min_y = *min_element(y.begin(), y.end());
+	float diff_x = max_x - min_x;
+	float diff_y = max_y - min_y;
+
+	for (size_t i = 0; i < x.size(); i++) 
+	{
+		x[i] = (x[i] - min_x) / diff_x - 0.5;
+		y[i] = (y[i] - min_y) / diff_y - 0.5;
+	}
+	
 	i = 0;
 	for (edge e : g.edges)
 	{
@@ -393,5 +413,5 @@ LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfigu
 		i++;
 	}
 
-	return std::make_tuple(x, y, s, t);
+	return std::make_tuple(x, y, s, t, gp);
 }

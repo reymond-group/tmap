@@ -13,7 +13,7 @@ PYBIND11_MAKE_OPAQUE(std::vector<uint32_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint64_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<float>);
 
-PYBIND11_MODULE(mstmap, m)
+PYBIND11_MODULE(tmap, m)
 {
     py::bind_vector<std::vector<uint8_t>>(m, "VectorUchar");
     py::bind_vector<std::vector<uint16_t>>(m, "VectorUsmall");
@@ -64,6 +64,13 @@ PYBIND11_MODULE(mstmap, m)
         .def_readwrite("merger_adjustment", &LayoutConfiguration::merger_adjustment)
         .def_readwrite("node_size", &LayoutConfiguration::node_size)
         .def("__repr__", &LayoutConfiguration::ToString);
+
+    py::class_<GraphProperties>(m, "GraphProperties")
+        .def(py::init())
+        .def_readwrite("mst_weight", &GraphProperties::mst_weight)
+        .def_readwrite("n_connected_components", &GraphProperties::n_connected_components)
+        .def_readwrite("n_isolated_vertices", &GraphProperties::n_isolated_vertices)
+        .def_readwrite("degrees", &GraphProperties::degrees);
 
     m.def("layout_from_lsh_forest", &LayoutFromLSHForest,
           py::arg("lsh_forest"),

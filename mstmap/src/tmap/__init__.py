@@ -1,4 +1,4 @@
-from .mstmap import *
+from .tmap import *
 
 import os
 

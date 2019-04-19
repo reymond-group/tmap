@@ -38,37 +38,37 @@ enc = mstmap.Minhash(f)
 
 print('Loading CHEBML data ...')
 
-# smiles = []
-# index = 0
-# chunk_id = 0
-# for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=40000):
-#     print(chunk_id)
-#     if chunk_id > 9: break
-#     chunk_id += 1
-#     fps = []
+smiles = []
+index = 0
+chunk_id = 0
+for chunk in pd.read_csv('/media/daenu/Even More Data/zinc/zinc.mhfp6', sep=';', header=None, chunksize=1000000):
+    print(chunk_id)
+    if chunk_id > 9: break
+    chunk_id += 1
+    fps = []
 
-#     chunk[2] = chunk[2].apply(convert_the_panda)
+    chunk[2] = chunk[2].apply(convert_the_panda)
 
-#     for _, record in chunk.iterrows():
-#         smiles.append(record[0])
-#         fps.append(record[2])
-#         index += 1
+    for _, record in chunk.iterrows():
+        smiles.append(record[0])
+        fps.append(record[2])
+        index += 1
 
-#     start = timer()
-#     lf.batch_add(fps)
-#     end = timer()
-#     print(end - start)
+    start = timer()
+    lf.batch_add(fps)
+    end = timer()
+    print(end - start)
 
-# start = timer()
-# lf.index()
-# end = timer()
+start = timer()
+lf.index()
+end = timer()
 
 print("Getting knn graph")
 
 
 config = mstmap.LayoutConfiguration()
-config.k = 10
-config.kc = 100
+config.k = 20
+config.kc = 20
 config.sl_scaling_x = 1.0
 config.sl_scaling_y = 1.0
 config.placer = mstmap.Placer.Barycenter
@@ -90,17 +90,17 @@ print(end - start)
 
 vals = []
 i = 0
-# l = len(smiles)
-# for smile in smiles:
-#    i += 1
-#    if i % 10000 == 0: print(i / l)
-#    mol = AllChem.MolFromSmiles(smile)
-#    vals.append(mol.GetNumAtoms())
+l = len(smiles)
+for smile in smiles:
+   i += 1
+   if i % 10000 == 0: print(i / l)
+   mol = AllChem.MolFromSmiles(smile)
+   vals.append(mol.GetNumAtoms())
 
-# with open('zinc_subset.pickle', 'wb+') as handle:
-#     pickle.dump((smiles, vals), handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('zinc_subset.pickle', 'wb+') as handle:
+    pickle.dump((smiles, vals), handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-smiles, vals = pickle.load(open('zinc_subset.pickle', 'rb'))
+# smiles, vals = pickle.load(open('zinc_subset.pickle', 'rb'))
 
 # vals = ss.rankdata(1.0 - np.array(vals) / max(vals)) / len(vals)
 

@@ -601,7 +601,7 @@ LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::
     return keys;
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>>
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
 LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
 {
     std::string tmp_path = std::tmpnam(nullptr);

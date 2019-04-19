@@ -9,7 +9,7 @@ from mnist import MNIST
 from progress.bar import Bar
 from progress.spinner import Spinner
 from mhfp.encoder import MHFPEncoder
-from mstmap import mstmap
+from tmap import tmap
 from operator import itemgetter
 from faerun import Faerun
 from matplotlib import pyplot as plt
@@ -17,9 +17,9 @@ from io import BytesIO
 from PIL import Image
 
 dims = 2048
-enc = mstmap.Minhash(dims)
-# enc = mstmap.Minhash(784, sample_size=dims)
-lf = mstmap.LSHForest(dims, 128, store=True)
+enc = tmap.Minhash(dims)
+# enc = tmap.Minhash(784, sample_size=dims)
+lf = tmap.LSHForest(dims, 128, store=True)
 
 
 images = []
@@ -40,8 +40,8 @@ bar = Bar('Generating fingerprint', max=image_count, suffix='%(remaining)d numbe
 tmp = []
 for i, image in enumerate(images):
     avg = sum(image) / sum([1 if x > 0 else 0 for x in image])
-    tmp.append(mstmap.VectorUchar([1 if x >= 122 else 0 for x in image]))
-    # tmp.append(mstmap.VectorFloat([x / 255.0 for x in image]))
+    tmp.append(tmap.VectorUchar([1 if x >= 122 else 0 for x in image]))
+    # tmp.append(tmap.VectorFloat([x / 255.0 for x in image]))
     bar.next()
 
 # mhs = enc.batch_from_weight_array(tmp)
@@ -56,22 +56,22 @@ lf.store('mnist.dat')
 
 print("Getting knn graph")
 
-config = mstmap.LayoutConfiguration()
+config = tmap.LayoutConfiguration()
 config.k = 10
 config.kc = 50
 config.sl_scaling_x = 1.0
 config.sl_scaling_y = 1.0
 config.sl_repeats = 5
 config.sl_extra_scaling_steps = 2
-config.placer = mstmap.Placer.Barycenter
-config.merger = mstmap.Merger.LocalBiconnected
+config.placer = tmap.Placer.Barycenter
+config.merger = tmap.Merger.LocalBiconnected
 config.merger_factor = 2.0
 config.merger_adjustment = 0
-config.sl_scaling_type = mstmap.ScalingType.RelativeToDrawing
+config.sl_scaling_type = tmap.ScalingType.RelativeToDrawing
 config.node_size = 50
 config.mmm_repeats = 50
 
-x, y, s, t = mstmap.layout_from_lsh_forest(lf, config)
+x, y, s, t = tmap.layout_from_lsh_forest(lf, config)
 
 
 image_labels = []

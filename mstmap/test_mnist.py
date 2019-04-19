@@ -61,8 +61,8 @@ print("Getting knn graph")
 config = mstmap.LayoutConfiguration()
 config.k = 10
 config.kc = 25
-config.sl_scaling_x = 1.0
-config.sl_scaling_y = 1.0
+config.sl_scaling_min = 1.0
+config.sl_scaling_max = 1.0
 config.sl_repeats = 5
 config.sl_extra_scaling_steps = 2
 config.placer = mstmap.Placer.Barycenter
@@ -73,7 +73,11 @@ config.sl_scaling_type = mstmap.ScalingType.RelativeToDrawing
 config.node_size = 1
 config.mmm_repeats = 10
 
-x, y, s, t = mstmap.layout_from_lsh_forest(lf, config)
+start = timer()
+x, y, s, t, props = mstmap.layout_from_lsh_forest(lf, config)
+print(timer() - start)
+print(max(props.degrees))
+print(sum(props.degrees) / len(props.degrees))
 
 
 image_labels = []

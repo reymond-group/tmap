@@ -1,1 +1,2 @@
-include src/mstmap/index.html
+include src/mstmap/assets/index.html
+include src/mstmap/assets/index_static.html
