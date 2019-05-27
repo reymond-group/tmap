@@ -129,6 +129,7 @@ PYBIND11_MODULE(tmap, m)
         .def("batch_from_string_array", &Minhash::BatchFromStringArray)
         .def("from_weight_array", &Minhash::FromWeightArray)
         .def("batch_from_weight_array", &Minhash::BatchFromWeightArray)
+        // .def("batch_from_weight_array_experimental", &Minhash::BatchFromWeightArrayExperimental)
         .def("get_distance", &Minhash::GetDistance)
         .def("get_weighted_distance", &Minhash::GetWeightedDistance);
 }

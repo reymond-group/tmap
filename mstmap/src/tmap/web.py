@@ -25,18 +25,30 @@ def index_file(path, out_path):
     return indices
 
 # The default cherrypy json encoder seems to be extremely slow...
+
+
 def json_handler(*args, **kwargs):
     value = cherrypy.serving.request._json_inner_handler(*args, **kwargs)
     return ujson.dumps(value).encode('utf8')
 
+
 class TmapWebStatic():
-    def __init__(self, path):
+    def __init__(self, path, label_type='smiles', label_formatter=None, link_formatter=None):
         if not os.path.isfile(path):
             print('File not found: ' + path)
             sys.exit(1)
 
+        if label_formatter is None:
+            label_formatter = lambda label, index, name: label
+
+        if link_formatter is None:
+            link_formatter = lambda label, index, name: ''
+
+        self.label_type = label_type
         self.data = pickle.load(open(path, 'rb'))
         self.ids = {}
+        self.link_formatter = link_formatter
+        self.label_formatter = label_formatter
 
         for name in self.data:
             if self.data[name]['type'] != 'scatter':
@@ -46,10 +58,14 @@ class TmapWebStatic():
             # e.g. smiles and id
             # seperated by __ in the label field
             self.ids[name] = []
-            for i, label in enumerate(self.data[name]['labels']):
-                vals = label.split('__')
-                self.ids[name].append(vals[1])
 
+            if '__' in self.data[name]['labels'][0]:
+                for _, label in enumerate(self.data[name]['labels']):
+                    vals = label.split('__')
+                    self.ids[name].append(vals[1].lower())
+            else:
+                for _, label in enumerate(self.data[name]['labels']):
+                    self.ids[name].append(label.lower())
 
     @cherrypy.expose
     def index(self, **params):
@@ -61,6 +77,7 @@ class TmapWebStatic():
     @cherrypy.tools.json_in()
     def get_meta(self):
         meta = {}
+        meta['label_type'] = self.label_type
 
         for name in self.data:
             data_type = self.data[name]['type']
@@ -94,7 +111,11 @@ class TmapWebStatic():
         input_json = cherrypy.request.json
         index = input_json['id']
         name = input_json['name']
-        return self.data[name]['labels'][index]
+        label = self.data[name]['labels'][index]
+        return {
+            'label': self.label_formatter(label, index, name),
+            'link': self.link_formatter(label, index, name)
+        }
 
     @cherrypy.expose
     @cherrypy.tools.allow(methods=['POST'])
@@ -109,7 +130,7 @@ class TmapWebStatic():
 
         results = []
         for label in labels.split(','):
-            label = label.strip()
+            label = label.strip().lower()
             try:
                 results.append([label, self.ids[name].index(label)])
             except ValueError:
@@ -121,5 +142,6 @@ class TmapWebStatic():
     def ws(self):
         cherrypy.log('Handler created: %s' % repr(cherrypy.request.ws_handler))
 
-def host_static(path):
-    cherrypy.quickstart(TmapWebStatic(path))
+
+def host_static(path, label_type='smiles', label_formatter=None, link_formatter=None):
+    cherrypy.quickstart(TmapWebStatic(path, label_type, label_formatter=label_formatter, link_formatter=link_formatter))

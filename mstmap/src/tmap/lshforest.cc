@@ -240,8 +240,6 @@ std::vector<uint32_t> LSHForest::Query(const std::vector<uint32_t> &vec, unsigne
 
         if (results.size() >= k)
             return std::vector<uint32_t>(results.begin(), results.end());
-
-        r--;
     }
 
     return std::vector<uint32_t>(results.begin(), results.end());
@@ -257,8 +255,6 @@ std::vector<uint32_t> LSHForest::QueryExclude(const std::vector<uint32_t> &vec, 
 
         if (results.size() >= k)
             return std::vector<uint32_t>(results.begin(), results.end());
-
-        r--;
     }
 
     return std::vector<uint32_t>(results.begin(), results.end());
@@ -523,25 +519,20 @@ float LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vect
     float intersect = 0;
 
     for (unsigned int i = 0; i < d_; i++)
-    {
         if (vec_a[i] == vec_b[i])
             intersect++;
-    }
 
     return 1.0f - intersect / d_;
 }
 
 float LSHForest::GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
-    float intersect = 0;
-
-    for (unsigned int i = 0; i < d_; i += 2)
-    {
+    float intersect = 0.0f;
+    for (unsigned int i = 0; i < d_ * 2; i += 2)
         if (vec_a[i] == vec_b[i] && vec_a[i + 1] == vec_b[i + 1])
             intersect++;
-    }
 
-    return 1.0f -  2.0f * intersect / d_;
+    return 1.0f - 2.0f * intersect / (float)d_;
 }
 
 float LSHForest::GetDistanceById(uint32_t a, uint32_t b)

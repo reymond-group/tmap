@@ -14,7 +14,7 @@ from mnist import MNIST
 from progress.bar import Bar
 from progress.spinner import Spinner
 from mhfp.encoder import MHFPEncoder
-from mstmap import mstmap
+from tmap import tmap
 from operator import itemgetter
 from faerun import Faerun
 
@@ -33,11 +33,11 @@ def get_edge_tuple(g):
     return edges
 
 def convert_the_panda(value):
-    return mstmap.VectorUint(list(map(int, value.split(','))))
+    return tmap.VectorUint(list(map(int, value.split(','))))
 
 out_name = 'chembl'
 f = 512
-lf = mstmap.LSHForest(f, 128, store=True)
+lf = tmap.LSHForest(f, 128, store=True)
 
 print('Loading CHEBML data ...')
 
@@ -105,26 +105,26 @@ print("Getting knn graph")
 
 for i in [1]:
     for j in [0]:
-        config = mstmap.LayoutConfiguration()
+        config = tmap.LayoutConfiguration()
         config.k = 20
         config.kc = 20
         config.sl_scaling_min = 1.0
         config.sl_scaling_max = 1.0
         config.sl_repeats = 1
         config.sl_extra_scaling_steps = 2 # The higher, the sparser the tree
-        config.placer = mstmap.Placer.Barycenter
-        config.merger = mstmap.Merger.LocalBiconnected
+        config.placer = tmap.Placer.Barycenter
+        config.merger = tmap.Merger.LocalBiconnected
         config.merger_factor = 2.0
         config.merger_adjustment = 0
         config.fme_iterations = 100
         config.fme_precision = 4
-        config.sl_scaling_type = mstmap.ScalingType.RelativeToDrawing
+        config.sl_scaling_type = tmap.ScalingType.RelativeToDrawing
         config.node_size = 1 / 65
         config.mmm_repeats = 1
 
 
         start = timer()
-        x, y, s, t, _ = mstmap.layout_from_lsh_forest(lf, config)
+        x, y, s, t, _ = tmap.layout_from_lsh_forest(lf, config)
         end = timer()
         print(end - start)
 
@@ -142,8 +142,16 @@ for i in [1]:
         # vals = ss.rankdata(1.0 - np.array(distances) / max(distances)) / len(distances)
         # vals = 1 - np.array(distances)
 
+        labels = []
+
+        for smile, _id in zip(smiles, chembl_id):
+            labels.append(smile + '__' + _id)
+
         faerun = Faerun(view='front', coords=False, title='ChEMBL')
-        faerun.add_scatter('chembl', { 'x': x, 'y': y, 'c': vals, 'labels': smiles }, colormap='tab10', 
+        faerun.add_scatter('chembl', { 'x': x, 'y': y, 'c': vals, 'labels': labels }, colormap='tab10', 
                         point_scale=2.5, max_point_size=10, has_legend=True, categorical=True, legend_labels=legend_labels)
         faerun.add_tree('chembl_tree', { 'from': s, 'to': t }, point_helper='chembl', color='#222222')
         faerun.plot('chembl' + str(i) + str(j), template='smiles')
+
+        with open('chembl.faerun', 'wb+') as handle:
+            pickle.dump(faerun.create_python_data(), handle, protocol=pickle.HIGHEST_PROTOCOL)

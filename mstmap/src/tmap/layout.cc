@@ -215,17 +215,28 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 {
 	GraphProperties gp;
 	EdgeWeightedGraph<float> g;
+
+	std::vector<uint32_t> degrees(vertex_count);
 	
-	std::map<uint32_t, node> index_to_node;
+	std::vector<node> index_to_node(vertex_count);
 
 	for (uint32_t i = 0; i < vertex_count; i++)
 		index_to_node[i] = g.newNode();
 
-	for (std::vector<uint32_t>::size_type i = 0; i != edges.size(); i++)
+	for (size_t i = 0; i < edges.size(); i++)
 		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
-
+	
 	ogdf::makeLoopFree(g);
 	ogdf::makeParallelFreeUndirected(g);
+
+	uint32_t i = 0;
+	for (node v : g.nodes) 
+	{
+		degrees[i] = v->degree();
+		i++;
+	}
+
+	gp.degrees = degrees;
 
 	if (create_mst)
 		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());

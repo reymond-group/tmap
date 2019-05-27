@@ -8,7 +8,10 @@
 #include <algorithm>
 #include <stdint.h>
 #include <iostream>
+#include <limits>
 #include "TinySHA1.hh"
+#include "beta_distribution.hh"
+
 
 class Minhash
 {
@@ -22,6 +25,7 @@ class Minhash
         std::vector<std::vector<uint32_t>> BatchFromStringArray(std::vector<std::vector<std::string>> &vecs);
         std::vector<uint32_t> FromWeightArray(std::vector<float> &vec);
         std::vector<std::vector<uint32_t>> BatchFromWeightArray(std::vector<std::vector<float>> &vecs);
+        std::vector<std::vector<uint32_t>> BatchFromWeightArrayExperimental(std::vector<std::vector<float>> &vecs);
         float GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
         float GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
         ~Minhash() {}
@@ -33,8 +37,11 @@ class Minhash
         std::valarray<uint32_t> perms_a_;
         std::valarray<uint32_t> perms_b_;
         std::vector<std::valarray<float>> rs_;
+        std::vector<std::valarray<float>> rs_2_;
         std::vector<std::valarray<float>> ln_cs_;
+        std::vector<std::valarray<float>> cs_;
         std::vector<std::valarray<float>> betas_;
+        std::vector<std::valarray<float>> betas_2_;
 
 };
 
