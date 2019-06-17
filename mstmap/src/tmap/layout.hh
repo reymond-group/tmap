@@ -122,6 +122,7 @@ struct GraphProperties
     uint32_t n_connected_components = 0;
     uint32_t n_isolated_vertices = 0;
     std::vector<uint32_t> degrees;
+    std::vector<std::vector<uint32_t>> adjacency_list;
 };
 
 std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>

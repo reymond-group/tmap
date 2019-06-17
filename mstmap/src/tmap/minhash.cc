@@ -41,34 +41,34 @@ Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_size) : 
     // This is for the weighted minhash
     std::default_random_engine rand_gamma;
     rand_gamma.seed(seed);
-    std::default_random_engine rand_gamma_2;
-    rand_gamma_2.seed(seed);
+    // std::default_random_engine rand_gamma_2;
+    // rand_gamma_2.seed(seed * 2);
     std::default_random_engine rand_gamma_3;
-    rand_gamma_3.seed(seed);
+    rand_gamma_3.seed(seed * 4);
     std::gamma_distribution<float> gamma_dist(2.0, 1.0);
-    std::gamma_distribution<float> gamma_dist_2(2.0, 1.0);
+    // std::gamma_distribution<float> gamma_dist_2(2.0, 1.0);
     std::gamma_distribution<float> gamma_dist_3(2.0, 1.0);
     
     std::uniform_real_distribution<float> dist_beta(0.0f, 1.0f);
-    std::uniform_real_distribution<float> dist_beta_2(0.0f, 1.0f);
+    // std::uniform_real_distribution<float> dist_beta_2(0.0f, 1.0f);
 
     for (unsigned int i = 0; i < sample_size_; i++)
     {
         rs_[i] = std::valarray<float>(0.0f, d_);
-        rs_2_[i] = std::valarray<float>(0.0f, d_);
+        // rs_2_[i] = std::valarray<float>(0.0f, d_);
         ln_cs_[i] = std::valarray<float>(0.0f, d_);
-        cs_[i] = std::valarray<float>(0.0f, d_);
+        // cs_[i] = std::valarray<float>(0.0f, d_);
         betas_[i] = std::valarray<float>(0.0f, d_);
-        betas_2_[i] = std::valarray<float>(0.0f, d_);
+        // betas_2_[i] = std::valarray<float>(0.0f, d_);
 
         for (unsigned int j = 0; j < d_; j++)
         {
             rs_[i][j] = gamma_dist(rand_gamma);
-            rs_2_[i][j] = gamma_dist_2(rand_gamma_2);
+            // rs_2_[i][j] = gamma_dist_2(rand_gamma_2);
             ln_cs_[i][j] = std::log(gamma_dist_3(rand_gamma_3));
-            cs_[i][j] = gamma_dist_3(rand_gamma_3);
+            // cs_[i][j] = gamma_dist_3(rand_gamma_3);
             betas_[i][j] = dist_beta(rand);
-            betas_2_[i][j] = dist_beta(rand);
+            // betas_2_[i][j] = dist_beta(rand);
         }
     }
 }
@@ -85,9 +85,7 @@ std::vector<uint32_t> Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
         std::valarray<uint32_t> tmp = ((perms_a_ * i + perms_b_) % prime_) % max_hash_;
 
         for (size_t j = 0; j < mh.size(); j++)
-        {
             mh[j] = std::min(tmp[j], mh[j]);
-        }
     }
 
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));
@@ -163,11 +161,52 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromStringArray(std::vector<std
     return results;
 }
 
+std::vector<uint8_t> Minhash::ExpandIntWeightArray(std::vector<uint32_t> &vec, std::vector<uint32_t> &max_vec, uint32_t size)
+{
+    std::vector<uint8_t> vec_expanded(size);
+    size_t index = 0;
+
+    for (size_t i = 0; i < vec.size(); i++)
+    {
+        for (size_t j = 0; j < max_vec[i] - vec[i]; j++)
+            index++;
+        
+        for (size_t j = 0; j < vec[i]; j++)
+            vec_expanded[index++] = 1;
+    }
+
+    return vec_expanded;
+}
+
+std::vector<std::vector<uint32_t>> Minhash::BatchFromIntWeightArray(std::vector<std::vector<uint32_t>> &vecs)
+{
+    size_t size = vecs[0].size();
+
+    // Get the maxima to expand the array by
+    std::vector<uint32_t> max_vec(size, 0);
+
+    for (size_t i = 0; i < vecs.size(); i++)
+        for (size_t j = 0; j < size; j++)
+            max_vec[j] = std::max(vecs[i][j], max_vec[j]);
+
+    uint32_t extended_size = std::accumulate(max_vec.begin(), max_vec.end(), 0);
+    
+    std::vector<std::vector<uint8_t>> tmp_results(vecs.size());
+    std::vector<std::vector<uint32_t>> results(vecs.size());
+
+    #pragma omp parallel for
+    for (size_t i = 0; i < vecs.size(); i++)
+        tmp_results[i] = ExpandIntWeightArray(vecs[i], max_vec, extended_size);
+
+    #pragma omp parallel for
+    for (size_t i = 0; i < vecs.size(); i++)
+        results[i] = FromBinaryArray(tmp_results[i]);
+
+    return results;
+}
+
 std::vector<uint32_t> Minhash::FromWeightArray(std::vector<float> &vec)
 {
-    if (vec.size() != d_)
-        throw std::invalid_argument("The length of the weighted input vector has to be the same length as the dimenstionality with which Minhash was initialized");
-
     std::vector<uint32_t> mh(sample_size_ * 2);
 
     std::vector<float> vals;
@@ -247,6 +286,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromWeightArray(std::vector<std
 
     return results;
 }
+
 
 float Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
 {

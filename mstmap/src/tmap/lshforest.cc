@@ -288,6 +288,21 @@ std::vector<std::vector<uint32_t>> LSHForest::BatchQuery(const std::vector<std::
     return results;
 }
 
+std::vector<uint32_t> LSHForest::GetAllNearestNeighbors(unsigned int k, unsigned int kc, bool weighted)
+{
+    std::vector<uint32_t> results(size_, 0);
+
+    #pragma omp parallel for
+    for(size_t i = 0; i < size_; i++)
+    {
+        auto result = QueryLinearScanById(i, k, kc, weighted);
+        if (result.size() > 1)
+            results[i] = result[1].second;
+    }
+
+    return results;
+}
+
 void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &to, std::vector<float> &weight, unsigned int k, unsigned int kc, bool weighted)
 {
     if (!store_)
@@ -297,6 +312,10 @@ void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &
     to.resize(size_ * k);
     weight.resize(size_ * k);
 
+    // Set weights that won't be set to negative one.
+    for (size_t i = 0; i < weight.size(); i++)
+        weight[i] = -1.0;
+
     #pragma omp parallel for
     for(size_t i = 0; i < size_; i++)
     {
@@ -304,6 +323,9 @@ void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &
 
         for (size_t j = 0; j < result.size(); j++)
         {
+            if (result[j].second == i)
+                continue;
+
             from[k * i + j] = i;
             to[k * i + j] = result[j].second;
             weight[k * i + j] = result[j].first;

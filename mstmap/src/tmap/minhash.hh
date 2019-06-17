@@ -9,8 +9,8 @@
 #include <stdint.h>
 #include <iostream>
 #include <limits>
+#include <numeric>
 #include "TinySHA1.hh"
-#include "beta_distribution.hh"
 
 
 class Minhash
@@ -25,7 +25,8 @@ class Minhash
         std::vector<std::vector<uint32_t>> BatchFromStringArray(std::vector<std::vector<std::string>> &vecs);
         std::vector<uint32_t> FromWeightArray(std::vector<float> &vec);
         std::vector<std::vector<uint32_t>> BatchFromWeightArray(std::vector<std::vector<float>> &vecs);
-        std::vector<std::vector<uint32_t>> BatchFromWeightArrayExperimental(std::vector<std::vector<float>> &vecs);
+        std::vector<uint8_t> ExpandIntWeightArray(std::vector<uint32_t> &vec, std::vector<uint32_t> &max_vec, uint32_t size);
+        std::vector<std::vector<uint32_t>> BatchFromIntWeightArray(std::vector<std::vector<uint32_t>> &vecs);
         float GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
         float GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b);
         ~Minhash() {}

@@ -177,6 +177,7 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 	std::vector<uint32_t> to;
 	std::vector<float> weight;
 	std::vector<uint32_t> degrees(vertex_count);
+	std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
 
 	lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc, weighted);
 
@@ -189,22 +190,33 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 		index_to_node[i] = g.newNode();
 
 	for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
-		g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
+		if (weight[i] >= 0.0f)
+			g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
 	
 	ogdf::makeLoopFree(g);
 	ogdf::makeParallelFreeUndirected(g);
 
 	uint32_t i = 0;
 	for (node v : g.nodes) 
-	{
-		degrees[i] = v->degree();
-		i++;
-	}
+		degrees[i++] = v->degree();
 
 	gp.degrees = degrees;
 
 	if (create_mst)
 		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+
+	i = 0;
+	for (node v : g.nodes) 
+	{
+		adjacency_list[i] = std::vector<uint32_t>(v->adjEntries.size());
+		int j = 0;
+		for (adjEntry adj : v->adjEntries)
+			adjacency_list[i][j++] = adj->theEdge()->opposite(v)->index();
+		
+		i++;
+	}
+
+	gp.adjacency_list = adjacency_list;
 
 	return LayoutInternal(g, vertex_count, config, gp);
 }
@@ -215,6 +227,7 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 {
 	GraphProperties gp;
 	EdgeWeightedGraph<float> g;
+	std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
 
 	std::vector<uint32_t> degrees(vertex_count);
 	
@@ -231,15 +244,25 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 
 	uint32_t i = 0;
 	for (node v : g.nodes) 
-	{
-		degrees[i] = v->degree();
-		i++;
-	}
+		degrees[i++] = v->degree();
 
 	gp.degrees = degrees;
 
 	if (create_mst)
 		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+
+	i = 0;
+	for (node v : g.nodes) 
+	{
+		adjacency_list[i] = std::vector<uint32_t>(v->adjEntries.size());
+		int j = 0;
+		for (adjEntry adj : v->adjEntries)
+			adjacency_list[i][j++] = adj->theEdge()->opposite(v)->index();
+		
+		i++;
+	}
+
+	gp.adjacency_list = adjacency_list;
 
 	return LayoutInternal(g, vertex_count, config, gp);
 }
@@ -357,9 +380,7 @@ LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfigu
 	mmm->setMultilevelBuilder(merger);
 
 	if (config.sl_scaling_type == ScalingType::Absolute) 
-	{
 		sl->setMMM(mmm);
-	}
 
 	if (n_connected_components > 1)
 	{

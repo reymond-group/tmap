@@ -84,6 +84,7 @@ class LSHForest
         std::vector<uint32_t> QueryById(uint32_t id, unsigned int k);
         std::vector<uint32_t> QueryExcludeById(uint32_t id, std::vector<uint32_t> &exclude, unsigned int k);
         std::vector<std::vector<uint32_t>> BatchQuery(const std::vector<std::vector<uint32_t>> &vecs, unsigned int k);
+        std::vector<uint32_t> GetAllNearestNeighbors(unsigned int k, unsigned int kc = 10, bool weighted = false);
         
         std::vector<uint32_t> GetData(uint32_t id);
 

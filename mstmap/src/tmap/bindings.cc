@@ -70,7 +70,8 @@ PYBIND11_MODULE(tmap, m)
         .def_readwrite("mst_weight", &GraphProperties::mst_weight)
         .def_readwrite("n_connected_components", &GraphProperties::n_connected_components)
         .def_readwrite("n_isolated_vertices", &GraphProperties::n_isolated_vertices)
-        .def_readwrite("degrees", &GraphProperties::degrees);
+        .def_readwrite("degrees", &GraphProperties::degrees)
+        .def_readwrite("adjacency_list", &GraphProperties::adjacency_list);
 
     m.def("layout_from_lsh_forest", &LayoutFromLSHForest,
           py::arg("lsh_forest"),
@@ -106,6 +107,7 @@ PYBIND11_MODULE(tmap, m)
         .def("query_by_id", &LSHForest::QueryById)
         .def("query_exclude_by_id", &LSHForest::QueryExcludeById)
         .def("batch_query", &LSHForest::BatchQuery)
+        .def("get_all_nearest_neighbors", &LSHForest::GetAllNearestNeighbors, py::arg("k"), py::arg("kc") = 10, py::arg("weighted") = false)
         .def("get_knn_graph", &LSHForest::GetKNNGraph, py::arg("from"), py::arg("to"), py::arg("weight"), py::arg("k"), py::arg("kc") = 10, py::arg("weighted") = false)
         .def("get_distance", &LSHForest::GetDistance)
         .def("get_weighted_distance", &LSHForest::GetWeightedDistance)
@@ -129,7 +131,7 @@ PYBIND11_MODULE(tmap, m)
         .def("batch_from_string_array", &Minhash::BatchFromStringArray)
         .def("from_weight_array", &Minhash::FromWeightArray)
         .def("batch_from_weight_array", &Minhash::BatchFromWeightArray)
-        // .def("batch_from_weight_array_experimental", &Minhash::BatchFromWeightArrayExperimental)
+        .def("batch_from_int_weight_array", &Minhash::BatchFromIntWeightArray)
         .def("get_distance", &Minhash::GetDistance)
         .def("get_weighted_distance", &Minhash::GetWeightedDistance);
 }
