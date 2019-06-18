@@ -1,0 +1,692 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="bindings_8cc" kind="file" language="C++">
+    <compoundname>bindings.cc</compoundname>
+    <includes local="no">pybind11/pybind11.h</includes>
+    <includes local="no">pybind11/stl.h</includes>
+    <includes local="no">pybind11/stl_bind.h</includes>
+    <includes refid="layout_8hh" local="yes">layout.hh</includes>
+    <includes refid="lshforest_8hh" local="yes">lshforest.hh</includes>
+    <includes local="yes">cereal/cereal.hpp</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">vector</includes>
+    <includes local="yes">cereal/types/concepts/pair_associative_container.hpp</includes>
+    <includes local="no">map</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">string</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">iterator</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">new</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">iosfwd</includes>
+    <includes local="no">ios</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_stdint.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_config.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_traits.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_utils.h</includes>
+    <includes local="no">initializer_list</includes>
+    <includes refid="minhash_8hh" local="yes">minhash.hh</includes>
+    <incdepgraph>
+      <node id="68">
+        <label>valarray</label>
+      </node>
+      <node id="40">
+        <label>functional</label>
+      </node>
+      <node id="52">
+        <label>limits</label>
+      </node>
+      <node id="44">
+        <label>cereal/types/map.hpp</label>
+      </node>
+      <node id="53">
+        <label>iterator</label>
+      </node>
+      <node id="28">
+        <label>ogdf/packing/TileToRowsCCPacker.h</label>
+      </node>
+      <node id="42">
+        <label>cereal/archives/binary.hpp</label>
+      </node>
+      <node id="45">
+        <label>cereal/types/tuple.hpp</label>
+      </node>
+      <node id="9">
+        <label>stdint.h</label>
+      </node>
+      <node id="71">
+        <label>TinySHA1.hh</label>
+        <link refid="TinySHA1_8hh_source"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_config.h</label>
+      </node>
+      <node id="50">
+        <label>cassert</label>
+      </node>
+      <node id="35">
+        <label>stdexcept</label>
+      </node>
+      <node id="70">
+        <label>numeric</label>
+      </node>
+      <node id="27">
+        <label>ogdf/packing/ComponentSplitterLayout.h</label>
+      </node>
+      <node id="51">
+        <label>string</label>
+      </node>
+      <node id="22">
+        <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
+      </node>
+      <node id="17">
+        <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
+      </node>
+      <node id="36">
+        <label>map</label>
+      </node>
+      <node id="13">
+        <label>ogdf/basic/extended_graph_alg.h</label>
+      </node>
+      <node id="2">
+        <label>src/tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>sparsepp/spp.h</label>
+      </node>
+      <node id="10">
+        <label>ogdf/basic/Graph.h</label>
+      </node>
+      <node id="32">
+        <label>fstream</label>
+      </node>
+      <node id="65">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_utils.h</label>
+      </node>
+      <node id="15">
+        <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
+      </node>
+      <node id="14">
+        <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
+      </node>
+      <node id="29">
+        <label>ogdf/energybased/FMMMLayout.h</label>
+      </node>
+      <node id="30">
+        <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
+      </node>
+      <node id="69">
+        <label>random</label>
+      </node>
+      <node id="61">
+        <label>ios</label>
+      </node>
+      <node id="33">
+        <label>typeinfo</label>
+      </node>
+      <node id="59">
+        <label>cstdio</label>
+      </node>
+      <node id="8">
+        <label>tuple</label>
+      </node>
+      <node id="26">
+        <label>ogdf/basic/PreprocessorLayout.h</label>
+      </node>
+      <node id="24">
+        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="57">
+        <label>new</label>
+      </node>
+      <node id="21">
+        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
+      </node>
+      <node id="58">
+        <label>utility</label>
+      </node>
+      <node id="48">
+        <label>sstream</label>
+      </node>
+      <node id="3">
+        <label>pybind11/pybind11.h</label>
+      </node>
+      <node id="19">
+        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
+      </node>
+      <node id="16">
+        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
+      </node>
+      <node id="67">
+        <label>minhash.hh</label>
+        <link refid="minhash_8hh"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>cereal/cereal.hpp</label>
+      </node>
+      <node id="6">
+        <label>layout.hh</label>
+        <link refid="layout_8hh"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>iosfwd</label>
+      </node>
+      <node id="55">
+        <label>cstdlib</label>
+      </node>
+      <node id="34">
+        <label>lshforest.hh</label>
+        <link refid="lshforest_8hh"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>iostream</label>
+      </node>
+      <node id="12">
+        <label>ogdf/basic/GraphAttributes.h</label>
+      </node>
+      <node id="11">
+        <label>ogdf/fileformats/GraphIO.h</label>
+      </node>
+      <node id="56">
+        <label>cstddef</label>
+      </node>
+      <node id="41">
+        <label>chrono</label>
+      </node>
+      <node id="20">
+        <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
+      </node>
+      <node id="64">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_traits.h</label>
+      </node>
+      <node id="37">
+        <label>set</label>
+      </node>
+      <node id="49">
+        <label>cereal/types/concepts/pair_associative_container.hpp</label>
+      </node>
+      <node id="25">
+        <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
+      </node>
+      <node id="39">
+        <label>algorithm</label>
+      </node>
+      <node id="18">
+        <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
+      </node>
+      <node id="5">
+        <label>pybind11/stl_bind.h</label>
+      </node>
+      <node id="38">
+        <label>cstring</label>
+      </node>
+      <node id="62">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_stdint.h</label>
+      </node>
+      <node id="43">
+        <label>cereal/types/vector.hpp</label>
+      </node>
+      <node id="54">
+        <label>memory</label>
+      </node>
+      <node id="66">
+        <label>initializer_list</label>
+      </node>
+      <node id="23">
+        <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
+      </node>
+      <node id="4">
+        <label>pybind11/stl.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="bindings_8cc_1a8cc96963394e1bf2d1f2c8c298a8961f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint8_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="19" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1adf1d3c96cae502b5022e395df7c8f792" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint16_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint16_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a27eff19ba73a3e99fe1f7951db3a05a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="21" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a0ac4737d613502a5272d1c7c55c75000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint64_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint64_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1adc31052ce19269023b82cb33511fbc37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; float &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; float &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a4274a51ba9942c31b5553c1678c70e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MODULE</definition>
+        <argsstring>(tmap, m)</argsstring>
+        <name>PYBIND11_MODULE</name>
+        <param>
+          <type>tmap</type>
+        </param>
+        <param>
+          <type>m</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/bindings.cc" line="25" column="1" bodyfile="src/tmap/bindings.cc" bodystart="25" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pybind11 bindings for tmap. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Daniel Probst (<ulink url="mailto:daenuprobst@gmail.com">daenuprobst@gmail.com</ulink>) </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+<simplesect kind="date"><para>2019-06-17 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#include<sp/>&lt;pybind11/pybind11.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pybind11/stl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pybind11/stl_bind.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="layout_8hh" kindref="compound">layout.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="lshforest_8hh" kindref="compound">lshforest.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="minhash_8hh" kindref="compound">minhash.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">py<sp/>=<sp/>pybind11;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint8_t&gt;);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint16_t&gt;);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint32_t&gt;);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint64_t&gt;);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;float&gt;);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">PYBIND11_MODULE(<ref refid="namespacetmap" kindref="compound">tmap</ref>,<sp/>m)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint8_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUchar&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint16_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUsmall&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint32_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUint&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;float&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorFloat&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint64_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUlong&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>py::enum_&lt;ScalingType&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;ScalingType&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic())</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Absolute&quot;</highlight><highlight class="normal">,<sp/>ScalingType::Absolute)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToAvgLength&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToAvgLength)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToDesiredLength&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToDesiredLength)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToDrawing&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToDrawing)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>py::enum_&lt;Placer&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Placer&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic())</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Barycenter&quot;</highlight><highlight class="normal">,<sp/>Placer::Barycenter)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/>Placer::Solar)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Circle&quot;</highlight><highlight class="normal">,<sp/>Placer::Circle)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Median&quot;</highlight><highlight class="normal">,<sp/>Placer::Median)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Random&quot;</highlight><highlight class="normal">,<sp/>Placer::Random)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Zero&quot;</highlight><highlight class="normal">,<sp/>Placer::Zero)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>py::enum_&lt;Merger&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Merger&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic())</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;EdgeCover&quot;</highlight><highlight class="normal">,<sp/>Merger::EdgeCover)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;LocalBiconnected&quot;</highlight><highlight class="normal">,<sp/>Merger::LocalBiconnected)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/>Merger::Solar)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;IndependentSet&quot;</highlight><highlight class="normal">,<sp/>Merger::IndependentSet)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>py::class_&lt;LayoutConfiguration&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;LayoutConfiguration&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(py::init())</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::k)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::kc)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_iterations&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::fme_iterations)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_randomize&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::fme_randomize)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_threads&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::fme_threads)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_precision&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::fme_precision)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_repeats&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::sl_repeats)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_extra_scaling_steps&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::sl_extra_scaling_steps)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_min&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::sl_scaling_min)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_max&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::sl_scaling_max)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_type&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::sl_scaling_type)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;mmm_repeats&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::mmm_repeats)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;placer&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::placer)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::merger)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger_factor&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::merger_factor)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger_adjustment&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::merger_adjustment)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;node_size&quot;</highlight><highlight class="normal">,<sp/>&amp;LayoutConfiguration::node_size)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;__repr__&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1" kindref="member">LayoutConfiguration::ToString</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>py::class_&lt;GraphProperties&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;GraphProperties&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(py::init())</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;mst_weight&quot;</highlight><highlight class="normal">,<sp/>&amp;GraphProperties::mst_weight)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;n_connected_components&quot;</highlight><highlight class="normal">,<sp/>&amp;GraphProperties::n_connected_components)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;n_isolated_vertices&quot;</highlight><highlight class="normal">,<sp/>&amp;GraphProperties::n_isolated_vertices)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;degrees&quot;</highlight><highlight class="normal">,<sp/>&amp;GraphProperties::degrees)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;adjacency_list&quot;</highlight><highlight class="normal">,<sp/>&amp;GraphProperties::adjacency_list);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;layout_from_lsh_forest&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="layout_8cc_1a25c09eab65bee493ebb96ca9a001a12a" kindref="member">LayoutFromLSHForest</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;lsh_forest&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;config&quot;</highlight><highlight class="normal">)<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;create_mst&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;clear_lsh_forest&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;mst_from_lsh_forest&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="layout_8cc_1ad5464d8b1c40e92003702f14a5c4bf16" kindref="member">MSTFromLSHForest</ref>,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;lsh_forest&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;layout_from_edge_list&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="layout_8cc_1a40835d0150427fd0f698c0a56b89b078" kindref="member">LayoutFromEdgeList</ref>,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vertex_count&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;edges&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;config&quot;</highlight><highlight class="normal">)<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;create_mst&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>py::class_&lt;LSHForest&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;LSHForest&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(py::init&lt;unsigned<sp/>int,<sp/>unsigned<sp/>int,<sp/>bool,<sp/>bool&gt;(),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;l&quot;</highlight><highlight class="normal">)<sp/>=<sp/>8,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;store&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;file_backed&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;add&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a000536ff09a94df528a1f72ffa40bac3" kindref="member">LSHForest::Add</ref>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_add&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a668dc958bfc4856f26a96a4aa0897e53" kindref="member">LSHForest::BatchAdd</ref>)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;index&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1afdd95ab82907622f9a38a386766a53d2" kindref="member">LSHForest::Index</ref>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;is_clean&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1af7cbc237713af39831aeab21541dafcf" kindref="member">LSHForest::IsClean</ref>)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1aa655ed6c39050b45b73a051abe51e035" kindref="member">LSHForest::QueryLinearScan</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_exclude&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a932c426296cbd6da0e7c29cd4212f3ff" kindref="member">LSHForest::QueryLinearScanExclude</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;exclude&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1afe623496f801357e8f555259620bc174" kindref="member">LSHForest::QueryLinearScanById</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_exclude_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a5cdb395444dad71ba95e2000bb896454" kindref="member">LSHForest::QueryLinearScanExcludeById</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;exclude&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;linear_scan&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a5d5b1675caaa17d9c2a4ba8c95c645a3" kindref="member">LSHForest::LinearScan</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;indices&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">)<sp/>=<sp/>0,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a6bc39aa54083ede4ab9ba1b0f12c7229" kindref="member">LSHForest::Query</ref>)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;queryExclude&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1ada7ea3fd5c3eb9fc05188a0054de48cf" kindref="member">LSHForest::QueryExclude</ref>)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1ade573cce99526ba05341dd506673ea8b" kindref="member">LSHForest::QueryById</ref>)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_exclude_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a50da7a1db11f709c54e5e05fd5b08aa8" kindref="member">LSHForest::QueryExcludeById</ref>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_query&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a23e5fd430b95580e09126ba58bde32a4" kindref="member">LSHForest::BatchQuery</ref>)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_all_nearest_neighbors&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1ac741709bb8e322c68a5749c023147bde" kindref="member">LSHForest::GetAllNearestNeighbors</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_knn_graph&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2" kindref="member">LSHForest::GetKNNGraph</ref>,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;from&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;to&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weight&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a08d66568664bdc8e0148c18b18a1b8fa" kindref="member">LSHForest::GetDistance</ref>)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1acfb878c731daf8da6402e7cebc2b6ef1" kindref="member">LSHForest::GetWeightedDistance</ref>)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_all_distances&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1abdc3bd3357708bb58e6d957376e92f1c" kindref="member">LSHForest::GetAllDistances</ref>)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a49ad1fe0429121a8b572cde4df973d96" kindref="member">LSHForest::GetDistanceById</ref>)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a72b5a201bc8c409c0c5742587988ba85" kindref="member">LSHForest::GetWeightedDistanceById</ref>)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;store&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1a758c5329128f5ab3723a98b77bbc4634" kindref="member">LSHForest::Store</ref>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;restore&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1aae4d0534e33a6ac46b56eeb7630916f6" kindref="member">LSHForest::Restore</ref>)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">LSHForest::size</ref>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_hash&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1aec42a8cb3d1caf12faeb8d0f9ea09529" kindref="member">LSHForest::GetHash</ref>)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>.def(&quot;get_layout&quot;,<sp/>&amp;LSHForest::GetLayout,<sp/>py::arg(&quot;config&quot;)<sp/>=<sp/>LayoutConfiguration(),<sp/>py::arg(&quot;create_mst&quot;)<sp/>=<sp/>true,<sp/>py::arg(&quot;mem_dump&quot;)<sp/>=<sp/>true)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;clear&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classLSHForest_1aec34dc5185166dce9c22a4060ce3914c" kindref="member">LSHForest::Clear</ref>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>py::class_&lt;Minhash&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Minhash&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(py::init&lt;unsigned<sp/>int,<sp/>unsigned<sp/>int,<sp/>unsigned<sp/>int&gt;(),<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;seed&quot;</highlight><highlight class="normal">)<sp/>=<sp/>42,<sp/>py::arg(</highlight><highlight class="stringliteral">&quot;sample_size&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1ae47faddc57a5d503257e6cf88dba2e08" kindref="member">Minhash::FromBinaryArray</ref>)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a232f4fd24fcc853934599b666cbfc3be" kindref="member">Minhash::BatchFromBinaryArray</ref>)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_sparse_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1afe2cf6cc64b2e97ce89db4087febf30f" kindref="member">Minhash::FromSparseBinaryArray</ref>)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_sparse_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a8f711d80f1cb52f0599927667b123739" kindref="member">Minhash::BatchFromSparseBinaryArray</ref>)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_string_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a7131b7dbefd40e0d24d7e37601519d62" kindref="member">Minhash::FromStringArray</ref>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_string_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1adc3ebe293e9999e49a30f9e9b9a8e318" kindref="member">Minhash::BatchFromStringArray</ref>)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_weight_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a47a107b26e6fface715f5abfbb512484" kindref="member">Minhash::FromWeightArray</ref>)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_weight_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1ad38f8679778e6291f5e006f76f104312" kindref="member">Minhash::BatchFromWeightArray</ref>)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_int_weight_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a6d468d2ee939351ffed9ea3ff8d82643" kindref="member">Minhash::BatchFromIntWeightArray</ref>)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a40dd607c20fa7c8059a3fb3d0c81ba0a" kindref="member">Minhash::GetDistance</ref>)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21" kindref="member">Minhash::GetWeightedDistance</ref>);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/tmap/bindings.cc"/>
+  </compounddef>
+</doxygen>

@@ -1,3 +1,12 @@
+/**
+ * @file minhash.cc
+ * @author Daniel Probst (daenuprobst@gmail.com)
+ * @brief A MinHash algorithm implementation.
+ * @version 0.1
+ * @date 2019-06-17
+ * 
+ */
+
 #include "minhash.hh"
 
 Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_size) : d_(d), sample_size_(sample_size),

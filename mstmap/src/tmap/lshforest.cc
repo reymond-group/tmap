@@ -1,3 +1,12 @@
+/**
+ * @file lshforest.cc
+ * @author Daniel Probst (daenuprobst@gmail.com)
+ * @brief An LSH forest algorithm implementation.
+ * @version 0.1
+ * @date 2019-06-17
+ * 
+ */
+
 #include "lshforest.hh"
 
 LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backed) 
@@ -10,7 +19,7 @@ LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backe
 
     for (unsigned int i = 0; i < l_; i++)
     {
-        hashtables_[i] = spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>();
+        hashtables_[i] = spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash>();
         hashranges_[i] = std::make_tuple(i * k_, (i + 1) * k_);
     }
 }
@@ -208,25 +217,6 @@ std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(const std::vector<
     result.erase(result.begin() + k, result.end());
 
     return result;
-}
-
-void LSHForest::FastLinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, std::vector<float> &weights, unsigned int k, bool weighted)
-{
-    if (!store_)
-        throw std::runtime_error("LSHForest was not instantiated with store=true");
-
-    if (k == 0 || k > indices.size())
-        k = indices.size();
-
-    weights.resize(indices.size());
-
-    for (size_t i = 0; i < indices.size(); i++)
-    {
-        if (weighted)
-            weights[i] = GetWeightedDistance(vec, GetData(indices[i]));
-        else
-            weights[i] = GetDistance(vec, GetData(indices[i]));
-    }
 }
 
 // Does not always return k items. Is this expected?
@@ -580,7 +570,7 @@ size_t LSHForest::size()
 
 void LSHForest::Clear()
 {
-    hashtables_ = std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>>();
+    hashtables_ = std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash>>();
     hashranges_ = std::vector<std::tuple<uint32_t, uint32_t>>();
     data_ = std::vector<std::vector<uint32_t>>();
     sorted_hashtable_pointers_ = std::vector<std::vector<MapKeyPointer>>();
@@ -597,14 +587,14 @@ void LSHForest::Clear()
     sorted_hashtable_pointers_.clear();
     sorted_hashtable_pointers_.shrink_to_fit();
 
-    std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash>>().swap(hashtables_);
+    std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash>>().swap(hashtables_);
     std::vector<std::tuple<uint32_t, uint32_t>>().swap(hashranges_);
     std::vector<std::vector<uint32_t>>().swap(data_);
     std::vector<std::vector<MapKeyPointer>>().swap(sorted_hashtable_pointers_);
 }
 
 std::vector<std::vector<uint8_t>> 
-LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, MyHash> hashtable)
+LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash> hashtable)
 {
     std::vector<std::vector<uint8_t>> keys;
 
@@ -614,21 +604,21 @@ LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::
     return keys;
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
-LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
-{
-    std::string tmp_path = std::tmpnam(nullptr);
-    if (mem_dump) {
-        Store(tmp_path);
-    }
+// std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+// LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
+// {
+//     std::string tmp_path = std::tmpnam(nullptr);
+//     if (mem_dump) {
+//         Store(tmp_path);
+//     }
 
-    auto result = LayoutFromLSHForest(*this, config, create_mst, mem_dump);
+//     auto result = LayoutFromLSHForest(*this, config, create_mst, mem_dump);
 
-    if (mem_dump)
-    {
-        Restore(tmp_path);
-        std::remove(tmp_path.c_str());
-    }
+//     if (mem_dump)
+//     {
+//         Restore(tmp_path);
+//         std::remove(tmp_path.c_str());
+//     }
 
-    return result;
-}
+//     return result;
+// }

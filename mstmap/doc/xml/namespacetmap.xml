@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespacetmap" kind="namespace" language="Python">
+    <compoundname>tmap</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="____init_____8py_1afa8ab9eb7efee5198cf03baafb1b2fe7" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>tmap._ROOT</definition>
+        <argsstring></argsstring>
+        <name>_ROOT</name>
+        <initializer>=  os.path.abspath(os.path.dirname(__file__))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/__init__.py" line="5" column="1" bodyfile="src/tmap/__init__.py" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def tmap.get_asset</definition>
+        <argsstring>(path)</argsstring>
+        <name>get_asset</name>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/__init__.py" line="6" column="1" bodyfile="src/tmap/__init__.py" bodystart="6" bodyend="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tmap/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

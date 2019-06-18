@@ -1,0 +1,814 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="layout_8hh" kind="file" language="C++">
+    <compoundname>layout.hh</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">ogdf/basic/Graph.h</includes>
+    <includes local="no">ogdf/fileformats/GraphIO.h</includes>
+    <includes local="no">ogdf/basic/GraphAttributes.h</includes>
+    <includes local="no">ogdf/basic/extended_graph_alg.h</includes>
+    <includes local="no">ogdf/energybased/FastMultipoleEmbedder.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/ScalingLayout.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/SolarPlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/CirclePlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/MedianPlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/RandomPlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/ZeroPlacer.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/SolarMerger.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</includes>
+    <includes local="no">ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</includes>
+    <includes local="no">ogdf/basic/PreprocessorLayout.h</includes>
+    <includes local="no">ogdf/packing/ComponentSplitterLayout.h</includes>
+    <includes local="no">ogdf/packing/TileToRowsCCPacker.h</includes>
+    <includes local="no">ogdf/energybased/FMMMLayout.h</includes>
+    <includes local="no">ogdf/energybased/SpringEmbedderGridVariant.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">typeinfo</includes>
+    <includedby refid="bindings_8cc" local="yes">src/tmap/bindings.cc</includedby>
+    <includedby refid="lshforest_8hh" local="yes">src/tmap/lshforest.hh</includedby>
+    <includedby refid="layout_8cc" local="yes">src/tmap/layout.cc</includedby>
+    <incdepgraph>
+      <node id="138">
+        <label>ogdf/packing/TileToRowsCCPacker.h</label>
+      </node>
+      <node id="119">
+        <label>stdint.h</label>
+      </node>
+      <node id="137">
+        <label>ogdf/packing/ComponentSplitterLayout.h</label>
+      </node>
+      <node id="132">
+        <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
+      </node>
+      <node id="127">
+        <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
+      </node>
+      <node id="123">
+        <label>ogdf/basic/extended_graph_alg.h</label>
+      </node>
+      <node id="120">
+        <label>ogdf/basic/Graph.h</label>
+      </node>
+      <node id="142">
+        <label>fstream</label>
+      </node>
+      <node id="125">
+        <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
+      </node>
+      <node id="124">
+        <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
+      </node>
+      <node id="139">
+        <label>ogdf/energybased/FMMMLayout.h</label>
+      </node>
+      <node id="140">
+        <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
+      </node>
+      <node id="143">
+        <label>typeinfo</label>
+      </node>
+      <node id="118">
+        <label>tuple</label>
+      </node>
+      <node id="136">
+        <label>ogdf/basic/PreprocessorLayout.h</label>
+      </node>
+      <node id="134">
+        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
+      </node>
+      <node id="117">
+        <label>vector</label>
+      </node>
+      <node id="131">
+        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
+      </node>
+      <node id="129">
+        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
+      </node>
+      <node id="126">
+        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
+      </node>
+      <node id="116">
+        <label>src/tmap/layout.hh</label>
+        <link refid="layout_8hh"/>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+      </node>
+      <node id="141">
+        <label>iostream</label>
+      </node>
+      <node id="122">
+        <label>ogdf/basic/GraphAttributes.h</label>
+      </node>
+      <node id="121">
+        <label>ogdf/fileformats/GraphIO.h</label>
+      </node>
+      <node id="130">
+        <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
+      </node>
+      <node id="135">
+        <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
+      </node>
+      <node id="128">
+        <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
+      </node>
+      <node id="133">
+        <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="145">
+        <label>src/tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+      </node>
+      <node id="147">
+        <label>src/tmap/layout.cc</label>
+        <link refid="layout_8cc"/>
+      </node>
+      <node id="144">
+        <label>src/tmap/layout.hh</label>
+        <link refid="layout_8hh"/>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+      </node>
+      <node id="146">
+        <label>src/tmap/lshforest.hh</label>
+        <link refid="lshforest_8hh"/>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+      </node>
+      <node id="148">
+        <label>src/tmap/lshforest.cc</label>
+        <link refid="lshforest_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structLayoutConfiguration" prot="public">LayoutConfiguration</innerclass>
+    <innerclass refid="structGraphProperties" prot="public">GraphProperties</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" prot="public" static="no">
+        <name>Placer</name>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96abbbb1a06b3b22c3ccc5648b57aef0e87" prot="public">
+          <name>Barycenter</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a352ccd39c4ed093da3690db82cca8ca0" prot="public">
+          <name>Solar</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a30954d90085f6eaaf5817917fc5fecb3" prot="public">
+          <name>Circle</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a66851a3adec6655a7bd563743e4a55a2" prot="public">
+          <name>Median</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a64663f4646781c9c0110838b905daa23" prot="public">
+          <name>Random</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96ad7ed4ee1df437474d005188535f74875" prot="public">
+          <name>Zero</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The placers available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="56" column="1" bodyfile="src/tmap/layout.hh" bodystart="55" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" prot="public" static="no">
+        <name>Merger</name>
+        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a63dbd8d091f1e5944a41cf67c314cbd5" prot="public">
+          <name>EdgeCover</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a18f7761401e380de1934a428c869b056" prot="public">
+          <name>LocalBiconnected</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a352ccd39c4ed093da3690db82cca8ca0" prot="public">
+          <name>Solar</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a8b4d6dc43f32b455d6f6aeb880d12e0e" prot="public">
+          <name>IndependentSet</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The mergers available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="71" column="1" bodyfile="src/tmap/layout.hh" bodystart="70" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="enum" id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" prot="public" static="no">
+        <name>ScalingType</name>
+        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2ab51ca26c6c89cfc9bec338f7a0d3e0c8" prot="public">
+          <name>Absolute</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a50457e66866f1b7c064de1aed711b13a" prot="public">
+          <name>RelativeToAvgLength</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a51099521cc62379bc5d5c9f3be2251c8" prot="public">
+          <name>RelativeToDesiredLength</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a346e055683129bfd0b982970828ab90e" prot="public">
+          <name>RelativeToDrawing</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The scaling types available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="84" column="1" bodyfile="src/tmap/layout.hh" bodystart="83" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="layout_8hh_1aa3cd4344c158a883537fdc305e703f09" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string placer_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>placer_values</name>
+        <initializer>= {&quot;Barycenter&quot;, &quot;Solar&quot;, &quot;Circle&quot;, &quot;Median&quot;, &quot;Random&quot;, &quot;Zero&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="64" column="1" bodyfile="src/tmap/layout.hh" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="layout_8hh_1a7fd2d2be38a14e158c43e8921b946321" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string merger_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>merger_values</name>
+        <initializer>= {&quot;EdgeCover&quot;, &quot;LocalBiconnected&quot;, &quot;Solar&quot;, &quot;IndependentSet&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="77" column="1" bodyfile="src/tmap/layout.hh" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="layout_8hh_1ac54c4e7863b240dbc340cf9f440db2b6" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string scaling_types_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>scaling_types_values</name>
+        <initializer>= {&quot;Absolute&quot;, &quot;RelativeToAvgLength&quot;, &quot;RelativeToDesiredLength&quot;, &quot;RelativeToDrawing&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="90" column="1" bodyfile="src/tmap/layout.hh" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="layout_8hh_1aa004fd999aac084ce1a95e81c2a6336c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromLSHForest</definition>
+        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true, bool clear_lsh_forest=false, bool weighted=false)</argsstring>
+        <name>LayoutFromLSHForest</name>
+        <param>
+          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
+          <declname>lsh_forest</declname>
+        </param>
+        <param>
+          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>create_mst</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>clear_lsh_forest</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>weighted</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Genereates coordinates, edges and properties of a MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>create_mst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clear_lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to clear the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> after it&apos;s use (might save memory). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weighted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="180" column="1" bodyfile="src/tmap/layout.cc" bodystart="179" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1a34d2f2c07e0aec50114d3523fd0da251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt; &gt; MSTFromLSHForest</definition>
+        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc=10, bool weighted=false)</argsstring>
+        <name>MSTFromLSHForest</name>
+        <param>
+          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
+          <declname>lsh_forest</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>kc</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>weighted</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Generates an MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of nearest neighbors used to create the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The factor by which k is multiplied when retrieving nearest neighbors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weighted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="193" column="1" bodyfile="src/tmap/layout.cc" bodystart="144" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1a287eac7d9621f833da1f42c06a9cd431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromEdgeList</definition>
+        <argsstring>(uint32_t vertex_count, const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;edges, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true)</argsstring>
+        <name>LayoutFromEdgeList</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>vertex_count</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;</type>
+          <declname>edges</declname>
+        </param>
+        <param>
+          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>create_mst</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Genereates coordinates, edges and properties of a MST from an edge list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of vertices in the input graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>edges</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An edge list in the form of [(from, to, weight)]. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>create_mst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="205" column="1" bodyfile="src/tmap/layout.cc" bodystart="234" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutInternal</definition>
+        <argsstring>(ogdf::EdgeWeightedGraph&lt; float &gt; &amp;g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &amp;gp)</argsstring>
+        <name>LayoutInternal</name>
+        <param>
+          <type>ogdf::EdgeWeightedGraph&lt; float &gt; &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>vertex_count</declname>
+        </param>
+        <param>
+          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <briefdescription>
+<para>Laying out an OGDF graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An OGDF Graph instance </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vertex_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of vertices in the graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> struct. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="218" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Functions used for generating graph layouts from <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instances and edge lists. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Daniel Probst (<ulink url="mailto:daenuprobst@gmail.com">daenuprobst@gmail.com</ulink>) </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+<simplesect kind="date"><para>2019-06-17 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#ifndef<sp/>LAYOUT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LAYOUT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/basic/Graph.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/fileformats/GraphIO.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/basic/GraphAttributes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/basic/extended_graph_alg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/FastMultipoleEmbedder.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/ScalingLayout.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/BarycenterPlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/SolarPlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/CirclePlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/MedianPlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/RandomPlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/ZeroPlacer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/SolarMerger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/IndependentSetMerger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/basic/PreprocessorLayout.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/packing/ComponentSplitterLayout.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/packing/TileToRowsCCPacker.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/FMMMLayout.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ogdf/energybased/SpringEmbedderGridVariant.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>LSHForest.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLSHForest" kindref="compound">LSHForest</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>Barycenter<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>Solar<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>Circle<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>Median<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>Random<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>Zero<sp/>=<sp/>5</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>placer_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Barycenter&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Circle&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Median&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Random&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Zero&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>EdgeCover<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>LocalBiconnected<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>Solar<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>IndependentSet<sp/>=<sp/>3</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>merger_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;EdgeCover&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LocalBiconnected&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;IndependentSet&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>Absolute<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>RelativeToAvgLength<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>RelativeToDesiredLength<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>RelativeToDrawing<sp/>=<sp/>3</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>scaling_types_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Absolute&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToAvgLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDesiredLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDrawing&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="structLayoutConfiguration" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102" refid="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4" kindref="member">LayoutConfiguration</ref>()<sp/>:<sp/>k(10),<sp/>kc(10),<sp/>fme_iterations(1000),<sp/>fme_randomize(false),<sp/>fme_threads(4),<sp/>fme_precision(4),</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_repeats(1),<sp/>sl_extra_scaling_steps(1),<sp/>sl_scaling_min(5.0),<sp/>sl_scaling_max(20.0),</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_scaling_type(<ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref>::RelativeToDrawing),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mmm_repeats(1),</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer(<ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref>::Barycenter),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger(<ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref>::LocalBiconnected),<sp/>merger_factor(2.0),<sp/>merger_adjustment(0),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node_size(1.0)<sp/>{}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1" kindref="member">ToString</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="116"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;k:<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>std::to_string(k)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;kc:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(kc)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_iterations:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_iterations)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_randomize:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_randomize)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_threads:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_precision:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_extra_scaling_steps:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_extra_scaling_steps)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_x:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_min)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_y:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_max)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_type:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>scaling_types_values[(int)sl_scaling_type]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;mmm_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(mmm_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;placer:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>placer_values[(int)placer]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>merger_values[(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)merger]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_factor:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_factor)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_adjustment:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_adjustment)<sp/><sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;node_size&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(node_size);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kc;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fme_iterations;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fme_randomize;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fme_threads;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fme_precision;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sl_repeats;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sl_extra_scaling_steps;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sl_scaling_min;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sl_scaling_max;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref><sp/>sl_scaling_type;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mmm_repeats;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref><sp/>placer;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref><sp/>merger;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>merger_factor;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>merger_adjustment;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>node_size;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="structGraphProperties" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mst_weight<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>n_connected_components<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>n_isolated_vertices<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>degrees;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>adjacency_list;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><ref refid="layout_8hh_1aa004fd999aac084ce1a95e81c2a6336c" kindref="member">LayoutFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>clear_lsh_forest<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">std::tuple&lt;std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;&gt;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><ref refid="layout_8hh_1a34d2f2c07e0aec50114d3523fd0da251" kindref="member">MSTFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/>uint32_t<sp/>k,<sp/>uint32_t<sp/>kc<sp/>=<sp/>10,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><ref refid="layout_8hh_1a287eac7d9621f833da1f42c06a9cd431" kindref="member">LayoutFromEdgeList</ref>(uint32_t<sp/>vertex_count,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::tuple&lt;uint32_t,<sp/>uint32_t,<sp/>float&gt;&gt;<sp/>&amp;edges,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><ref refid="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" kindref="member">LayoutInternal</ref>(ogdf::EdgeWeightedGraph&lt;float&gt;<sp/>&amp;g,<sp/>uint32_t<sp/>vertex_count,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref><sp/>&amp;gp);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/tmap/layout.hh"/>
+  </compounddef>
+</doxygen>

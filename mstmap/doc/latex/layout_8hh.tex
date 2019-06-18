@@ -1,0 +1,209 @@
+\hypertarget{layout_8hh}{}\section{src/tmap/layout.hh File Reference}
+\label{layout_8hh}\index{src/tmap/layout.\+hh@{src/tmap/layout.\+hh}}
+
+
+Functions used for generating graph layouts from \hyperlink{classLSHForest}{L\+S\+H\+Forest} instances and edge lists.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/basic/\+Graph.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/fileformats/\+Graph\+I\+O.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/basic/\+Graph\+Attributes.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/basic/extended\+\_\+graph\+\_\+alg.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/\+Fast\+Multipole\+Embedder.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Scaling\+Layout.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Barycenter\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Circle\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Median\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Random\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Zero\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Merger.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Edge\+Cover\+Merger.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Independent\+Set\+Merger.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Local\+Biconnected\+Merger.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/basic/\+Preprocessor\+Layout.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/packing/\+Component\+Splitter\+Layout.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/packing/\+Tile\+To\+Rows\+C\+C\+Packer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/\+F\+M\+M\+M\+Layout.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/\+Spring\+Embedder\+Grid\+Variant.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$typeinfo$>$}\newline
+Include dependency graph for layout.\+hh\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{layout_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{layout_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLayoutConfiguration}{Layout\+Configuration}
+\begin{DoxyCompactList}\small\item\em A struct containing all the configuration options available for and applied to a layout. \end{DoxyCompactList}\item 
+struct \hyperlink{structGraphProperties}{Graph\+Properties}
+\begin{DoxyCompactList}\small\item\em The properties of a generated graph. An instance of this struct is returned from the layout functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{layout_8hh_a93e50260439be3f5fe75b271c0ce2c96}\label{layout_8hh_a93e50260439be3f5fe75b271c0ce2c96}} 
+enum \hyperlink{layout_8hh_a93e50260439be3f5fe75b271c0ce2c96}{Placer} \{ \newline
+{\bfseries Barycenter} = 0, 
+{\bfseries Solar} = 1, 
+{\bfseries Circle} = 2, 
+{\bfseries Median} = 3, 
+\newline
+{\bfseries Random} = 4, 
+{\bfseries Zero} = 5
+ \}\begin{DoxyCompactList}\small\item\em The placers available in O\+G\+DF. \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{layout_8hh_a87e3986b1a6733e81a1c0b4bbd6aba18}\label{layout_8hh_a87e3986b1a6733e81a1c0b4bbd6aba18}} 
+enum \hyperlink{layout_8hh_a87e3986b1a6733e81a1c0b4bbd6aba18}{Merger} \{ {\bfseries Edge\+Cover} = 0, 
+{\bfseries Local\+Biconnected} = 1, 
+{\bfseries Solar} = 2, 
+{\bfseries Independent\+Set} = 3
+ \}\begin{DoxyCompactList}\small\item\em The mergers available in O\+G\+DF. \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{layout_8hh_ae327227c361ab0e868a1f25017cb3ae2}\label{layout_8hh_ae327227c361ab0e868a1f25017cb3ae2}} 
+enum \hyperlink{layout_8hh_ae327227c361ab0e868a1f25017cb3ae2}{Scaling\+Type} \{ {\bfseries Absolute} = 0, 
+{\bfseries Relative\+To\+Avg\+Length} = 1, 
+{\bfseries Relative\+To\+Desired\+Length} = 2, 
+{\bfseries Relative\+To\+Drawing} = 3
+ \}\begin{DoxyCompactList}\small\item\em The scaling types available in O\+G\+DF. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, \hyperlink{structGraphProperties}{Graph\+Properties} $>$ \hyperlink{layout_8hh_aa004fd999aac084ce1a95e81c2a6336c}{Layout\+From\+L\+S\+H\+Forest} (\hyperlink{classLSHForest}{L\+S\+H\+Forest} \&lsh\+\_\+forest, \hyperlink{structLayoutConfiguration}{Layout\+Configuration} config=\hyperlink{structLayoutConfiguration}{Layout\+Configuration}(), bool create\+\_\+mst=true, bool clear\+\_\+lsh\+\_\+forest=false, bool weighted=false)
+\begin{DoxyCompactList}\small\item\em Genereates coordinates, edges and properties of a M\+ST (via a k\+NN graph) from an \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance. \end{DoxyCompactList}\item 
+std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{layout_8hh_a34d2f2c07e0aec50114d3523fd0da251}{M\+S\+T\+From\+L\+S\+H\+Forest} (\hyperlink{classLSHForest}{L\+S\+H\+Forest} \&lsh\+\_\+forest, uint32\+\_\+t k, uint32\+\_\+t kc=10, bool weighted=false)
+\begin{DoxyCompactList}\small\item\em Generates an M\+ST (via a k\+NN graph) from an \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance. \end{DoxyCompactList}\item 
+std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, \hyperlink{structGraphProperties}{Graph\+Properties} $>$ \hyperlink{layout_8hh_a287eac7d9621f833da1f42c06a9cd431}{Layout\+From\+Edge\+List} (uint32\+\_\+t vertex\+\_\+count, const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, float $>$$>$ \&edges, \hyperlink{structLayoutConfiguration}{Layout\+Configuration} config=\hyperlink{structLayoutConfiguration}{Layout\+Configuration}(), bool create\+\_\+mst=true)
+\begin{DoxyCompactList}\small\item\em Genereates coordinates, edges and properties of a M\+ST from an edge list. \end{DoxyCompactList}\item 
+std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, \hyperlink{structGraphProperties}{Graph\+Properties} $>$ \hyperlink{layout_8hh_ae01c933d0a5e1177d9b70b94de44fc99}{Layout\+Internal} (ogdf\+::\+Edge\+Weighted\+Graph$<$ float $>$ \&g, uint32\+\_\+t vertex\+\_\+count, \hyperlink{structLayoutConfiguration}{Layout\+Configuration} config, \hyperlink{structGraphProperties}{Graph\+Properties} \&gp)
+\begin{DoxyCompactList}\small\item\em Laying out an O\+G\+DF graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions used for generating graph layouts from \hyperlink{classLSHForest}{L\+S\+H\+Forest} instances and edge lists. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Probst (\href{mailto:daenuprobst@gmail.com}{\tt daenuprobst@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2019-\/06-\/17 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{layout_8hh_a287eac7d9621f833da1f42c06a9cd431}\label{layout_8hh_a287eac7d9621f833da1f42c06a9cd431}} 
+\index{layout.\+hh@{layout.\+hh}!Layout\+From\+Edge\+List@{Layout\+From\+Edge\+List}}
+\index{Layout\+From\+Edge\+List@{Layout\+From\+Edge\+List}!layout.\+hh@{layout.\+hh}}
+\subsubsection{\texorpdfstring{Layout\+From\+Edge\+List()}{LayoutFromEdgeList()}}
+{\footnotesize\ttfamily std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ Layout\+From\+Edge\+List (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{vertex\+\_\+count,  }\item[{const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, float $>$$>$ \&}]{edges,  }\item[{\hyperlink{structLayoutConfiguration}{Layout\+Configuration}}]{config = {\ttfamily \hyperlink{structLayoutConfiguration}{Layout\+Configuration}()},  }\item[{bool}]{create\+\_\+mst = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Genereates coordinates, edges and properties of a M\+ST from an edge list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+count} & The number of vertices in the input graph. \\
+\hline
+{\em edges} & An edge list in the form of \mbox{[}(from, to, weight)\mbox{]}. \\
+\hline
+{\em config} & A \hyperlink{structLayoutConfiguration}{Layout\+Configuration} instance. \\
+\hline
+{\em create\+\_\+mst} & Whether to create an M\+ST before laying out the graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{layout_8hh_aa004fd999aac084ce1a95e81c2a6336c}\label{layout_8hh_aa004fd999aac084ce1a95e81c2a6336c}} 
+\index{layout.\+hh@{layout.\+hh}!Layout\+From\+L\+S\+H\+Forest@{Layout\+From\+L\+S\+H\+Forest}}
+\index{Layout\+From\+L\+S\+H\+Forest@{Layout\+From\+L\+S\+H\+Forest}!layout.\+hh@{layout.\+hh}}
+\subsubsection{\texorpdfstring{Layout\+From\+L\+S\+H\+Forest()}{LayoutFromLSHForest()}}
+{\footnotesize\ttfamily std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ Layout\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classLSHForest}{L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{\hyperlink{structLayoutConfiguration}{Layout\+Configuration}}]{config = {\ttfamily \hyperlink{structLayoutConfiguration}{Layout\+Configuration}()},  }\item[{bool}]{create\+\_\+mst = {\ttfamily true},  }\item[{bool}]{clear\+\_\+lsh\+\_\+forest = {\ttfamily false},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Genereates coordinates, edges and properties of a M\+ST (via a k\+NN graph) from an \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lsh\+\_\+forest} & An \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance which is used to construct the k\+NN graph. \\
+\hline
+{\em config} & A \hyperlink{structLayoutConfiguration}{Layout\+Configuration} instance. \\
+\hline
+{\em create\+\_\+mst} & Whether to create an M\+ST before laying out the graph. \\
+\hline
+{\em clear\+\_\+lsh\+\_\+forest} & Whether to clear the \hyperlink{classLSHForest}{L\+S\+H\+Forest} after it\textquotesingle{}s use (might save memory). \\
+\hline
+{\em weighted} & Whether the \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance contains weighted Min\+Hash data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{layout_8hh_ae01c933d0a5e1177d9b70b94de44fc99}\label{layout_8hh_ae01c933d0a5e1177d9b70b94de44fc99}} 
+\index{layout.\+hh@{layout.\+hh}!Layout\+Internal@{Layout\+Internal}}
+\index{Layout\+Internal@{Layout\+Internal}!layout.\+hh@{layout.\+hh}}
+\subsubsection{\texorpdfstring{Layout\+Internal()}{LayoutInternal()}}
+{\footnotesize\ttfamily std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ Layout\+Internal (\begin{DoxyParamCaption}\item[{ogdf\+::\+Edge\+Weighted\+Graph$<$ float $>$ \&}]{g,  }\item[{uint32\+\_\+t}]{vertex\+\_\+count,  }\item[{\hyperlink{structLayoutConfiguration}{Layout\+Configuration}}]{config,  }\item[{\hyperlink{structGraphProperties}{Graph\+Properties} \&}]{gp }\end{DoxyParamCaption})}
+
+
+
+Laying out an O\+G\+DF graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & An O\+G\+DF Graph instance \\
+\hline
+{\em vertex\+\_\+count} & The number of vertices in the graph. \\
+\hline
+{\em config} & A \hyperlink{structLayoutConfiguration}{Layout\+Configuration} instance. \\
+\hline
+{\em gp} & An instance of a \hyperlink{structGraphProperties}{Graph\+Properties} struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, \hyperlink{structGraphProperties}{Graph\+Properties}$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{layout_8hh_a34d2f2c07e0aec50114d3523fd0da251}\label{layout_8hh_a34d2f2c07e0aec50114d3523fd0da251}} 
+\index{layout.\+hh@{layout.\+hh}!M\+S\+T\+From\+L\+S\+H\+Forest@{M\+S\+T\+From\+L\+S\+H\+Forest}}
+\index{M\+S\+T\+From\+L\+S\+H\+Forest@{M\+S\+T\+From\+L\+S\+H\+Forest}!layout.\+hh@{layout.\+hh}}
+\subsubsection{\texorpdfstring{M\+S\+T\+From\+L\+S\+H\+Forest()}{MSTFromLSHForest()}}
+{\footnotesize\ttfamily std\+::tuple$<$std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$ $>$ M\+S\+T\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classLSHForest}{L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{uint32\+\_\+t}]{k,  }\item[{uint32\+\_\+t}]{kc = {\ttfamily 10},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Generates an M\+ST (via a k\+NN graph) from an \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lsh\+\_\+forest} & An \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance which is used to construct the k\+NN graph. \\
+\hline
+{\em k} & The number of nearest neighbors used to create the k\+NN graph. \\
+\hline
+{\em kc} & The factor by which k is multiplied when retrieving nearest neighbors. \\
+\hline
+{\em weighted} & Whether the \hyperlink{classLSHForest}{L\+S\+H\+Forest} instance contains weighted Min\+Hash data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple$<$std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}

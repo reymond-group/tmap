@@ -1,3 +1,12 @@
+/**
+ * @file bindings.cc
+ * @author Daniel Probst (daenuprobst@gmail.com)
+ * @brief Pybind11 bindings for tmap.
+ * @version 0.1
+ * @date 2019-06-17
+ * 
+ */
+
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
@@ -118,7 +127,7 @@ PYBIND11_MODULE(tmap, m)
         .def("restore", &LSHForest::Restore)
         .def("size", &LSHForest::size)
         .def("get_hash", &LSHForest::GetHash)
-        .def("get_layout", &LSHForest::GetLayout, py::arg("config") = LayoutConfiguration(), py::arg("create_mst") = true, py::arg("mem_dump") = true)
+        // .def("get_layout", &LSHForest::GetLayout, py::arg("config") = LayoutConfiguration(), py::arg("create_mst") = true, py::arg("mem_dump") = true)
         .def("clear", &LSHForest::Clear);
 
     py::class_<Minhash>(m, "Minhash")

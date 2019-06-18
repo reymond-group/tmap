@@ -1,3 +1,12 @@
+/**
+ * @file layout.cc
+ * @author Daniel Probst (daenuprobst@gmail.com)
+ * @brief Functions used for generating graph layouts from LSHForest instances and edge lists.
+ * @version 0.1
+ * @date 2019-06-17
+ * 
+ */
+
 #include "layout.hh"
 #include "lshforest.hh"
 
