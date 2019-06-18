@@ -394,10 +394,10 @@
         </inbodydescription>
         <location file="src/tmap/layout.cc" line="90" column="1" bodyfile="src/tmap/layout.cc" bodystart="90" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="layout_8cc_1a4c768b7dc8cfc07697d2c470150c3574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="layout_8cc_1a8f5ba6f656daf98027e04af2c883a25f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void ConnectGraph</definition>
-        <argsstring>(Graph &amp;g, std::vector&lt; node &gt; &amp;index_to_node, LSHForest &amp;lsh_forest)</argsstring>
+        <argsstring>(Graph &amp;g, std::vector&lt; node &gt; &amp;index_to_node, tmap::LSHForest &amp;lsh_forest)</argsstring>
         <name>ConnectGraph</name>
         <param>
           <type>Graph &amp;</type>
@@ -408,7 +408,7 @@
           <declname>index_to_node</declname>
         </param>
         <param>
-          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
+          <type><ref refid="classtmap_1_1LSHForest" kindref="compound">tmap::LSHForest</ref> &amp;</type>
           <declname>lsh_forest</declname>
         </param>
         <briefdescription>
@@ -419,234 +419,9 @@
         </inbodydescription>
         <location file="src/tmap/layout.cc" line="123" column="1" bodyfile="src/tmap/layout.cc" bodystart="123" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="layout_8cc_1ad5464d8b1c40e92003702f14a5c4bf16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt; &gt; MSTFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc, bool weighted)</argsstring>
-        <name>MSTFromLSHForest</name>
-        <param>
-          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
-          <declname>lsh_forest</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>k</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>kc</declname>
-          <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
-        </param>
-        <briefdescription>
-<para>Generates an MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>k</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of nearest neighbors used to create the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kc</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The factor by which k is multiplied when retrieving nearest neighbors. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.cc" line="144" column="1" bodyfile="src/tmap/layout.cc" bodystart="144" bodyend="176"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8cc_1a25c09eab65bee493ebb96ca9a001a12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config, bool create_mst, bool clear_lsh_forest, bool weighted)</argsstring>
-        <name>LayoutFromLSHForest</name>
-        <param>
-          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
-          <declname>lsh_forest</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>create_mst</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>clear_lsh_forest</declname>
-          <defval>false</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
-        </param>
-        <briefdescription>
-<para>Genereates coordinates, edges and properties of a MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>config</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>create_mst</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>clear_lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to clear the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> after it&apos;s use (might save memory). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.cc" line="179" column="1" bodyfile="src/tmap/layout.cc" bodystart="179" bodyend="231"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8cc_1a40835d0150427fd0f698c0a56b89b078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromEdgeList</definition>
-        <argsstring>(uint32_t vertex_count, const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;edges, LayoutConfiguration config, bool create_mst)</argsstring>
-        <name>LayoutFromEdgeList</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>vertex_count</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;</type>
-          <declname>edges</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>create_mst</declname>
-          <defval>true</defval>
-        </param>
-        <briefdescription>
-<para>Genereates coordinates, edges and properties of a MST from an edge list. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>vertex_count</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of vertices in the input graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>edges</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An edge list in the form of [(from, to, weight)]. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>config</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>create_mst</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.cc" line="234" column="1" bodyfile="src/tmap/layout.cc" bodystart="234" bodyend="277"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8cc_1afab0cb8f4e6f2a366445e32df3dedd9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutInternal</definition>
-        <argsstring>(EdgeWeightedGraph&lt; float &gt; &amp;g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &amp;gp)</argsstring>
-        <name>LayoutInternal</name>
-        <param>
-          <type>EdgeWeightedGraph&lt; float &gt; &amp;</type>
-          <declname>g</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>vertex_count</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-        </param>
-        <param>
-          <type><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &amp;</type>
-          <declname>gp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.cc" line="280" column="1" bodyfile="src/tmap/layout.cc" bodystart="280" bodyend="458"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Functions used for generating graph layouts from <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instances and edge lists. </para>    </briefdescription>
+<para>Functions used for generating graph layouts from LSHForest instances and edge lists. </para>    </briefdescription>
     <detaileddescription>
 <para><simplesect kind="author"><para>Daniel Probst (<ulink url="mailto:daenuprobst@gmail.com">daenuprobst@gmail.com</ulink>) </para></simplesect>
 <simplesect kind="version"><para>0.1 </para></simplesect>
@@ -767,7 +542,7 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ConnectGraph(Graph<sp/>&amp;g,<sp/>std::vector&lt;node&gt;<sp/>&amp;index_to_node,<sp/><ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ConnectGraph(Graph<sp/>&amp;g,<sp/>std::vector&lt;node&gt;<sp/>&amp;index_to_node,<sp/><ref refid="classtmap_1_1LSHForest" kindref="compound">tmap::LSHForest</ref><sp/>&amp;lsh_forest)</highlight></codeline>
 <codeline lineno="124"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>trees<sp/>=<sp/>GetTreesFromForest(g);</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
@@ -775,7 +550,7 @@
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>v<sp/>:<sp/>trees[i])</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>nns<sp/>=<sp/>lsh_forest.<ref refid="classLSHForest_1a5cdb395444dad71ba95e2000bb896454" kindref="member">QueryLinearScanExcludeById</ref>(v,<sp/>1,<sp/>trees[i],<sp/>10);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>nns<sp/>=<sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b" kindref="member">QueryLinearScanExcludeById</ref>(v,<sp/>1,<sp/>trees[i],<sp/>10);</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nns.size()<sp/>==<sp/>0)</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
@@ -788,18 +563,18 @@
 <codeline lineno="141"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal">std::tuple&lt;std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;&gt;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><ref refid="layout_8cc_1ad5464d8b1c40e92003702f14a5c4bf16" kindref="member">MSTFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/>uint32_t<sp/>k,<sp/>uint32_t<sp/>kc,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><ref refid="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" kindref="member">tmap::MSTFromLSHForest</ref>(<ref refid="classtmap_1_1LSHForest" kindref="compound">tmap::LSHForest</ref><sp/>&amp;lsh_forest,<sp/>uint32_t<sp/>k,<sp/>uint32_t<sp/>kc,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted)</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>EdgeWeightedGraph&lt;float&gt;<sp/>g;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>vertex_count<sp/>=<sp/>lsh_forest.<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>vertex_count<sp/>=<sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>();</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>from;</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>to;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/>weight;</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2" kindref="member">GetKNNGraph</ref>(from,<sp/>to,<sp/>weight,<sp/>k,<sp/>kc,<sp/>weighted);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f" kindref="member">GetKNNGraph</ref>(from,<sp/>to,<sp/>weight,<sp/>k,<sp/>kc,<sp/>weighted);</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;node&gt;<sp/>index_to_node(lsh_forest.<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;node&gt;<sp/>index_to_node(lsh_forest.<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>());</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>vertex_count;<sp/>i++)</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index_to_node[i]<sp/>=<sp/>g.newNode();</highlight></codeline>
@@ -822,12 +597,12 @@
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_tuple(x,<sp/>y);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><ref refid="layout_8cc_1a25c09eab65bee493ebb96ca9a001a12a" kindref="member">LayoutFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>clear_lsh_forest,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">tmap::GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><ref refid="layout_8hh_1acd9c409403d706202320359541674ba8" kindref="member">tmap::LayoutFromLSHForest</ref>(<ref refid="classtmap_1_1LSHForest" kindref="compound">tmap::LSHForest</ref><sp/>&amp;lsh_forest,<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">tmap::LayoutConfiguration</ref><sp/>config,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>clear_lsh_forest,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted)</highlight></codeline>
 <codeline lineno="180"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref><sp/>gp;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">tmap::GraphProperties</ref><sp/>gp;</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>EdgeWeightedGraph&lt;float&gt;<sp/>g;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>vertex_count<sp/>=<sp/>lsh_forest.<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>vertex_count<sp/>=<sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>();</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>from;</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>to;</highlight></codeline>
@@ -835,12 +610,12 @@
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>degrees(vertex_count);</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>adjacency_list(vertex_count);</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2" kindref="member">GetKNNGraph</ref>(from,<sp/>to,<sp/>weight,<sp/>config.<ref refid="structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee" kindref="member">k</ref>,<sp/>config.<ref refid="structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc" kindref="member">kc</ref>,<sp/>weighted);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f" kindref="member">GetKNNGraph</ref>(from,<sp/>to,<sp/>weight,<sp/>config.<ref refid="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" kindref="member">k</ref>,<sp/>config.<ref refid="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" kindref="member">kc</ref>,<sp/>weighted);</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"></highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(clear_lsh_forest)</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classLSHForest_1aec34dc5185166dce9c22a4060ce3914c" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lsh_forest.<ref refid="classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d" kindref="member">Clear</ref>();</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;node&gt;<sp/>index_to_node(lsh_forest.<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;node&gt;<sp/>index_to_node(lsh_forest.<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>());</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>vertex_count;<sp/>i++)</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index_to_node[i]<sp/>=<sp/>g.newNode();</highlight></codeline>
@@ -856,10 +631,10 @@
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(node<sp/>v<sp/>:<sp/>g.nodes)<sp/></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>degrees[i++]<sp/>=<sp/>v-&gt;degree();</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1" kindref="member">degrees</ref><sp/>=<sp/>degrees;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" kindref="member">degrees</ref><sp/>=<sp/>degrees;</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(create_mst)</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b" kindref="member">mst_weight</ref><sp/>=<sp/>ogdf::makeMinimumSpanningTree(g,<sp/>g.edgeWeights());</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be" kindref="member">mst_weight</ref><sp/>=<sp/>ogdf::makeMinimumSpanningTree(g,<sp/>g.edgeWeights());</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(node<sp/>v<sp/>:<sp/>g.nodes)<sp/></highlight></codeline>
@@ -872,16 +647,16 @@
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635" kindref="member">adjacency_list</ref><sp/>=<sp/>adjacency_list;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" kindref="member">adjacency_list</ref><sp/>=<sp/>adjacency_list;</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" kindref="member">LayoutInternal</ref>(g,<sp/>vertex_count,<sp/>config,<sp/>gp);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kindref="member">LayoutInternal</ref>(g,<sp/>vertex_count,<sp/>config,<sp/>gp);</highlight></codeline>
 <codeline lineno="231"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><ref refid="layout_8cc_1a40835d0150427fd0f698c0a56b89b078" kindref="member">LayoutFromEdgeList</ref>(uint32_t<sp/>vertex_count,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::tuple&lt;uint32_t,<sp/>uint32_t,<sp/>float&gt;&gt;<sp/>&amp;edges,</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">tmap::GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><ref refid="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" kindref="member">tmap::LayoutFromEdgeList</ref>(uint32_t<sp/>vertex_count,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::tuple&lt;uint32_t,<sp/>uint32_t,<sp/>float&gt;&gt;<sp/>&amp;edges,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">tmap::LayoutConfiguration</ref><sp/>config,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst)</highlight></codeline>
 <codeline lineno="236"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref><sp/>gp;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">tmap::GraphProperties</ref><sp/>gp;</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>EdgeWeightedGraph&lt;float&gt;<sp/>g;</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>adjacency_list(vertex_count);</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"></highlight></codeline>
@@ -902,10 +677,10 @@
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(node<sp/>v<sp/>:<sp/>g.nodes)<sp/></highlight></codeline>
 <codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>degrees[i++]<sp/>=<sp/>v-&gt;degree();</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1" kindref="member">degrees</ref><sp/>=<sp/>degrees;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" kindref="member">degrees</ref><sp/>=<sp/>degrees;</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(create_mst)</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b" kindref="member">mst_weight</ref><sp/>=<sp/>ogdf::makeMinimumSpanningTree(g,<sp/>g.edgeWeights());</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be" kindref="member">mst_weight</ref><sp/>=<sp/>ogdf::makeMinimumSpanningTree(g,<sp/>g.edgeWeights());</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(node<sp/>v<sp/>:<sp/>g.nodes)<sp/></highlight></codeline>
@@ -918,18 +693,18 @@
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++;</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635" kindref="member">adjacency_list</ref><sp/>=<sp/>adjacency_list;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" kindref="member">adjacency_list</ref><sp/>=<sp/>adjacency_list;</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" kindref="member">LayoutInternal</ref>(g,<sp/>vertex_count,<sp/>config,<sp/>gp);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kindref="member">LayoutInternal</ref>(g,<sp/>vertex_count,<sp/>config,<sp/>gp);</highlight></codeline>
 <codeline lineno="277"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><ref refid="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" kindref="member">LayoutInternal</ref>(EdgeWeightedGraph&lt;float&gt;<sp/>&amp;g,<sp/>uint32_t<sp/>vertex_count,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref><sp/>&amp;gp)</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">tmap::GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><ref refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kindref="member">tmap::LayoutInternal</ref>(EdgeWeightedGraph&lt;float&gt;<sp/>&amp;g,<sp/>uint32_t<sp/>vertex_count,<sp/>LayoutConfiguration<sp/>config,<sp/>GraphProperties<sp/>&amp;gp)</highlight></codeline>
 <codeline lineno="281"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>GraphAttributes<sp/>ga(g);</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"></highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>ga.setAllHeight(config.<ref refid="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1" kindref="member">node_size</ref>);</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>ga.setAllWidth(config.<ref refid="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1" kindref="member">node_size</ref>);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>ga.setAllHeight(config.node_size);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>ga.setAllWidth(config.node_size);</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"></highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(edge<sp/>e<sp/>:<sp/>g.edges)</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g.setWeight(e,<sp/>1.0);</highlight></codeline>
@@ -939,103 +714,103 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>NodeArray&lt;int&gt;<sp/>connected_components(g);</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>List&lt;node&gt;<sp/>isolated_nodes;</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_connected_components<sp/>=<sp/>connectedComponents(g,<sp/>connected_components,<sp/>&amp;isolated_nodes);</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca" kindref="member">n_connected_components</ref><sp/>=<sp/>n_connected_components;</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.<ref refid="structGraphProperties_1ad3eec03efec4480e80c5510b896660ae" kindref="member">n_isolated_vertices</ref><sp/>=<sp/>isolated_nodes.size();</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.n_connected_components<sp/>=<sp/>n_connected_components;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>gp.n_isolated_vertices<sp/>=<sp/>isolated_nodes.size();</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Starting<sp/>the<sp/>layout</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>MultilevelGraph<sp/>mlg(ga);</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"></highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>FastMultipoleEmbedder<sp/>is<sp/>used<sp/>for<sp/>the<sp/>single<sp/>level<sp/>layout.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>FastMultipoleEmbedder<sp/>*fme<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FastMultipoleEmbedder();</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setNumIterations(config.<ref refid="structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35" kindref="member">fme_iterations</ref>);</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setRandomize(config.<ref refid="structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e" kindref="member">fme_randomize</ref>);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setNumIterations(config.fme_iterations);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setRandomize(config.fme_randomize);</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fme-&gt;setNumberOfThreads(config.fme_threads);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setMultipolePrec(config.<ref refid="structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7" kindref="member">fme_precision</ref>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setMultipolePrec(config.fme_precision);</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setDefaultEdgeLength(1);</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>fme-&gt;setDefaultNodeSize(1);</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>minimize<sp/>dispersion<sp/>of<sp/>the<sp/>graph<sp/>when<sp/>more<sp/>nodes<sp/>are<sp/>added,<sp/>a</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ScalingLayout<sp/>can<sp/>be<sp/>used<sp/>to<sp/>scale<sp/>up<sp/>the<sp/>graph<sp/>on<sp/>each<sp/>level.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>ScalingLayout<sp/>*sl<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ScalingLayout();</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setLayoutRepeats(config.<ref refid="structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0" kindref="member">sl_repeats</ref>);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setLayoutRepeats(config.sl_repeats);</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setSecondaryLayout(fme);</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"></highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>for<sp/>the<sp/>placement.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>InitialPlacer<sp/>*placer<sp/>=<sp/>GetBarycenterPlacer();</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.<ref refid="structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0" kindref="member">placer</ref>)</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.placer)</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96abbbb1a06b3b22c3ccc5648b57aef0e87" kindref="member">Placer::Barycenter</ref>:</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Barycenter:</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetBarycenterPlacer();</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a30954d90085f6eaaf5817917fc5fecb3" kindref="member">Placer::Circle</ref>:</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Circle:</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetCirclePlacer();</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a66851a3adec6655a7bd563743e4a55a2" kindref="member">Placer::Median</ref>:</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Median:</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetMedianPlacer();</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a64663f4646781c9c0110838b905daa23" kindref="member">Placer::Random</ref>:</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Random:</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetRandomPlacer();</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a352ccd39c4ed093da3690db82cca8ca0" kindref="member">Placer::Solar</ref>:</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Solar:</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetSolarPlacer();</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96ad7ed4ee1df437474d005188535f74875" kindref="member">Placer::Zero</ref>:</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Placer::Zero:</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer<sp/>=<sp/>GetZeroPlacer();</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="339"><highlight class="normal"></highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>for<sp/>the<sp/>coarsening<sp/>phase.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>MultilevelBuilder<sp/>*merger<sp/>=<sp/>GetFactoredAdjustedMerger&lt;EdgeCoverMerger&gt;();</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.<ref refid="structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318" kindref="member">merger</ref>)</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.merger)</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a63dbd8d091f1e5944a41cf67c314cbd5" kindref="member">Merger::EdgeCover</ref>:</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetFactoredAdjustedMerger&lt;EdgeCoverMerger&gt;(config.<ref refid="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae" kindref="member">merger_factor</ref>,<sp/>config.<ref refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" kindref="member">merger_adjustment</ref>);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Merger::EdgeCover:</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetFactoredAdjustedMerger&lt;EdgeCoverMerger&gt;(config.merger_factor,<sp/>config.merger_adjustment);</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a18f7761401e380de1934a428c869b056" kindref="member">Merger::LocalBiconnected</ref>:</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetFactoredAdjustedMerger&lt;LocalBiconnectedMerger&gt;(config.<ref refid="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae" kindref="member">merger_factor</ref>,<sp/>config.<ref refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" kindref="member">merger_adjustment</ref>);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Merger::LocalBiconnected:</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetFactoredAdjustedMerger&lt;LocalBiconnectedMerger&gt;(config.merger_factor,<sp/>config.merger_adjustment);</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a352ccd39c4ed093da3690db82cca8ca0" kindref="member">Merger::Solar</ref>:</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetAdjustedMerger&lt;SolarMerger&gt;(config.<ref refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" kindref="member">merger_adjustment</ref>);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Merger::Solar:</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetAdjustedMerger&lt;SolarMerger&gt;(config.merger_adjustment);</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a8b4d6dc43f32b455d6f6aeb880d12e0e" kindref="member">Merger::IndependentSet</ref>:</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetAdjustedMerger&lt;IndependentSetMerger&gt;(config.<ref refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" kindref="member">merger_adjustment</ref>);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Merger::IndependentSet:</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger<sp/>=<sp/>GetAdjustedMerger&lt;IndependentSetMerger&gt;(config.merger_adjustment);</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"></highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>scaling<sp/>type.<sp/>As<sp/>I<sp/>do<sp/>not<sp/>want<sp/>to<sp/>expose<sp/>any<sp/>OGDF<sp/>to<sp/>Python,</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>there<sp/>is<sp/>this<sp/>intermediate<sp/>step.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingLayout::ScalingType</ref><sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::RelativeToDrawing;</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.<ref refid="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af" kindref="member">sl_scaling_type</ref>)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>ScalingLayout::ScalingType<sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::RelativeToDrawing;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(config.sl_scaling_type)</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2ab51ca26c6c89cfc9bec338f7a0d3e0c8" kindref="member">ScalingType::Absolute</ref>:</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ScalingType::Absolute:</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::Absolute;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a50457e66866f1b7c064de1aed711b13a" kindref="member">ScalingType::RelativeToAvgLength</ref>:</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ScalingType::RelativeToAvgLength:</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::RelativeToAvgLength;</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a51099521cc62379bc5d5c9f3be2251c8" kindref="member">ScalingType::RelativeToDesiredLength</ref>:</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ScalingType::RelativeToDesiredLength:</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::RelativeToDesiredLength;</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a346e055683129bfd0b982970828ab90e" kindref="member">ScalingType::RelativeToDrawing</ref>:</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ScalingType::RelativeToDrawing:</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scaling_type<sp/>=<sp/>ScalingLayout::ScalingType::RelativeToDrawing;</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="376"><highlight class="normal"></highlight></codeline>
 <codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Postprocessing<sp/>is<sp/>applied<sp/>at<sp/>each<sp/>level<sp/>after<sp/>the<sp/>single<sp/>level<sp/>layout.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>this<sp/>example<sp/>a<sp/>FastMultipoleEmbedder<sp/>with<sp/>zero<sp/>iterations<sp/>is<sp/>used<sp/>for<sp/>postprocessing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setExtraScalingSteps(config.<ref refid="structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f" kindref="member">sl_extra_scaling_steps</ref>);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setExtraScalingSteps(config.sl_extra_scaling_steps);</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setScalingType(scaling_type);</highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setScaling(config.<ref refid="structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5" kindref="member">sl_scaling_min</ref>,<sp/>config.<ref refid="structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a" kindref="member">sl_scaling_max</ref>);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>sl-&gt;setScaling(config.sl_scaling_min,<sp/>config.sl_scaling_max);</highlight></codeline>
 <codeline lineno="382"><highlight class="normal"></highlight></codeline>
 <codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>the<sp/>ModularMultilevelMixer<sp/>is<sp/>created.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/>ModularMultilevelMixer<sp/>*mmm<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ModularMultilevelMixer;</highlight></codeline>
-<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/>mmm-&gt;setLayoutRepeats(config.<ref refid="structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065" kindref="member">mmm_repeats</ref>);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/>mmm-&gt;setLayoutRepeats(config.mmm_repeats);</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>single<sp/>level<sp/>layout,<sp/>the<sp/>placer<sp/>and<sp/>the<sp/>merger<sp/>are<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/>mmm-&gt;setLevelLayoutModule(sl);</highlight></codeline>
 <codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>mmm-&gt;setInitialPlacer(placer);</highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/>mmm-&gt;setMultilevelBuilder(merger);</highlight></codeline>
 <codeline lineno="390"><highlight class="normal"></highlight></codeline>
-<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.<ref refid="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af" kindref="member">sl_scaling_type</ref><sp/>==<sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2ab51ca26c6c89cfc9bec338f7a0d3e0c8" kindref="member">ScalingType::Absolute</ref>)<sp/></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.sl_scaling_type<sp/>==<sp/>ScalingType::Absolute)<sp/></highlight></codeline>
 <codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl-&gt;setMMM(mmm);</highlight></codeline>
 <codeline lineno="393"><highlight class="normal"></highlight></codeline>
 <codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n_connected_components<sp/>&gt;<sp/>1)</highlight></codeline>

@@ -9,11 +9,11 @@
 
 #include "minhash.hh"
 
-Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_size) : d_(d), sample_size_(sample_size),
-                                                                                perms_a_((uint32_t)0, d), perms_b_((uint32_t)0, d),
-                                                                                rs_(sample_size), rs_2_(sample_size), ln_cs_(sample_size),
-                                                                                cs_(sample_size),
-                                                                                betas_(sample_size), betas_2_(sample_size)
+tmap::Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_size) : d_(d), sample_size_(sample_size),
+                                                                                      perms_a_((uint32_t)0, d), perms_b_((uint32_t)0, d),
+                                                                                      rs_(sample_size), rs_2_(sample_size), ln_cs_(sample_size),
+                                                                                      cs_(sample_size),
+                                                                                      betas_(sample_size), betas_2_(sample_size)
 {
     // Permutations for the standard minhash
     std::mt19937 rand;
@@ -82,7 +82,7 @@ Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_size) : 
     }
 }
 
-std::vector<uint32_t> Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
+std::vector<uint32_t> tmap::Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
 {
     std::valarray<uint32_t> mh(max_hash_, d_);
 
@@ -100,7 +100,7 @@ std::vector<uint32_t> Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));
 }
 
-std::vector<std::vector<uint32_t>> Minhash::BatchFromBinaryArray(std::vector<std::vector<uint8_t>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromBinaryArray(std::vector<std::vector<uint8_t>> &vecs)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -111,7 +111,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromBinaryArray(std::vector<std
     return results;
 }
 
-std::vector<uint32_t> Minhash::FromSparseBinaryArray(std::vector<uint32_t> &vec)
+std::vector<uint32_t> tmap::Minhash::FromSparseBinaryArray(std::vector<uint32_t> &vec)
 {
     std::valarray<uint32_t> mh(max_hash_, d_);
 
@@ -128,7 +128,7 @@ std::vector<uint32_t> Minhash::FromSparseBinaryArray(std::vector<uint32_t> &vec)
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));
 }
 
-std::vector<std::vector<uint32_t>> Minhash::BatchFromSparseBinaryArray(std::vector<std::vector<uint32_t>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromSparseBinaryArray(std::vector<std::vector<uint32_t>> &vecs)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -139,7 +139,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromSparseBinaryArray(std::vect
     return results;
 }
 
-std::vector<uint32_t> Minhash::FromStringArray(std::vector<std::string> &vec)
+std::vector<uint32_t> tmap::Minhash::FromStringArray(std::vector<std::string> &vec)
 {
     std::valarray<uint32_t> mh(max_hash_, d_);
     sha1::SHA1 s;
@@ -159,7 +159,7 @@ std::vector<uint32_t> Minhash::FromStringArray(std::vector<std::string> &vec)
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));
 }
 
-std::vector<std::vector<uint32_t>> Minhash::BatchFromStringArray(std::vector<std::vector<std::string>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromStringArray(std::vector<std::vector<std::string>> &vecs)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -170,7 +170,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromStringArray(std::vector<std
     return results;
 }
 
-std::vector<uint8_t> Minhash::ExpandIntWeightArray(std::vector<uint32_t> &vec, std::vector<uint32_t> &max_vec, uint32_t size)
+std::vector<uint8_t> tmap::Minhash::ExpandIntWeightArray(std::vector<uint32_t> &vec, std::vector<uint32_t> &max_vec, uint32_t size)
 {
     std::vector<uint8_t> vec_expanded(size);
     size_t index = 0;
@@ -187,7 +187,7 @@ std::vector<uint8_t> Minhash::ExpandIntWeightArray(std::vector<uint32_t> &vec, s
     return vec_expanded;
 }
 
-std::vector<std::vector<uint32_t>> Minhash::BatchFromIntWeightArray(std::vector<std::vector<uint32_t>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromIntWeightArray(std::vector<std::vector<uint32_t>> &vecs)
 {
     size_t size = vecs[0].size();
 
@@ -214,7 +214,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromIntWeightArray(std::vector<
     return results;
 }
 
-std::vector<uint32_t> Minhash::FromWeightArray(std::vector<float> &vec)
+std::vector<uint32_t> tmap::Minhash::FromWeightArray(std::vector<float> &vec)
 {
     std::vector<uint32_t> mh(sample_size_ * 2);
 
@@ -285,7 +285,7 @@ std::vector<uint32_t> Minhash::FromWeightArray(std::vector<float> &vec)
     return mh;
 }
 
-std::vector<std::vector<uint32_t>> Minhash::BatchFromWeightArray(std::vector<std::vector<float>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromWeightArray(std::vector<std::vector<float>> &vecs)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -297,7 +297,7 @@ std::vector<std::vector<uint32_t>> Minhash::BatchFromWeightArray(std::vector<std
 }
 
 
-float Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
+float tmap::Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
 {
     float intersect = 0;
     size_t length = vec_a.size();
@@ -309,7 +309,7 @@ float Minhash::GetDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &
     return 1.0f - intersect / length;
 }
 
-float Minhash::GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
+float tmap::Minhash::GetWeightedDistance(std::vector<uint32_t> &vec_a, std::vector<uint32_t> &vec_b)
 {
     float intersect = 0;
     size_t length = vec_a.size();

@@ -1,46 +1,463 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
-  <compounddef id="namespacetmap" kind="namespace" language="Python">
+  <compounddef id="namespacetmap" kind="namespace" language="C++">
     <compoundname>tmap</compoundname>
+    <innerclass refid="structtmap_1_1GraphProperties" prot="public">tmap::GraphProperties</innerclass>
+    <innerclass refid="structtmap_1_1LayoutConfiguration" prot="public">tmap::LayoutConfiguration</innerclass>
+    <innerclass refid="classtmap_1_1LSHForest" prot="public">tmap::LSHForest</innerclass>
+    <innerclass refid="structtmap_1_1MapKeyPointer" prot="public">tmap::MapKeyPointer</innerclass>
+    <innerclass refid="classtmap_1_1Minhash" prot="public">tmap::Minhash</innerclass>
+    <innerclass refid="structtmap_1_1SimpleHash" prot="public">tmap::SimpleHash</innerclass>
+    <innerclass refid="classtmap_1_1Timer" prot="public">tmap::Timer</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" prot="public" static="no">
+        <name>Placer</name>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90babbbb1a06b3b22c3ccc5648b57aef0e87" prot="public">
+          <name>Barycenter</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Places a vertex at the barycenter of its neighbors&apos; position. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba352ccd39c4ed093da3690db82cca8ca0" prot="public">
+          <name>Solar</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba30954d90085f6eaaf5817917fc5fecb3" prot="public">
+          <name>Circle</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Places the vertices in a circle around the barycenter and outside of the current drawing. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba66851a3adec6655a7bd563743e4a55a2" prot="public">
+          <name>Median</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Places a vertex at the median position of the neighbor nodes for each coordinate axis. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba64663f4646781c9c0110838b905daa23" prot="public">
+          <name>Random</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90bad7ed4ee1df437474d005188535f74875" prot="public">
+          <name>Zero</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Places a vertex at the same position as its representative in the previous level. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The placers available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="62" column="1" bodyfile="src/tmap/layout.hh" bodystart="61" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="enum" id="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" prot="public" static="no">
+        <name>Merger</name>
+        <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa63dbd8d091f1e5944a41cf67c314cbd5" prot="public">
+          <name>EdgeCover</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa18f7761401e380de1934a428c869b056" prot="public">
+          <name>LocalBiconnected</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa352ccd39c4ed093da3690db82cca8ca0" prot="public">
+          <name>Solar</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa8b4d6dc43f32b455d6f6aeb880d12e0e" prot="public">
+          <name>IndependentSet</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Uses a maximal independent set filtration. See GRIP for details. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The mergers available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="77" column="1" bodyfile="src/tmap/layout.hh" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="enum" id="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" prot="public" static="no">
+        <name>ScalingType</name>
+        <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761ab51ca26c6c89cfc9bec338f7a0d3e0c8" prot="public">
+          <name>Absolute</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Absolute factor, can be used to scale relative to level size change. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761a50457e66866f1b7c064de1aed711b13a" prot="public">
+          <name>RelativeToAvgLength</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Scales by a factor relative to the average edge weights. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761a51099521cc62379bc5d5c9f3be2251c8" prot="public">
+          <name>RelativeToDesiredLength</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Scales by a factor relative to the disired edge length. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761a346e055683129bfd0b982970828ab90e" prot="public">
+          <name>RelativeToDrawing</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Scales by a factor relative to the drawing. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The scaling types available in OGDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="90" column="1" bodyfile="src/tmap/layout.hh" bodystart="89" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="____init_____8py_1afa8ab9eb7efee5198cf03baafb1b2fe7" prot="private" static="no" mutable="no">
-        <type></type>
-        <definition>tmap._ROOT</definition>
-        <argsstring></argsstring>
-        <name>_ROOT</name>
-        <initializer>=  os.path.abspath(os.path.dirname(__file__))</initializer>
+      <memberdef kind="variable" id="layout_8hh_1add5cf34d9d933fc3bfe2b06c86574215" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tmap::placer_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>placer_values</name>
+        <initializer>= {&quot;Barycenter&quot;, &quot;Solar&quot;, &quot;Circle&quot;, &quot;Median&quot;, &quot;Random&quot;, &quot;Zero&quot;}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/__init__.py" line="5" column="1" bodyfile="src/tmap/__init__.py" bodystart="5" bodyend="-1"/>
+        <location file="src/tmap/layout.hh" line="70" column="1" bodyfile="src/tmap/layout.hh" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="layout_8hh_1a3ad0dd2b53d82fa20916d19ff367794a" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tmap::merger_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>merger_values</name>
+        <initializer>= {&quot;EdgeCover&quot;, &quot;LocalBiconnected&quot;, &quot;Solar&quot;, &quot;IndependentSet&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="83" column="1" bodyfile="src/tmap/layout.hh" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="layout_8hh_1a93ab7e5f6b6a0e80c1cd2662157219dd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string tmap::scaling_types_values[]</definition>
+        <argsstring>[]</argsstring>
+        <name>scaling_types_values</name>
+        <initializer>= {&quot;Absolute&quot;, &quot;RelativeToAvgLength&quot;, &quot;RelativeToDesiredLength&quot;, &quot;RelativeToDrawing&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="96" column="1" bodyfile="src/tmap/layout.hh" bodystart="96" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>def</type>
-        <definition>def tmap.get_asset</definition>
-        <argsstring>(path)</argsstring>
-        <name>get_asset</name>
+      <memberdef kind="function" id="layout_8hh_1acd9c409403d706202320359541674ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, tmap::GraphProperties &gt; tmap::LayoutFromLSHForest</definition>
+        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true, bool clear_lsh_forest=false, bool weighted=false)</argsstring>
+        <name>LayoutFromLSHForest</name>
         <param>
-          <type>path</type>
-          <defname>path</defname>
+          <type><ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> &amp;</type>
+          <declname>lsh_forest</declname>
+        </param>
+        <param>
+          <type><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+          <defval><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>create_mst</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>clear_lsh_forest</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>weighted</declname>
+          <defval>false</defval>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Genereates coordinates, edges and properties of a MST (via a kNN graph) from an <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>create_mst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clear_lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to clear the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> after it&apos;s use (might save memory). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weighted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/__init__.py" line="6" column="1" bodyfile="src/tmap/__init__.py" bodystart="6" bodyend="7"/>
+        <location file="src/tmap/layout.hh" line="185" column="1" bodyfile="src/tmap/layout.cc" bodystart="179" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt; tmap::MSTFromLSHForest</definition>
+        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc=10, bool weighted=false)</argsstring>
+        <name>MSTFromLSHForest</name>
+        <param>
+          <type><ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> &amp;</type>
+          <declname>lsh_forest</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>kc</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>weighted</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Generates an MST (via a kNN graph) from an <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lsh_forest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of nearest neighbors used to create the kNN graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The factor by which k is multiplied when retrieving nearest neighbors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>weighted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="198" column="1" bodyfile="src/tmap/layout.cc" bodystart="144" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, tmap::GraphProperties &gt; tmap::LayoutFromEdgeList</definition>
+        <argsstring>(uint32_t vertex_count, const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;edges, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true)</argsstring>
+        <name>LayoutFromEdgeList</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>vertex_count</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;</type>
+          <declname>edges</declname>
+        </param>
+        <param>
+          <type><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+          <defval><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>create_mst</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Genereates coordinates, edges and properties of a MST from an edge list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of vertices in the input graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>edges</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An edge list in the form of [(from, to, weight)]. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>create_mst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="210" column="1" bodyfile="src/tmap/layout.cc" bodystart="234" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
+        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; tmap::LayoutInternal</definition>
+        <argsstring>(ogdf::EdgeWeightedGraph&lt; float &gt; &amp;g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &amp;gp)</argsstring>
+        <name>LayoutInternal</name>
+        <param>
+          <type>ogdf::EdgeWeightedGraph&lt; float &gt; &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>vertex_count</declname>
+        </param>
+        <param>
+          <type><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &amp;</type>
+          <declname>gp</declname>
+        </param>
+        <briefdescription>
+<para>Laying out an OGDF graph. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>g</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An OGDF Graph instance </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vertex_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of vertices in the graph. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instance of a <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> struct. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tmap/layout.hh" line="223" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/__init__.py" line="1" column="1"/>
+    <location file="src/tmap/layout.hh" line="53" column="1"/>
   </compounddef>
 </doxygen>

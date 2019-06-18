@@ -9,7 +9,7 @@
 
 #include "lshforest.hh"
 
-LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backed) 
+tmap::LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backed) 
 : d_(d), l_(l), size_(0), store_(store), file_backed_(file_backed), hashtables_(l), hashranges_(l), sorted_hashtable_pointers_(l)
 {
     if (l_ > d_)
@@ -24,7 +24,7 @@ LSHForest::LSHForest(unsigned int d, unsigned int l, bool store, bool file_backe
     }
 }
 
-void LSHForest::Add(std::vector<uint32_t> &vec)
+void tmap::LSHForest::Add(std::vector<uint32_t> &vec)
 {
     if (store_)
     {
@@ -50,7 +50,7 @@ void LSHForest::Add(std::vector<uint32_t> &vec)
     clean_ = false;
 }
 
-void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
+void tmap::LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
 {
     size_t length = vecs.size();
     size_t data_length = size_;
@@ -93,7 +93,7 @@ void LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
     clean_ = false;
 }
 
-void LSHForest::Index()
+void tmap::LSHForest::Index()
 {
     #pragma omp parallel for
     for (size_t i = 0; i < hashtables_.size(); i++)
@@ -110,7 +110,7 @@ void LSHForest::Index()
     clean_ = true;
 }
 
-std::vector<uint32_t> LSHForest::GetData(uint32_t id)
+std::vector<uint32_t> tmap::LSHForest::GetData(uint32_t id)
 {
     if (file_backed_)
     {
@@ -129,12 +129,12 @@ std::vector<uint32_t> LSHForest::GetData(uint32_t id)
     }
 }
 
-bool LSHForest::IsClean()
+bool tmap::LSHForest::IsClean()
 {
     return clean_;
 }
 
-void LSHForest::Store(const std::string &path)
+void tmap::LSHForest::Store(const std::string &path)
 {
     std::ofstream file(path, std::ios::binary);
     cereal::BinaryOutputArchive output(file);
@@ -142,7 +142,7 @@ void LSHForest::Store(const std::string &path)
     file.close();
 }
 
-void LSHForest::Restore(const std::string &path)
+void tmap::LSHForest::Restore(const std::string &path)
 {
     Clear();
     std::ifstream file(path, std::ios::binary);
@@ -155,12 +155,12 @@ void LSHForest::Restore(const std::string &path)
     Index();
 }
 
-std::vector<uint32_t> LSHForest::GetHash(uint32_t id)
+std::vector<uint32_t> tmap::LSHForest::GetHash(uint32_t id)
 {
     return GetData(id);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScan(const std::vector<uint32_t> &vec, unsigned int k, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> tmap::LSHForest::QueryLinearScan(const std::vector<uint32_t> &vec, unsigned int k, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -169,7 +169,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScan(const std::ve
     return LinearScan(vec, tmp, k, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExclude(const std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> tmap::LSHForest::QueryLinearScanExclude(const std::vector<uint32_t> &vec, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -178,7 +178,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExclude(const 
     return LinearScan(vec, tmp, k, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanById(uint32_t id, unsigned int k, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> tmap::LSHForest::QueryLinearScanById(uint32_t id, unsigned int k, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -186,7 +186,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanById(uint32_t 
     return QueryLinearScan(GetData(id), k, kc, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExcludeById(uint32_t id, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
+std::vector<std::pair<float, uint32_t>> tmap::LSHForest::QueryLinearScanExcludeById(uint32_t id, unsigned int k, std::vector<uint32_t> &exclude, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -194,7 +194,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::QueryLinearScanExcludeById(ui
     return QueryLinearScanExclude(GetData(id), k, exclude, kc, weighted);
 }
 
-std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k, bool weighted)
+std::vector<std::pair<float, uint32_t>> tmap::LSHForest::LinearScan(const std::vector<uint32_t> &vec, std::vector<uint32_t> &indices, unsigned int k, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -220,7 +220,7 @@ std::vector<std::pair<float, uint32_t>> LSHForest::LinearScan(const std::vector<
 }
 
 // Does not always return k items. Is this expected?
-std::vector<uint32_t> LSHForest::Query(const std::vector<uint32_t> &vec, unsigned int k)
+std::vector<uint32_t> tmap::LSHForest::Query(const std::vector<uint32_t> &vec, unsigned int k)
 {
     std::set<uint32_t> results;
 
@@ -235,7 +235,7 @@ std::vector<uint32_t> LSHForest::Query(const std::vector<uint32_t> &vec, unsigne
     return std::vector<uint32_t>(results.begin(), results.end());
 }
 
-std::vector<uint32_t> LSHForest::QueryExclude(const std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k)
+std::vector<uint32_t> tmap::LSHForest::QueryExclude(const std::vector<uint32_t> &vec, std::vector<uint32_t> &exclude, unsigned int k)
 {
     std::set<uint32_t> results;
 
@@ -250,7 +250,7 @@ std::vector<uint32_t> LSHForest::QueryExclude(const std::vector<uint32_t> &vec, 
     return std::vector<uint32_t>(results.begin(), results.end());
 }
 
-std::vector<uint32_t> LSHForest::QueryById(uint32_t id, unsigned int k)
+std::vector<uint32_t> tmap::LSHForest::QueryById(uint32_t id, unsigned int k)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -258,7 +258,7 @@ std::vector<uint32_t> LSHForest::QueryById(uint32_t id, unsigned int k)
     return Query(GetData(id), k);
 }
 
-std::vector<uint32_t> LSHForest::QueryExcludeById(uint32_t id, std::vector<uint32_t> &exclude, unsigned int k)
+std::vector<uint32_t> tmap::LSHForest::QueryExcludeById(uint32_t id, std::vector<uint32_t> &exclude, unsigned int k)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -266,7 +266,7 @@ std::vector<uint32_t> LSHForest::QueryExcludeById(uint32_t id, std::vector<uint3
     return QueryExclude(GetData(id), exclude, k);
 }
 
-std::vector<std::vector<uint32_t>> LSHForest::BatchQuery(const std::vector<std::vector<uint32_t>> &vecs, unsigned int k)
+std::vector<std::vector<uint32_t>> tmap::LSHForest::BatchQuery(const std::vector<std::vector<uint32_t>> &vecs, unsigned int k)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
@@ -278,7 +278,7 @@ std::vector<std::vector<uint32_t>> LSHForest::BatchQuery(const std::vector<std::
     return results;
 }
 
-std::vector<uint32_t> LSHForest::GetAllNearestNeighbors(unsigned int k, unsigned int kc, bool weighted)
+std::vector<uint32_t> tmap::LSHForest::GetAllNearestNeighbors(unsigned int k, unsigned int kc, bool weighted)
 {
     std::vector<uint32_t> results(size_, 0);
 
@@ -293,7 +293,7 @@ std::vector<uint32_t> LSHForest::GetAllNearestNeighbors(unsigned int k, unsigned
     return results;
 }
 
-void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &to, std::vector<float> &weight, unsigned int k, unsigned int kc, bool weighted)
+void tmap::LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &to, std::vector<float> &weight, unsigned int k, unsigned int kc, bool weighted)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -323,7 +323,7 @@ void LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint32_t> &
     }
 }
 
-void LSHForest::QueryInternal(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k)
+void tmap::LSHForest::QueryInternal(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k)
 {
     std::vector<std::vector<uint8_t>> prefixes;
 
@@ -382,7 +382,7 @@ void LSHForest::QueryInternal(const std::vector<uint32_t> &vec, unsigned int r, 
     }
 }
 
-void LSHForest::QueryInternalExclude(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
+void tmap::LSHForest::QueryInternalExclude(const std::vector<uint32_t> &vec, unsigned int r, std::set<uint32_t> &results, unsigned int k, std::vector<uint32_t> &exclude)
 {
     std::vector<std::vector<uint8_t>> prefixes;
 
@@ -442,7 +442,7 @@ void LSHForest::QueryInternalExclude(const std::vector<uint32_t> &vec, unsigned 
     }
 }
 
-std::vector<uint8_t> LSHForest::Hash(std::vector<uint32_t> vec)
+std::vector<uint8_t> tmap::LSHForest::Hash(std::vector<uint32_t> vec)
 {
     auto length = sizeof(vec[0]) * vec.size();
 
@@ -452,7 +452,7 @@ std::vector<uint8_t> LSHForest::Hash(std::vector<uint32_t> vec)
     return s;
 }
 
-std::vector<uint8_t> LSHForest::Hash(std::vector<std::vector<uint32_t>> vecs)
+std::vector<uint8_t> tmap::LSHForest::Hash(std::vector<std::vector<uint32_t>> vecs)
 {
     // Linearize input matrix
     size_t stride = vecs[0].size();
@@ -465,12 +465,12 @@ std::vector<uint8_t> LSHForest::Hash(std::vector<std::vector<uint32_t>> vecs)
     return Hash(lin);
 }
 
-uint32_t LSHForest::Swap(uint32_t i)
+uint32_t tmap::LSHForest::Swap(uint32_t i)
 {
     return ((i >> 24) & 0xff) | ((i << 8) & 0xff0000) | ((i >> 8) & 0xff00) | ((i << 24) & 0xff000000);
 }
 
-std::vector<uint32_t> LSHForest::Swap(std::vector<uint32_t> vec)
+std::vector<uint32_t> tmap::LSHForest::Swap(std::vector<uint32_t> vec)
 {
     std::vector<uint32_t> vec_out(vec.size());
 
@@ -480,7 +480,7 @@ std::vector<uint32_t> LSHForest::Swap(std::vector<uint32_t> vec)
     return vec_out;
 }
 
-std::vector<std::vector<uint32_t>> LSHForest::Swap(std::vector<std::vector<uint32_t>> vecs)
+std::vector<std::vector<uint32_t>> tmap::LSHForest::Swap(std::vector<std::vector<uint32_t>> vecs)
 {
     std::vector<std::vector<uint32_t>> vecs_out(vecs.size());
 
@@ -495,7 +495,7 @@ std::vector<std::vector<uint32_t>> LSHForest::Swap(std::vector<std::vector<uint3
     return vecs_out;
 }
 
-unsigned int LSHForest::BinarySearch(unsigned int n, const std::function<bool(unsigned int)> &fn)
+unsigned int tmap::LSHForest::BinarySearch(unsigned int n, const std::function<bool(unsigned int)> &fn)
 {
     unsigned int i = 0;
     unsigned int j = n;
@@ -513,7 +513,7 @@ unsigned int LSHForest::BinarySearch(unsigned int n, const std::function<bool(un
     return i;
 }
 
-std::vector<float> LSHForest::GetAllDistances(const std::vector<uint32_t> &vec)
+std::vector<float> tmap::LSHForest::GetAllDistances(const std::vector<uint32_t> &vec)
 {
     std::vector<float> dists(size_);
 
@@ -526,7 +526,7 @@ std::vector<float> LSHForest::GetAllDistances(const std::vector<uint32_t> &vec)
     return dists;
 }
 
-float LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
+float tmap::LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
     float intersect = 0;
 
@@ -537,7 +537,7 @@ float LSHForest::GetDistance(const std::vector<uint32_t> &vec_a, const std::vect
     return 1.0f - intersect / d_;
 }
 
-float LSHForest::GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
+float tmap::LSHForest::GetWeightedDistance(const std::vector<uint32_t> &vec_a, const std::vector<uint32_t> &vec_b)
 {
     float intersect = 0.0f;
     for (unsigned int i = 0; i < d_ * 2; i += 2)
@@ -547,7 +547,7 @@ float LSHForest::GetWeightedDistance(const std::vector<uint32_t> &vec_a, const s
     return 1.0f - 2.0f * intersect / (float)d_;
 }
 
-float LSHForest::GetDistanceById(uint32_t a, uint32_t b)
+float tmap::LSHForest::GetDistanceById(uint32_t a, uint32_t b)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -555,7 +555,7 @@ float LSHForest::GetDistanceById(uint32_t a, uint32_t b)
     return GetDistance(GetData(a), GetData(b));
 }
 
-float LSHForest::GetWeightedDistanceById(uint32_t a, uint32_t b)
+float tmap::LSHForest::GetWeightedDistanceById(uint32_t a, uint32_t b)
 {
     if (!store_)
         throw std::runtime_error("LSHForest was not instantiated with store=true");
@@ -563,12 +563,12 @@ float LSHForest::GetWeightedDistanceById(uint32_t a, uint32_t b)
     return GetWeightedDistance(GetData(a), GetData(b));
 }
 
-size_t LSHForest::size()
+size_t tmap::LSHForest::size()
 {
     return size_;
 }
 
-void LSHForest::Clear()
+void tmap::LSHForest::Clear()
 {
     hashtables_ = std::vector<spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash>>();
     hashranges_ = std::vector<std::tuple<uint32_t, uint32_t>>();
@@ -594,7 +594,7 @@ void LSHForest::Clear()
 }
 
 std::vector<std::vector<uint8_t>> 
-LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash> hashtable)
+tmap::LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>, SimpleHash> hashtable)
 {
     std::vector<std::vector<uint8_t>> keys;
 
@@ -605,7 +605,7 @@ LSHForest::GetKeysFromHashtable(spp::sparse_hash_map<std::vector<uint8_t>, std::
 }
 
 // std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
-// LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
+// tmap::LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool mem_dump)
 // {
 //     std::string tmp_path = std::tmpnam(nullptr);
 //     if (mem_dump) {

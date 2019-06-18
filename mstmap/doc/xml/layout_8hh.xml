@@ -207,455 +207,11 @@
         <link refid="lshforest_8cc"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="structLayoutConfiguration" prot="public">LayoutConfiguration</innerclass>
-    <innerclass refid="structGraphProperties" prot="public">GraphProperties</innerclass>
-      <sectiondef kind="enum">
-      <memberdef kind="enum" id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" prot="public" static="no">
-        <name>Placer</name>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96abbbb1a06b3b22c3ccc5648b57aef0e87" prot="public">
-          <name>Barycenter</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>Places a vertex at the barycenter of its neighbors&apos; position. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a352ccd39c4ed093da3690db82cca8ca0" prot="public">
-          <name>Solar</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a30954d90085f6eaaf5817917fc5fecb3" prot="public">
-          <name>Circle</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>Places the vertices in a circle around the barycenter and outside of the current drawing. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a66851a3adec6655a7bd563743e4a55a2" prot="public">
-          <name>Median</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Places a vertex at the median position of the neighbor nodes for each coordinate axis. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a64663f4646781c9c0110838b905daa23" prot="public">
-          <name>Random</name>
-          <initializer>= 4</initializer>
-          <briefdescription>
-<para>Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96ad7ed4ee1df437474d005188535f74875" prot="public">
-          <name>Zero</name>
-          <initializer>= 5</initializer>
-          <briefdescription>
-<para>Places a vertex at the same position as its representative in the previous level. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>The placers available in OGDF. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="60" column="1" bodyfile="src/tmap/layout.hh" bodystart="59" bodyend="67"/>
-      </memberdef>
-      <memberdef kind="enum" id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" prot="public" static="no">
-        <name>Merger</name>
-        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a63dbd8d091f1e5944a41cf67c314cbd5" prot="public">
-          <name>EdgeCover</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a18f7761401e380de1934a428c869b056" prot="public">
-          <name>LocalBiconnected</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a352ccd39c4ed093da3690db82cca8ca0" prot="public">
-          <name>Solar</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a8b4d6dc43f32b455d6f6aeb880d12e0e" prot="public">
-          <name>IndependentSet</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Uses a maximal independent set filtration. See GRIP for details. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>The mergers available in OGDF. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="75" column="1" bodyfile="src/tmap/layout.hh" bodystart="74" bodyend="80"/>
-      </memberdef>
-      <memberdef kind="enum" id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" prot="public" static="no">
-        <name>ScalingType</name>
-        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2ab51ca26c6c89cfc9bec338f7a0d3e0c8" prot="public">
-          <name>Absolute</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>Absolute factor, can be used to scale relative to level size change. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a50457e66866f1b7c064de1aed711b13a" prot="public">
-          <name>RelativeToAvgLength</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>Scales by a factor relative to the average edge weights. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a51099521cc62379bc5d5c9f3be2251c8" prot="public">
-          <name>RelativeToDesiredLength</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>Scales by a factor relative to the disired edge length. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a346e055683129bfd0b982970828ab90e" prot="public">
-          <name>RelativeToDrawing</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Scales by a factor relative to the drawing. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>The scaling types available in OGDF. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="88" column="1" bodyfile="src/tmap/layout.hh" bodystart="87" bodyend="93"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="layout_8hh_1aa3cd4344c158a883537fdc305e703f09" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string placer_values[]</definition>
-        <argsstring>[]</argsstring>
-        <name>placer_values</name>
-        <initializer>= {&quot;Barycenter&quot;, &quot;Solar&quot;, &quot;Circle&quot;, &quot;Median&quot;, &quot;Random&quot;, &quot;Zero&quot;}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="68" column="1" bodyfile="src/tmap/layout.hh" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="layout_8hh_1a7fd2d2be38a14e158c43e8921b946321" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string merger_values[]</definition>
-        <argsstring>[]</argsstring>
-        <name>merger_values</name>
-        <initializer>= {&quot;EdgeCover&quot;, &quot;LocalBiconnected&quot;, &quot;Solar&quot;, &quot;IndependentSet&quot;}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="81" column="1" bodyfile="src/tmap/layout.hh" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="layout_8hh_1ac54c4e7863b240dbc340cf9f440db2b6" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string scaling_types_values[]</definition>
-        <argsstring>[]</argsstring>
-        <name>scaling_types_values</name>
-        <initializer>= {&quot;Absolute&quot;, &quot;RelativeToAvgLength&quot;, &quot;RelativeToDesiredLength&quot;, &quot;RelativeToDrawing&quot;}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="94" column="1" bodyfile="src/tmap/layout.hh" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="layout_8hh_1aa004fd999aac084ce1a95e81c2a6336c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true, bool clear_lsh_forest=false, bool weighted=false)</argsstring>
-        <name>LayoutFromLSHForest</name>
-        <param>
-          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
-          <declname>lsh_forest</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>create_mst</declname>
-          <defval>true</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>clear_lsh_forest</declname>
-          <defval>false</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
-        </param>
-        <briefdescription>
-<para>Genereates coordinates, edges and properties of a MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>config</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>create_mst</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>clear_lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to clear the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> after it&apos;s use (might save memory). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="183" column="1" bodyfile="src/tmap/layout.cc" bodystart="179" bodyend="231"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8hh_1a34d2f2c07e0aec50114d3523fd0da251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt; &gt; MSTFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc=10, bool weighted=false)</argsstring>
-        <name>MSTFromLSHForest</name>
-        <param>
-          <type><ref refid="classLSHForest" kindref="compound">LSHForest</ref> &amp;</type>
-          <declname>lsh_forest</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>k</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>kc</declname>
-          <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
-        </param>
-        <briefdescription>
-<para>Generates an MST (via a kNN graph) from an <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>lsh_forest</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance which is used to construct the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>k</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of nearest neighbors used to create the kNN graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kc</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The factor by which k is multiplied when retrieving nearest neighbors. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="196" column="1" bodyfile="src/tmap/layout.cc" bodystart="144" bodyend="176"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8hh_1a287eac7d9621f833da1f42c06a9cd431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutFromEdgeList</definition>
-        <argsstring>(uint32_t vertex_count, const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;edges, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true)</argsstring>
-        <name>LayoutFromEdgeList</name>
-        <param>
-          <type>uint32_t</type>
-          <declname>vertex_count</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; std::tuple&lt; uint32_t, uint32_t, float &gt;&gt; &amp;</type>
-          <declname>edges</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-          <defval><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>()</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>create_mst</declname>
-          <defval>true</defval>
-        </param>
-        <briefdescription>
-<para>Genereates coordinates, edges and properties of a MST from an edge list. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>vertex_count</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of vertices in the input graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>edges</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An edge list in the form of [(from, to, weight)]. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>config</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>create_mst</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether to create an MST before laying out the graph. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="208" column="1" bodyfile="src/tmap/layout.cc" bodystart="234" bodyend="277"/>
-      </memberdef>
-      <memberdef kind="function" id="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
-        <definition>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, GraphProperties&gt; LayoutInternal</definition>
-        <argsstring>(ogdf::EdgeWeightedGraph&lt; float &gt; &amp;g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &amp;gp)</argsstring>
-        <name>LayoutInternal</name>
-        <param>
-          <type>ogdf::EdgeWeightedGraph&lt; float &gt; &amp;</type>
-          <declname>g</declname>
-        </param>
-        <param>
-          <type>uint32_t</type>
-          <declname>vertex_count</declname>
-        </param>
-        <param>
-          <type><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></type>
-          <declname>config</declname>
-        </param>
-        <param>
-          <type><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> &amp;</type>
-          <declname>gp</declname>
-        </param>
-        <briefdescription>
-<para>Laying out an OGDF graph. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>g</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An OGDF Graph instance </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>vertex_count</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The number of vertices in the graph. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>config</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A <ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref> instance. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>gp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An instance of a <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref> struct. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tmap/layout.hh" line="221" column="1"/>
-      </memberdef>
-      </sectiondef>
+    <innerclass refid="structtmap_1_1LayoutConfiguration" prot="public">tmap::LayoutConfiguration</innerclass>
+    <innerclass refid="structtmap_1_1GraphProperties" prot="public">tmap::GraphProperties</innerclass>
+    <innernamespace refid="namespacetmap">tmap</innernamespace>
     <briefdescription>
-<para>Functions used for generating graph layouts from <ref refid="classLSHForest" kindref="compound">LSHForest</ref> instances and edge lists. </para>    </briefdescription>
+<para>Functions used for generating graph layouts from LSHForest instances and edge lists. </para>    </briefdescription>
     <detaileddescription>
 <para><simplesect kind="author"><para>Daniel Probst (<ulink url="mailto:daenuprobst@gmail.com">daenuprobst@gmail.com</ulink>) </para></simplesect>
 <simplesect kind="version"><para>0.1 </para></simplesect>
@@ -705,112 +261,114 @@
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>LSHForest.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLSHForest" kindref="compound">LSHForest</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref></highlight></codeline>
-<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96abbbb1a06b3b22c3ccc5648b57aef0e87" kindref="member">Barycenter</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a352ccd39c4ed093da3690db82cca8ca0" kindref="member">Solar</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a30954d90085f6eaaf5817917fc5fecb3" kindref="member">Circle</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a66851a3adec6655a7bd563743e4a55a2" kindref="member">Median</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a64663f4646781c9c0110838b905daa23" kindref="member">Random</ref><sp/>=<sp/>4,<sp/></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96ad7ed4ee1df437474d005188535f74875" kindref="member">Zero</ref><sp/>=<sp/>5<sp/></highlight></codeline>
-<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>placer_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Barycenter&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Circle&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Median&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Random&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Zero&quot;</highlight><highlight class="normal">};</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref></highlight></codeline>
-<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a63dbd8d091f1e5944a41cf67c314cbd5" kindref="member">EdgeCover</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a18f7761401e380de1934a428c869b056" kindref="member">LocalBiconnected</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96a352ccd39c4ed093da3690db82cca8ca0" kindref="member">Solar</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a8b4d6dc43f32b455d6f6aeb880d12e0e" kindref="member">IndependentSet</ref><sp/>=<sp/>3<sp/></highlight></codeline>
-<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>merger_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;EdgeCover&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LocalBiconnected&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;IndependentSet&quot;</highlight><highlight class="normal">};</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" refkind="member"><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref></highlight></codeline>
-<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2ab51ca26c6c89cfc9bec338f7a0d3e0c8" kindref="member">Absolute</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a50457e66866f1b7c064de1aed711b13a" kindref="member">RelativeToAvgLength</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a51099521cc62379bc5d5c9f3be2251c8" kindref="member">RelativeToDesiredLength</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a346e055683129bfd0b982970828ab90e" kindref="member">RelativeToDrawing</ref><sp/>=<sp/>3<sp/></highlight></codeline>
-<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>scaling_types_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Absolute&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToAvgLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDesiredLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDrawing&quot;</highlight><highlight class="normal">};</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="structLayoutConfiguration" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref></highlight></codeline>
-<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="106" refid="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4" kindref="member">LayoutConfiguration</ref>()<sp/>:<sp/>k(10),<sp/>kc(10),<sp/>fme_iterations(1000),<sp/>fme_randomize(false),<sp/>fme_threads(4),<sp/>fme_precision(4),</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_repeats(1),<sp/>sl_extra_scaling_steps(1),<sp/>sl_scaling_min(5.0),<sp/>sl_scaling_max(20.0),</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_scaling_type(<ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref>::<ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2a346e055683129bfd0b982970828ab90e" kindref="member">RelativeToDrawing</ref>),</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mmm_repeats(1),</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer(<ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref>::<ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96abbbb1a06b3b22c3ccc5648b57aef0e87" kindref="member">Barycenter</ref>),</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger(<ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref>::<ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18a18f7761401e380de1934a428c869b056" kindref="member">LocalBiconnected</ref>),<sp/>merger_factor(2.0),<sp/>merger_adjustment(0),</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node_size(1.0)<sp/>{}</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="119" refid="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1" kindref="member">ToString</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="120"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;k:<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>std::to_string(k)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;kc:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(kc)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_iterations:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_iterations)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_randomize:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_randomize)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_threads:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_precision:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_extra_scaling_steps:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_extra_scaling_steps)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_x:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_min)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_y:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_max)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_type:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>scaling_types_values[(int)sl_scaling_type]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;mmm_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(mmm_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;placer:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>placer_values[(int)placer]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>merger_values[(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)merger]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_factor:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_factor)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_adjustment:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_adjustment)<sp/><sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;node_size&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(node_size);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140" refid="structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee" kindref="member">k</ref>;<sp/></highlight></codeline>
-<codeline lineno="141" refid="structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc" kindref="member">kc</ref>;<sp/></highlight></codeline>
-<codeline lineno="142" refid="structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35" kindref="member">fme_iterations</ref>;<sp/></highlight></codeline>
-<codeline lineno="143" refid="structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e" kindref="member">fme_randomize</ref>;<sp/></highlight></codeline>
-<codeline lineno="144" refid="structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02" kindref="member">fme_threads</ref>;<sp/></highlight></codeline>
-<codeline lineno="145" refid="structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7" kindref="member">fme_precision</ref>;<sp/></highlight></codeline>
-<codeline lineno="146" refid="structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0" kindref="member">sl_repeats</ref>;<sp/></highlight></codeline>
-<codeline lineno="147" refid="structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f" kindref="member">sl_extra_scaling_steps</ref>;<sp/></highlight></codeline>
-<codeline lineno="148" refid="structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5" kindref="member">sl_scaling_min</ref>;<sp/></highlight></codeline>
-<codeline lineno="149" refid="structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a" kindref="member">sl_scaling_max</ref>;<sp/></highlight></codeline>
-<codeline lineno="150" refid="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2" kindref="member">ScalingType</ref><sp/><ref refid="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af" kindref="member">sl_scaling_type</ref>;<sp/></highlight></codeline>
-<codeline lineno="151" refid="structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065" kindref="member">mmm_repeats</ref>;<sp/></highlight></codeline>
-<codeline lineno="152" refid="structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96" kindref="member">Placer</ref><sp/><ref refid="structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0" kindref="member">placer</ref>;<sp/></highlight></codeline>
-<codeline lineno="153" refid="structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18" kindref="member">Merger</ref><sp/><ref refid="structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318" kindref="member">merger</ref>;<sp/></highlight></codeline>
-<codeline lineno="154" refid="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae" kindref="member">merger_factor</ref>;<sp/></highlight></codeline>
-<codeline lineno="155" refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132" kindref="member">merger_adjustment</ref>;<sp/></highlight></codeline>
-<codeline lineno="156" refid="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1" kindref="member">node_size</ref>;<sp/></highlight></codeline>
-<codeline lineno="157"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163" refid="structGraphProperties" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref></highlight></codeline>
-<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="165" refid="structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mst_weight<sp/>=<sp/>0.0;<sp/></highlight></codeline>
-<codeline lineno="166" refid="structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>n_connected_components<sp/>=<sp/>0;<sp/></highlight></codeline>
-<codeline lineno="167" refid="structGraphProperties_1ad3eec03efec4480e80c5510b896660ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>n_isolated_vertices<sp/>=<sp/>0;<sp/></highlight></codeline>
-<codeline lineno="168" refid="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1" kindref="member">degrees</ref>;<sp/></highlight></codeline>
-<codeline lineno="169" refid="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635" kindref="member">adjacency_list</ref>;<sp/></highlight></codeline>
-<codeline lineno="170"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><ref refid="layout_8hh_1aa004fd999aac084ce1a95e81c2a6336c" kindref="member">LayoutFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>clear_lsh_forest<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal">std::tuple&lt;std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;&gt;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><ref refid="layout_8hh_1a34d2f2c07e0aec50114d3523fd0da251" kindref="member">MSTFromLSHForest</ref>(<ref refid="classLSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/>uint32_t<sp/>k,<sp/>uint32_t<sp/>kc<sp/>=<sp/>10,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><ref refid="layout_8hh_1a287eac7d9621f833da1f42c06a9cd431" kindref="member">LayoutFromEdgeList</ref>(uint32_t<sp/>vertex_count,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::tuple&lt;uint32_t,<sp/>uint32_t,<sp/>float&gt;&gt;<sp/>&amp;edges,</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><ref refid="layout_8hh_1ae01c933d0a5e1177d9b70b94de44fc99" kindref="member">LayoutInternal</ref>(ogdf::EdgeWeightedGraph&lt;float&gt;<sp/>&amp;g,<sp/>uint32_t<sp/>vertex_count,<sp/><ref refid="structLayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/><ref refid="structGraphProperties" kindref="compound">GraphProperties</ref><sp/>&amp;gp);</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetmap" kindref="compound">tmap</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>LSHForest.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">LSHForest;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" kindref="member">Placer</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Barycenter<sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solar<sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Circle<sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Median<sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Random<sp/>=<sp/>4,<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Zero<sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>placer_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Barycenter&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Circle&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Median&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Random&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Zero&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" kindref="member">Merger</ref></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EdgeCover<sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LocalBiconnected<sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Solar<sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IndependentSet<sp/>=<sp/>3<sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>merger_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;EdgeCover&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LocalBiconnected&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;IndependentSet&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>struct</highlight><highlight class="normal"><sp/><ref refid="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" kindref="member">ScalingType</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Absolute<sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RelativeToAvgLength<sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RelativeToDesiredLength<sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RelativeToDrawing<sp/>=<sp/>3<sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>scaling_types_values[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;Absolute&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToAvgLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDesiredLength&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;RelativeToDrawing&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="structtmap_1_1LayoutConfiguration" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108" refid="structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875" kindref="member">LayoutConfiguration</ref>()<sp/>:<sp/>k(10),<sp/>kc(10),<sp/>fme_iterations(1000),<sp/>fme_randomize(false),<sp/>fme_threads(4),<sp/>fme_precision(4),</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_repeats(1),<sp/>sl_extra_scaling_steps(1),<sp/>sl_scaling_min(5.0),<sp/>sl_scaling_max(20.0),</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sl_scaling_type(<ref refid="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" kindref="member">ScalingType</ref>::RelativeToDrawing),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mmm_repeats(1),</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>placer(<ref refid="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" kindref="member">Placer</ref>::Barycenter),</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merger(<ref refid="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" kindref="member">Merger</ref>::LocalBiconnected),<sp/>merger_factor(2.0),<sp/>merger_adjustment(0),</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node_size(1.0)<sp/>{}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="121" refid="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11" kindref="member">ToString</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="122"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;k:<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>std::to_string(k)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;kc:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(kc)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_iterations:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_iterations)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_randomize:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_randomize)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_threads:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fme_precision:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(fme_threads)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_extra_scaling_steps:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_extra_scaling_steps)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_x:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_min)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_y:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sl_scaling_max)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sl_scaling_type:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>scaling_types_values[(int)sl_scaling_type]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;mmm_repeats:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(mmm_repeats)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;placer:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>placer_values[(int)placer]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>merger_values[(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)merger]<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_factor:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_factor)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;merger_adjustment:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(merger_adjustment)<sp/><sp/>+<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;node_size&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(node_size);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" kindref="member">k</ref>;<sp/></highlight></codeline>
+<codeline lineno="143" refid="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" kindref="member">kc</ref>;<sp/></highlight></codeline>
+<codeline lineno="144" refid="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84" kindref="member">fme_iterations</ref>;<sp/></highlight></codeline>
+<codeline lineno="145" refid="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b" kindref="member">fme_randomize</ref>;<sp/></highlight></codeline>
+<codeline lineno="146" refid="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92" kindref="member">fme_threads</ref>;<sp/></highlight></codeline>
+<codeline lineno="147" refid="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7" kindref="member">fme_precision</ref>;<sp/></highlight></codeline>
+<codeline lineno="148" refid="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7" kindref="member">sl_repeats</ref>;<sp/></highlight></codeline>
+<codeline lineno="149" refid="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440" kindref="member">sl_extra_scaling_steps</ref>;<sp/></highlight></codeline>
+<codeline lineno="150" refid="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a" kindref="member">sl_scaling_min</ref>;<sp/></highlight></codeline>
+<codeline lineno="151" refid="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3" kindref="member">sl_scaling_max</ref>;<sp/></highlight></codeline>
+<codeline lineno="152" refid="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" kindref="member">ScalingType</ref><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec" kindref="member">sl_scaling_type</ref>;<sp/></highlight></codeline>
+<codeline lineno="153" refid="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0" kindref="member">mmm_repeats</ref>;<sp/></highlight></codeline>
+<codeline lineno="154" refid="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" kindref="member">Placer</ref><sp/><ref refid="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d" kindref="member">placer</ref>;<sp/></highlight></codeline>
+<codeline lineno="155" refid="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" kindref="member">Merger</ref><sp/><ref refid="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f" kindref="member">merger</ref>;<sp/></highlight></codeline>
+<codeline lineno="156" refid="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46" kindref="member">merger_factor</ref>;<sp/></highlight></codeline>
+<codeline lineno="157" refid="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6" kindref="member">merger_adjustment</ref>;<sp/></highlight></codeline>
+<codeline lineno="158" refid="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924" kindref="member">node_size</ref>;<sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="structtmap_1_1GraphProperties" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="167" refid="structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mst_weight<sp/>=<sp/>0.0;<sp/></highlight></codeline>
+<codeline lineno="168" refid="structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>n_connected_components<sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="169" refid="structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>n_isolated_vertices<sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="170" refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" kindref="member">degrees</ref>;<sp/></highlight></codeline>
+<codeline lineno="171" refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" kindref="member">adjacency_list</ref>;<sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1acd9c409403d706202320359541674ba8" kindref="member">LayoutFromLSHForest</ref>(<ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>clear_lsh_forest<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>std::tuple&lt;std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;&gt;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" kindref="member">MSTFromLSHForest</ref>(<ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref><sp/>&amp;lsh_forest,<sp/>uint32_t<sp/>k,<sp/>uint32_t<sp/>kc<sp/>=<sp/>10,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>weighted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" kindref="member">LayoutFromEdgeList</ref>(uint32_t<sp/>vertex_count,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::tuple&lt;uint32_t,<sp/>uint32_t,<sp/>float&gt;&gt;<sp/>&amp;edges,</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config<sp/>=<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_mst<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>std::tuple&lt;std::vector&lt;float&gt;,<sp/>std::vector&lt;float&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/>std::vector&lt;uint32_t&gt;,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kindref="member">LayoutInternal</ref>(ogdf::EdgeWeightedGraph&lt;float&gt;<sp/>&amp;g,<sp/>uint32_t<sp/>vertex_count,<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,<sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref><sp/>&amp;gp);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="src/tmap/layout.hh"/>
   </compounddef>

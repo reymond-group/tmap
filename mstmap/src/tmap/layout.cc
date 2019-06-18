@@ -120,7 +120,7 @@ void RemoveDisconnectedComponents(Graph &g)
 	}
 }
 
-void ConnectGraph(Graph &g, std::vector<node> &index_to_node, LSHForest &lsh_forest)
+void ConnectGraph(Graph &g, std::vector<node> &index_to_node, tmap::LSHForest &lsh_forest)
 {
 	auto trees = GetTreesFromForest(g);
 
@@ -141,7 +141,7 @@ void ConnectGraph(Graph &g, std::vector<node> &index_to_node, LSHForest &lsh_for
 }
 
 std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
-MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc, bool weighted)
+tmap::MSTFromLSHForest(tmap::LSHForest &lsh_forest, uint32_t k, uint32_t kc, bool weighted)
 {
 	EdgeWeightedGraph<float> g;
 	uint32_t vertex_count = lsh_forest.size();
@@ -175,10 +175,10 @@ MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc, bool weighted)
 	return std::make_tuple(x, y);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
-LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool create_mst, bool clear_lsh_forest, bool weighted)
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, tmap::GraphProperties>
+tmap::LayoutFromLSHForest(tmap::LSHForest &lsh_forest, tmap::LayoutConfiguration config, bool create_mst, bool clear_lsh_forest, bool weighted)
 {
-	GraphProperties gp;
+	tmap::GraphProperties gp;
 	EdgeWeightedGraph<float> g;
 	uint32_t vertex_count = lsh_forest.size();
 
@@ -230,11 +230,11 @@ LayoutFromLSHForest(LSHForest &lsh_forest, LayoutConfiguration config, bool crea
 	return LayoutInternal(g, vertex_count, config, gp);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
-LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
-       LayoutConfiguration config, bool create_mst)
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, tmap::GraphProperties>
+tmap::LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
+       tmap::LayoutConfiguration config, bool create_mst)
 {
-	GraphProperties gp;
+	tmap::GraphProperties gp;
 	EdgeWeightedGraph<float> g;
 	std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
 
@@ -276,8 +276,8 @@ LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t,
 	return LayoutInternal(g, vertex_count, config, gp);
 }
 
-std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
-LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &gp)
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, tmap::GraphProperties>
+tmap::LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &gp)
 {
 	GraphAttributes ga(g);
 

@@ -2,15 +2,133 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`LSHForest`](#classLSHForest) | Provides locality sensitive hashing forest functionalities.
-`class `[`Minhash`](#classMinhash) | An implementation of MinHash and weighted MinHash using SHA1.
-`class `[`Timer`](#classTimer) | A simple timer class used to check performance during development.
-`struct `[`GraphProperties`](#structGraphProperties) | The properties of a generated graph. An instance of this struct is returned from the layout functions.
-`struct `[`LayoutConfiguration`](#structLayoutConfiguration) | A struct containing all the configuration options available for and applied to a layout.
-`struct `[`MapKeyPointer`](#structMapKeyPointer) | The pointer map used for pointing to the keys from the sorted hash map.
-`struct `[`SimpleHash`](#structSimpleHash) | Hash struct used for the sparsepp sparse hash map.
+`namespace `[`tmap`](#namespacetmap) | 
 
-# class `LSHForest` <a id="classLSHForest"></a>
+# namespace `tmap` <a id="namespacetmap"></a>
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`enum `[`Placer`](#layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b)            | The placers available in OGDF.
+`enum `[`Merger`](#layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff)            | The mergers available in OGDF.
+`enum `[`ScalingType`](#layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761)            | The scaling types available in OGDF.
+`public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutFromLSHForest`](#layout_8hh_1acd9c409403d706202320359541674ba8)`(`[`LSHForest`](#classtmap_1_1LSHForest)` & lsh_forest,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,bool create_mst,bool clear_lsh_forest,bool weighted)`            | Genereates coordinates, edges and properties of a MST (via a kNN graph) from an [LSHForest](#classtmap_1_1LSHForest) instance.
+`public std::tuple< std::vector< uint32_t >, std::vector< uint32_t > > `[`MSTFromLSHForest`](#layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840)`(`[`LSHForest`](#classtmap_1_1LSHForest)` & lsh_forest,uint32_t k,uint32_t kc,bool weighted)`            | Generates an MST (via a kNN graph) from an [LSHForest](#classtmap_1_1LSHForest) instance.
+`public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutFromEdgeList`](#layout_8hh_1a780993ad8dd7e349b77f55895cc33451)`(uint32_t vertex_count,const std::vector< std::tuple< uint32_t, uint32_t, float >> & edges,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,bool create_mst)`            | Genereates coordinates, edges and properties of a MST from an edge list.
+`public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutInternal`](#layout_8hh_1a126dbc6ec8355732c528abb2877e60d4)`(ogdf::EdgeWeightedGraph< float > & g,uint32_t vertex_count,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,`[`GraphProperties`](#structtmap_1_1GraphProperties)` & gp)`            | Laying out an OGDF graph.
+`class `[`tmap::LSHForest`](#classtmap_1_1LSHForest) | Provides locality sensitive hashing forest functionalities.
+`class `[`tmap::Minhash`](#classtmap_1_1Minhash) | An implementation of MinHash and weighted MinHash using SHA1.
+`class `[`tmap::Timer`](#classtmap_1_1Timer) | A simple timer class used to check performance during development.
+`struct `[`tmap::GraphProperties`](#structtmap_1_1GraphProperties) | The properties of a generated graph. An instance of this struct is returned from the layout functions.
+`struct `[`tmap::LayoutConfiguration`](#structtmap_1_1LayoutConfiguration) | A struct containing all the configuration options available for and applied to a layout.
+`struct `[`tmap::MapKeyPointer`](#structtmap_1_1MapKeyPointer) | The pointer map used for pointing to the keys from the sorted hash map.
+`struct `[`tmap::SimpleHash`](#structtmap_1_1SimpleHash) | Hash struct used for the sparsepp sparse hash map.
+
+## Members
+
+#### `enum `[`Placer`](#layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b) <a id="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b"></a>
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+Barycenter            | Places a vertex at the barycenter of its neighbors' position.
+Solar            | Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns.
+Circle            | Places the vertices in a circle around the barycenter and outside of the current drawing.
+Median            | Places a vertex at the median position of the neighbor nodes for each coordinate axis.
+Random            | Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing.
+Zero            | Places a vertex at the same position as its representative in the previous level.
+
+The placers available in OGDF.
+
+#### `enum `[`Merger`](#layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff) <a id="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff"></a>
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+EdgeCover            | Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices.
+LocalBiconnected            | Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position.
+Solar            | Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices.
+IndependentSet            | Uses a maximal independent set filtration. See GRIP for details.
+
+The mergers available in OGDF.
+
+#### `enum `[`ScalingType`](#layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761) <a id="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761"></a>
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+Absolute            | Absolute factor, can be used to scale relative to level size change.
+RelativeToAvgLength            | Scales by a factor relative to the average edge weights.
+RelativeToDesiredLength            | Scales by a factor relative to the disired edge length.
+RelativeToDrawing            | Scales by a factor relative to the drawing.
+
+The scaling types available in OGDF.
+
+#### `public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutFromLSHForest`](#layout_8hh_1acd9c409403d706202320359541674ba8)`(`[`LSHForest`](#classtmap_1_1LSHForest)` & lsh_forest,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,bool create_mst,bool clear_lsh_forest,bool weighted)` <a id="layout_8hh_1acd9c409403d706202320359541674ba8"></a>
+
+Genereates coordinates, edges and properties of a MST (via a kNN graph) from an [LSHForest](#classtmap_1_1LSHForest) instance.
+
+#### Parameters
+* `lsh_forest` An [LSHForest](#classtmap_1_1LSHForest) instance which is used to construct the kNN graph. 
+
+* `config` A [LayoutConfiguration](#structtmap_1_1LayoutConfiguration) instance. 
+
+* `create_mst` Whether to create an MST before laying out the graph. 
+
+* `clear_lsh_forest` Whether to clear the [LSHForest](#classtmap_1_1LSHForest) after it's use (might save memory). 
+
+* `weighted` Whether the [LSHForest](#classtmap_1_1LSHForest) instance contains weighted MinHash data. 
+
+#### Returns
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, [GraphProperties](#structtmap_1_1GraphProperties)>
+
+#### `public std::tuple< std::vector< uint32_t >, std::vector< uint32_t > > `[`MSTFromLSHForest`](#layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840)`(`[`LSHForest`](#classtmap_1_1LSHForest)` & lsh_forest,uint32_t k,uint32_t kc,bool weighted)` <a id="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840"></a>
+
+Generates an MST (via a kNN graph) from an [LSHForest](#classtmap_1_1LSHForest) instance.
+
+#### Parameters
+* `lsh_forest` An [LSHForest](#classtmap_1_1LSHForest) instance which is used to construct the kNN graph. 
+
+* `k` The number of nearest neighbors used to create the kNN graph. 
+
+* `kc` The factor by which k is multiplied when retrieving nearest neighbors. 
+
+* `weighted` Whether the [LSHForest](#classtmap_1_1LSHForest) instance contains weighted MinHash data. 
+
+#### Returns
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+
+#### `public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutFromEdgeList`](#layout_8hh_1a780993ad8dd7e349b77f55895cc33451)`(uint32_t vertex_count,const std::vector< std::tuple< uint32_t, uint32_t, float >> & edges,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,bool create_mst)` <a id="layout_8hh_1a780993ad8dd7e349b77f55895cc33451"></a>
+
+Genereates coordinates, edges and properties of a MST from an edge list.
+
+#### Parameters
+* `vertex_count` The number of vertices in the input graph. 
+
+* `edges` An edge list in the form of [(from, to, weight)]. 
+
+* `config` A [LayoutConfiguration](#structtmap_1_1LayoutConfiguration) instance. 
+
+* `create_mst` Whether to create an MST before laying out the graph. 
+
+#### Returns
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, [GraphProperties](#structtmap_1_1GraphProperties)>
+
+#### `public std::tuple< std::vector< float >, std::vector< float >, std::vector< uint32_t >, std::vector< uint32_t >, `[`GraphProperties`](#structtmap_1_1GraphProperties)` > `[`LayoutInternal`](#layout_8hh_1a126dbc6ec8355732c528abb2877e60d4)`(ogdf::EdgeWeightedGraph< float > & g,uint32_t vertex_count,`[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration)` config,`[`GraphProperties`](#structtmap_1_1GraphProperties)` & gp)` <a id="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4"></a>
+
+Laying out an OGDF graph.
+
+#### Parameters
+* `g` An OGDF Graph instance 
+
+* `vertex_count` The number of vertices in the graph. 
+
+* `config` A [LayoutConfiguration](#structtmap_1_1LayoutConfiguration) instance. 
+
+* `gp` An instance of a [GraphProperties](#structtmap_1_1GraphProperties) struct. 
+
+#### Returns
+std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, [GraphProperties](#structtmap_1_1GraphProperties)>
+
+# class `tmap::LSHForest` <a id="classtmap_1_1LSHForest"></a>
 
 Provides locality sensitive hashing forest functionalities.
 
@@ -18,44 +136,44 @@ Provides locality sensitive hashing forest functionalities.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`LSHForest`](#classLSHForest_1ae227bb302c173481a129335fa581fa6f)`(unsigned int d,unsigned int l,bool store,bool file_backed)` | Construct a new [LSHForest](#classLSHForest) object.
-`public inline  `[`~LSHForest`](#classLSHForest_1ac2e048b53de7268b2b16da47b99a3955)`()` | Destroy the [LSHForest](#classLSHForest) object.
-`public void `[`Add`](#classLSHForest_1a000536ff09a94df528a1f72ffa40bac3)`(std::vector< uint32_t > & vec)` | Add a MinHash to this [LSHForest](#classLSHForest) instance.
-`public void `[`BatchAdd`](#classLSHForest_1a668dc958bfc4856f26a96a4aa0897e53)`(std::vector< std::vector< uint32_t >> & vecs)` | Add Minhashes to this [LSHForest](#classLSHForest) (parallelized).
-`public void `[`Index`](#classLSHForest_1afdd95ab82907622f9a38a386766a53d2)`()` | Create the index (trees).
-`public bool `[`IsClean`](#classLSHForest_1af7cbc237713af39831aeab21541dafcf)`()` | Check whether the added MinHashes have been indexed.
-`public void `[`Store`](#classLSHForest_1a758c5329128f5ab3723a98b77bbc4634)`(const std::string & path)` | Write / serialize the current LSH forest to the disk.
-`public void `[`Restore`](#classLSHForest_1aae4d0534e33a6ac46b56eeb7630916f6)`(const std::string & path)` | Read / deserialize a LSH forest instance form the disk. The forest is indexed automatically.
-`public std::vector< uint32_t > `[`GetHash`](#classLSHForest_1aec42a8cb3d1caf12faeb8d0f9ea09529)`(uint32_t id)` | Get the MinHash of an entry at a given index. The index is defined by order of insertion.
-`public void `[`GetKNNGraph`](#classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2)`(std::vector< uint32_t > & from,std::vector< uint32_t > & to,std::vector< float > & weight,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbor graph of the data stored in this LSH forest instance. It will be written to out parameters as an edge list.
-`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScan`](#classLSHForest_1aa655ed6c39050b45b73a051abe51e035)`(const std::vector< uint32_t > & vec,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of a query.
-`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExclude`](#classLSHForest_1a932c426296cbd6da0e7c29cd4212f3ff)`(const std::vector< uint32_t > & vec,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of a query except those defined in the argument exclude.
-`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanById`](#classLSHForest_1afe623496f801357e8f555259620bc174)`(uint32_t id,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of an entry.
-`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExcludeById`](#classLSHForest_1a5cdb395444dad71ba95e2000bb896454)`(uint32_t id,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of an entry except those defined in the argument exclude.
-`public std::vector< std::pair< float, uint32_t > > `[`LinearScan`](#classLSHForest_1a5d5b1675caaa17d9c2a4ba8c95c645a3)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & indices,unsigned int k,bool weighted)` | Get the k-nearest neighbors of a query using linear scan.
-`public std::vector< uint32_t > `[`Query`](#classLSHForest_1a6bc39aa54083ede4ab9ba1b0f12c7229)`(const std::vector< uint32_t > & vec,unsigned int k)` | Query the LSH forest for k-nearest neighbors.
-`public std::vector< uint32_t > `[`QueryExclude`](#classLSHForest_1ada7ea3fd5c3eb9fc05188a0054de48cf)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & exclude,unsigned int k)` | Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
-`public std::vector< uint32_t > `[`QueryById`](#classLSHForest_1ade573cce99526ba05341dd506673ea8b)`(uint32_t id,unsigned int k)` | Query the LSH forest for k-nearest neighbors.
-`public std::vector< uint32_t > `[`QueryExcludeById`](#classLSHForest_1a50da7a1db11f709c54e5e05fd5b08aa8)`(uint32_t id,std::vector< uint32_t > & exclude,unsigned int k)` | Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
-`public std::vector< std::vector< uint32_t > > `[`BatchQuery`](#classLSHForest_1a23e5fd430b95580e09126ba58bde32a4)`(const std::vector< std::vector< uint32_t >> & vecs,unsigned int k)` | Query the LSH forest for k-nearest neighbors (parallelized).
-`public std::vector< uint32_t > `[`GetAllNearestNeighbors`](#classLSHForest_1ac741709bb8e322c68a5749c023147bde)`(unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of all LSH forest entries.
-`public std::vector< uint32_t > `[`GetData`](#classLSHForest_1aad89848405eebc847c18a75b618da3e1)`(uint32_t id)` | Get the MinHash of an entry at a given index. The index is defined by order of insertion. Alias for GetHash.
-`public std::vector< float > `[`GetAllDistances`](#classLSHForest_1abdc3bd3357708bb58e6d957376e92f1c)`(const std::vector< uint32_t > & vec)` | Get the distances of a MinHash to all entries in the LSH forest.
-`public float `[`GetDistance`](#classLSHForest_1a08d66568664bdc8e0148c18b18a1b8fa)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` | Get the distance between two MinHashes.
-`public float `[`GetWeightedDistance`](#classLSHForest_1acfb878c731daf8da6402e7cebc2b6ef1)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` | Get the distance between two weighted MinHashes.
-`public float `[`GetDistanceById`](#classLSHForest_1a49ad1fe0429121a8b572cde4df973d96)`(uint32_t a,uint32_t b)` | Get the distance between two MinHashes.
-`public float `[`GetWeightedDistanceById`](#classLSHForest_1a72b5a201bc8c409c0c5742587988ba85)`(uint32_t a,uint32_t b)` | Get the distance between two weighted MinHashes.
-`public void `[`Clear`](#classLSHForest_1aec34dc5185166dce9c22a4060ce3914c)`()` | Remove all entries and the index from the LSH forest.
-`public size_t `[`size`](#classLSHForest_1af0015fae65afd25bf67875d12dc0d663)`()` | Get the number of entries.
+`public  `[`LSHForest`](#classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0)`(unsigned int d,unsigned int l,bool store,bool file_backed)` | Construct a new [LSHForest](#classtmap_1_1LSHForest) object.
+`public inline  `[`~LSHForest`](#classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4)`()` | Destroy the [LSHForest](#classtmap_1_1LSHForest) object.
+`public void `[`Add`](#classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a)`(std::vector< uint32_t > & vec)` | Add a MinHash to this [LSHForest](#classtmap_1_1LSHForest) instance.
+`public void `[`BatchAdd`](#classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb)`(std::vector< std::vector< uint32_t >> & vecs)` | Add Minhashes to this [LSHForest](#classtmap_1_1LSHForest) (parallelized).
+`public void `[`Index`](#classtmap_1_1LSHForest_1aba68c9cab8cc3c32e684e08b4f9d0a33)`()` | Create the index (trees).
+`public bool `[`IsClean`](#classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2)`()` | Check whether the added MinHashes have been indexed.
+`public void `[`Store`](#classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51)`(const std::string & path)` | Write / serialize the current LSH forest to the disk.
+`public void `[`Restore`](#classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8)`(const std::string & path)` | Read / deserialize a LSH forest instance form the disk. The forest is indexed automatically.
+`public std::vector< uint32_t > `[`GetHash`](#classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c)`(uint32_t id)` | Get the MinHash of an entry at a given index. The index is defined by order of insertion.
+`public void `[`GetKNNGraph`](#classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f)`(std::vector< uint32_t > & from,std::vector< uint32_t > & to,std::vector< float > & weight,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbor graph of the data stored in this LSH forest instance. It will be written to out parameters as an edge list.
+`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScan`](#classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569)`(const std::vector< uint32_t > & vec,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of a query.
+`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExclude`](#classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e)`(const std::vector< uint32_t > & vec,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of a query except those defined in the argument exclude.
+`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanById`](#classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6)`(uint32_t id,unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of an entry.
+`public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExcludeById`](#classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b)`(uint32_t id,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of an entry except those defined in the argument exclude.
+`public std::vector< std::pair< float, uint32_t > > `[`LinearScan`](#classtmap_1_1LSHForest_1a63e22972fbd38e3edc8f321f88a6be8d)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & indices,unsigned int k,bool weighted)` | Get the k-nearest neighbors of a query using linear scan.
+`public std::vector< uint32_t > `[`Query`](#classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b)`(const std::vector< uint32_t > & vec,unsigned int k)` | Query the LSH forest for k-nearest neighbors.
+`public std::vector< uint32_t > `[`QueryExclude`](#classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & exclude,unsigned int k)` | Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
+`public std::vector< uint32_t > `[`QueryById`](#classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999)`(uint32_t id,unsigned int k)` | Query the LSH forest for k-nearest neighbors.
+`public std::vector< uint32_t > `[`QueryExcludeById`](#classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86)`(uint32_t id,std::vector< uint32_t > & exclude,unsigned int k)` | Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
+`public std::vector< std::vector< uint32_t > > `[`BatchQuery`](#classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c)`(const std::vector< std::vector< uint32_t >> & vecs,unsigned int k)` | Query the LSH forest for k-nearest neighbors (parallelized).
+`public std::vector< uint32_t > `[`GetAllNearestNeighbors`](#classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84)`(unsigned int k,unsigned int kc,bool weighted)` | Get the k-nearest neighbors of all LSH forest entries.
+`public std::vector< uint32_t > `[`GetData`](#classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609)`(uint32_t id)` | Get the MinHash of an entry at a given index. The index is defined by order of insertion. Alias for GetHash.
+`public std::vector< float > `[`GetAllDistances`](#classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df)`(const std::vector< uint32_t > & vec)` | Get the distances of a MinHash to all entries in the LSH forest.
+`public float `[`GetDistance`](#classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` | Get the distance between two MinHashes.
+`public float `[`GetWeightedDistance`](#classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` | Get the distance between two weighted MinHashes.
+`public float `[`GetDistanceById`](#classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f)`(uint32_t a,uint32_t b)` | Get the distance between two MinHashes.
+`public float `[`GetWeightedDistanceById`](#classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5)`(uint32_t a,uint32_t b)` | Get the distance between two weighted MinHashes.
+`public void `[`Clear`](#classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d)`()` | Remove all entries and the index from the LSH forest.
+`public size_t `[`size`](#classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874)`()` | Get the number of entries.
 
 ## Members
 
-#### `public  `[`LSHForest`](#classLSHForest_1ae227bb302c173481a129335fa581fa6f)`(unsigned int d,unsigned int l,bool store,bool file_backed)` <a id="classLSHForest_1ae227bb302c173481a129335fa581fa6f"></a>
+#### `public  `[`LSHForest`](#classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0)`(unsigned int d,unsigned int l,bool store,bool file_backed)` <a id="classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0"></a>
 
-Construct a new [LSHForest](#classLSHForest) object.
+Construct a new [LSHForest](#classtmap_1_1LSHForest) object.
 
 #### Parameters
-* `d` The dimensionality of the MinHashes to be added to this [LSHForest](#classLSHForest). 
+* `d` The dimensionality of the MinHashes to be added to this [LSHForest](#classtmap_1_1LSHForest). 
 
 * `l` The number of prefix trees used. 
 
@@ -63,29 +181,29 @@ Construct a new [LSHForest](#classLSHForest) object.
 
 * `file_backed` Whether to store the data on disk rather than in RAM (experimental).
 
-#### `public inline  `[`~LSHForest`](#classLSHForest_1ac2e048b53de7268b2b16da47b99a3955)`()` <a id="classLSHForest_1ac2e048b53de7268b2b16da47b99a3955"></a>
+#### `public inline  `[`~LSHForest`](#classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4)`()` <a id="classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4"></a>
 
-Destroy the [LSHForest](#classLSHForest) object.
+Destroy the [LSHForest](#classtmap_1_1LSHForest) object.
 
-#### `public void `[`Add`](#classLSHForest_1a000536ff09a94df528a1f72ffa40bac3)`(std::vector< uint32_t > & vec)` <a id="classLSHForest_1a000536ff09a94df528a1f72ffa40bac3"></a>
+#### `public void `[`Add`](#classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a)`(std::vector< uint32_t > & vec)` <a id="classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a"></a>
 
-Add a MinHash to this [LSHForest](#classLSHForest) instance.
+Add a MinHash to this [LSHForest](#classtmap_1_1LSHForest) instance.
 
 #### Parameters
 * `vec` A MinHash vector.
 
-#### `public void `[`BatchAdd`](#classLSHForest_1a668dc958bfc4856f26a96a4aa0897e53)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classLSHForest_1a668dc958bfc4856f26a96a4aa0897e53"></a>
+#### `public void `[`BatchAdd`](#classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb"></a>
 
-Add Minhashes to this [LSHForest](#classLSHForest) (parallelized).
+Add Minhashes to this [LSHForest](#classtmap_1_1LSHForest) (parallelized).
 
 #### Parameters
 * `vecs` A vector containing MinHash vectors.
 
-#### `public void `[`Index`](#classLSHForest_1afdd95ab82907622f9a38a386766a53d2)`()` <a id="classLSHForest_1afdd95ab82907622f9a38a386766a53d2"></a>
+#### `public void `[`Index`](#classtmap_1_1LSHForest_1aba68c9cab8cc3c32e684e08b4f9d0a33)`()` <a id="classtmap_1_1LSHForest_1aba68c9cab8cc3c32e684e08b4f9d0a33"></a>
 
 Create the index (trees).
 
-#### `public bool `[`IsClean`](#classLSHForest_1af7cbc237713af39831aeab21541dafcf)`()` <a id="classLSHForest_1af7cbc237713af39831aeab21541dafcf"></a>
+#### `public bool `[`IsClean`](#classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2)`()` <a id="classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2"></a>
 
 Check whether the added MinHashes have been indexed.
 
@@ -95,21 +213,21 @@ true
 #### Returns
 false
 
-#### `public void `[`Store`](#classLSHForest_1a758c5329128f5ab3723a98b77bbc4634)`(const std::string & path)` <a id="classLSHForest_1a758c5329128f5ab3723a98b77bbc4634"></a>
+#### `public void `[`Store`](#classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51)`(const std::string & path)` <a id="classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51"></a>
 
 Write / serialize the current LSH forest to the disk.
 
 #### Parameters
 * `path` The location where the LSH forest should be stored on disk.
 
-#### `public void `[`Restore`](#classLSHForest_1aae4d0534e33a6ac46b56eeb7630916f6)`(const std::string & path)` <a id="classLSHForest_1aae4d0534e33a6ac46b56eeb7630916f6"></a>
+#### `public void `[`Restore`](#classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8)`(const std::string & path)` <a id="classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8"></a>
 
 Read / deserialize a LSH forest instance form the disk. The forest is indexed automatically.
 
 #### Parameters
 * `path` The location from where to load the LSH forest.
 
-#### `public std::vector< uint32_t > `[`GetHash`](#classLSHForest_1aec42a8cb3d1caf12faeb8d0f9ea09529)`(uint32_t id)` <a id="classLSHForest_1aec42a8cb3d1caf12faeb8d0f9ea09529"></a>
+#### `public std::vector< uint32_t > `[`GetHash`](#classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c)`(uint32_t id)` <a id="classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c"></a>
 
 Get the MinHash of an entry at a given index. The index is defined by order of insertion.
 
@@ -119,7 +237,7 @@ Get the MinHash of an entry at a given index. The index is defined by order of i
 #### Returns
 std::vector<uint32_t> The MinHash associated with an index.
 
-#### `public void `[`GetKNNGraph`](#classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2)`(std::vector< uint32_t > & from,std::vector< uint32_t > & to,std::vector< float > & weight,unsigned int k,unsigned int kc,bool weighted)` <a id="classLSHForest_1a6c84d67e979b5bfd6123e62e1350dbf2"></a>
+#### `public void `[`GetKNNGraph`](#classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f)`(std::vector< uint32_t > & from,std::vector< uint32_t > & to,std::vector< float > & weight,unsigned int k,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f"></a>
 
 Get the k-nearest neighbor graph of the data stored in this LSH forest instance. It will be written to out parameters as an edge list.
 
@@ -136,7 +254,7 @@ Get the k-nearest neighbor graph of the data stored in this LSH forest instance.
 
 * `weighted` Whether the MinHashes contained within this instance of an LSH forest are weighted.
 
-#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScan`](#classLSHForest_1aa655ed6c39050b45b73a051abe51e035)`(const std::vector< uint32_t > & vec,unsigned int k,unsigned int kc,bool weighted)` <a id="classLSHForest_1aa655ed6c39050b45b73a051abe51e035"></a>
+#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScan`](#classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569)`(const std::vector< uint32_t > & vec,unsigned int k,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569"></a>
 
 Get the k-nearest neighbors of a query.
 
@@ -152,7 +270,7 @@ Get the k-nearest neighbors of a query.
 #### Returns
 std::vector<std::pair<float, uint32_t>> The distances and indices of the k-nearest neighbors.
 
-#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExclude`](#classLSHForest_1a932c426296cbd6da0e7c29cd4212f3ff)`(const std::vector< uint32_t > & vec,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` <a id="classLSHForest_1a932c426296cbd6da0e7c29cd4212f3ff"></a>
+#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExclude`](#classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e)`(const std::vector< uint32_t > & vec,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e"></a>
 
 Get the k-nearest neighbors of a query except those defined in the argument exclude.
 
@@ -170,7 +288,7 @@ Get the k-nearest neighbors of a query except those defined in the argument excl
 #### Returns
 std::vector<std::pair<float, uint32_t>>
 
-#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanById`](#classLSHForest_1afe623496f801357e8f555259620bc174)`(uint32_t id,unsigned int k,unsigned int kc,bool weighted)` <a id="classLSHForest_1afe623496f801357e8f555259620bc174"></a>
+#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanById`](#classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6)`(uint32_t id,unsigned int k,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6"></a>
 
 Get the k-nearest neighbors of an entry.
 
@@ -186,7 +304,7 @@ Get the k-nearest neighbors of an entry.
 #### Returns
 std::vector<std::pair<float, uint32_t>> The distances and indices of the k-nearest neighbors.
 
-#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExcludeById`](#classLSHForest_1a5cdb395444dad71ba95e2000bb896454)`(uint32_t id,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` <a id="classLSHForest_1a5cdb395444dad71ba95e2000bb896454"></a>
+#### `public std::vector< std::pair< float, uint32_t > > `[`QueryLinearScanExcludeById`](#classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b)`(uint32_t id,unsigned int k,std::vector< uint32_t > & exclude,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b"></a>
 
 Get the k-nearest neighbors of an entry except those defined in the argument exclude.
 
@@ -204,7 +322,7 @@ Get the k-nearest neighbors of an entry except those defined in the argument exc
 #### Returns
 std::vector<std::pair<float, uint32_t>> The distances and indices of the k-nearest neighbors.
 
-#### `public std::vector< std::pair< float, uint32_t > > `[`LinearScan`](#classLSHForest_1a5d5b1675caaa17d9c2a4ba8c95c645a3)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & indices,unsigned int k,bool weighted)` <a id="classLSHForest_1a5d5b1675caaa17d9c2a4ba8c95c645a3"></a>
+#### `public std::vector< std::pair< float, uint32_t > > `[`LinearScan`](#classtmap_1_1LSHForest_1a63e22972fbd38e3edc8f321f88a6be8d)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & indices,unsigned int k,bool weighted)` <a id="classtmap_1_1LSHForest_1a63e22972fbd38e3edc8f321f88a6be8d"></a>
 
 Get the k-nearest neighbors of a query using linear scan.
 
@@ -220,7 +338,7 @@ Get the k-nearest neighbors of a query using linear scan.
 #### Returns
 std::vector<std::pair<float, uint32_t>> The distances and indices of the k-nearest neighbors.
 
-#### `public std::vector< uint32_t > `[`Query`](#classLSHForest_1a6bc39aa54083ede4ab9ba1b0f12c7229)`(const std::vector< uint32_t > & vec,unsigned int k)` <a id="classLSHForest_1a6bc39aa54083ede4ab9ba1b0f12c7229"></a>
+#### `public std::vector< uint32_t > `[`Query`](#classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b)`(const std::vector< uint32_t > & vec,unsigned int k)` <a id="classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b"></a>
 
 Query the LSH forest for k-nearest neighbors.
 
@@ -232,7 +350,7 @@ Query the LSH forest for k-nearest neighbors.
 #### Returns
 std::vector<uint32_t> The indices of the k-nearest neighbors.
 
-#### `public std::vector< uint32_t > `[`QueryExclude`](#classLSHForest_1ada7ea3fd5c3eb9fc05188a0054de48cf)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & exclude,unsigned int k)` <a id="classLSHForest_1ada7ea3fd5c3eb9fc05188a0054de48cf"></a>
+#### `public std::vector< uint32_t > `[`QueryExclude`](#classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db)`(const std::vector< uint32_t > & vec,std::vector< uint32_t > & exclude,unsigned int k)` <a id="classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db"></a>
 
 Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
 
@@ -246,7 +364,7 @@ Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
 #### Returns
 std::vector<uint32_t> The indices of the k-nearest neighbors.
 
-#### `public std::vector< uint32_t > `[`QueryById`](#classLSHForest_1ade573cce99526ba05341dd506673ea8b)`(uint32_t id,unsigned int k)` <a id="classLSHForest_1ade573cce99526ba05341dd506673ea8b"></a>
+#### `public std::vector< uint32_t > `[`QueryById`](#classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999)`(uint32_t id,unsigned int k)` <a id="classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999"></a>
 
 Query the LSH forest for k-nearest neighbors.
 
@@ -258,7 +376,7 @@ Query the LSH forest for k-nearest neighbors.
 #### Returns
 std::vector<uint32_t> The indices of the k-nearest neighbors.
 
-#### `public std::vector< uint32_t > `[`QueryExcludeById`](#classLSHForest_1a50da7a1db11f709c54e5e05fd5b08aa8)`(uint32_t id,std::vector< uint32_t > & exclude,unsigned int k)` <a id="classLSHForest_1a50da7a1db11f709c54e5e05fd5b08aa8"></a>
+#### `public std::vector< uint32_t > `[`QueryExcludeById`](#classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86)`(uint32_t id,std::vector< uint32_t > & exclude,unsigned int k)` <a id="classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86"></a>
 
 Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
 
@@ -272,7 +390,7 @@ Query the LSH forest for k-nearest neighbors. Exclude a list of entries by ID.
 #### Returns
 std::vector<uint32_t> The indices of the k-nearest neighbors.
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchQuery`](#classLSHForest_1a23e5fd430b95580e09126ba58bde32a4)`(const std::vector< std::vector< uint32_t >> & vecs,unsigned int k)` <a id="classLSHForest_1a23e5fd430b95580e09126ba58bde32a4"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchQuery`](#classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c)`(const std::vector< std::vector< uint32_t >> & vecs,unsigned int k)` <a id="classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c"></a>
 
 Query the LSH forest for k-nearest neighbors (parallelized).
 
@@ -284,7 +402,7 @@ Query the LSH forest for k-nearest neighbors (parallelized).
 #### Returns
 std::vector<std::vector<uint32_t>> A vector of the indices of the k-nearest neighbors.
 
-#### `public std::vector< uint32_t > `[`GetAllNearestNeighbors`](#classLSHForest_1ac741709bb8e322c68a5749c023147bde)`(unsigned int k,unsigned int kc,bool weighted)` <a id="classLSHForest_1ac741709bb8e322c68a5749c023147bde"></a>
+#### `public std::vector< uint32_t > `[`GetAllNearestNeighbors`](#classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84)`(unsigned int k,unsigned int kc,bool weighted)` <a id="classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84"></a>
 
 Get the k-nearest neighbors of all LSH forest entries.
 
@@ -298,7 +416,7 @@ Get the k-nearest neighbors of all LSH forest entries.
 #### Returns
 std::vector<uint32_t> The IDs of the nearest neighbors of all LSH forest entries.
 
-#### `public std::vector< uint32_t > `[`GetData`](#classLSHForest_1aad89848405eebc847c18a75b618da3e1)`(uint32_t id)` <a id="classLSHForest_1aad89848405eebc847c18a75b618da3e1"></a>
+#### `public std::vector< uint32_t > `[`GetData`](#classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609)`(uint32_t id)` <a id="classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609"></a>
 
 Get the MinHash of an entry at a given index. The index is defined by order of insertion. Alias for GetHash.
 
@@ -308,7 +426,7 @@ Get the MinHash of an entry at a given index. The index is defined by order of i
 #### Returns
 std::vector<uint32_t> The MinHash associated with an index.
 
-#### `public std::vector< float > `[`GetAllDistances`](#classLSHForest_1abdc3bd3357708bb58e6d957376e92f1c)`(const std::vector< uint32_t > & vec)` <a id="classLSHForest_1abdc3bd3357708bb58e6d957376e92f1c"></a>
+#### `public std::vector< float > `[`GetAllDistances`](#classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df)`(const std::vector< uint32_t > & vec)` <a id="classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df"></a>
 
 Get the distances of a MinHash to all entries in the LSH forest.
 
@@ -318,7 +436,7 @@ Get the distances of a MinHash to all entries in the LSH forest.
 #### Returns
 std::vector<float> The distances form the input MinHash to all the entries in the LSH forest.
 
-#### `public float `[`GetDistance`](#classLSHForest_1a08d66568664bdc8e0148c18b18a1b8fa)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` <a id="classLSHForest_1a08d66568664bdc8e0148c18b18a1b8fa"></a>
+#### `public float `[`GetDistance`](#classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` <a id="classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92"></a>
 
 Get the distance between two MinHashes.
 
@@ -330,7 +448,7 @@ Get the distance between two MinHashes.
 #### Returns
 float
 
-#### `public float `[`GetWeightedDistance`](#classLSHForest_1acfb878c731daf8da6402e7cebc2b6ef1)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` <a id="classLSHForest_1acfb878c731daf8da6402e7cebc2b6ef1"></a>
+#### `public float `[`GetWeightedDistance`](#classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8)`(const std::vector< uint32_t > & vec_a,const std::vector< uint32_t > & vec_b)` <a id="classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8"></a>
 
 Get the distance between two weighted MinHashes.
 
@@ -342,7 +460,7 @@ Get the distance between two weighted MinHashes.
 #### Returns
 float
 
-#### `public float `[`GetDistanceById`](#classLSHForest_1a49ad1fe0429121a8b572cde4df973d96)`(uint32_t a,uint32_t b)` <a id="classLSHForest_1a49ad1fe0429121a8b572cde4df973d96"></a>
+#### `public float `[`GetDistanceById`](#classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f)`(uint32_t a,uint32_t b)` <a id="classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f"></a>
 
 Get the distance between two MinHashes.
 
@@ -354,7 +472,7 @@ Get the distance between two MinHashes.
 #### Returns
 float
 
-#### `public float `[`GetWeightedDistanceById`](#classLSHForest_1a72b5a201bc8c409c0c5742587988ba85)`(uint32_t a,uint32_t b)` <a id="classLSHForest_1a72b5a201bc8c409c0c5742587988ba85"></a>
+#### `public float `[`GetWeightedDistanceById`](#classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5)`(uint32_t a,uint32_t b)` <a id="classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5"></a>
 
 Get the distance between two weighted MinHashes.
 
@@ -366,18 +484,18 @@ Get the distance between two weighted MinHashes.
 #### Returns
 float
 
-#### `public void `[`Clear`](#classLSHForest_1aec34dc5185166dce9c22a4060ce3914c)`()` <a id="classLSHForest_1aec34dc5185166dce9c22a4060ce3914c"></a>
+#### `public void `[`Clear`](#classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d)`()` <a id="classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d"></a>
 
 Remove all entries and the index from the LSH forest.
 
-#### `public size_t `[`size`](#classLSHForest_1af0015fae65afd25bf67875d12dc0d663)`()` <a id="classLSHForest_1af0015fae65afd25bf67875d12dc0d663"></a>
+#### `public size_t `[`size`](#classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874)`()` <a id="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874"></a>
 
 Get the number of entries.
 
 #### Returns
 size_t
 
-# class `Minhash` <a id="classMinhash"></a>
+# class `tmap::Minhash` <a id="classtmap_1_1Minhash"></a>
 
 An implementation of MinHash and weighted MinHash using SHA1.
 
@@ -385,26 +503,26 @@ An implementation of MinHash and weighted MinHash using SHA1.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`Minhash`](#classMinhash_1ad07fccee7e95ca368e5fabfb0ee76804)`(unsigned int d,unsigned int seed,unsigned int sample_size)` | Construct a new [Minhash](#classMinhash) object.
-`public std::vector< uint32_t > `[`FromBinaryArray`](#classMinhash_1ae47faddc57a5d503257e6cf88dba2e08)`(std::vector< uint8_t > & vec)` | Create a MinHash from a binary array.
-`public std::vector< std::vector< uint32_t > > `[`BatchFromBinaryArray`](#classMinhash_1a232f4fd24fcc853934599b666cbfc3be)`(std::vector< std::vector< uint8_t >> & vecs)` | Create MinHashes from a batch of binary arrays (parallelized).
-`public std::vector< uint32_t > `[`FromSparseBinaryArray`](#classMinhash_1afe2cf6cc64b2e97ce89db4087febf30f)`(std::vector< uint32_t > & vec)` | Create a MinHash from a sparse binary array (values are the indices of 1s).
-`public std::vector< std::vector< uint32_t > > `[`BatchFromSparseBinaryArray`](#classMinhash_1a8f711d80f1cb52f0599927667b123739)`(std::vector< std::vector< uint32_t >> & vecs)` | Create MinHashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized).
-`public std::vector< uint32_t > `[`FromStringArray`](#classMinhash_1a7131b7dbefd40e0d24d7e37601519d62)`(std::vector< std::string > & vec)` | Create a MinHash from an array of strings.
-`public std::vector< std::vector< uint32_t > > `[`BatchFromStringArray`](#classMinhash_1adc3ebe293e9999e49a30f9e9b9a8e318)`(std::vector< std::vector< std::string >> & vecs)` | Create MinHashes from a vector of string arrays (parallelized).
-`public std::vector< uint32_t > `[`FromWeightArray`](#classMinhash_1a47a107b26e6fface715f5abfbb512484)`(std::vector< float > & vec)` | Create a MinHash from an array containing weights.
-`public std::vector< std::vector< uint32_t > > `[`BatchFromWeightArray`](#classMinhash_1ad38f8679778e6291f5e006f76f104312)`(std::vector< std::vector< float >> & vecs)` | Create MinHashes from a vector of weight arrays (parallelized).
-`public std::vector< uint8_t > `[`ExpandIntWeightArray`](#classMinhash_1a515153e559f07825616314f52bfd673f)`(std::vector< uint32_t > & vec,std::vector< uint32_t > & max_vec,uint32_t size)` | Expand a integer weight array into a binary array.
-`public std::vector< std::vector< uint32_t > > `[`BatchFromIntWeightArray`](#classMinhash_1a6d468d2ee939351ffed9ea3ff8d82643)`(std::vector< std::vector< uint32_t >> & vecs)` | Create MinHashes from a expanded integer weight array (parallelized).
-`public float `[`GetDistance`](#classMinhash_1a40dd607c20fa7c8059a3fb3d0c81ba0a)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` | Get the distance between two MinHashes.
-`public float `[`GetWeightedDistance`](#classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` | Get the weighted distance between two MinHashes.
-`public inline  `[`~Minhash`](#classMinhash_1a15a534f3f3e14c45ee20da1ed5039661)`()` | Destroy the [Minhash](#classMinhash) object.
+`public  `[`Minhash`](#classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52)`(unsigned int d,unsigned int seed,unsigned int sample_size)` | Construct a new [Minhash](#classtmap_1_1Minhash) object.
+`public std::vector< uint32_t > `[`FromBinaryArray`](#classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec)`(std::vector< uint8_t > & vec)` | Create a MinHash from a binary array.
+`public std::vector< std::vector< uint32_t > > `[`BatchFromBinaryArray`](#classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc)`(std::vector< std::vector< uint8_t >> & vecs)` | Create MinHashes from a batch of binary arrays (parallelized).
+`public std::vector< uint32_t > `[`FromSparseBinaryArray`](#classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a)`(std::vector< uint32_t > & vec)` | Create a MinHash from a sparse binary array (values are the indices of 1s).
+`public std::vector< std::vector< uint32_t > > `[`BatchFromSparseBinaryArray`](#classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5)`(std::vector< std::vector< uint32_t >> & vecs)` | Create MinHashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized).
+`public std::vector< uint32_t > `[`FromStringArray`](#classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc)`(std::vector< std::string > & vec)` | Create a MinHash from an array of strings.
+`public std::vector< std::vector< uint32_t > > `[`BatchFromStringArray`](#classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006)`(std::vector< std::vector< std::string >> & vecs)` | Create MinHashes from a vector of string arrays (parallelized).
+`public std::vector< uint32_t > `[`FromWeightArray`](#classtmap_1_1Minhash_1ac77f5302d479a2bc2c23a2304a9cf049)`(std::vector< float > & vec)` | Create a MinHash from an array containing weights.
+`public std::vector< std::vector< uint32_t > > `[`BatchFromWeightArray`](#classtmap_1_1Minhash_1a20feda993a498b2d92b8e81ca71f73a9)`(std::vector< std::vector< float >> & vecs)` | Create MinHashes from a vector of weight arrays (parallelized).
+`public std::vector< uint8_t > `[`ExpandIntWeightArray`](#classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863)`(std::vector< uint32_t > & vec,std::vector< uint32_t > & max_vec,uint32_t size)` | Expand a integer weight array into a binary array.
+`public std::vector< std::vector< uint32_t > > `[`BatchFromIntWeightArray`](#classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620)`(std::vector< std::vector< uint32_t >> & vecs)` | Create MinHashes from a expanded integer weight array (parallelized).
+`public float `[`GetDistance`](#classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` | Get the distance between two MinHashes.
+`public float `[`GetWeightedDistance`](#classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` | Get the weighted distance between two MinHashes.
+`public inline  `[`~Minhash`](#classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220)`()` | Destroy the [Minhash](#classtmap_1_1Minhash) object.
 
 ## Members
 
-#### `public  `[`Minhash`](#classMinhash_1ad07fccee7e95ca368e5fabfb0ee76804)`(unsigned int d,unsigned int seed,unsigned int sample_size)` <a id="classMinhash_1ad07fccee7e95ca368e5fabfb0ee76804"></a>
+#### `public  `[`Minhash`](#classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52)`(unsigned int d,unsigned int seed,unsigned int sample_size)` <a id="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52"></a>
 
-Construct a new [Minhash](#classMinhash) object.
+Construct a new [Minhash](#classtmap_1_1Minhash) object.
 
 #### Parameters
 * `d` The number of permutations used for hashing. 
@@ -413,7 +531,7 @@ Construct a new [Minhash](#classMinhash) object.
 
 * `sample_size` The sample size when generating a weighted MinHash.
 
-#### `public std::vector< uint32_t > `[`FromBinaryArray`](#classMinhash_1ae47faddc57a5d503257e6cf88dba2e08)`(std::vector< uint8_t > & vec)` <a id="classMinhash_1ae47faddc57a5d503257e6cf88dba2e08"></a>
+#### `public std::vector< uint32_t > `[`FromBinaryArray`](#classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec)`(std::vector< uint8_t > & vec)` <a id="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec"></a>
 
 Create a MinHash from a binary array.
 
@@ -423,7 +541,7 @@ Create a MinHash from a binary array.
 #### Returns
 std::vector<uint32_t>
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchFromBinaryArray`](#classMinhash_1a232f4fd24fcc853934599b666cbfc3be)`(std::vector< std::vector< uint8_t >> & vecs)` <a id="classMinhash_1a232f4fd24fcc853934599b666cbfc3be"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchFromBinaryArray`](#classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc)`(std::vector< std::vector< uint8_t >> & vecs)` <a id="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc"></a>
 
 Create MinHashes from a batch of binary arrays (parallelized).
 
@@ -433,7 +551,7 @@ Create MinHashes from a batch of binary arrays (parallelized).
 #### Returns
 std::vector<std::vector<uint32_t>>
 
-#### `public std::vector< uint32_t > `[`FromSparseBinaryArray`](#classMinhash_1afe2cf6cc64b2e97ce89db4087febf30f)`(std::vector< uint32_t > & vec)` <a id="classMinhash_1afe2cf6cc64b2e97ce89db4087febf30f"></a>
+#### `public std::vector< uint32_t > `[`FromSparseBinaryArray`](#classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a)`(std::vector< uint32_t > & vec)` <a id="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a"></a>
 
 Create a MinHash from a sparse binary array (values are the indices of 1s).
 
@@ -443,7 +561,7 @@ Create a MinHash from a sparse binary array (values are the indices of 1s).
 #### Returns
 std::vector<uint32_t>
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchFromSparseBinaryArray`](#classMinhash_1a8f711d80f1cb52f0599927667b123739)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classMinhash_1a8f711d80f1cb52f0599927667b123739"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchFromSparseBinaryArray`](#classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5"></a>
 
 Create MinHashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized).
 
@@ -453,7 +571,7 @@ Create MinHashes from a vector of sparse binary arrays (values are the indices o
 #### Returns
 std::vector<std::vector<uint32_t>>
 
-#### `public std::vector< uint32_t > `[`FromStringArray`](#classMinhash_1a7131b7dbefd40e0d24d7e37601519d62)`(std::vector< std::string > & vec)` <a id="classMinhash_1a7131b7dbefd40e0d24d7e37601519d62"></a>
+#### `public std::vector< uint32_t > `[`FromStringArray`](#classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc)`(std::vector< std::string > & vec)` <a id="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc"></a>
 
 Create a MinHash from an array of strings.
 
@@ -463,7 +581,7 @@ Create a MinHash from an array of strings.
 #### Returns
 std::vector<uint32_t>
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchFromStringArray`](#classMinhash_1adc3ebe293e9999e49a30f9e9b9a8e318)`(std::vector< std::vector< std::string >> & vecs)` <a id="classMinhash_1adc3ebe293e9999e49a30f9e9b9a8e318"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchFromStringArray`](#classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006)`(std::vector< std::vector< std::string >> & vecs)` <a id="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006"></a>
 
 Create MinHashes from a vector of string arrays (parallelized).
 
@@ -473,7 +591,7 @@ Create MinHashes from a vector of string arrays (parallelized).
 #### Returns
 std::vector<std::vector<uint32_t>>
 
-#### `public std::vector< uint32_t > `[`FromWeightArray`](#classMinhash_1a47a107b26e6fface715f5abfbb512484)`(std::vector< float > & vec)` <a id="classMinhash_1a47a107b26e6fface715f5abfbb512484"></a>
+#### `public std::vector< uint32_t > `[`FromWeightArray`](#classtmap_1_1Minhash_1ac77f5302d479a2bc2c23a2304a9cf049)`(std::vector< float > & vec)` <a id="classtmap_1_1Minhash_1ac77f5302d479a2bc2c23a2304a9cf049"></a>
 
 Create a MinHash from an array containing weights.
 
@@ -483,7 +601,7 @@ Create a MinHash from an array containing weights.
 #### Returns
 std::vector<uint32_t>
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchFromWeightArray`](#classMinhash_1ad38f8679778e6291f5e006f76f104312)`(std::vector< std::vector< float >> & vecs)` <a id="classMinhash_1ad38f8679778e6291f5e006f76f104312"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchFromWeightArray`](#classtmap_1_1Minhash_1a20feda993a498b2d92b8e81ca71f73a9)`(std::vector< std::vector< float >> & vecs)` <a id="classtmap_1_1Minhash_1a20feda993a498b2d92b8e81ca71f73a9"></a>
 
 Create MinHashes from a vector of weight arrays (parallelized).
 
@@ -493,7 +611,7 @@ Create MinHashes from a vector of weight arrays (parallelized).
 #### Returns
 std::vector<std::vector<uint32_t>>
 
-#### `public std::vector< uint8_t > `[`ExpandIntWeightArray`](#classMinhash_1a515153e559f07825616314f52bfd673f)`(std::vector< uint32_t > & vec,std::vector< uint32_t > & max_vec,uint32_t size)` <a id="classMinhash_1a515153e559f07825616314f52bfd673f"></a>
+#### `public std::vector< uint8_t > `[`ExpandIntWeightArray`](#classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863)`(std::vector< uint32_t > & vec,std::vector< uint32_t > & max_vec,uint32_t size)` <a id="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863"></a>
 
 Expand a integer weight array into a binary array.
 
@@ -507,7 +625,7 @@ Expand a integer weight array into a binary array.
 #### Returns
 std::vector<uint8_t>
 
-#### `public std::vector< std::vector< uint32_t > > `[`BatchFromIntWeightArray`](#classMinhash_1a6d468d2ee939351ffed9ea3ff8d82643)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classMinhash_1a6d468d2ee939351ffed9ea3ff8d82643"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`BatchFromIntWeightArray`](#classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620)`(std::vector< std::vector< uint32_t >> & vecs)` <a id="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620"></a>
 
 Create MinHashes from a expanded integer weight array (parallelized).
 
@@ -517,7 +635,7 @@ Create MinHashes from a expanded integer weight array (parallelized).
 #### Returns
 std::vector<std::vector<uint32_t>>
 
-#### `public float `[`GetDistance`](#classMinhash_1a40dd607c20fa7c8059a3fb3d0c81ba0a)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` <a id="classMinhash_1a40dd607c20fa7c8059a3fb3d0c81ba0a"></a>
+#### `public float `[`GetDistance`](#classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` <a id="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71"></a>
 
 Get the distance between two MinHashes.
 
@@ -529,7 +647,7 @@ Get the distance between two MinHashes.
 #### Returns
 float
 
-#### `public float `[`GetWeightedDistance`](#classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` <a id="classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21"></a>
+#### `public float `[`GetWeightedDistance`](#classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca)`(std::vector< uint32_t > & vec_a,std::vector< uint32_t > & vec_b)` <a id="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca"></a>
 
 Get the weighted distance between two MinHashes.
 
@@ -541,11 +659,11 @@ Get the weighted distance between two MinHashes.
 #### Returns
 float
 
-#### `public inline  `[`~Minhash`](#classMinhash_1a15a534f3f3e14c45ee20da1ed5039661)`()` <a id="classMinhash_1a15a534f3f3e14c45ee20da1ed5039661"></a>
+#### `public inline  `[`~Minhash`](#classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220)`()` <a id="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220"></a>
 
-Destroy the [Minhash](#classMinhash) object.
+Destroy the [Minhash](#classtmap_1_1Minhash) object.
 
-# class `Timer` <a id="classTimer"></a>
+# class `tmap::Timer` <a id="classtmap_1_1Timer"></a>
 
 A simple timer class used to check performance during development.
 
@@ -553,28 +671,28 @@ A simple timer class used to check performance during development.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`Timer`](#classTimer_1a5f16e8da27d2a5a5242dead46de05d97)`()` | Construct a new [Timer](#classTimer) object and start the clock.
-`public inline void `[`reset`](#classTimer_1a9020542d73357a4eef512eefaf57524b)`()` | Restart the clock.
-`public inline double `[`elapsed`](#classTimer_1a6a89a613c2af9b0d1e5f7e4ba9e46c54)`() const` | Return the time elapsed since the timer was started or last reset.
+`public inline  `[`Timer`](#classtmap_1_1Timer_1ac6eca9fca91d67ee83361136abd2ef3b)`()` | Construct a new [Timer](#classtmap_1_1Timer) object and start the clock.
+`public inline void `[`reset`](#classtmap_1_1Timer_1acf16459c9388f5a3702c934e6135edf3)`()` | Restart the clock.
+`public inline double `[`elapsed`](#classtmap_1_1Timer_1a34a0281aaced5d7768c5bc60ebcd0751)`() const` | Return the time elapsed since the timer was started or last reset.
 
 ## Members
 
-#### `public inline  `[`Timer`](#classTimer_1a5f16e8da27d2a5a5242dead46de05d97)`()` <a id="classTimer_1a5f16e8da27d2a5a5242dead46de05d97"></a>
+#### `public inline  `[`Timer`](#classtmap_1_1Timer_1ac6eca9fca91d67ee83361136abd2ef3b)`()` <a id="classtmap_1_1Timer_1ac6eca9fca91d67ee83361136abd2ef3b"></a>
 
-Construct a new [Timer](#classTimer) object and start the clock.
+Construct a new [Timer](#classtmap_1_1Timer) object and start the clock.
 
-#### `public inline void `[`reset`](#classTimer_1a9020542d73357a4eef512eefaf57524b)`()` <a id="classTimer_1a9020542d73357a4eef512eefaf57524b"></a>
+#### `public inline void `[`reset`](#classtmap_1_1Timer_1acf16459c9388f5a3702c934e6135edf3)`()` <a id="classtmap_1_1Timer_1acf16459c9388f5a3702c934e6135edf3"></a>
 
 Restart the clock.
 
-#### `public inline double `[`elapsed`](#classTimer_1a6a89a613c2af9b0d1e5f7e4ba9e46c54)`() const` <a id="classTimer_1a6a89a613c2af9b0d1e5f7e4ba9e46c54"></a>
+#### `public inline double `[`elapsed`](#classtmap_1_1Timer_1a34a0281aaced5d7768c5bc60ebcd0751)`() const` <a id="classtmap_1_1Timer_1a34a0281aaced5d7768c5bc60ebcd0751"></a>
 
 Return the time elapsed since the timer was started or last reset.
 
 #### Returns
 double
 
-# struct `GraphProperties` <a id="structGraphProperties"></a>
+# struct `tmap::GraphProperties` <a id="structtmap_1_1GraphProperties"></a>
 
 The properties of a generated graph. An instance of this struct is returned from the layout functions.
 
@@ -582,35 +700,35 @@ The properties of a generated graph. An instance of this struct is returned from
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public float `[`mst_weight`](#structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b) | The total weight of the created spanning tree.
-`public uint32_t `[`n_connected_components`](#structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca) | The number of connected components.
-`public uint32_t `[`n_isolated_vertices`](#structGraphProperties_1ad3eec03efec4480e80c5510b896660ae) | The number of isolated (lone) vertices.
-`public std::vector< uint32_t > `[`degrees`](#structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1) | The degrees of the vertices in the graph.
-`public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635) | The adjacency list of the spanning tree.
+`public float `[`mst_weight`](#structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be) | The total weight of the created spanning tree.
+`public uint32_t `[`n_connected_components`](#structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5) | The number of connected components.
+`public uint32_t `[`n_isolated_vertices`](#structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea) | The number of isolated (lone) vertices.
+`public std::vector< uint32_t > `[`degrees`](#structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc) | The degrees of the vertices in the graph.
+`public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7) | The adjacency list of the spanning tree.
 
 ## Members
 
-#### `public float `[`mst_weight`](#structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b) <a id="structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b"></a>
+#### `public float `[`mst_weight`](#structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be) <a id="structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be"></a>
 
 The total weight of the created spanning tree.
 
-#### `public uint32_t `[`n_connected_components`](#structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca) <a id="structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca"></a>
+#### `public uint32_t `[`n_connected_components`](#structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5) <a id="structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5"></a>
 
 The number of connected components.
 
-#### `public uint32_t `[`n_isolated_vertices`](#structGraphProperties_1ad3eec03efec4480e80c5510b896660ae) <a id="structGraphProperties_1ad3eec03efec4480e80c5510b896660ae"></a>
+#### `public uint32_t `[`n_isolated_vertices`](#structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea) <a id="structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea"></a>
 
 The number of isolated (lone) vertices.
 
-#### `public std::vector< uint32_t > `[`degrees`](#structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1) <a id="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1"></a>
+#### `public std::vector< uint32_t > `[`degrees`](#structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc) <a id="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc"></a>
 
 The degrees of the vertices in the graph.
 
-#### `public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635) <a id="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635"></a>
+#### `public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7) <a id="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7"></a>
 
 The adjacency list of the spanning tree.
 
-# struct `LayoutConfiguration` <a id="structLayoutConfiguration"></a>
+# struct `tmap::LayoutConfiguration` <a id="structtmap_1_1LayoutConfiguration"></a>
 
 A struct containing all the configuration options available for and applied to a layout.
 
@@ -618,108 +736,108 @@ A struct containing all the configuration options available for and applied to a
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public int `[`k`](#structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee) | The number of nearest neighbors used to create the k-nearest neighbor graph.
-`public int `[`kc`](#structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc) | The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
-`public int `[`fme_iterations`](#structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35) | Maximum number of iterations of the fast multipole embedder.
-`public bool `[`fme_randomize`](#structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e) | Whether or not to randomize the layout at the start.
-`public int `[`fme_threads`](#structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02) | The number of threads for the fast multipole embedder.
-`public int `[`fme_precision`](#structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7) | The number of coefficients of the multipole expansion.
-`public int `[`sl_repeats`](#structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0) | The number of repeats of the scaling layout algorithm.
-`public int `[`sl_extra_scaling_steps`](#structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f) | Sets the number of repeats of the scaling.
-`public double `[`sl_scaling_min`](#structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5) | The minimum scaling factor.
-`public double `[`sl_scaling_max`](#structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a) | The maximum scaling factor.
-`public `[`ScalingType`](#layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2)` `[`sl_scaling_type`](#structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af) | Defines the (relative) scale of the graph.
-`public int `[`mmm_repeats`](#structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065) | Number of repeats of the per-level layout algorithm.
-`public `[`Placer`](#layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96)` `[`placer`](#structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0) | The method by which the initial positons of the vertices at eachlevel are defined.
-`public `[`Merger`](#layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18)` `[`merger`](#structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318) | The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
-`public double `[`merger_factor`](#structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae) | The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies.
-`public int `[`merger_adjustment`](#structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132) | The edge length adjustment of the merging algorithm. Does notapply to all merging strategies.
-`public float `[`node_size`](#structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1) | The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree.
-`public inline  `[`LayoutConfiguration`](#structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4)`()` | Construct a new Layout Configuration object.
-`public inline std::string `[`ToString`](#structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1)`() const` | Returns a string describing the set options.
+`public int `[`k`](#structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153) | The number of nearest neighbors used to create the k-nearest neighbor graph.
+`public int `[`kc`](#structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867) | The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
+`public int `[`fme_iterations`](#structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84) | Maximum number of iterations of the fast multipole embedder.
+`public bool `[`fme_randomize`](#structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b) | Whether or not to randomize the layout at the start.
+`public int `[`fme_threads`](#structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92) | The number of threads for the fast multipole embedder.
+`public int `[`fme_precision`](#structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7) | The number of coefficients of the multipole expansion.
+`public int `[`sl_repeats`](#structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7) | The number of repeats of the scaling layout algorithm.
+`public int `[`sl_extra_scaling_steps`](#structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440) | Sets the number of repeats of the scaling.
+`public double `[`sl_scaling_min`](#structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a) | The minimum scaling factor.
+`public double `[`sl_scaling_max`](#structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3) | The maximum scaling factor.
+`public `[`ScalingType`](#layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761)` `[`sl_scaling_type`](#structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec) | Defines the (relative) scale of the graph.
+`public int `[`mmm_repeats`](#structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0) | Number of repeats of the per-level layout algorithm.
+`public `[`Placer`](#layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b)` `[`placer`](#structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d) | The method by which the initial positons of the vertices at eachlevel are defined.
+`public `[`Merger`](#layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff)` `[`merger`](#structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f) | The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
+`public double `[`merger_factor`](#structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46) | The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies.
+`public int `[`merger_adjustment`](#structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6) | The edge length adjustment of the merging algorithm. Does notapply to all merging strategies.
+`public float `[`node_size`](#structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924) | The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree.
+`public inline  `[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875)`()` | Construct a new Layout Configuration object.
+`public inline std::string `[`ToString`](#structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11)`() const` | Returns a string describing the set options.
 
 ## Members
 
-#### `public int `[`k`](#structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee) <a id="structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee"></a>
+#### `public int `[`k`](#structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153) <a id="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153"></a>
 
 The number of nearest neighbors used to create the k-nearest neighbor graph.
 
-#### `public int `[`kc`](#structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc) <a id="structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc"></a>
+#### `public int `[`kc`](#structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867) <a id="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867"></a>
 
 The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
 
-#### `public int `[`fme_iterations`](#structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35) <a id="structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35"></a>
+#### `public int `[`fme_iterations`](#structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84) <a id="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84"></a>
 
 Maximum number of iterations of the fast multipole embedder.
 
-#### `public bool `[`fme_randomize`](#structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e) <a id="structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e"></a>
+#### `public bool `[`fme_randomize`](#structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b) <a id="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b"></a>
 
 Whether or not to randomize the layout at the start.
 
-#### `public int `[`fme_threads`](#structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02) <a id="structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02"></a>
+#### `public int `[`fme_threads`](#structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92) <a id="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92"></a>
 
 The number of threads for the fast multipole embedder.
 
-#### `public int `[`fme_precision`](#structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7) <a id="structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7"></a>
+#### `public int `[`fme_precision`](#structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7) <a id="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7"></a>
 
 The number of coefficients of the multipole expansion.
 
-#### `public int `[`sl_repeats`](#structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0) <a id="structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0"></a>
+#### `public int `[`sl_repeats`](#structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7) <a id="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7"></a>
 
 The number of repeats of the scaling layout algorithm.
 
-#### `public int `[`sl_extra_scaling_steps`](#structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f) <a id="structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f"></a>
+#### `public int `[`sl_extra_scaling_steps`](#structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440) <a id="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440"></a>
 
 Sets the number of repeats of the scaling.
 
-#### `public double `[`sl_scaling_min`](#structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5) <a id="structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5"></a>
+#### `public double `[`sl_scaling_min`](#structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a) <a id="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a"></a>
 
 The minimum scaling factor.
 
-#### `public double `[`sl_scaling_max`](#structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a) <a id="structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a"></a>
+#### `public double `[`sl_scaling_max`](#structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3) <a id="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3"></a>
 
 The maximum scaling factor.
 
-#### `public `[`ScalingType`](#layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2)` `[`sl_scaling_type`](#structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af) <a id="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af"></a>
+#### `public `[`ScalingType`](#layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761)` `[`sl_scaling_type`](#structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec) <a id="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec"></a>
 
 Defines the (relative) scale of the graph.
 
-#### `public int `[`mmm_repeats`](#structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065) <a id="structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065"></a>
+#### `public int `[`mmm_repeats`](#structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0) <a id="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0"></a>
 
 Number of repeats of the per-level layout algorithm.
 
-#### `public `[`Placer`](#layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96)` `[`placer`](#structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0) <a id="structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0"></a>
+#### `public `[`Placer`](#layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b)` `[`placer`](#structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d) <a id="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d"></a>
 
 The method by which the initial positons of the vertices at eachlevel are defined.
 
-#### `public `[`Merger`](#layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18)` `[`merger`](#structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318) <a id="structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318"></a>
+#### `public `[`Merger`](#layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff)` `[`merger`](#structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f) <a id="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f"></a>
 
 The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
 
-#### `public double `[`merger_factor`](#structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae) <a id="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae"></a>
+#### `public double `[`merger_factor`](#structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46) <a id="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46"></a>
 
 The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies.
 
-#### `public int `[`merger_adjustment`](#structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132) <a id="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132"></a>
+#### `public int `[`merger_adjustment`](#structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6) <a id="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6"></a>
 
 The edge length adjustment of the merging algorithm. Does notapply to all merging strategies.
 
-#### `public float `[`node_size`](#structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1) <a id="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1"></a>
+#### `public float `[`node_size`](#structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924) <a id="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924"></a>
 
 The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree.
 
-#### `public inline  `[`LayoutConfiguration`](#structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4)`()` <a id="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4"></a>
+#### `public inline  `[`LayoutConfiguration`](#structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875)`()` <a id="structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875"></a>
 
 Construct a new Layout Configuration object.
 
-#### `public inline std::string `[`ToString`](#structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1)`() const` <a id="structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1"></a>
+#### `public inline std::string `[`ToString`](#structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11)`() const` <a id="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11"></a>
 
 Returns a string describing the set options.
 
 #### Returns
 std::string
 
-# struct `MapKeyPointer` <a id="structMapKeyPointer"></a>
+# struct `tmap::MapKeyPointer` <a id="structtmap_1_1MapKeyPointer"></a>
 
 The pointer map used for pointing to the keys from the sorted hash map.
 
@@ -727,28 +845,28 @@ The pointer map used for pointing to the keys from the sorted hash map.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public iterator `[`it`](#structMapKeyPointer_1ab507d3d701fc46728b0ee1643e510edb) | 
-`public inline  `[`MapKeyPointer`](#structMapKeyPointer_1a96ac4dd95d58f8e79be1e5c9c247b349)`(iterator i)` | 
-`public inline  `[`MapKeyPointer`](#structMapKeyPointer_1a3a3f7e5e4b49c2d2ca1a3d40e43accf4)`()` | 
-`public inline const std::vector< uint8_t > & `[`operator*`](#structMapKeyPointer_1a481cd84d48f25f2ff4bd102103a226d2)`() const` | 
-`public inline const std::vector< uint8_t > * `[`operator->`](#structMapKeyPointer_1adf3870c8bdd7c9953fb07bb8708a7e73)`() const` | 
-`typedef `[`iterator`](#structMapKeyPointer_1ae2724283aeda91caa9e63c5653be4a65) | 
+`public iterator `[`it`](#structtmap_1_1MapKeyPointer_1a7e5f9fcf74a41f693afd2a727a2997d5) | 
+`public inline  `[`MapKeyPointer`](#structtmap_1_1MapKeyPointer_1ac96f2c30e0923aa2b24674d1d0a8951f)`(iterator i)` | 
+`public inline  `[`MapKeyPointer`](#structtmap_1_1MapKeyPointer_1ad69cc205a77366ea584d3b273798dd0d)`()` | 
+`public inline const std::vector< uint8_t > & `[`operator*`](#structtmap_1_1MapKeyPointer_1ade7f29bcf8ac9ec5875f1152d50912e4)`() const` | 
+`public inline const std::vector< uint8_t > * `[`operator->`](#structtmap_1_1MapKeyPointer_1ab681e8610b86e353af4feb6ea0ef8a9a)`() const` | 
+`typedef `[`iterator`](#structtmap_1_1MapKeyPointer_1a236dc7396d6a4dca2a942196aa536f56) | 
 
 ## Members
 
-#### `public iterator `[`it`](#structMapKeyPointer_1ab507d3d701fc46728b0ee1643e510edb) <a id="structMapKeyPointer_1ab507d3d701fc46728b0ee1643e510edb"></a>
+#### `public iterator `[`it`](#structtmap_1_1MapKeyPointer_1a7e5f9fcf74a41f693afd2a727a2997d5) <a id="structtmap_1_1MapKeyPointer_1a7e5f9fcf74a41f693afd2a727a2997d5"></a>
 
-#### `public inline  `[`MapKeyPointer`](#structMapKeyPointer_1a96ac4dd95d58f8e79be1e5c9c247b349)`(iterator i)` <a id="structMapKeyPointer_1a96ac4dd95d58f8e79be1e5c9c247b349"></a>
+#### `public inline  `[`MapKeyPointer`](#structtmap_1_1MapKeyPointer_1ac96f2c30e0923aa2b24674d1d0a8951f)`(iterator i)` <a id="structtmap_1_1MapKeyPointer_1ac96f2c30e0923aa2b24674d1d0a8951f"></a>
 
-#### `public inline  `[`MapKeyPointer`](#structMapKeyPointer_1a3a3f7e5e4b49c2d2ca1a3d40e43accf4)`()` <a id="structMapKeyPointer_1a3a3f7e5e4b49c2d2ca1a3d40e43accf4"></a>
+#### `public inline  `[`MapKeyPointer`](#structtmap_1_1MapKeyPointer_1ad69cc205a77366ea584d3b273798dd0d)`()` <a id="structtmap_1_1MapKeyPointer_1ad69cc205a77366ea584d3b273798dd0d"></a>
 
-#### `public inline const std::vector< uint8_t > & `[`operator*`](#structMapKeyPointer_1a481cd84d48f25f2ff4bd102103a226d2)`() const` <a id="structMapKeyPointer_1a481cd84d48f25f2ff4bd102103a226d2"></a>
+#### `public inline const std::vector< uint8_t > & `[`operator*`](#structtmap_1_1MapKeyPointer_1ade7f29bcf8ac9ec5875f1152d50912e4)`() const` <a id="structtmap_1_1MapKeyPointer_1ade7f29bcf8ac9ec5875f1152d50912e4"></a>
 
-#### `public inline const std::vector< uint8_t > * `[`operator->`](#structMapKeyPointer_1adf3870c8bdd7c9953fb07bb8708a7e73)`() const` <a id="structMapKeyPointer_1adf3870c8bdd7c9953fb07bb8708a7e73"></a>
+#### `public inline const std::vector< uint8_t > * `[`operator->`](#structtmap_1_1MapKeyPointer_1ab681e8610b86e353af4feb6ea0ef8a9a)`() const` <a id="structtmap_1_1MapKeyPointer_1ab681e8610b86e353af4feb6ea0ef8a9a"></a>
 
-#### `typedef `[`iterator`](#structMapKeyPointer_1ae2724283aeda91caa9e63c5653be4a65) <a id="structMapKeyPointer_1ae2724283aeda91caa9e63c5653be4a65"></a>
+#### `typedef `[`iterator`](#structtmap_1_1MapKeyPointer_1a236dc7396d6a4dca2a942196aa536f56) <a id="structtmap_1_1MapKeyPointer_1a236dc7396d6a4dca2a942196aa536f56"></a>
 
-# struct `SimpleHash` <a id="structSimpleHash"></a>
+# struct `tmap::SimpleHash` <a id="structtmap_1_1SimpleHash"></a>
 
 Hash struct used for the sparsepp sparse hash map.
 
@@ -756,10 +874,10 @@ Hash struct used for the sparsepp sparse hash map.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline size_t `[`operator()`](#structSimpleHash_1abb89901eb1591020804460a3dccbde58)`(std::vector< uint8_t > vec) const` | 
+`public inline size_t `[`operator()`](#structtmap_1_1SimpleHash_1a2246e182ae49e4ff363d6c3344aa97cf)`(std::vector< uint8_t > vec) const` | 
 
 ## Members
 
-#### `public inline size_t `[`operator()`](#structSimpleHash_1abb89901eb1591020804460a3dccbde58)`(std::vector< uint8_t > vec) const` <a id="structSimpleHash_1abb89901eb1591020804460a3dccbde58"></a>
+#### `public inline size_t `[`operator()`](#structtmap_1_1SimpleHash_1a2246e182ae49e4ff363d6c3344aa97cf)`(std::vector< uint8_t > vec) const` <a id="structtmap_1_1SimpleHash_1a2246e182ae49e4ff363d6c3344aa97cf"></a>
 
 Generated by [Moxygen](https://sourcey.com/moxygen)

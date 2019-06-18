@@ -76,11 +76,11 @@
 <codeline lineno="1"></codeline>
 <codeline lineno="10"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="minhash_8hh" kindref="compound">minhash.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><ref refid="classMinhash_1ad07fccee7e95ca368e5fabfb0ee76804" kindref="member">Minhash::Minhash</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sample_size)<sp/>:<sp/>d_(d),<sp/>sample_size_(sample_size),</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>perms_a_((uint32_t)0,<sp/>d),<sp/>perms_b_((uint32_t)0,<sp/>d),</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rs_(sample_size),<sp/>rs_2_(sample_size),<sp/>ln_cs_(sample_size),</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cs_(sample_size),</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>betas_(sample_size),<sp/>betas_2_(sample_size)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" kindref="member">tmap::Minhash::Minhash</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sample_size)<sp/>:<sp/>d_(d),<sp/>sample_size_(sample_size),</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>perms_a_((uint32_t)0,<sp/>d),<sp/>perms_b_((uint32_t)0,<sp/>d),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rs_(sample_size),<sp/>rs_2_(sample_size),<sp/>ln_cs_(sample_size),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cs_(sample_size),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>betas_(sample_size),<sp/>betas_2_(sample_size)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Permutations<sp/>for<sp/>the<sp/>standard<sp/>minhash</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mt19937<sp/>rand;</highlight></codeline>
@@ -149,7 +149,7 @@
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="83"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classMinhash_1ae47faddc57a5d503257e6cf88dba2e08" kindref="member">Minhash::FromBinaryArray</ref>(std::vector&lt;uint8_t&gt;<sp/>&amp;vec)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" kindref="member">tmap::Minhash::FromBinaryArray</ref>(std::vector&lt;uint8_t&gt;<sp/>&amp;vec)</highlight></codeline>
 <codeline lineno="86"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>mh(max_hash_,<sp/>d_);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
@@ -167,7 +167,7 @@
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::vector&lt;uint32_t&gt;(std::begin(mh),<sp/>std::end(mh));</highlight></codeline>
 <codeline lineno="101"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classMinhash_1a232f4fd24fcc853934599b666cbfc3be" kindref="member">Minhash::BatchFromBinaryArray</ref>(std::vector&lt;std::vector&lt;uint8_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" kindref="member">tmap::Minhash::BatchFromBinaryArray</ref>(std::vector&lt;std::vector&lt;uint8_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
 <codeline lineno="104"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>results(vecs.size());</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
@@ -178,7 +178,7 @@
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classMinhash_1afe2cf6cc64b2e97ce89db4087febf30f" kindref="member">Minhash::FromSparseBinaryArray</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" kindref="member">tmap::Minhash::FromSparseBinaryArray</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec)</highlight></codeline>
 <codeline lineno="115"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>mh(max_hash_,<sp/>d_);</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
@@ -195,7 +195,7 @@
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::vector&lt;uint32_t&gt;(std::begin(mh),<sp/>std::end(mh));</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classMinhash_1a8f711d80f1cb52f0599927667b123739" kindref="member">Minhash::BatchFromSparseBinaryArray</ref>(std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" kindref="member">tmap::Minhash::BatchFromSparseBinaryArray</ref>(std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
 <codeline lineno="132"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>results(vecs.size());</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
@@ -206,14 +206,14 @@
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results;</highlight></codeline>
 <codeline lineno="140"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classMinhash_1a7131b7dbefd40e0d24d7e37601519d62" kindref="member">Minhash::FromStringArray</ref>(std::vector&lt;std::string&gt;<sp/>&amp;vec)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" kindref="member">tmap::Minhash::FromStringArray</ref>(std::vector&lt;std::string&gt;<sp/>&amp;vec)</highlight></codeline>
 <codeline lineno="143"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>mh(max_hash_,<sp/>d_);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>sha1::SHA1<sp/>s;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>vec.size();<sp/>i++)</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.processBytes(vec[i].c_str(),<sp/>vec[i].<ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.processBytes(vec[i].c_str(),<sp/>vec[i].<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>());</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>digest[5];</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.getDigest(digest);</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
@@ -226,7 +226,7 @@
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::vector&lt;uint32_t&gt;(std::begin(mh),<sp/>std::end(mh));</highlight></codeline>
 <codeline lineno="160"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classMinhash_1adc3ebe293e9999e49a30f9e9b9a8e318" kindref="member">Minhash::BatchFromStringArray</ref>(std::vector&lt;std::vector&lt;std::string&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" kindref="member">tmap::Minhash::BatchFromStringArray</ref>(std::vector&lt;std::vector&lt;std::string&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
 <codeline lineno="163"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>results(vecs.size());</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
@@ -237,7 +237,7 @@
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results;</highlight></codeline>
 <codeline lineno="171"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal">std::vector&lt;uint8_t&gt;<sp/><ref refid="classMinhash_1a515153e559f07825616314f52bfd673f" kindref="member">Minhash::ExpandIntWeightArray</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;max_vec,<sp/>uint32_t<sp/><ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">std::vector&lt;uint8_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863" kindref="member">tmap::Minhash::ExpandIntWeightArray</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;max_vec,<sp/>uint32_t<sp/><ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>)</highlight></codeline>
 <codeline lineno="174"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>vec_expanded(size);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>0;</highlight></codeline>
@@ -254,7 +254,7 @@
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec_expanded;</highlight></codeline>
 <codeline lineno="188"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classMinhash_1a6d468d2ee939351ffed9ea3ff8d82643" kindref="member">Minhash::BatchFromIntWeightArray</ref>(std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620" kindref="member">tmap::Minhash::BatchFromIntWeightArray</ref>(std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
 <codeline lineno="191"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>vecs[0].size();</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"></highlight></codeline>
@@ -262,7 +262,7 @@
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>max_vec(size,<sp/>0);</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>vecs.size();<sp/>i++)</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="classLSHForest_1af0015fae65afd25bf67875d12dc0d663" kindref="member">size</ref>;<sp/>j++)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">size</ref>;<sp/>j++)</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max_vec[j]<sp/>=<sp/>std::max(vecs[i][j],<sp/>max_vec[j]);</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>extended_size<sp/>=<sp/>std::accumulate(max_vec.begin(),<sp/>max_vec.end(),<sp/>0);</highlight></codeline>
@@ -281,7 +281,7 @@
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results;</highlight></codeline>
 <codeline lineno="215"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classMinhash_1a47a107b26e6fface715f5abfbb512484" kindref="member">Minhash::FromWeightArray</ref>(std::vector&lt;float&gt;<sp/>&amp;vec)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1ac77f5302d479a2bc2c23a2304a9cf049" kindref="member">tmap::Minhash::FromWeightArray</ref>(std::vector&lt;float&gt;<sp/>&amp;vec)</highlight></codeline>
 <codeline lineno="218"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>mh(sample_size_<sp/>*<sp/>2);</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"></highlight></codeline>
@@ -352,7 +352,7 @@
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mh;</highlight></codeline>
 <codeline lineno="286"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classMinhash_1ad38f8679778e6291f5e006f76f104312" kindref="member">Minhash::BatchFromWeightArray</ref>(std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal">std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a20feda993a498b2d92b8e81ca71f73a9" kindref="member">tmap::Minhash::BatchFromWeightArray</ref>(std::vector&lt;std::vector&lt;float&gt;&gt;<sp/>&amp;vecs)</highlight></codeline>
 <codeline lineno="289"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/>results(vecs.size());</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
@@ -364,7 +364,7 @@
 <codeline lineno="297"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
 <codeline lineno="299"><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMinhash_1a40dd607c20fa7c8059a3fb3d0c81ba0a" kindref="member">Minhash::GetDistance</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec_a,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;vec_b)</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" kindref="member">tmap::Minhash::GetDistance</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec_a,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;vec_b)</highlight></codeline>
 <codeline lineno="301"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intersect<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>vec_a.size();</highlight></codeline>
@@ -376,7 +376,7 @@
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1.0f<sp/>-<sp/>intersect<sp/>/<sp/>length;</highlight></codeline>
 <codeline lineno="310"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21" kindref="member">Minhash::GetWeightedDistance</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec_a,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;vec_b)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kindref="member">tmap::Minhash::GetWeightedDistance</ref>(std::vector&lt;uint32_t&gt;<sp/>&amp;vec_a,<sp/>std::vector&lt;uint32_t&gt;<sp/>&amp;vec_b)</highlight></codeline>
 <codeline lineno="313"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>intersect<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>vec_a.size();</highlight></codeline>
