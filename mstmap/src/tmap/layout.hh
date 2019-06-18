@@ -7,6 +7,10 @@
  * 
  */
 
+/* Comments for the documentation are (partially) taken from 
+   "An Experimental Evaluation of Multilevel Layout Methods" 
+   by G. Bartel et al. and the OGDF documentation. */
+
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
@@ -54,12 +58,12 @@ class LSHForest;
  */
 enum struct Placer
 {
-    Barycenter = 0,
-    Solar = 1,
-    Circle = 2,
-    Median = 3,
-    Random = 4,
-    Zero = 5
+    Barycenter = 0, ///< Places a vertex at the barycenter of its neighbors' position.
+    Solar = 1, ///< Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns.
+    Circle = 2, ///< Places the vertices in a circle around the barycenter and outside of the current drawing
+    Median = 3, ///< Places a vertex at the median position of the neighbor nodes for each coordinate axis.
+    Random = 4, ///< Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing.
+    Zero = 5 ///< Places a vertex at the same position as its representative in the previous level.
 };
 static const std::string placer_values[] = {"Barycenter", "Solar", "Circle", "Median", "Random", "Zero"};
 
@@ -69,10 +73,10 @@ static const std::string placer_values[] = {"Barycenter", "Solar", "Circle", "Me
  */
 enum struct Merger
 {
-    EdgeCover = 0,
-    LocalBiconnected = 1,
-    Solar = 2,
-    IndependentSet = 3
+    EdgeCover = 0, ///< Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices.
+    LocalBiconnected = 1, ///< Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position.
+    Solar = 2, ///< Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices.
+    IndependentSet = 3 ///< Uses a maximal independent set filtration. See GRIP for details.
 };
 static const std::string merger_values[] = {"EdgeCover", "LocalBiconnected", "Solar", "IndependentSet"};
 
@@ -82,10 +86,10 @@ static const std::string merger_values[] = {"EdgeCover", "LocalBiconnected", "So
  */
 enum struct ScalingType
 {
-    Absolute = 0,
-    RelativeToAvgLength = 1,
-    RelativeToDesiredLength = 2,
-    RelativeToDrawing = 3
+    Absolute = 0, ///< Absolute factor, can be used to scale relative to level size change.
+    RelativeToAvgLength = 1, ///< Scales by a factor relative to the average edge weights.
+    RelativeToDesiredLength = 2, ///< Scales by a factor relative to the disired edge length.
+    RelativeToDrawing = 3 ///< Scales by a factor relative to the drawing.
 };
 static const std::string scaling_types_values[] = {"Absolute", "RelativeToAvgLength", "RelativeToDesiredLength", "RelativeToDrawing"};
 
@@ -133,24 +137,23 @@ struct LayoutConfiguration
                "node_size" + std::to_string(node_size);
     }
 
-    int k;
-    int kc;
-    int fme_iterations;
-    bool fme_randomize;
-    int fme_threads;
-    int fme_precision;
-
-    int sl_repeats;
-    int sl_extra_scaling_steps;
-    double sl_scaling_min;
-    double sl_scaling_max;
-    ScalingType sl_scaling_type;
-    int mmm_repeats;
-    Placer placer;
-    Merger merger;
-    double merger_factor;
-    int merger_adjustment;
-    float node_size;
+    int k; ///< The number of nearest neighbors used to create the k-nearest neighbor graph.
+    int kc; ///< The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
+    int fme_iterations; ///< Maximum number of iterations of the fast multipole embedder.
+    bool fme_randomize; ///< Whether or not to randomize the layout at the start.
+    int fme_threads; ///< The number of threads for the fast multipole embedder.
+    int fme_precision; ///< The number of coefficients of the multipole expansion.
+    int sl_repeats; ///< The number of repeats of the scaling layout algorithm.
+    int sl_extra_scaling_steps; ///< Sets the number of repeats of the scaling.
+    double sl_scaling_min; ///< The minimum scaling factor.
+    double sl_scaling_max; ///< The maximum scaling factor.
+    ScalingType sl_scaling_type; ///< Defines the (relative) scale of the graph.
+    int mmm_repeats; ///< Number of repeats of the per-level layout algorithm.
+    Placer placer; ///< The  method  by  which  the  initial  positons  of  the  vertices  at  eachlevel are defined.
+    Merger merger; ///< The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
+    double merger_factor; ///< The ratio of the sizes between two levels up to which the mergingis run.  Does not apply to all merging strategies.
+    int merger_adjustment; ///< The  edge  length  adjustment  of  the  merging  algorithm.   Does  notapply to all merging strategies.
+    float node_size; ///< The size of the nodes, which affects the magnitude of their repellingforce.   Decreasing  this  value  generally  resolves  overlaps  in  a  verycrowded tree.
 };
 
 /**
@@ -159,11 +162,11 @@ struct LayoutConfiguration
  */
 struct GraphProperties
 {
-    float mst_weight = 0.0;
-    uint32_t n_connected_components = 0;
-    uint32_t n_isolated_vertices = 0;
-    std::vector<uint32_t> degrees;
-    std::vector<std::vector<uint32_t>> adjacency_list;
+    float mst_weight = 0.0; ///< The total weight of the created spanning tree.
+    uint32_t n_connected_components = 0; ///< The number of connected components.
+    uint32_t n_isolated_vertices = 0; ///< The number of isolated (lone) vertices.
+    std::vector<uint32_t> degrees; ///< The degrees of the vertices in the graph.
+    std::vector<std::vector<uint32_t>> adjacency_list; ///< The adjacency list of the spanning tree.
 };
 
 /**

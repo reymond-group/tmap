@@ -582,23 +582,33 @@ The properties of a generated graph. An instance of this struct is returned from
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public float `[`mst_weight`](#structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b) | 
-`public uint32_t `[`n_connected_components`](#structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca) | 
-`public uint32_t `[`n_isolated_vertices`](#structGraphProperties_1ad3eec03efec4480e80c5510b896660ae) | 
-`public std::vector< uint32_t > `[`degrees`](#structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1) | 
-`public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635) | 
+`public float `[`mst_weight`](#structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b) | The total weight of the created spanning tree.
+`public uint32_t `[`n_connected_components`](#structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca) | The number of connected components.
+`public uint32_t `[`n_isolated_vertices`](#structGraphProperties_1ad3eec03efec4480e80c5510b896660ae) | The number of isolated (lone) vertices.
+`public std::vector< uint32_t > `[`degrees`](#structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1) | The degrees of the vertices in the graph.
+`public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635) | The adjacency list of the spanning tree.
 
 ## Members
 
 #### `public float `[`mst_weight`](#structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b) <a id="structGraphProperties_1a1924c22c71ea4f60ed7e31db768d5a9b"></a>
 
+The total weight of the created spanning tree.
+
 #### `public uint32_t `[`n_connected_components`](#structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca) <a id="structGraphProperties_1a268ebbd3f3ef13fb56e44adfbd2583ca"></a>
+
+The number of connected components.
 
 #### `public uint32_t `[`n_isolated_vertices`](#structGraphProperties_1ad3eec03efec4480e80c5510b896660ae) <a id="structGraphProperties_1ad3eec03efec4480e80c5510b896660ae"></a>
 
+The number of isolated (lone) vertices.
+
 #### `public std::vector< uint32_t > `[`degrees`](#structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1) <a id="structGraphProperties_1ae1515b9c7e47a9ed3034bb219871d1c1"></a>
 
+The degrees of the vertices in the graph.
+
 #### `public std::vector< std::vector< uint32_t > > `[`adjacency_list`](#structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635) <a id="structGraphProperties_1ab567d40199d8d3e6a4a96e8c145df635"></a>
+
+The adjacency list of the spanning tree.
 
 # struct `LayoutConfiguration` <a id="structLayoutConfiguration"></a>
 
@@ -608,23 +618,23 @@ A struct containing all the configuration options available for and applied to a
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public int `[`k`](#structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee) | 
-`public int `[`kc`](#structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc) | 
-`public int `[`fme_iterations`](#structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35) | 
-`public bool `[`fme_randomize`](#structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e) | 
-`public int `[`fme_threads`](#structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02) | 
-`public int `[`fme_precision`](#structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7) | 
-`public int `[`sl_repeats`](#structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0) | 
-`public int `[`sl_extra_scaling_steps`](#structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f) | 
-`public double `[`sl_scaling_min`](#structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5) | 
-`public double `[`sl_scaling_max`](#structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a) | 
-`public `[`ScalingType`](#layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2)` `[`sl_scaling_type`](#structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af) | 
-`public int `[`mmm_repeats`](#structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065) | 
-`public `[`Placer`](#layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96)` `[`placer`](#structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0) | 
-`public `[`Merger`](#layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18)` `[`merger`](#structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318) | 
-`public double `[`merger_factor`](#structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae) | 
-`public int `[`merger_adjustment`](#structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132) | 
-`public float `[`node_size`](#structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1) | 
+`public int `[`k`](#structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee) | The number of nearest neighbors used to create the k-nearest neighbor graph.
+`public int `[`kc`](#structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc) | The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
+`public int `[`fme_iterations`](#structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35) | Maximum number of iterations of the fast multipole embedder.
+`public bool `[`fme_randomize`](#structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e) | Whether or not to randomize the layout at the start.
+`public int `[`fme_threads`](#structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02) | The number of threads for the fast multipole embedder.
+`public int `[`fme_precision`](#structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7) | The number of coefficients of the multipole expansion.
+`public int `[`sl_repeats`](#structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0) | The number of repeats of the scaling layout algorithm.
+`public int `[`sl_extra_scaling_steps`](#structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f) | Sets the number of repeats of the scaling.
+`public double `[`sl_scaling_min`](#structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5) | The minimum scaling factor.
+`public double `[`sl_scaling_max`](#structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a) | The maximum scaling factor.
+`public `[`ScalingType`](#layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2)` `[`sl_scaling_type`](#structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af) | Defines the (relative) scale of the graph.
+`public int `[`mmm_repeats`](#structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065) | Number of repeats of the per-level layout algorithm.
+`public `[`Placer`](#layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96)` `[`placer`](#structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0) | The method by which the initial positons of the vertices at eachlevel are defined.
+`public `[`Merger`](#layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18)` `[`merger`](#structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318) | The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
+`public double `[`merger_factor`](#structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae) | The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies.
+`public int `[`merger_adjustment`](#structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132) | The edge length adjustment of the merging algorithm. Does notapply to all merging strategies.
+`public float `[`node_size`](#structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1) | The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree.
 `public inline  `[`LayoutConfiguration`](#structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4)`()` | Construct a new Layout Configuration object.
 `public inline std::string `[`ToString`](#structLayoutConfiguration_1a8be8ea09a3143cf9ba54a5069f0934d1)`() const` | Returns a string describing the set options.
 
@@ -632,37 +642,71 @@ A struct containing all the configuration options available for and applied to a
 
 #### `public int `[`k`](#structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee) <a id="structLayoutConfiguration_1aeaf7404656862b423dfc63035f5e8bee"></a>
 
+The number of nearest neighbors used to create the k-nearest neighbor graph.
+
 #### `public int `[`kc`](#structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc) <a id="structLayoutConfiguration_1ac3e7def530d8c31537b8f9de6cd89fdc"></a>
+
+The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned.
 
 #### `public int `[`fme_iterations`](#structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35) <a id="structLayoutConfiguration_1afe033986b179ba0e419166b6fcb1dd35"></a>
 
+Maximum number of iterations of the fast multipole embedder.
+
 #### `public bool `[`fme_randomize`](#structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e) <a id="structLayoutConfiguration_1a44383f49d302581f3e8300fb4677663e"></a>
+
+Whether or not to randomize the layout at the start.
 
 #### `public int `[`fme_threads`](#structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02) <a id="structLayoutConfiguration_1ab356194e6ee8b8ad276fd196b540ac02"></a>
 
+The number of threads for the fast multipole embedder.
+
 #### `public int `[`fme_precision`](#structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7) <a id="structLayoutConfiguration_1a086e941fb5a53c068de377f740e330d7"></a>
+
+The number of coefficients of the multipole expansion.
 
 #### `public int `[`sl_repeats`](#structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0) <a id="structLayoutConfiguration_1ac48f682786c633d2e43c7ae83fa400e0"></a>
 
+The number of repeats of the scaling layout algorithm.
+
 #### `public int `[`sl_extra_scaling_steps`](#structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f) <a id="structLayoutConfiguration_1a5f21efd9d16cb86fde8c9f273ae8a05f"></a>
+
+Sets the number of repeats of the scaling.
 
 #### `public double `[`sl_scaling_min`](#structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5) <a id="structLayoutConfiguration_1a267835cca2b8e0d694b7709009d7eaa5"></a>
 
+The minimum scaling factor.
+
 #### `public double `[`sl_scaling_max`](#structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a) <a id="structLayoutConfiguration_1a96f6f38497727a3844acab6be2ae021a"></a>
+
+The maximum scaling factor.
 
 #### `public `[`ScalingType`](#layout_8hh_1ae327227c361ab0e868a1f25017cb3ae2)` `[`sl_scaling_type`](#structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af) <a id="structLayoutConfiguration_1a7975f6fe7f0ca315af9c631a325b98af"></a>
 
+Defines the (relative) scale of the graph.
+
 #### `public int `[`mmm_repeats`](#structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065) <a id="structLayoutConfiguration_1a73bfc92692894cafdfa063b0a45bc065"></a>
+
+Number of repeats of the per-level layout algorithm.
 
 #### `public `[`Placer`](#layout_8hh_1a93e50260439be3f5fe75b271c0ce2c96)` `[`placer`](#structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0) <a id="structLayoutConfiguration_1a139a9d88f1bcce6769b440f0f49130f0"></a>
 
+The method by which the initial positons of the vertices at eachlevel are defined.
+
 #### `public `[`Merger`](#layout_8hh_1a87e3986b1a6733e81a1c0b4bbd6aba18)` `[`merger`](#structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318) <a id="structLayoutConfiguration_1a70222497c34b2ffa597cd364d0a1d318"></a>
+
+The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm.
 
 #### `public double `[`merger_factor`](#structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae) <a id="structLayoutConfiguration_1a98f6187e2dc15b0f06bcbfef5562beae"></a>
 
+The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies.
+
 #### `public int `[`merger_adjustment`](#structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132) <a id="structLayoutConfiguration_1a382a084c8d4785151b9328221c4ba132"></a>
 
+The edge length adjustment of the merging algorithm. Does notapply to all merging strategies.
+
 #### `public float `[`node_size`](#structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1) <a id="structLayoutConfiguration_1a54a32d5173963abca63aae5bfa9d68e1"></a>
+
+The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree.
 
 #### `public inline  `[`LayoutConfiguration`](#structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4)`()` <a id="structLayoutConfiguration_1a76742074edbb0cf0fad8d8c2d2f32be4"></a>
 
