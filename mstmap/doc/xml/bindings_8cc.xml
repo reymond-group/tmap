@@ -37,123 +37,115 @@
     <includes local="no">initializer_list</includes>
     <includes refid="minhash_8hh" local="yes">minhash.hh</includes>
     <incdepgraph>
-      <node id="68">
+      <node id="66">
         <label>valarray</label>
       </node>
-      <node id="40">
+      <node id="38">
         <label>functional</label>
       </node>
-      <node id="52">
+      <node id="50">
         <label>limits</label>
       </node>
-      <node id="44">
+      <node id="42">
         <label>cereal/types/map.hpp</label>
       </node>
-      <node id="53">
+      <node id="51">
         <label>iterator</label>
       </node>
-      <node id="28">
+      <node id="26">
         <label>ogdf/packing/TileToRowsCCPacker.h</label>
       </node>
-      <node id="42">
+      <node id="40">
         <label>cereal/archives/binary.hpp</label>
       </node>
-      <node id="45">
+      <node id="43">
         <label>cereal/types/tuple.hpp</label>
       </node>
-      <node id="9">
+      <node id="7">
         <label>stdint.h</label>
       </node>
-      <node id="71">
-        <label>TinySHA1.hh</label>
-        <link refid="TinySHA1_8hh_source"/>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="63">
+      <node id="61">
         <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_config.h</label>
       </node>
-      <node id="50">
+      <node id="48">
         <label>cassert</label>
       </node>
-      <node id="35">
+      <node id="33">
         <label>stdexcept</label>
       </node>
-      <node id="70">
+      <node id="68">
         <label>numeric</label>
       </node>
-      <node id="27">
+      <node id="25">
         <label>ogdf/packing/ComponentSplitterLayout.h</label>
       </node>
-      <node id="51">
+      <node id="49">
         <label>string</label>
       </node>
-      <node id="22">
+      <node id="20">
         <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
       </node>
-      <node id="17">
+      <node id="15">
         <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
       </node>
-      <node id="36">
+      <node id="34">
         <label>map</label>
       </node>
-      <node id="13">
+      <node id="11">
         <label>ogdf/basic/extended_graph_alg.h</label>
       </node>
-      <node id="2">
+      <node id="0">
         <label>src/tmap/bindings.cc</label>
         <link refid="bindings_8cc"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
         <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
@@ -163,120 +155,120 @@
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
+      </node>
+      <node id="44">
+        <label>sparsepp/spp.h</label>
+      </node>
+      <node id="8">
+        <label>ogdf/basic/Graph.h</label>
+      </node>
+      <node id="30">
+        <label>fstream</label>
+      </node>
+      <node id="63">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_utils.h</label>
+      </node>
+      <node id="13">
+        <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
+      </node>
+      <node id="12">
+        <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
+      </node>
+      <node id="27">
+        <label>ogdf/energybased/FMMMLayout.h</label>
+      </node>
+      <node id="28">
+        <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
+      </node>
+      <node id="67">
+        <label>random</label>
+      </node>
+      <node id="59">
+        <label>ios</label>
+      </node>
+      <node id="31">
+        <label>typeinfo</label>
+      </node>
+      <node id="57">
+        <label>cstdio</label>
+      </node>
+      <node id="6">
+        <label>tuple</label>
+      </node>
+      <node id="24">
+        <label>ogdf/basic/PreprocessorLayout.h</label>
+      </node>
+      <node id="22">
+        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="55">
+        <label>new</label>
+      </node>
+      <node id="19">
+        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
+      </node>
+      <node id="56">
+        <label>utility</label>
+      </node>
+      <node id="46">
+        <label>sstream</label>
+      </node>
+      <node id="1">
+        <label>pybind11/pybind11.h</label>
+      </node>
+      <node id="17">
+        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
+      </node>
+      <node id="14">
+        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
+      </node>
+      <node id="65">
+        <label>minhash.hh</label>
+        <link refid="minhash_8hh"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-      </node>
-      <node id="46">
-        <label>sparsepp/spp.h</label>
-      </node>
-      <node id="10">
-        <label>ogdf/basic/Graph.h</label>
-      </node>
-      <node id="32">
-        <label>fstream</label>
-      </node>
-      <node id="65">
-        <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_utils.h</label>
-      </node>
-      <node id="15">
-        <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
-      </node>
-      <node id="14">
-        <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
-      </node>
-      <node id="29">
-        <label>ogdf/energybased/FMMMLayout.h</label>
-      </node>
-      <node id="30">
-        <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
-      </node>
-      <node id="69">
-        <label>random</label>
-      </node>
-      <node id="61">
-        <label>ios</label>
-      </node>
-      <node id="33">
-        <label>typeinfo</label>
-      </node>
-      <node id="59">
-        <label>cstdio</label>
-      </node>
-      <node id="8">
-        <label>tuple</label>
-      </node>
-      <node id="26">
-        <label>ogdf/basic/PreprocessorLayout.h</label>
-      </node>
-      <node id="24">
-        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
-      </node>
-      <node id="7">
-        <label>vector</label>
-      </node>
-      <node id="57">
-        <label>new</label>
-      </node>
-      <node id="21">
-        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
-      </node>
-      <node id="58">
-        <label>utility</label>
-      </node>
-      <node id="48">
-        <label>sstream</label>
-      </node>
-      <node id="3">
-        <label>pybind11/pybind11.h</label>
-      </node>
-      <node id="19">
-        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
-      </node>
-      <node id="16">
-        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
-      </node>
-      <node id="67">
-        <label>minhash.hh</label>
-        <link refid="minhash_8hh"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
       </node>
-      <node id="47">
+      <node id="45">
         <label>cereal/cereal.hpp</label>
       </node>
-      <node id="6">
+      <node id="4">
         <label>layout.hh</label>
         <link refid="layout_8hh"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -327,41 +319,41 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
-      <node id="60">
+      <node id="58">
         <label>iosfwd</label>
       </node>
-      <node id="55">
+      <node id="53">
         <label>cstdlib</label>
       </node>
-      <node id="34">
+      <node id="32">
         <label>lshforest.hh</label>
         <link refid="lshforest_8hh"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -371,71 +363,70 @@
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="29">
         <label>iostream</label>
       </node>
-      <node id="12">
+      <node id="10">
         <label>ogdf/basic/GraphAttributes.h</label>
       </node>
-      <node id="11">
+      <node id="69">
+        <label>TinySHA1.hh</label>
+      </node>
+      <node id="9">
         <label>ogdf/fileformats/GraphIO.h</label>
       </node>
-      <node id="56">
+      <node id="54">
         <label>cstddef</label>
       </node>
-      <node id="41">
+      <node id="39">
         <label>chrono</label>
       </node>
-      <node id="20">
+      <node id="18">
         <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
       </node>
-      <node id="64">
+      <node id="62">
         <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_traits.h</label>
       </node>
-      <node id="37">
+      <node id="35">
         <label>set</label>
       </node>
-      <node id="49">
+      <node id="47">
         <label>cereal/types/concepts/pair_associative_container.hpp</label>
       </node>
-      <node id="25">
+      <node id="23">
         <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
       </node>
-      <node id="39">
+      <node id="37">
         <label>algorithm</label>
       </node>
-      <node id="18">
+      <node id="16">
         <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
       </node>
-      <node id="5">
+      <node id="3">
         <label>pybind11/stl_bind.h</label>
       </node>
-      <node id="38">
+      <node id="36">
         <label>cstring</label>
       </node>
-      <node id="62">
+      <node id="60">
         <label>/home/daenu/Code/conda-mstmap/mstmap/src/tmap/sparsepp/spp_stdint.h</label>
       </node>
-      <node id="43">
+      <node id="41">
         <label>cereal/types/vector.hpp</label>
       </node>
-      <node id="54">
+      <node id="52">
         <label>memory</label>
       </node>
-      <node id="66">
+      <node id="64">
         <label>initializer_list</label>
       </node>
-      <node id="23">
+      <node id="21">
         <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
       </node>
-      <node id="4">
+      <node id="2">
         <label>pybind11/stl.h</label>
       </node>
     </incdepgraph>
@@ -564,7 +555,7 @@
 <codeline lineno="22"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint64_t&gt;);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;float&gt;);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal">PYBIND11_MODULE(<ref refid="namespacetmap" kindref="compound">tmap</ref>,<sp/>m)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">PYBIND11_MODULE(tmap,<sp/>m)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint8_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUchar&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint16_t&gt;&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUsmall&quot;</highlight><highlight class="normal">);</highlight></codeline>

@@ -2,8 +2,6 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`namespace `[`sha1`](#namespacesha1) | 
-`namespace `[`tmap`](#namespacetmap) | 
 `class `[`LSHForest`](#classLSHForest) | Provides locality sensitive hashing forest functionalities.
 `class `[`Minhash`](#classMinhash) | An implementation of MinHash and weighted MinHash using SHA1.
 `class `[`Timer`](#classTimer) | A simple timer class used to check performance during development.
@@ -11,74 +9,6 @@
 `struct `[`LayoutConfiguration`](#structLayoutConfiguration) | A struct containing all the configuration options available for and applied to a layout.
 `struct `[`MapKeyPointer`](#structMapKeyPointer) | The pointer map used for pointing to the keys from the sorted hash map.
 `struct `[`SimpleHash`](#structSimpleHash) | Hash struct used for the sparsepp sparse hash map.
-
-# namespace `sha1` <a id="namespacesha1"></a>
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`class `[`sha1::SHA1`](#classsha1_1_1SHA1) | 
-
-# class `sha1::SHA1` <a id="classsha1_1_1SHA1"></a>
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`public inline  `[`SHA1`](#classsha1_1_1SHA1_1a440d0c3f17da510418b678f4c9dcbdf2)`()` | 
-`public inline virtual  `[`~SHA1`](#classsha1_1_1SHA1_1a7103b57eb1f51a498a92c095b9c21392)`()` | 
-`public inline  `[`SHA1`](#classsha1_1_1SHA1_1a1d63d04a7f146a42000e0a2a35314c6f)`(const `[`SHA1`](#classsha1_1_1SHA1)` & s)` | 
-`public inline const `[`SHA1`](#classsha1_1_1SHA1)` & `[`operator=`](#classsha1_1_1SHA1_1ae8f2ccbee9a15968482057e0d03a4247)`(const `[`SHA1`](#classsha1_1_1SHA1)` & s)` | 
-`public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`reset`](#classsha1_1_1SHA1_1ae2f5530e5be0837e6a222a1f244cbe6d)`()` | 
-`public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processByte`](#classsha1_1_1SHA1_1a8f7edf8ccfea07f988d5f40c4b5c768b)`(uint8_t octet)` | 
-`public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processBlock`](#classsha1_1_1SHA1_1af5e58568ad3bcaf91640c7fd5e448d85)`(const void *const start,const void *const end)` | 
-`public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processBytes`](#classsha1_1_1SHA1_1abf8a680503b98b8f773f98752e34dbca)`(const void *const data,size_t len)` | 
-`public inline const uint32_t * `[`getDigest`](#classsha1_1_1SHA1_1a7a097712264451da60aa0f30096dd516)`(digest32_t digest)` | 
-`public inline const uint8_t * `[`getDigestBytes`](#classsha1_1_1SHA1_1a4fd38b624cba611b65730a9e747c584e)`(digest8_t digest)` | 
-`protected inline void `[`processBlock`](#classsha1_1_1SHA1_1af00112a350d5f1f67a9ac00a0fee6793)`()` | 
-`typedef `[`digest32_t`](#classsha1_1_1SHA1_1a15f384f39d235a8912d5042dc920595f) | 
-`typedef `[`digest8_t`](#classsha1_1_1SHA1_1a62b6c7838c4cdcb81700a6cc64fde994) | 
-
-## Members
-
-#### `public inline  `[`SHA1`](#classsha1_1_1SHA1_1a440d0c3f17da510418b678f4c9dcbdf2)`()` <a id="classsha1_1_1SHA1_1a440d0c3f17da510418b678f4c9dcbdf2"></a>
-
-#### `public inline virtual  `[`~SHA1`](#classsha1_1_1SHA1_1a7103b57eb1f51a498a92c095b9c21392)`()` <a id="classsha1_1_1SHA1_1a7103b57eb1f51a498a92c095b9c21392"></a>
-
-#### `public inline  `[`SHA1`](#classsha1_1_1SHA1_1a1d63d04a7f146a42000e0a2a35314c6f)`(const `[`SHA1`](#classsha1_1_1SHA1)` & s)` <a id="classsha1_1_1SHA1_1a1d63d04a7f146a42000e0a2a35314c6f"></a>
-
-#### `public inline const `[`SHA1`](#classsha1_1_1SHA1)` & `[`operator=`](#classsha1_1_1SHA1_1ae8f2ccbee9a15968482057e0d03a4247)`(const `[`SHA1`](#classsha1_1_1SHA1)` & s)` <a id="classsha1_1_1SHA1_1ae8f2ccbee9a15968482057e0d03a4247"></a>
-
-#### `public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`reset`](#classsha1_1_1SHA1_1ae2f5530e5be0837e6a222a1f244cbe6d)`()` <a id="classsha1_1_1SHA1_1ae2f5530e5be0837e6a222a1f244cbe6d"></a>
-
-#### `public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processByte`](#classsha1_1_1SHA1_1a8f7edf8ccfea07f988d5f40c4b5c768b)`(uint8_t octet)` <a id="classsha1_1_1SHA1_1a8f7edf8ccfea07f988d5f40c4b5c768b"></a>
-
-#### `public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processBlock`](#classsha1_1_1SHA1_1af5e58568ad3bcaf91640c7fd5e448d85)`(const void *const start,const void *const end)` <a id="classsha1_1_1SHA1_1af5e58568ad3bcaf91640c7fd5e448d85"></a>
-
-#### `public inline `[`SHA1`](#classsha1_1_1SHA1)` & `[`processBytes`](#classsha1_1_1SHA1_1abf8a680503b98b8f773f98752e34dbca)`(const void *const data,size_t len)` <a id="classsha1_1_1SHA1_1abf8a680503b98b8f773f98752e34dbca"></a>
-
-#### `public inline const uint32_t * `[`getDigest`](#classsha1_1_1SHA1_1a7a097712264451da60aa0f30096dd516)`(digest32_t digest)` <a id="classsha1_1_1SHA1_1a7a097712264451da60aa0f30096dd516"></a>
-
-#### `public inline const uint8_t * `[`getDigestBytes`](#classsha1_1_1SHA1_1a4fd38b624cba611b65730a9e747c584e)`(digest8_t digest)` <a id="classsha1_1_1SHA1_1a4fd38b624cba611b65730a9e747c584e"></a>
-
-#### `protected inline void `[`processBlock`](#classsha1_1_1SHA1_1af00112a350d5f1f67a9ac00a0fee6793)`()` <a id="classsha1_1_1SHA1_1af00112a350d5f1f67a9ac00a0fee6793"></a>
-
-#### `typedef `[`digest32_t`](#classsha1_1_1SHA1_1a15f384f39d235a8912d5042dc920595f) <a id="classsha1_1_1SHA1_1a15f384f39d235a8912d5042dc920595f"></a>
-
-#### `typedef `[`digest8_t`](#classsha1_1_1SHA1_1a62b6c7838c4cdcb81700a6cc64fde994) <a id="classsha1_1_1SHA1_1a62b6c7838c4cdcb81700a6cc64fde994"></a>
-
-# namespace `tmap` <a id="namespacetmap"></a>
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`public def `[`get_asset`](#____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30)`(path)`            | 
-
-## Members
-
-#### `public def `[`get_asset`](#____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30)`(path)` <a id="____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30"></a>
 
 # class `LSHForest` <a id="classLSHForest"></a>
 

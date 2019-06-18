@@ -4,45 +4,34 @@
     <compoundname>minhash.cc</compoundname>
     <includes refid="minhash_8hh" local="yes">minhash.hh</includes>
     <incdepgraph>
-      <node id="241">
+      <node id="239">
         <label>valarray</label>
       </node>
-      <node id="246">
+      <node id="244">
         <label>limits</label>
       </node>
-      <node id="244">
+      <node id="242">
         <label>stdint.h</label>
       </node>
-      <node id="248">
-        <label>TinySHA1.hh</label>
-        <link refid="TinySHA1_8hh_source"/>
-        <childnode refid="249" relation="include">
-        </childnode>
-        <childnode refid="250" relation="include">
-        </childnode>
-        <childnode refid="251" relation="include">
-        </childnode>
-        <childnode refid="244" relation="include">
-        </childnode>
-      </node>
-      <node id="239">
+      <node id="237">
         <label>stdexcept</label>
       </node>
-      <node id="247">
+      <node id="245">
         <label>numeric</label>
       </node>
-      <node id="242">
+      <node id="240">
         <label>random</label>
       </node>
-      <node id="249">
-        <label>cstdio</label>
-      </node>
-      <node id="240">
+      <node id="238">
         <label>vector</label>
       </node>
-      <node id="238">
+      <node id="236">
         <label>minhash.hh</label>
         <link refid="minhash_8hh"/>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
         <childnode refid="239" relation="include">
         </childnode>
         <childnode refid="240" relation="include">
@@ -59,28 +48,21 @@
         </childnode>
         <childnode refid="246" relation="include">
         </childnode>
-        <childnode refid="247" relation="include">
-        </childnode>
-        <childnode refid="248" relation="include">
-        </childnode>
       </node>
-      <node id="250">
-        <label>cstdlib</label>
-      </node>
-      <node id="237">
+      <node id="235">
         <label>src/tmap/minhash.cc</label>
         <link refid="minhash_8cc"/>
-        <childnode refid="238" relation="include">
+        <childnode refid="236" relation="include">
         </childnode>
       </node>
-      <node id="245">
+      <node id="243">
         <label>iostream</label>
       </node>
-      <node id="243">
-        <label>algorithm</label>
+      <node id="246">
+        <label>TinySHA1.hh</label>
       </node>
-      <node id="251">
-        <label>cstring</label>
+      <node id="241">
+        <label>algorithm</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -227,7 +209,7 @@
 <codeline lineno="142"><highlight class="normal">std::vector&lt;uint32_t&gt;<sp/><ref refid="classMinhash_1a7131b7dbefd40e0d24d7e37601519d62" kindref="member">Minhash::FromStringArray</ref>(std::vector&lt;std::string&gt;<sp/>&amp;vec)</highlight></codeline>
 <codeline lineno="143"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>mh(max_hash_,<sp/>d_);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classsha1_1_1SHA1" kindref="compound">sha1::SHA1</ref><sp/>s;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>sha1::SHA1<sp/>s;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint32_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>vec.size();<sp/>i++)</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>

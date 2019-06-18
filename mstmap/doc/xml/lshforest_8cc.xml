@@ -4,95 +4,99 @@
     <compoundname>lshforest.cc</compoundname>
     <includes refid="lshforest_8hh" local="yes">lshforest.hh</includes>
     <incdepgraph>
-      <node id="159">
+      <node id="157">
         <label>functional</label>
       </node>
-      <node id="165">
+      <node id="163">
         <label>cereal/types/map.hpp</label>
       </node>
-      <node id="187">
+      <node id="185">
         <label>ogdf/packing/TileToRowsCCPacker.h</label>
       </node>
-      <node id="163">
+      <node id="161">
         <label>cereal/archives/binary.hpp</label>
       </node>
-      <node id="166">
+      <node id="164">
         <label>cereal/types/tuple.hpp</label>
       </node>
-      <node id="156">
+      <node id="154">
         <label>stdint.h</label>
       </node>
-      <node id="151">
+      <node id="149">
         <label>stdexcept</label>
       </node>
-      <node id="186">
+      <node id="184">
         <label>ogdf/packing/ComponentSplitterLayout.h</label>
       </node>
-      <node id="181">
+      <node id="179">
         <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
       </node>
-      <node id="176">
+      <node id="174">
         <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
       </node>
-      <node id="153">
+      <node id="151">
         <label>map</label>
       </node>
-      <node id="172">
+      <node id="170">
         <label>ogdf/basic/extended_graph_alg.h</label>
       </node>
-      <node id="167">
+      <node id="165">
         <label>sparsepp/spp.h</label>
       </node>
-      <node id="169">
+      <node id="167">
         <label>ogdf/basic/Graph.h</label>
       </node>
-      <node id="161">
+      <node id="159">
         <label>fstream</label>
       </node>
-      <node id="174">
+      <node id="172">
         <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
       </node>
-      <node id="173">
+      <node id="171">
         <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
       </node>
-      <node id="188">
+      <node id="186">
         <label>ogdf/energybased/FMMMLayout.h</label>
       </node>
-      <node id="189">
+      <node id="187">
         <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
       </node>
-      <node id="190">
+      <node id="188">
         <label>typeinfo</label>
       </node>
-      <node id="154">
+      <node id="152">
         <label>tuple</label>
       </node>
-      <node id="185">
+      <node id="183">
         <label>ogdf/basic/PreprocessorLayout.h</label>
       </node>
-      <node id="183">
+      <node id="181">
         <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
       </node>
-      <node id="152">
+      <node id="150">
         <label>vector</label>
       </node>
-      <node id="180">
+      <node id="178">
         <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
       </node>
-      <node id="178">
+      <node id="176">
         <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
       </node>
-      <node id="175">
+      <node id="173">
         <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
       </node>
-      <node id="168">
+      <node id="166">
         <label>layout.hh</label>
         <link refid="layout_8hh"/>
+        <childnode refid="150" relation="include">
+        </childnode>
         <childnode refid="152" relation="include">
         </childnode>
         <childnode refid="154" relation="include">
         </childnode>
-        <childnode refid="156" relation="include">
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
         </childnode>
         <childnode refid="169" relation="include">
         </childnode>
@@ -132,20 +136,20 @@
         </childnode>
         <childnode refid="187" relation="include">
         </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
         <childnode refid="188" relation="include">
         </childnode>
-        <childnode refid="189" relation="include">
-        </childnode>
-        <childnode refid="160" relation="include">
-        </childnode>
-        <childnode refid="161" relation="include">
-        </childnode>
-        <childnode refid="190" relation="include">
-        </childnode>
       </node>
-      <node id="150">
+      <node id="148">
         <label>lshforest.hh</label>
         <link refid="lshforest_8hh"/>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
         <childnode refid="151" relation="include">
         </childnode>
         <childnode refid="152" relation="include">
@@ -178,51 +182,47 @@
         </childnode>
         <childnode refid="166" relation="include">
         </childnode>
-        <childnode refid="167" relation="include">
-        </childnode>
-        <childnode refid="168" relation="include">
-        </childnode>
       </node>
-      <node id="149">
+      <node id="147">
         <label>src/tmap/lshforest.cc</label>
         <link refid="lshforest_8cc"/>
-        <childnode refid="150" relation="include">
+        <childnode refid="148" relation="include">
         </childnode>
       </node>
-      <node id="160">
+      <node id="158">
         <label>iostream</label>
       </node>
-      <node id="171">
+      <node id="169">
         <label>ogdf/basic/GraphAttributes.h</label>
       </node>
-      <node id="170">
+      <node id="168">
         <label>ogdf/fileformats/GraphIO.h</label>
       </node>
-      <node id="162">
+      <node id="160">
         <label>chrono</label>
       </node>
-      <node id="179">
+      <node id="177">
         <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
       </node>
-      <node id="155">
+      <node id="153">
         <label>set</label>
       </node>
-      <node id="184">
+      <node id="182">
         <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
       </node>
-      <node id="158">
+      <node id="156">
         <label>algorithm</label>
       </node>
-      <node id="177">
+      <node id="175">
         <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
       </node>
-      <node id="157">
+      <node id="155">
         <label>cstring</label>
       </node>
-      <node id="164">
+      <node id="162">
         <label>cereal/types/vector.hpp</label>
       </node>
-      <node id="182">
+      <node id="180">
         <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
       </node>
     </incdepgraph>

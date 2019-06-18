@@ -115,26 +115,6 @@
     <member refid="classMinhash_1a8b2bd50a845fb4aa513464de10ed3e21" kind="function"><name>GetWeightedDistance</name></member>
     <member refid="classMinhash_1a15a534f3f3e14c45ee20da1ed5039661" kind="function"><name>~Minhash</name></member>
   </compound>
-  <compound refid="classsha1_1_1SHA1" kind="class"><name>sha1::SHA1</name>
-    <member refid="classsha1_1_1SHA1_1a15f384f39d235a8912d5042dc920595f" kind="typedef"><name>digest32_t</name></member>
-    <member refid="classsha1_1_1SHA1_1a62b6c7838c4cdcb81700a6cc64fde994" kind="typedef"><name>digest8_t</name></member>
-    <member refid="classsha1_1_1SHA1_1abf518fd3731336f4154ee6392f25bcc4" kind="variable"><name>m_digest</name></member>
-    <member refid="classsha1_1_1SHA1_1a085c3d380c205a79c2b21a394913fb7b" kind="variable"><name>m_block</name></member>
-    <member refid="classsha1_1_1SHA1_1a48b14a3573a6f6424365ae85d9694966" kind="variable"><name>m_blockByteIndex</name></member>
-    <member refid="classsha1_1_1SHA1_1a0926d008ffb0968ad89f4f58b51fdd72" kind="variable"><name>m_byteCount</name></member>
-    <member refid="classsha1_1_1SHA1_1a88fa19fad6a3b06522b2826a5966f355" kind="function"><name>LeftRotate</name></member>
-    <member refid="classsha1_1_1SHA1_1a440d0c3f17da510418b678f4c9dcbdf2" kind="function"><name>SHA1</name></member>
-    <member refid="classsha1_1_1SHA1_1a7103b57eb1f51a498a92c095b9c21392" kind="function"><name>~SHA1</name></member>
-    <member refid="classsha1_1_1SHA1_1a1d63d04a7f146a42000e0a2a35314c6f" kind="function"><name>SHA1</name></member>
-    <member refid="classsha1_1_1SHA1_1ae8f2ccbee9a15968482057e0d03a4247" kind="function"><name>operator=</name></member>
-    <member refid="classsha1_1_1SHA1_1ae2f5530e5be0837e6a222a1f244cbe6d" kind="function"><name>reset</name></member>
-    <member refid="classsha1_1_1SHA1_1a8f7edf8ccfea07f988d5f40c4b5c768b" kind="function"><name>processByte</name></member>
-    <member refid="classsha1_1_1SHA1_1af5e58568ad3bcaf91640c7fd5e448d85" kind="function"><name>processBlock</name></member>
-    <member refid="classsha1_1_1SHA1_1abf8a680503b98b8f773f98752e34dbca" kind="function"><name>processBytes</name></member>
-    <member refid="classsha1_1_1SHA1_1a7a097712264451da60aa0f30096dd516" kind="function"><name>getDigest</name></member>
-    <member refid="classsha1_1_1SHA1_1a4fd38b624cba611b65730a9e747c584e" kind="function"><name>getDigestBytes</name></member>
-    <member refid="classsha1_1_1SHA1_1af00112a350d5f1f67a9ac00a0fee6793" kind="function"><name>processBlock</name></member>
-  </compound>
   <compound refid="structSimpleHash" kind="struct"><name>SimpleHash</name>
     <member refid="structSimpleHash_1abb89901eb1591020804460a3dccbde58" kind="function"><name>operator()</name></member>
   </compound>
@@ -147,14 +127,6 @@
     <member refid="classTimer_1a6a89a613c2af9b0d1e5f7e4ba9e46c54" kind="function"><name>elapsed</name></member>
   </compound>
   <compound refid="namespaceogdf" kind="namespace"><name>ogdf</name>
-  </compound>
-  <compound refid="namespacesha1" kind="namespace"><name>sha1</name>
-  </compound>
-  <compound refid="namespacetmap" kind="namespace"><name>tmap</name>
-    <member refid="____init_____8py_1afa8ab9eb7efee5198cf03baafb1b2fe7" kind="variable"><name>_ROOT</name></member>
-    <member refid="____init_____8py_1a4bc5750c95a4e2269b40c06b1d07da30" kind="function"><name>get_asset</name></member>
-  </compound>
-  <compound refid="____init_____8py" kind="file"><name>__init__.py</name>
   </compound>
   <compound refid="bindings_8cc" kind="file"><name>bindings.cc</name>
     <member refid="bindings_8cc_1a8cc96963394e1bf2d1f2c8c298a8961f" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
@@ -214,8 +186,6 @@
   <compound refid="minhash_8cc" kind="file"><name>minhash.cc</name>
   </compound>
   <compound refid="minhash_8hh" kind="file"><name>minhash.hh</name>
-  </compound>
-  <compound refid="TinySHA1_8hh" kind="file"><name>TinySHA1.hh</name>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
   </compound>

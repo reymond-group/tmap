@@ -11,49 +11,44 @@
     <includes local="no">iostream</includes>
     <includes local="no">limits</includes>
     <includes local="no">numeric</includes>
-    <includes refid="TinySHA1_8hh" local="yes">TinySHA1.hh</includes>
+    <includes local="yes">TinySHA1.hh</includes>
     <includedby refid="bindings_8cc" local="yes">src/tmap/bindings.cc</includedby>
     <includedby refid="minhash_8cc" local="yes">src/tmap/minhash.cc</includedby>
     <incdepgraph>
-      <node id="256">
+      <node id="251">
         <label>valarray</label>
       </node>
-      <node id="261">
+      <node id="256">
         <label>limits</label>
       </node>
-      <node id="259">
+      <node id="254">
         <label>stdint.h</label>
       </node>
-      <node id="263">
-        <label>TinySHA1.hh</label>
-        <link refid="TinySHA1_8hh_source"/>
-        <childnode refid="264" relation="include">
-        </childnode>
-        <childnode refid="265" relation="include">
-        </childnode>
-        <childnode refid="266" relation="include">
-        </childnode>
-        <childnode refid="259" relation="include">
-        </childnode>
-      </node>
-      <node id="254">
+      <node id="249">
         <label>stdexcept</label>
       </node>
-      <node id="262">
+      <node id="257">
         <label>numeric</label>
       </node>
-      <node id="257">
+      <node id="252">
         <label>random</label>
       </node>
-      <node id="264">
-        <label>cstdio</label>
-      </node>
-      <node id="255">
+      <node id="250">
         <label>vector</label>
       </node>
-      <node id="253">
+      <node id="248">
         <label>src/tmap/minhash.hh</label>
         <link refid="minhash_8hh"/>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="253" relation="include">
+        </childnode>
         <childnode refid="254" relation="include">
         </childnode>
         <childnode refid="255" relation="include">
@@ -64,44 +59,31 @@
         </childnode>
         <childnode refid="258" relation="include">
         </childnode>
-        <childnode refid="259" relation="include">
-        </childnode>
+      </node>
+      <node id="255">
+        <label>iostream</label>
+      </node>
+      <node id="258">
+        <label>TinySHA1.hh</label>
+      </node>
+      <node id="253">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="260">
+        <label>src/tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+      </node>
+      <node id="259">
+        <label>src/tmap/minhash.hh</label>
+        <link refid="minhash_8hh"/>
         <childnode refid="260" relation="include">
         </childnode>
         <childnode refid="261" relation="include">
         </childnode>
-        <childnode refid="262" relation="include">
-        </childnode>
-        <childnode refid="263" relation="include">
-        </childnode>
       </node>
-      <node id="265">
-        <label>cstdlib</label>
-      </node>
-      <node id="260">
-        <label>iostream</label>
-      </node>
-      <node id="258">
-        <label>algorithm</label>
-      </node>
-      <node id="266">
-        <label>cstring</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="268">
-        <label>src/tmap/bindings.cc</label>
-        <link refid="bindings_8cc"/>
-      </node>
-      <node id="267">
-        <label>src/tmap/minhash.hh</label>
-        <link refid="minhash_8hh"/>
-        <childnode refid="268" relation="include">
-        </childnode>
-        <childnode refid="269" relation="include">
-        </childnode>
-      </node>
-      <node id="269">
+      <node id="261">
         <label>src/tmap/minhash.cc</label>
         <link refid="minhash_8cc"/>
       </node>
