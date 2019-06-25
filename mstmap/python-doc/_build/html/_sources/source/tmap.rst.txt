@@ -1,0 +1,10 @@
+tmap package
+============
+
+Module contents
+---------------
+
+.. automodule:: tmap
+    :members:
+    :undoc-members:
+    :show-inheritance:

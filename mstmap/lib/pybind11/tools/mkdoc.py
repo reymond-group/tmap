@@ -216,8 +216,7 @@ class ExtractionThread(Thread):
     def run(self):
         print('Processing "%s" ..' % self.filename, file=sys.stderr)
         try:
-            index = cindex.Index(
-                cindex.conf.lib.clang_createIndex(False, True))
+            index = cindex.Index(cindex.conf.lib.clang_createIndex(False, True))
             tu = index.parse(self.filename, self.parameters)
             extract(self.filename, tu.cursor, '')
         finally:
@@ -232,7 +231,6 @@ if __name__ == '__main__':
         lib_dir = dev_path + 'Toolchains/XcodeDefault.xctoolchain/usr/lib/'
         sdk_dir = dev_path + 'Platforms/MacOSX.platform/Developer/SDKs'
         libclang = lib_dir + 'libclang.dylib'
-
         if os.path.exists(libclang):
             cindex.Config.set_library_path(os.path.dirname(libclang))
 
