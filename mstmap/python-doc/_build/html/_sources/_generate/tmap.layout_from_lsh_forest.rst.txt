@@ -1,6 +1,0 @@
-tmap.layout\_from\_lsh\_forest
-==============================
-
-.. currentmodule:: tmap
-
-.. autofunction:: layout_from_lsh_forest
