@@ -1,5 +1,5 @@
 package:
-  name: mstmap
+  name: tmap
   version: 0.1
 
 build:
