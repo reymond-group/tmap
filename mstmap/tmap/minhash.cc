@@ -91,7 +91,13 @@ std::vector<uint32_t> tmap::Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
         if (vec[i] == 0)
             continue;
         
+#if _MSC_VER
+        std::valarray<uint32_t> tmp(d_);
+        for (size_t j = 0; j < d_; j++)
+            tmp[j] = ((perms_a_[j] * i + perms_b_[j]) % prime_) % max_hash_;
+#else
         std::valarray<uint32_t> tmp = ((perms_a_ * i + perms_b_) % prime_) % max_hash_;
+#endif
 
         for (size_t j = 0; j < mh.size(); j++)
             mh[j] = std::min(tmp[j], mh[j]);
@@ -116,8 +122,14 @@ std::vector<uint32_t> tmap::Minhash::FromSparseBinaryArray(std::vector<uint32_t>
     std::valarray<uint32_t> mh(max_hash_, d_);
 
     for (uint32_t i = 0; i < vec.size(); i++)
-    {        
+    {
+#if _MSC_VER
+        std::valarray<uint32_t> tmp(d_);
+        for (size_t j = 0; j < d_; j++)
+            tmp[j] = ((perms_a_[j] * vec[i] + perms_b_[j]) % prime_) % max_hash_;
+#else   
         std::valarray<uint32_t> tmp = ((perms_a_ * vec[i] + perms_b_) % prime_) % max_hash_;
+#endif
 
         for (size_t j = 0; j < mh.size(); j++)
         {
@@ -150,7 +162,13 @@ std::vector<uint32_t> tmap::Minhash::FromStringArray(std::vector<std::string> &v
         uint32_t digest[5];
         s.getDigest(digest);
 
+#if _MSC_VER
+        std::valarray<uint32_t> tmp(d_);
+        for (size_t j = 0; j < d_; j++)
+            tmp[j] = ((perms_a_[j] * digest[0] + perms_b_[j]) % prime_) % max_hash_;
+#else
         std::valarray<uint32_t> tmp = ((perms_a_ * digest[0] + perms_b_) % prime_) % max_hash_;
+#endif
 
         for (size_t j = 0; j < mh.size(); j++)
             mh[j] = std::min(tmp[j], mh[j]); 
