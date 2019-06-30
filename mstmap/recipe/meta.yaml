@@ -26,9 +26,9 @@ requirements:
   host:
     - python
     - pip
-    # - ogdf
+    - ogdf
   run:
-    - vs2015_runtime
+    - vs2015_runtime # [win]
     - python
     - ogdf
 
