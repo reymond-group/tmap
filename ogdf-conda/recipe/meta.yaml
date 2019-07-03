@@ -11,14 +11,14 @@ source:
 build:
     number: 0
 
+extra:
+    - conda-forge
+
 requirements:
     build:
         - {{ compiler('cxx') }}
         - cmake
-        - make
 
-
-      
 test:
   files:
     - test.cc

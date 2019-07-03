@@ -9,9 +9,12 @@ build:
     - CC
     - CXX
 
+extra:
+  - conda-forge
+
 source:
   path: ..
-
+  
 requirements:
   build:
     - {{ compiler('cxx') }}
@@ -21,10 +24,12 @@ requirements:
     - pybind11
     - ogdf
   host:
+    - vs2015_runtime # [win]
     - python
     - pip
     - ogdf
   run:
+    - vs2015_runtime # [win]
     - python
     - ogdf
 
@@ -35,3 +40,7 @@ about:
   summary: 'A Python package for visualizing large, high-dimensional data sets.'
   description: 'A Python package for visualizing large, high-dimensional data sets.'
   dev_url: https://github.com/reymondgroup/mstmap
+
+extra:
+    recipe-maintainers:
+        - daenuprobst

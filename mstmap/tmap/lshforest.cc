@@ -76,7 +76,7 @@ void tmap::LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
     }
 
 
-    size_t i, j;
+    int i, j;
     #pragma omp parallel for private(j)
     for (i = 0; i < hashtables_.size(); i++)
     {
@@ -96,7 +96,7 @@ void tmap::LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
 void tmap::LSHForest::Index()
 {
     #pragma omp parallel for
-    for (size_t i = 0; i < hashtables_.size(); i++)
+    for (int i = 0; i < hashtables_.size(); i++)
     {
         size_t j = 0;
         sorted_hashtable_pointers_[i].resize(hashtables_[i].size());
@@ -283,7 +283,7 @@ std::vector<uint32_t> tmap::LSHForest::GetAllNearestNeighbors(unsigned int k, un
     std::vector<uint32_t> results(size_, 0);
 
     #pragma omp parallel for
-    for(size_t i = 0; i < size_; i++)
+    for(int i = 0; i < size_; i++)
     {
         auto result = QueryLinearScanById(i, k, kc, weighted);
         if (result.size() > 1)
@@ -307,7 +307,7 @@ void tmap::LSHForest::GetKNNGraph(std::vector<uint32_t> &from, std::vector<uint3
         weight[i] = -1.0;
 
     #pragma omp parallel for
-    for(size_t i = 0; i < size_; i++)
+    for(int i = 0; i < size_; i++)
     {
         auto result = QueryLinearScan(GetData(i), k, kc, weighted);
 
@@ -518,7 +518,7 @@ std::vector<float> tmap::LSHForest::GetAllDistances(const std::vector<uint32_t> 
     std::vector<float> dists(size_);
 
     #pragma omp parallel for
-    for (size_t i = 0; i < size_; i++) 
+    for (int i = 0; i < size_; i++) 
     {
         dists[i] = GetDistance(vec, GetData(i));
     }

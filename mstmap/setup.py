@@ -26,14 +26,14 @@ class CMakeBuild(build_ext):
             out = subprocess.check_output(['cmake', '--version'])
         except OSError:
             raise RuntimeError(
-                "CMake must be installed to build the following extensions: " +
-                ", ".join(e.name for e in self.extensions))
+                'CMake must be installed to build the following extensions: ' +
+                ', '.join(e.name for e in self.extensions))
 
-        if platform.system() == "Windows":
+        if platform.system() == 'Windows':
             cmake_version = LooseVersion(re.search(r'version\s*([\d.]+)',
                                          out.decode()).group(1))
             if cmake_version < '3.1.0':
-                raise RuntimeError("CMake >= 3.1.0 is required on Windows")
+                raise RuntimeError('CMake >= 3.1.0 is required on Windows')
 
         for ext in self.extensions:
             self.build_extension(ext)
@@ -47,7 +47,7 @@ class CMakeBuild(build_ext):
         cfg = 'Debug' if self.debug else 'Release'
         build_args = ['--config', cfg]
 
-        if platform.system() == "Windows":
+        if platform.system() == 'Windows':
             cmake_args += ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}'.format(
                 cfg.upper(),
                 extdir)]
@@ -82,6 +82,5 @@ setup(
     ext_modules=[CMakeExtension('tmap')],
     cmdclass=dict(build_ext=CMakeBuild),
     test_suite='tests',
-    zip_safe=False,
-    include_package_data=True
+    zip_safe=False
 )
