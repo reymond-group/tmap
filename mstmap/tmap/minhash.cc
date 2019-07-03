@@ -111,7 +111,7 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromBinaryArray(std::vect
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         results[i] = FromBinaryArray(vecs[i]);
 
     return results;
@@ -145,7 +145,7 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromSparseBinaryArray(std
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         results[i] = FromSparseBinaryArray(vecs[i]);
 
     return results;
@@ -182,7 +182,7 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromStringArray(std::vect
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         results[i] = FromStringArray(vecs[i]);
 
     return results;
@@ -222,11 +222,11 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromIntWeightArray(std::v
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         tmp_results[i] = ExpandIntWeightArray(vecs[i], max_vec, extended_size);
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         results[i] = FromBinaryArray(tmp_results[i]);
 
     return results;
@@ -308,7 +308,7 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromWeightArray(std::vect
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
-    for (size_t i = 0; i < vecs.size(); i++)
+    for (int i = 0; i < vecs.size(); i++)
         results[i] = FromWeightArray(vecs[i]);
 
     return results;

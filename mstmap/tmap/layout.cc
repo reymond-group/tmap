@@ -234,22 +234,32 @@ std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::v
 tmap::LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
        tmap::LayoutConfiguration config, bool create_mst)
 {
+	std::cout << "a" << std::endl;
 	tmap::GraphProperties gp;
 	EdgeWeightedGraph<float> g;
+
 	std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
 
 	std::vector<uint32_t> degrees(vertex_count);
 	
 	std::vector<node> index_to_node(vertex_count);
 
+	std::cout << "b" << std::endl;
+
 	for (uint32_t i = 0; i < vertex_count; i++)
 		index_to_node[i] = g.newNode();
+
+	std::cout << "c" << std::endl;
 
 	for (size_t i = 0; i < edges.size(); i++)
 		g.newEdge(index_to_node[std::get<0>(edges[i])], index_to_node[std::get<1>(edges[i])], std::get<2>(edges[i]));
 	
+	std::cout << "d" << std::endl;
+
 	ogdf::makeLoopFree(g);
 	ogdf::makeParallelFreeUndirected(g);
+
+	std::cout << "e" << std::endl;
 
 	uint32_t i = 0;
 	for (node v : g.nodes) 
@@ -259,6 +269,8 @@ tmap::LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uin
 
 	if (create_mst)
 		gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+
+	std::cout << "f" << std::endl;
 
 	i = 0;
 	for (node v : g.nodes) 
@@ -273,20 +285,22 @@ tmap::LayoutFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uin
 
 	gp.adjacency_list = adjacency_list;
 
+	std::cout << g.edges.size() << std::endl;
+	std::cout << g.nodes.size() << std::endl;
+	GraphAttributes graph_attributes(g);
+
+	std::cout << ",,," << std::endl;
+
+	MultilevelGraph mlg(g);
+
+	std::cout << "..." << std::endl;
+
 	return LayoutInternal(g, vertex_count, config, gp);
 }
 
 std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>, std::vector<uint32_t>, tmap::GraphProperties>
 tmap::LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutConfiguration config, GraphProperties &gp)
 {
-	GraphAttributes ga(g);
-
-	ga.setAllHeight(config.node_size);
-	ga.setAllWidth(config.node_size);
-
-	for (edge e : g.edges)
-		g.setWeight(e, 1.0);
-
 	// Check for isolated nodes. If there are isolated nodes,
 	// call placement step later on.
 	NodeArray<int> connected_components(g);
@@ -295,8 +309,24 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g, uint32_t vertex_count, LayoutC
 	gp.n_connected_components = n_connected_components;
 	gp.n_isolated_vertices = isolated_nodes.size();
 
+	std::cout << "Gotten isolated nodes and ccs ..." << std::endl;
+
+	GraphAttributes ga(g);
+
+	ga.setAllHeight(config.node_size);
+	ga.setAllWidth(config.node_size);
+
+	std::cout << "Set graph attributes ..." << std::endl;
+
+	for (edge e : g.edges)
+		g.setWeight(e, 1.0);
+
+	std::cout << "Set edge weights ..." << std::endl;
+
 	// Starting the layout
 	MultilevelGraph mlg(ga);
+
+	std::cout << "Initialized multilevel graph ..." << std::endl;
 
 	// The FastMultipoleEmbedder is used for the single level layout.
 	FastMultipoleEmbedder *fme = new FastMultipoleEmbedder();

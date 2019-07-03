@@ -26,11 +26,11 @@ PYBIND11_MAKE_OPAQUE(std::vector<float>);
 
 PYBIND11_MODULE(tmap, m)
 {
-    py::bind_vector<std::vector<uint8_t>>(m, "VectorUchar");
-    py::bind_vector<std::vector<uint16_t>>(m, "VectorUsmall");
-    py::bind_vector<std::vector<uint32_t>>(m, "VectorUint");
-    py::bind_vector<std::vector<float>>(m, "VectorFloat");
-    py::bind_vector<std::vector<uint64_t>>(m, "VectorUlong");
+    py::bind_vector<std::vector<uint8_t>>(m, "VectorUchar", "Unsigned 8-bit int vector.");
+    py::bind_vector<std::vector<uint16_t>>(m, "VectorUsmall", "Unsigned 16-bit int vector.");
+    py::bind_vector<std::vector<uint32_t>>(m, "VectorUint", "Unsigned 32-bit int vector.");
+    py::bind_vector<std::vector<float>>(m, "VectorFloat", "Unsigned 32-bit float vector.");
+    py::bind_vector<std::vector<uint64_t>>(m, "VectorUlong", "Unsigned 64-bit int vector.");
 
     py::enum_<ScalingType>(m, "ScalingType", py::arithmetic(), R"pbdoc(
         The scaling types available in OGDF. The class is to be used as an enum.

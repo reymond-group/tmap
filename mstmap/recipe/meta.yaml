@@ -24,6 +24,7 @@ requirements:
     - pybind11
     - ogdf
   host:
+    - vs2015_runtime # [win]
     - python
     - pip
     - ogdf

@@ -10,7 +10,6 @@ else()
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops")
 endif(MSVC)
 
-
 if (DEFINED ENV{CONDA_PREFIX})
     SET(OGDF_INCLUDE "$ENV{CONDA_PREFIX}/include")
     SET(OGDF_LIB "$ENV{CONDA_PREFIX}/lib")
@@ -39,7 +38,13 @@ SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR
 
 # Generate python module
 add_subdirectory(lib/pybind11)
+
 pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
+if(MSVC)
+target_link_libraries(tmap PRIVATE OGDF.lib COIN.lib)
+else()
 target_link_libraries(tmap PRIVATE OGDF COIN)
+endif(MSVC)
+
 target_link_libraries(tmap PRIVATE Threads::Threads)
 target_link_libraries(tmap PRIVATE ${OpenMP_CXX_FLAGS})

@@ -1,6 +1,7 @@
 import tmap as tm
 import numpy as np
 from matplotlib import pyplot as plt
+from time import sleep
 
 def main():
     n = 25
