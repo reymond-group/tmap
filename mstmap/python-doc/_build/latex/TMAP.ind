@@ -32,11 +32,11 @@
 
   \indexspace
   \bigletter D
-  \item \spxentry{degrees}\spxextra{tmap.GraphProperties attribute}, \hyperpage{22}
+  \item \spxentry{degrees}\spxextra{tmap.GraphProperties attribute}, \hyperpage{21}
 
   \indexspace
   \bigletter F
-  \item \spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
+  \item \spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{11}
   \item \spxentry{from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{from\_string\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{from\_weight\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
@@ -44,13 +44,13 @@
   \indexspace
   \bigletter G
   \item \spxentry{get\_all\_distances()}\spxextra{tmap.LSHForest method}, \hyperpage{13}
-  \item \spxentry{get\_all\_nearest\_neighbors()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
+  \item \spxentry{get\_all\_nearest\_neighbors()}\spxextra{tmap.LSHForest method}, \hyperpage{13}
   \item \spxentry{get\_distance()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
   \item \spxentry{get\_distance()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{get\_distance\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
   \item \spxentry{get\_hash()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
   \item \spxentry{get\_knn\_graph()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
-  \item \spxentry{get\_weighted\_distance()}\spxextra{tmap.LSHForest method}, \hyperpage{15}
+  \item \spxentry{get\_weighted\_distance()}\spxextra{tmap.LSHForest method}, \hyperpage{14}
   \item \spxentry{get\_weighted\_distance()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{get\_weighted\_distance\_by\_id()}\spxextra{tmap.LSHForest method}, 
 		\hyperpage{15}
@@ -67,20 +67,20 @@
   \item \spxentry{layout\_from\_lsh\_forest()}\spxextra{in module tmap}, \hyperpage{18}
   \item \spxentry{LayoutConfiguration}\spxextra{class in tmap}, \hyperpage{20}
   \item \spxentry{linear\_scan()}\spxextra{tmap.LSHForest method}, \hyperpage{15}
-  \item \spxentry{LSHForest}\spxextra{class in tmap}, \hyperpage{13}
+  \item \spxentry{LSHForest}\spxextra{class in tmap}, \hyperpage{12}
 
   \indexspace
   \bigletter M
-  \item \spxentry{Merger}\spxextra{class in tmap}, \hyperpage{20}
+  \item \spxentry{Merger}\spxextra{class in tmap}, \hyperpage{19}
   \item \spxentry{Minhash}\spxextra{class in tmap}, \hyperpage{10}
-  \item \spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}, \hyperpage{19}
+  \item \spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}, \hyperpage{18}
   \item \spxentry{mst\_weight}\spxextra{tmap.GraphProperties attribute}, \hyperpage{21}
 
   \indexspace
   \bigletter N
   \item \spxentry{n\_connected\_components}\spxextra{tmap.GraphProperties attribute}, 
 		\hyperpage{21}
-  \item \spxentry{n\_isolated\_vertices}\spxextra{tmap.GraphProperties attribute}, \hyperpage{22}
+  \item \spxentry{n\_isolated\_vertices}\spxextra{tmap.GraphProperties attribute}, \hyperpage{21}
 
   \indexspace
   \bigletter P
@@ -89,23 +89,23 @@
   \indexspace
   \bigletter Q
   \item \spxentry{query()}\spxextra{tmap.LSHForest method}, \hyperpage{15}
-  \item \spxentry{query\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{16}
+  \item \spxentry{query\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{15}
   \item \spxentry{query\_exclude()}\spxextra{tmap.LSHForest method}, \hyperpage{16}
   \item \spxentry{query\_exclude\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{16}
   \item \spxentry{query\_linear\_scan()}\spxextra{tmap.LSHForest method}, \hyperpage{16}
-  \item \spxentry{query\_linear\_scan\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{17}
+  \item \spxentry{query\_linear\_scan\_by\_id()}\spxextra{tmap.LSHForest method}, \hyperpage{16}
   \item \spxentry{query\_linear\_scan\_exclude()}\spxextra{tmap.LSHForest method}, \hyperpage{17}
   \item \spxentry{query\_linear\_scan\_exclude\_by\_id()}\spxextra{tmap.LSHForest method}, 
 		\hyperpage{17}
 
   \indexspace
   \bigletter R
-  \item \spxentry{restore()}\spxextra{tmap.LSHForest method}, \hyperpage{18}
+  \item \spxentry{restore()}\spxextra{tmap.LSHForest method}, \hyperpage{17}
 
   \indexspace
   \bigletter S
   \item \spxentry{ScalingType}\spxextra{class in tmap}, \hyperpage{19}
-  \item \spxentry{size()}\spxextra{tmap.LSHForest method}, \hyperpage{18}
+  \item \spxentry{size()}\spxextra{tmap.LSHForest method}, \hyperpage{17}
   \item \spxentry{store()}\spxextra{tmap.LSHForest method}, \hyperpage{18}
 
 \end{sphinxtheindex}

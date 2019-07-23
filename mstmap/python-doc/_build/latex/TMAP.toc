@@ -8,6 +8,6 @@
 \contentsline {subsection}{\numberline {1.1.5}Layout}{7}{subsection.1.1.5}% 
 \contentsline {section}{\numberline {1.2}Documentation}{10}{section.1.2}% 
 \contentsline {subsection}{\numberline {1.2.1}MinHash}{10}{subsection.1.2.1}% 
-\contentsline {subsection}{\numberline {1.2.2}LSH Forest}{13}{subsection.1.2.2}% 
+\contentsline {subsection}{\numberline {1.2.2}LSH Forest}{12}{subsection.1.2.2}% 
 \contentsline {subsection}{\numberline {1.2.3}Layout}{18}{subsection.1.2.3}% 
 \contentsline {chapter}{Index}{23}{section*.59}% 

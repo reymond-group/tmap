@@ -106,13 +106,13 @@ namespace tmap
          * 
          */
         LayoutConfiguration() : k(10), kc(10), fme_iterations(1000), fme_randomize(false), fme_threads(4), fme_precision(4),
-                                sl_repeats(1), sl_extra_scaling_steps(1), sl_scaling_min(5.0), sl_scaling_max(20.0),
+                                sl_repeats(1), sl_extra_scaling_steps(2), sl_scaling_min(1.0), sl_scaling_max(1.0),
                                 sl_scaling_type(ScalingType::RelativeToDrawing),
                                 mmm_repeats(1),
                                 placer(Placer::Barycenter),
                                 merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0),
-                                node_size(1.0) {}
-        
+                                node_size(1.0 / 65.0) {}
+
         /**
          * @brief Returns a string describing the set options.
          * 

@@ -55,12 +55,12 @@ namespace tmap
      */
     struct MapKeyPointer
     {
-    typedef spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>>::iterator iterator;
-    MapKeyPointer(iterator i) : it(i) {}
-    MapKeyPointer() {}
-    const std::vector<uint8_t>& operator*() const { return it->first; }
-    const std::vector<uint8_t>* operator->() const { return &it->first; }
-    iterator it;
+        typedef spp::sparse_hash_map<std::vector<uint8_t>, std::vector<uint32_t>>::iterator iterator;
+        MapKeyPointer(iterator i) : it(i) {}
+        MapKeyPointer() {}
+        const std::vector<uint8_t>& operator*() const { return it->first; }
+        const std::vector<uint8_t>* operator->() const { return &it->first; }
+        iterator it;
     };
 
     /**

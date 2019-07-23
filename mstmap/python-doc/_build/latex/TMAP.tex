@@ -52,7 +52,7 @@
 
 
 \title{TMAP}
-\date{Jun 25, 2019}
+\date{Jul 03, 2019}
 \release{0.2.0}
 \author{}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -395,7 +395,7 @@ for high dimensional chemical data sets within an hour.
 \label{\detokenize{documentation:minhash}}\label{\detokenize{documentation:minhash-doc}}\index{Minhash (class in tmap)@\spxentry{Minhash}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Minhash}}}{\emph{self: tmap.tmap.Minhash}, \emph{d: int=128}, \emph{seed: int=42}, \emph{sample\_size: int=128}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Minhash}}}{\emph{self: tmap.Minhash}, \emph{d: int=128}, \emph{seed: int=42}, \emph{sample\_size: int=128}}{{ $\rightarrow$ None}}
 A generator for MinHash vectors that supports binary, indexed, string and also \sphinxcode{\sphinxupquote{int}} and \sphinxcode{\sphinxupquote{float}} weighted vectors as input.
 
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.Minhash}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{Minhash}}}}}.
@@ -416,7 +416,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.Minhash}]{\s
 \index{\_\_init\_\_() (tmap.Minhash method)@\spxentry{\_\_init\_\_()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.tmap.Minhash}, \emph{d: int=128}, \emph{seed: int=42}, \emph{sample\_size: int=128}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.Minhash}, \emph{d: int=128}, \emph{seed: int=42}, \emph{sample\_size: int=128}}{{ $\rightarrow$ None}}
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.Minhash}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{Minhash}}}}}.
 \begin{quote}\begin{description}
 \item[{Keyword Arguments}] \leavevmode\begin{itemize}
@@ -438,7 +438,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.Minhash}]{\s
 \index{batch\_from\_binary\_array() (tmap.Minhash method)@\spxentry{batch\_from\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_binary\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}tmap.tmap.VectorUchar{]}}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_binary\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorUchar{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Create MinHash vectors from binary arrays (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -457,7 +457,7 @@ A list of MinHash vectors
 \index{batch\_from\_int\_weight\_array() (tmap.Minhash method)@\spxentry{batch\_from\_int\_weight\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_int_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_int\_weight\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}tmap.tmap.VectorUint{]}}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_int_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_int\_weight\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorUint{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Create MinHash vectors from \sphinxcode{\sphinxupquote{int}} arrays, where entries are weights rather than indices of ones (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -476,7 +476,7 @@ A list of MinHash vectors
 \index{batch\_from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{batch\_from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_sparse\_binary\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}tmap.tmap.VectorUint{]}}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_sparse\_binary\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorUint{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Create MinHash vectors from sparse binary arrays (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -495,7 +495,7 @@ A list of MinHash vectors
 \index{batch\_from\_string\_array() (tmap.Minhash method)@\spxentry{batch\_from\_string\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_string_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_string\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}List{[}str{]}{]}}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_string_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_string\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}List{[}str{]}{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Create MinHash vectors from string arrays (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -514,7 +514,7 @@ A list of MinHash vectors
 \index{batch\_from\_weight\_array() (tmap.Minhash method)@\spxentry{batch\_from\_weight\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_weight\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}tmap.tmap.VectorFloat{]}}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_weight\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorFloat{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Create MinHash vectors from \sphinxcode{\sphinxupquote{float}} arrays (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -533,7 +533,7 @@ A list of MinHash vectors
 \index{from\_binary\_array() (tmap.Minhash method)@\spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_binary\_array}}}{\emph{self: tmap.tmap.Minhash}, \emph{arg0: tmap.tmap.VectorUchar}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_binary\_array}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUchar}}{{ $\rightarrow$ tmap.VectorUint}}
 Create a MinHash vector from a binary array.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -552,7 +552,7 @@ A MinHash vector
 \index{from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_sparse\_binary\_array}}}{\emph{self: tmap.tmap.Minhash}, \emph{arg0: tmap.tmap.VectorUint}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_sparse\_binary\_array}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUint}}{{ $\rightarrow$ tmap.VectorUint}}
 Create a MinHash vector from a sparse binary array.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -571,7 +571,7 @@ A MinHash vector
 \index{from\_string\_array() (tmap.Minhash method)@\spxentry{from\_string\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_string_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_string\_array}}}{\emph{self: tmap.tmap.Minhash, arg0: List{[}str{]}}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_string_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_string\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}str{]}}}{{ $\rightarrow$ tmap.VectorUint}}
 Create a MinHash vector from a string array.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -590,7 +590,7 @@ A MinHash vector
 \index{from\_weight\_array() (tmap.Minhash method)@\spxentry{from\_weight\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_weight\_array}}}{\emph{self: tmap.tmap.Minhash}, \emph{arg0: tmap.tmap.VectorFloat}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_weight\_array}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorFloat}}{{ $\rightarrow$ tmap.VectorUint}}
 Create a MinHash vector from a \sphinxcode{\sphinxupquote{float}} array.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -609,7 +609,7 @@ A MinHash vector
 \index{get\_distance() (tmap.Minhash method)@\spxentry{get\_distance()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.get_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance}}}{\emph{self: tmap.tmap.Minhash}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: tmap.tmap.VectorUint}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.get_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUint}, \emph{arg1: tmap.VectorUint}}{{ $\rightarrow$ float}}
 Calculate the Jaccard distance between two MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -631,7 +631,7 @@ Calculate the Jaccard distance between two MinHash vectors.
 \index{get\_weighted\_distance() (tmap.Minhash method)@\spxentry{get\_weighted\_distance()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.get_weighted_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance}}}{\emph{self: tmap.tmap.Minhash}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: tmap.tmap.VectorUint}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.get_weighted_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUint}, \emph{arg1: tmap.VectorUint}}{{ $\rightarrow$ float}}
 Calculate the weighted Jaccard distance between two MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -659,7 +659,7 @@ Calculate the weighted Jaccard distance between two MinHash vectors.
 \label{\detokenize{documentation:lsh-forest}}\label{\detokenize{documentation:lshforest-doc}}\index{LSHForest (class in tmap)@\spxentry{LSHForest}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{LSHForest}}}{\emph{self: tmap.tmap.LSHForest}, \emph{d: int=128}, \emph{l: int=8}, \emph{store: bool=True}, \emph{file\_backed: bool=False}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{LSHForest}}}{\emph{self: tmap.LSHForest}, \emph{d: int=128}, \emph{l: int=8}, \emph{store: bool=True}, \emph{file\_backed: bool=False}}{{ $\rightarrow$ None}}
 A LSH forest data structure which incorporates optional linear scan to increase the recovery performance. Most query methods are available in parallelized versions named with a \sphinxcode{\sphinxupquote{batch\_}} prefix.
 
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}}.
@@ -683,7 +683,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.LSHForest}]{
 \index{\_\_init\_\_() (tmap.LSHForest method)@\spxentry{\_\_init\_\_()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.tmap.LSHForest}, \emph{d: int=128}, \emph{l: int=8}, \emph{store: bool=True}, \emph{file\_backed: bool=False}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.LSHForest}, \emph{d: int=128}, \emph{l: int=8}, \emph{store: bool=True}, \emph{file\_backed: bool=False}}{{ $\rightarrow$ None}}
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}}.
 \begin{quote}\begin{description}
 \item[{Keyword Arguments}] \leavevmode\begin{itemize}
@@ -708,7 +708,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.LSHForest}]{
 \index{add() (tmap.LSHForest method)@\spxentry{add()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.add}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.add}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}}{{ $\rightarrow$ None}}
 Add a MinHash vector to the LSH forest.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -721,7 +721,7 @@ Add a MinHash vector to the LSH forest.
 \index{batch\_add() (tmap.LSHForest method)@\spxentry{batch\_add()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.batch_add}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_add}}}{\emph{self: tmap.tmap.LSHForest, arg0: List{[}tmap.tmap.VectorUint{]}}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.batch_add}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_add}}}{\emph{self: tmap.LSHForest, arg0: List{[}tmap.VectorUint{]}}}{{ $\rightarrow$ None}}
 Add a list MinHash vectors to the LSH forest (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -734,7 +734,7 @@ Add a list MinHash vectors to the LSH forest (parallelized).
 \index{batch\_query() (tmap.LSHForest method)@\spxentry{batch\_query()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.batch_query}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_query}}}{\emph{self: tmap.tmap.LSHForest, arg0: List{[}tmap.tmap.VectorUint{]}, arg1: int}}{{ $\rightarrow$ List{[}tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.batch_query}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_query}}}{\emph{self: tmap.LSHForest, arg0: List{[}tmap.VectorUint{]}, arg1: int}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
 Query the LSH forest for k-nearest neighbors (parallelized).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -759,7 +759,7 @@ The results of the queries
 \index{clear() (tmap.LSHForest method)@\spxentry{clear()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.clear}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{clear}}}{\emph{self: tmap.tmap.LSHForest}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.clear}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{clear}}}{\emph{self: tmap.LSHForest}}{{ $\rightarrow$ None}}
 Clears all the added data and computed indices from this {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} instance.
 
 \end{fulllineitems}
@@ -767,7 +767,7 @@ Clears all the added data and computed indices from this {\hyperref[\detokenize{
 \index{get\_all\_distances() (tmap.LSHForest method)@\spxentry{get\_all\_distances()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_all_distances}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_all\_distances}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}}{{ $\rightarrow$ tmap.tmap.VectorFloat}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_all_distances}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_all\_distances}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}}{{ $\rightarrow$ tmap.VectorFloat}}
 Calculate the Jaccard distances of a MinHash vector to all indexed MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -786,7 +786,7 @@ The Jaccard distances
 \index{get\_all\_nearest\_neighbors() (tmap.LSHForest method)@\spxentry{get\_all\_nearest\_neighbors()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_all_nearest_neighbors}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_all\_nearest\_neighbors}}}{\emph{self: tmap.tmap.LSHForest}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_all_nearest_neighbors}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_all\_nearest\_neighbors}}}{\emph{self: tmap.LSHForest}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ tmap.VectorUint}}
 Get the k-nearest neighbors of all indexed MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -811,7 +811,7 @@ Get the k-nearest neighbors of all indexed MinHash vectors.
 \index{get\_distance() (tmap.LSHForest method)@\spxentry{get\_distance()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: tmap.tmap.VectorUint}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}, \emph{arg1: tmap.VectorUint}}{{ $\rightarrow$ float}}
 Calculate the Jaccard distance between two MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -833,7 +833,7 @@ Calculate the Jaccard distance between two MinHash vectors.
 \index{get\_distance\_by\_id() (tmap.LSHForest method)@\spxentry{get\_distance\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_distance_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_distance_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_distance\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ float}}
 Calculate the Jaccard distance between two indexed MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -855,7 +855,7 @@ Calculate the Jaccard distance between two indexed MinHash vectors.
 \index{get\_hash() (tmap.LSHForest method)@\spxentry{get\_hash()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_hash}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_hash}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: int}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_hash}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_hash}}}{\emph{self: tmap.LSHForest}, \emph{arg0: int}}{{ $\rightarrow$ tmap.VectorUint}}
 Retrieve the MinHash vector of an indexed entry given its index. The index is defined by order of insertion.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -871,7 +871,7 @@ Retrieve the MinHash vector of an indexed entry given its index. The index is de
 \index{get\_knn\_graph() (tmap.LSHForest method)@\spxentry{get\_knn\_graph()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_knn_graph}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_knn\_graph}}}{\emph{self: tmap.tmap.LSHForest}, \emph{from: tmap.tmap.VectorUint}, \emph{to: tmap.tmap.VectorUint}, \emph{weight: tmap.tmap.VectorFloat}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_knn_graph}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_knn\_graph}}}{\emph{self: tmap.LSHForest}, \emph{from: tmap.VectorUint}, \emph{to: tmap.VectorUint}, \emph{weight: tmap.VectorFloat}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ None}}
 Construct the k-nearest neighbor graph of the indexed MinHash vectors. It will be written to out parameters \sphinxcode{\sphinxupquote{from}}, \sphinxcode{\sphinxupquote{to}}, and \sphinxcode{\sphinxupquote{weight}} as an edge list.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -905,7 +905,7 @@ Construct the k-nearest neighbor graph of the indexed MinHash vectors. It will b
 \index{get\_weighted\_distance() (tmap.LSHForest method)@\spxentry{get\_weighted\_distance()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_weighted_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: tmap.tmap.VectorUint}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_weighted_distance}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}, \emph{arg1: tmap.VectorUint}}{{ $\rightarrow$ float}}
 Calculate the weighted Jaccard distance between two MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -927,7 +927,7 @@ Calculate the weighted Jaccard distance between two MinHash vectors.
 \index{get\_weighted\_distance\_by\_id() (tmap.LSHForest method)@\spxentry{get\_weighted\_distance\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_weighted_distance_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ float}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.get_weighted_distance_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_weighted\_distance\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ float}}
 Calculate the Jaccard distance between two indexed weighted MinHash vectors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -949,7 +949,7 @@ Calculate the Jaccard distance between two indexed weighted MinHash vectors.
 \index{index() (tmap.LSHForest method)@\spxentry{index()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.index}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{index}}}{\emph{self: tmap.tmap.LSHForest}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.index}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{index}}}{\emph{self: tmap.LSHForest}}{{ $\rightarrow$ None}}
 Index the LSH forest. This has to be run after each time new MinHashes were added.
 
 \end{fulllineitems}
@@ -957,7 +957,7 @@ Index the LSH forest. This has to be run after each time new MinHashes were adde
 \index{is\_clean() (tmap.LSHForest method)@\spxentry{is\_clean()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.is_clean}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{is\_clean}}}{\emph{self: tmap.tmap.LSHForest}}{{ $\rightarrow$ bool}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.is_clean}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{is\_clean}}}{\emph{self: tmap.LSHForest}}{{ $\rightarrow$ bool}}
 Returns a boolean indicating whether or not the LSH forest has been indexed after the last MinHash vector was added.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -973,7 +973,7 @@ Returns a boolean indicating whether or not the LSH forest has been indexed afte
 \index{linear\_scan() (tmap.LSHForest method)@\spxentry{linear\_scan()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.linear_scan}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{linear\_scan}}}{\emph{self: tmap.tmap.LSHForest}, \emph{vec: tmap.tmap.VectorUint}, \emph{indices: tmap.tmap.VectorUint}, \emph{k: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.linear_scan}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{linear\_scan}}}{\emph{self: tmap.LSHForest}, \emph{vec: tmap.VectorUint}, \emph{indices: tmap.VectorUint}, \emph{k: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
 Query a subset of indexed MinHash vectors using linear scan.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1007,7 +1007,7 @@ The results of the query
 \index{query() (tmap.LSHForest method)@\spxentry{query()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: int}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}, \emph{arg1: int}}{{ $\rightarrow$ tmap.VectorUint}}
 Query the LSH forest for k-nearest neighbors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1032,7 +1032,7 @@ The results of the query
 \index{query\_by\_id() (tmap.LSHForest method)@\spxentry{query\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: int}}{{ $\rightarrow$ tmap.VectorUint}}
 Query the LSH forest for k-nearest neighbors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1057,7 +1057,7 @@ The results of the query
 \index{query\_exclude() (tmap.LSHForest method)@\spxentry{query\_exclude()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_exclude}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_exclude}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: tmap.tmap.VectorUint}, \emph{arg1: tmap.tmap.VectorUint}, \emph{arg2: int}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_exclude}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_exclude}}}{\emph{self: tmap.LSHForest}, \emph{arg0: tmap.VectorUint}, \emph{arg1: tmap.VectorUint}, \emph{arg2: int}}{{ $\rightarrow$ tmap.VectorUint}}
 Query the LSH forest for k-nearest neighbors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1085,7 +1085,7 @@ The results of the query
 \index{query\_exclude\_by\_id() (tmap.LSHForest method)@\spxentry{query\_exclude\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_exclude_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_exclude\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: tmap.tmap.VectorUint}, \emph{arg2: int}}{{ $\rightarrow$ tmap.tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_exclude_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_exclude\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{arg0: int}, \emph{arg1: tmap.VectorUint}, \emph{arg2: int}}{{ $\rightarrow$ tmap.VectorUint}}
 Query the LSH forest for k-nearest neighbors.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1113,7 +1113,7 @@ The results of the query
 \index{query\_linear\_scan() (tmap.LSHForest method)@\spxentry{query\_linear\_scan()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan}}}{\emph{self: tmap.tmap.LSHForest}, \emph{vec: tmap.tmap.VectorUint}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan}}}{\emph{self: tmap.LSHForest}, \emph{vec: tmap.VectorUint}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
 Query k-nearest neighbors with a LSH forest / linear scan combination. \sphinxcode{\sphinxupquote{k{}`*:obj:{}`kc}} nearest neighbors are searched for using LSH forest; from these, the \sphinxcode{\sphinxupquote{k}} nearest neighbors are retrieved using linear scan.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1147,7 +1147,7 @@ The results of the query
 \index{query\_linear\_scan\_by\_id() (tmap.LSHForest method)@\spxentry{query\_linear\_scan\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{id: int}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{id: int}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
 Query k-nearest neighbors with a LSH forest / linear scan combination. \sphinxcode{\sphinxupquote{k{}`*:obj:{}`kc}} nearest neighbors are searched for using LSH forest; from these, the \sphinxcode{\sphinxupquote{k}} nearest neighbors are retrieved using linear scan.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1181,7 +1181,7 @@ The results of the query
 \index{query\_linear\_scan\_exclude() (tmap.LSHForest method)@\spxentry{query\_linear\_scan\_exclude()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_exclude}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_exclude}}}{\emph{self: tmap.tmap.LSHForest}, \emph{vec: tmap.tmap.VectorUint}, \emph{k: int}, \emph{exclude: tmap.tmap.VectorUint}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_exclude}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_exclude}}}{\emph{self: tmap.LSHForest}, \emph{vec: tmap.VectorUint}, \emph{k: int}, \emph{exclude: tmap.VectorUint}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
 Query k-nearest neighbors with a LSH forest / linear scan combination. \sphinxcode{\sphinxupquote{k{}`*:obj:{}`kc}} nearest neighbors are searched for using LSH forest; from these, the \sphinxcode{\sphinxupquote{k}} nearest neighbors are retrieved using linear scan.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1218,7 +1218,7 @@ The results of the query
 \index{query\_linear\_scan\_exclude\_by\_id() (tmap.LSHForest method)@\spxentry{query\_linear\_scan\_exclude\_by\_id()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_exclude_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_exclude\_by\_id}}}{\emph{self: tmap.tmap.LSHForest}, \emph{id: int}, \emph{k: int}, \emph{exclude: tmap.tmap.VectorUint}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.query_linear_scan_exclude_by_id}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{query\_linear\_scan\_exclude\_by\_id}}}{\emph{self: tmap.LSHForest}, \emph{id: int}, \emph{k: int}, \emph{exclude: tmap.VectorUint}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ List{[}Tuple{[}float, int{]}{]}}}
 Query k-nearest neighbors with a LSH forest / linear scan combination. \sphinxcode{\sphinxupquote{k{}`*:obj:{}`kc}} nearest neighbors are searched for using LSH forest; from these, the \sphinxcode{\sphinxupquote{k}} nearest neighbors are retrieved using linear scan.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1255,7 +1255,7 @@ The results of the query
 \index{restore() (tmap.LSHForest method)@\spxentry{restore()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.restore}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{restore}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: str}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.restore}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{restore}}}{\emph{self: tmap.LSHForest}, \emph{arg0: str}}{{ $\rightarrow$ None}}
 Deserializes a previously serialized (using {\hyperref[\detokenize{documentation:tmap.LSHForest.store}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{store()}}}}}) state into this instance of {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} and recreates the index.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1268,7 +1268,7 @@ Deserializes a previously serialized (using {\hyperref[\detokenize{documentation
 \index{size() (tmap.LSHForest method)@\spxentry{size()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.size}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{size}}}{\emph{self: tmap.tmap.LSHForest}}{{ $\rightarrow$ int}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.size}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{size}}}{\emph{self: tmap.LSHForest}}{{ $\rightarrow$ int}}
 Returns the number of MinHash vectors in this LSHForest instance.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -1284,7 +1284,7 @@ The number of MinHash vectors
 \index{store() (tmap.LSHForest method)@\spxentry{store()}\spxextra{tmap.LSHForest method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LSHForest.store}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{store}}}{\emph{self: tmap.tmap.LSHForest}, \emph{arg0: str}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LSHForest.store}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{store}}}{\emph{self: tmap.LSHForest}, \emph{arg0: str}}{{ $\rightarrow$ None}}
 Serializes the current state of this instance of {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} to the disk in binary format. The index is not serialized and has to be rebuilt after deserialization.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1304,7 +1304,7 @@ Serializes the current state of this instance of {\hyperref[\detokenize{document
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{documentation:tmap.layout_from_lsh_forest}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{layout\_from\_lsh\_forest}}}{}{}
-layout\_from\_lsh\_forest(lsh\_forest: tmap::LSHForest, config: tmap.tmap.LayoutConfiguration=k: 10
+layout\_from\_lsh\_forest(lsh\_forest: tmap::LSHForest, config: tmap.LayoutConfiguration=k: 10
 kc: 10
 fme\_iterations: 1000
 fme\_randomize: 0
@@ -1320,7 +1320,7 @@ placer: Barycenter
 merger: LocalBiconnected
 merger\_factor: 2.000000
 merger\_adjustment: 0
-node\_size1.000000, create\_mst: bool=True, clear\_lsh\_forest: bool=False, weighted: bool=False) -\textgreater{} Tuple{[}tmap.tmap.VectorFloat, tmap.tmap.VectorFloat, tmap.tmap.VectorUint, tmap.tmap.VectorUint, tmap.tmap.GraphProperties{]}
+node\_size1.000000, create\_mst: bool=True, clear\_lsh\_forest: bool=False, weighted: bool=False) -\textgreater{} Tuple{[}tmap.VectorFloat, tmap.VectorFloat, tmap.VectorUint, tmap.VectorUint, tmap.GraphProperties{]}
 \begin{quote}
 
 Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} instance.
@@ -1346,7 +1346,7 @@ weighted (\sphinxcode{\sphinxupquote{bool}}): Whether the MinHash vectors in the
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{documentation:tmap.layout_from_edge_list}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{layout\_from\_edge\_list}}}{}{}
-layout\_from\_edge\_list(vertex\_count: int, edges: List{[}Tuple{[}int, int, float{]}{]}, config: tmap.tmap.LayoutConfiguration=k: 10
+layout\_from\_edge\_list(vertex\_count: int, edges: List{[}Tuple{[}int, int, float{]}{]}, config: tmap.LayoutConfiguration=k: 10
 kc: 10
 fme\_iterations: 1000
 fme\_randomize: 0
@@ -1362,7 +1362,7 @@ placer: Barycenter
 merger: LocalBiconnected
 merger\_factor: 2.000000
 merger\_adjustment: 0
-node\_size1.000000, create\_mst: bool=True) -\textgreater{} Tuple{[}tmap.tmap.VectorFloat, tmap.tmap.VectorFloat, tmap.tmap.VectorUint, tmap.tmap.VectorUint, tmap.tmap.GraphProperties{]}
+node\_size1.000000, create\_mst: bool=True) -\textgreater{} Tuple{[}tmap.VectorFloat, tmap.VectorFloat, tmap.VectorUint, tmap.VectorUint, tmap.GraphProperties{]}
 \begin{quote}
 
 Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an edge list.
@@ -1386,7 +1386,7 @@ create\_mst (\sphinxcode{\sphinxupquote{bool}}): Whether to create a minimum spa
 \index{mst\_from\_lsh\_forest() (in module tmap)@\spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.mst_from_lsh_forest}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{mst\_from\_lsh\_forest}}}{\emph{lsh\_forest: tmap::LSHForest}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ Tuple{[}tmap.tmap.VectorUint, tmap.tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.mst_from_lsh_forest}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{mst\_from\_lsh\_forest}}}{\emph{lsh\_forest: tmap::LSHForest}, \emph{k: int}, \emph{kc: int=10}, \emph{weighted: bool=False}}{{ $\rightarrow$ Tuple{[}tmap.VectorUint, tmap.VectorUint{]}}}
 Create minimum spanning tree topology from an {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} instance.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1420,7 +1420,7 @@ the topology of the minimum spanning tree of the data indexed in the LSH forest
 \index{ScalingType (class in tmap)@\spxentry{ScalingType}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.ScalingType}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{ScalingType}}}{\emph{self: tmap.tmap.ScalingType}, \emph{arg0: int}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.ScalingType}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{ScalingType}}}{\emph{self: tmap.ScalingType}, \emph{arg0: int}}{{ $\rightarrow$ None}}
 The scaling types available in OGDF. The class is to be used as an enum.
 \subsubsection*{Notes}
 
@@ -1439,7 +1439,7 @@ The available values are
 \index{Placer (class in tmap)@\spxentry{Placer}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Placer}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Placer}}}{\emph{self: tmap.tmap.Placer}, \emph{arg0: int}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.Placer}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Placer}}}{\emph{self: tmap.Placer}, \emph{arg0: int}}{{ $\rightarrow$ None}}
 The places available in OGDF. The class is to be used as an enum.
 \subsubsection*{Notes}
 
@@ -1462,7 +1462,7 @@ The available values are
 \index{Merger (class in tmap)@\spxentry{Merger}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Merger}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Merger}}}{\emph{self: tmap.tmap.Merger}, \emph{arg0: int}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.Merger}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{Merger}}}{\emph{self: tmap.Merger}, \emph{arg0: int}}{{ $\rightarrow$ None}}
 The mergers available in OGDF. The class is to be used as an enum.
 \subsubsection*{Notes}
 
@@ -1481,7 +1481,7 @@ The available values are
 \index{LayoutConfiguration (class in tmap)@\spxentry{LayoutConfiguration}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LayoutConfiguration}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{LayoutConfiguration}}}{\emph{self: tmap.tmap.LayoutConfiguration}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LayoutConfiguration}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{LayoutConfiguration}}}{\emph{self: tmap.LayoutConfiguration}}{{ $\rightarrow$ None}}
 A container for configuration options for {\hyperref[\detokenize{documentation:tmap.layout_from_lsh_forest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{layout\_from\_lsh\_forest()}}}}} and {\hyperref[\detokenize{documentation:tmap.layout_from_edge_list}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{layout\_from\_edge\_list()}}}}}.
 
 
@@ -1709,7 +1709,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.LayoutConfig
 \index{\_\_init\_\_() (tmap.LayoutConfiguration method)@\spxentry{\_\_init\_\_()}\spxextra{tmap.LayoutConfiguration method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.LayoutConfiguration.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.tmap.LayoutConfiguration}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.LayoutConfiguration.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.LayoutConfiguration}}{{ $\rightarrow$ None}}
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.LayoutConfiguration}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LayoutConfiguration}}}}}.
 
 \end{fulllineitems}
@@ -1720,7 +1720,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.LayoutConfig
 \index{GraphProperties (class in tmap)@\spxentry{GraphProperties}\spxextra{class in tmap}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.GraphProperties}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{GraphProperties}}}{\emph{self: tmap.tmap.GraphProperties}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.GraphProperties}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{tmap.}}\sphinxbfcode{\sphinxupquote{GraphProperties}}}{\emph{self: tmap.GraphProperties}}{{ $\rightarrow$ None}}
 Contains properties of the minimum spanning tree (or forest) generated by {\hyperref[\detokenize{documentation:tmap.layout_from_lsh_forest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{layout\_from\_lsh\_forest()}}}}} and {\hyperref[\detokenize{documentation:tmap.layout_from_edge_list}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{layout\_from\_edge\_list()}}}}}.
 \index{mst\_weight (tmap.GraphProperties attribute)@\spxentry{mst\_weight}\spxextra{tmap.GraphProperties attribute}}
 
@@ -1790,7 +1790,7 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.GraphPropert
 \index{\_\_init\_\_() (tmap.GraphProperties method)@\spxentry{\_\_init\_\_()}\spxextra{tmap.GraphProperties method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.GraphProperties.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.tmap.GraphProperties}}{{ $\rightarrow$ None}}
+\phantomsection\label{\detokenize{documentation:tmap.GraphProperties.__init__}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{\_\_init\_\_}}}{\emph{self: tmap.GraphProperties}}{{ $\rightarrow$ None}}
 Constructor for the class {\hyperref[\detokenize{documentation:tmap.GraphProperties}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{GraphProperties}}}}}.
 
 \end{fulllineitems}

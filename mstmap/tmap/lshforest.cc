@@ -89,6 +89,12 @@ void tmap::LSHForest::BatchAdd(std::vector<std::vector<uint32_t>> &vecs)
         }
     }
 
+    if (file_backed_)
+    {
+        // Free the memory
+        std::vector<std::vector<uint32_t>>().swap(vecs);
+    }
+
     size_ += length;
     clean_ = false;
 }
