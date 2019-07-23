@@ -154,20 +154,17 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromSparseBinaryArray(std
 std::vector<uint32_t> tmap::Minhash::FromStringArray(std::vector<std::string> &vec)
 {
     std::valarray<uint32_t> mh(max_hash_, d_);
-    sha1::SHA1 s;
 
     for (uint32_t i = 0; i < vec.size(); i++)
     {
-        s.processBytes(vec[i].c_str(), vec[i].size());
-        uint32_t digest[5];
-        s.getDigest(digest);
+        auto digest = FNV::fnv1a(vec[i]);
 
 #if _MSC_VER
         std::valarray<uint32_t> tmp(d_);
         for (size_t j = 0; j < d_; j++)
-            tmp[j] = ((perms_a_[j] * digest[0] + perms_b_[j]) % prime_) % max_hash_;
+            tmp[j] = ((perms_a_[j] * digest + perms_b_[j]) % prime_) % max_hash_;
 #else
-        std::valarray<uint32_t> tmp = ((perms_a_ * digest[0] + perms_b_) % prime_) % max_hash_;
+        std::valarray<uint32_t> tmp = ((perms_a_ * digest + perms_b_) % prime_) % max_hash_;
 #endif
 
         for (size_t j = 0; j < mh.size(); j++)

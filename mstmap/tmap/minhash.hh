@@ -19,7 +19,7 @@
 #include <iostream>
 #include <limits>
 #include <numeric>
-#include "TinySHA1.hh"
+#include "fnv.hh"
 
 namespace tmap
 {
@@ -157,6 +157,7 @@ namespace tmap
             std::vector<std::valarray<float>> cs_;
             std::vector<std::valarray<float>> betas_;
             std::vector<std::valarray<float>> betas_2_;
+            std::hash<std::string> hasher;
 
     };
 };
