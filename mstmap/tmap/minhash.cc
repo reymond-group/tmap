@@ -50,34 +50,34 @@ tmap::Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_si
     // This is for the weighted minhash
     std::default_random_engine rand_gamma;
     rand_gamma.seed(seed);
-    // std::default_random_engine rand_gamma_2;
-    // rand_gamma_2.seed(seed * 2);
+    std::default_random_engine rand_gamma_2;
+    rand_gamma_2.seed(seed * 2);
     std::default_random_engine rand_gamma_3;
     rand_gamma_3.seed(seed * 4);
     std::gamma_distribution<float> gamma_dist(2.0, 1.0);
-    // std::gamma_distribution<float> gamma_dist_2(2.0, 1.0);
+    std::gamma_distribution<float> gamma_dist_2(2.0, 1.0);
     std::gamma_distribution<float> gamma_dist_3(2.0, 1.0);
     
     std::uniform_real_distribution<float> dist_beta(0.0f, 1.0f);
-    // std::uniform_real_distribution<float> dist_beta_2(0.0f, 1.0f);
+    std::uniform_real_distribution<float> dist_beta_2(0.0f, 1.0f);
 
     for (unsigned int i = 0; i < sample_size_; i++)
     {
         rs_[i] = std::valarray<float>(0.0f, d_);
-        // rs_2_[i] = std::valarray<float>(0.0f, d_);
+        rs_2_[i] = std::valarray<float>(0.0f, d_);
         ln_cs_[i] = std::valarray<float>(0.0f, d_);
-        // cs_[i] = std::valarray<float>(0.0f, d_);
+        cs_[i] = std::valarray<float>(0.0f, d_);
         betas_[i] = std::valarray<float>(0.0f, d_);
-        // betas_2_[i] = std::valarray<float>(0.0f, d_);
+        betas_2_[i] = std::valarray<float>(0.0f, d_);
 
         for (unsigned int j = 0; j < d_; j++)
         {
             rs_[i][j] = gamma_dist(rand_gamma);
-            // rs_2_[i][j] = gamma_dist_2(rand_gamma_2);
+            rs_2_[i][j] = gamma_dist_2(rand_gamma_2);
             ln_cs_[i][j] = std::log(gamma_dist_3(rand_gamma_3));
-            // cs_[i][j] = gamma_dist_3(rand_gamma_3);
+            cs_[i][j] = gamma_dist_3(rand_gamma_3);
             betas_[i][j] = dist_beta(rand);
-            // betas_2_[i][j] = dist_beta(rand);
+            betas_2_[i][j] = dist_beta(rand);
         }
     }
 }
@@ -229,7 +229,7 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromIntWeightArray(std::v
     return results;
 }
 
-std::vector<uint32_t> tmap::Minhash::FromWeightArray(std::vector<float> &vec)
+std::vector<uint32_t> tmap::Minhash::FromWeightArray(std::vector<float> &vec, const std::string &method)
 {
     std::vector<uint32_t> mh(sample_size_ * 2);
 
@@ -254,59 +254,62 @@ std::vector<uint32_t> tmap::Minhash::FromWeightArray(std::vector<float> &vec)
 
     std::valarray<float> vals_log(vals.data(), vals.size());
 
-    // ICWS
-
-    for (unsigned int s = 0; s < sample_size_; s++)
+    if (method == "ICWS")
     {
-        std::valarray<float> rs = rs_[s][mask];
-        std::valarray<float> betas = betas_[s][mask];
-        std::valarray<float> ln_cs = ln_cs_[s][mask];
+        // ICWS
+        for (unsigned int s = 0; s < sample_size_; s++)
+        {
+            std::valarray<float> rs = rs_[s][mask];
+            std::valarray<float> betas = betas_[s][mask];
+            std::valarray<float> ln_cs = ln_cs_[s][mask];
 
-        std::valarray<float> t = (vals_log / rs) + betas;
-        t = t.apply([](float x) { return std::floor(x); });
+            std::valarray<float> t = (vals_log / rs) + betas;
+            t = t.apply([](float x) { return std::floor(x); });
 
-        std::valarray<float> ln_y = (t - betas) * rs;
-        std::valarray<float> ln_a = ln_cs - ln_y - rs;
+            std::valarray<float> ln_y = (t - betas) * rs;
+            std::valarray<float> ln_a = ln_cs - ln_y - rs;
 
-        uint32_t k_star = std::distance(std::begin(ln_a), std::min_element(std::begin(ln_a), std::end(ln_a)));
+            uint32_t k_star = std::distance(std::begin(ln_a), std::min_element(std::begin(ln_a), std::end(ln_a)));
 
-        mh[2 * s] = indices[k_star];
-        mh[2 * s + 1] = (uint32_t)t[k_star];
+            mh[2 * s] = indices[k_star];
+            mh[2 * s + 1] = (uint32_t)t[k_star];
+        }
     }
+    else
+    {
+        // I2CWS
+        for (unsigned int i = 0; i < sample_size_; i++)
+        {
+            std::valarray<float> rs = rs_[i][mask];
+            std::valarray<float> rs_2 = rs_2_[i][mask];
+            std::valarray<float> betas = betas_[i][mask];
+            std::valarray<float> betas_2 = betas_2_[i][mask];
+            std::valarray<float> cs = cs_[i][mask];
 
-    // I2CWS
+            std::valarray<float> t = (vals_log / rs_2) + betas_2;
+            t = t.apply([](float x) { return std::floor(x); });
 
-    // for (unsigned int i = 0; i < sample_size_; i++)
-    // {
-    //     std::valarray<float> rs = rs_[i][mask];
-    //     std::valarray<float> rs_2 = rs_2_[i][mask];
-    //     std::valarray<float> betas = betas_[i][mask];
-    //     std::valarray<float> betas_2 = betas_2_[i][mask];
-    //     std::valarray<float> cs = cs_[i][mask];
+            std::valarray<float> z = std::exp(rs_2 * (t - betas_2 + 1));
+            std::valarray<float> a = cs / z;
 
-    //     std::valarray<float> t = (vals_log / rs_2) + betas_2;
-    //     t = t.apply([](float x) { return std::floor(x); });
+            uint32_t k_star = std::distance(std::begin(a), std::min_element(std::begin(a), std::end(a)));
+            uint32_t t_k = std::floor(vals_log[k_star] / rs[k_star] + betas[k_star]);
 
-    //     std::valarray<float> z = std::exp(rs_2 * (t - betas_2 + 1));
-    //     std::valarray<float> a = cs / z;
-
-    //     uint32_t k_star = std::distance(std::begin(a), std::min_element(std::begin(a), std::end(a)));
-    //     uint32_t t_k = std::floor(vals_log[k_star] / rs[k_star] + betas[k_star]);
-
-    //     mh[2 * i] = indices[k_star];
-    //     mh[2 * i + 1] = t_k;
-    // }
+            mh[2 * i] = indices[k_star];
+            mh[2 * i + 1] = t_k;
+        }
+    }
 
     return mh;
 }
 
-std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromWeightArray(std::vector<std::vector<float>> &vecs)
+std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromWeightArray(std::vector<std::vector<float>> &vecs, const std::string &method)
 {
     std::vector<std::vector<uint32_t>> results(vecs.size());
 
     #pragma omp parallel for
     for (int i = 0; i < vecs.size(); i++)
-        results[i] = FromWeightArray(vecs[i]);
+        results[i] = FromWeightArray(vecs[i], method);
 
     return results;
 }

@@ -91,9 +91,10 @@ namespace tmap
              * @brief Create a MinHash from an array containing weights.
              * 
              * @param vec A vector of float weights.
+             * @param method The method which to use to calculate the weighted fingerprint. Options are "I2CWS" and "ICWS".
              * @return std::vector<uint32_t> 
              */
-            std::vector<uint32_t> FromWeightArray(std::vector<float> &vec);
+            std::vector<uint32_t> FromWeightArray(std::vector<float> &vec, const std::string &method = "ICWS");
 
             /**
              * @brief Create MinHashes from a vector of weight arrays (parallelized).
@@ -101,7 +102,7 @@ namespace tmap
              * @param vecs A vector of float vector weights.
              * @return std::vector<std::vector<uint32_t>> 
              */
-            std::vector<std::vector<uint32_t>> BatchFromWeightArray(std::vector<std::vector<float>> &vecs);
+            std::vector<std::vector<uint32_t>> BatchFromWeightArray(std::vector<std::vector<float>> &vecs, const std::string &method = "ICWS");
 
             /**
              * @brief Expand a integer weight array into a binary array.
