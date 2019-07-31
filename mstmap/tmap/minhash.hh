@@ -148,7 +148,7 @@ namespace tmap
 
         private:
             unsigned int d_, sample_size_;
-            uint64_t prime_ = 18446744073709551615UL;
+            uint64_t prime_ = 2305843009213693951UL;
             uint32_t max_hash_ = 4294967295;
             std::valarray<uint32_t> perms_a_;
             std::valarray<uint32_t> perms_b_;
@@ -160,6 +160,9 @@ namespace tmap
             std::vector<std::valarray<float>> betas_2_;
             std::hash<std::string> hasher;
 
+            uint64_t fast_mod_long(const uint64_t input, const uint64_t ceil) {
+                return input >= ceil ? input % ceil : input;
+            }
     };
 };
 #endif

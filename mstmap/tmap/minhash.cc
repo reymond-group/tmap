@@ -84,22 +84,18 @@ tmap::Minhash::Minhash(unsigned int d, unsigned int seed, unsigned int sample_si
 
 std::vector<uint32_t> tmap::Minhash::FromBinaryArray(std::vector<uint8_t> &vec)
 {
-    std::valarray<uint32_t> mh(max_hash_, d_);
+    std::vector<uint32_t> mh(d_, max_hash_);
+    std::vector<uint32_t> tmp(d_);
 
     for (uint32_t i = 0; i < vec.size(); i++)
     {
         if (vec[i] == 0)
             continue;
-        
-#if _MSC_VER
-        std::valarray<uint32_t> tmp(d_);
-        for (size_t j = 0; j < d_; j++)
-            tmp[j] = ((perms_a_[j] * i + perms_b_[j]) % prime_) % max_hash_;
-#else
-        std::valarray<uint32_t> tmp = ((perms_a_ * i + perms_b_) % prime_) % max_hash_;
-#endif
 
-        for (size_t j = 0; j < mh.size(); j++)
+        for (size_t j = 0; j < d_; j++)
+            tmp[j] = (fast_mod_long((perms_a_[j] * i + perms_b_[j]), prime_)) & max_hash_;
+        
+        for (size_t j = 0; j < d_; j++)
             mh[j] = std::min(tmp[j], mh[j]);
     }
 
@@ -119,22 +115,16 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromBinaryArray(std::vect
 
 std::vector<uint32_t> tmap::Minhash::FromSparseBinaryArray(std::vector<uint32_t> &vec)
 {
-    std::valarray<uint32_t> mh(max_hash_, d_);
+    std::vector<uint32_t> mh(d_, max_hash_);
+    std::vector<uint32_t> tmp(d_);
 
     for (uint32_t i = 0; i < vec.size(); i++)
     {
-#if _MSC_VER
-        std::valarray<uint32_t> tmp(d_);
         for (size_t j = 0; j < d_; j++)
-            tmp[j] = ((perms_a_[j] * vec[i] + perms_b_[j]) % prime_) % max_hash_;
-#else   
-        std::valarray<uint32_t> tmp = ((perms_a_ * vec[i] + perms_b_) % prime_) % max_hash_;
-#endif
-
-        for (size_t j = 0; j < mh.size(); j++)
-        {
+            tmp[j] = (fast_mod_long((perms_a_[j] * vec[i] + perms_b_[j]), prime_)) & max_hash_;
+        
+        for (size_t j = 0; j < d_; j++)
             mh[j] = std::min(tmp[j], mh[j]);
-        }
     }
 
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));
@@ -153,22 +143,16 @@ std::vector<std::vector<uint32_t>> tmap::Minhash::BatchFromSparseBinaryArray(std
 
 std::vector<uint32_t> tmap::Minhash::FromStringArray(std::vector<std::string> &vec)
 {
-    std::valarray<uint32_t> mh(max_hash_, d_);
+    std::vector<uint32_t> mh(d_, max_hash_);
+    std::vector<uint32_t> tmp(d_);
 
     for (uint32_t i = 0; i < vec.size(); i++)
     {
-        auto digest = FNV::fnv1a(vec[i]);
-
-#if _MSC_VER
-        std::valarray<uint32_t> tmp(d_);
         for (size_t j = 0; j < d_; j++)
-            tmp[j] = ((perms_a_[j] * digest + perms_b_[j]) % prime_) % max_hash_;
-#else
-        std::valarray<uint32_t> tmp = ((perms_a_ * digest + perms_b_) % prime_) % max_hash_;
-#endif
-
-        for (size_t j = 0; j < mh.size(); j++)
-            mh[j] = std::min(tmp[j], mh[j]); 
+            tmp[j] = (fast_mod_long((perms_a_[j] * FNV::fnv1a(vec[i]) + perms_b_[j]), prime_)) & max_hash_;
+        
+        for (size_t j = 0; j < d_; j++)
+            mh[j] = std::min(tmp[j], mh[j]);
     }
 
     return std::vector<uint32_t>(std::begin(mh), std::end(mh));

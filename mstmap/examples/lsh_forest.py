@@ -10,7 +10,7 @@ def main():
     lf = tm.LSHForest(128)
 
     d = 1000
-    n = 1000000
+    n = 10000
 
     data = []
 
@@ -20,9 +20,14 @@ def main():
         data.append(tm.VectorUchar(np.random.randint(0, high=2, size=d)))
     print(f"Generating the data took {(timer() - start) * 1000}ms.")
 
+    # Use batch_from_binary_array to encode the data
+    start = timer()
+    data = enc.batch_from_binary_array(data)
+    print(f"Encoding the data took {(timer() - start) * 1000}ms.")
+
     # Use batch_add to parallelize the insertion of the arrays
     start = timer()
-    lf.batch_add(enc.batch_from_binary_array(data))
+    lf.batch_add(data)
     print(f"Adding the data took {(timer() - start) * 1000}ms.")
 
     # Index the added data

@@ -17,7 +17,8 @@ source:
   
 requirements:
   build:
-    - {{ compiler('cxx') }}
+    # Use system compiler on linux
+    - {{ compiler('cxx') }} # [win]
     - cmake
     - python
     - setuptools
