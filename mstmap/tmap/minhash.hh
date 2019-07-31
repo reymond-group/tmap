@@ -21,6 +21,8 @@
 #include <valarray>
 #include <vector>
 
+#include "omp.h"
+
 namespace tmap {
 /**
  * @brief An implementation of MinHash and weighted MinHash using SHA1.

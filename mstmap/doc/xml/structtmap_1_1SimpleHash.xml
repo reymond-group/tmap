@@ -19,14 +19,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="42" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="42" bodyend="49"/>
+        <location file="tmap/lshforest.hh" line="41" column="1" bodyfile="tmap/lshforest.hh" bodystart="41" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hash struct used for the sparsepp sparse hash map. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/lshforest.hh" line="41" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="41" bodyend="50"/>
+    <location file="tmap/lshforest.hh" line="40" column="1" bodyfile="tmap/lshforest.hh" bodystart="39" bodyend="49"/>
     <listofallmembers>
       <member refid="structtmap_1_1SimpleHash_1a2246e182ae49e4ff363d6c3344aa97cf" prot="public" virt="non-virtual"><scope>tmap::SimpleHash</scope><name>operator()</name></member>
     </listofallmembers>

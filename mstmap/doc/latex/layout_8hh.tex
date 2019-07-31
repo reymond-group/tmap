@@ -1,36 +1,36 @@
-\hypertarget{layout_8hh}{}\section{src/tmap/layout.hh File Reference}
-\label{layout_8hh}\index{src/tmap/layout.\+hh@{src/tmap/layout.\+hh}}
+\hypertarget{layout_8hh}{}\section{tmap/layout.hh File Reference}
+\label{layout_8hh}\index{tmap/layout.\+hh@{tmap/layout.\+hh}}
 
 
 Functions used for generating graph layouts from L\+S\+H\+Forest instances and edge lists.  
 
 
-{\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$ogdf/basic/\+Graph.\+h$>$}\newline
-{\ttfamily \#include $<$ogdf/fileformats/\+Graph\+I\+O.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/basic/\+Graph\+Attributes.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/basic/extended\+\_\+graph\+\_\+alg.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/fileformats/\+Graph\+I\+O.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/\+Fast\+Multipole\+Embedder.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Scaling\+Layout.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Barycenter\+Placer.\+h$>$}\newline
-{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Placer.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Circle\+Placer.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Median\+Placer.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Random\+Placer.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Placer.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Zero\+Placer.\+h$>$}\newline
-{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Merger.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Edge\+Cover\+Merger.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Independent\+Set\+Merger.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Local\+Biconnected\+Merger.\+h$>$}\newline
+{\ttfamily \#include $<$ogdf/energybased/multilevel\+\_\+mixer/\+Solar\+Merger.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/basic/\+Preprocessor\+Layout.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/packing/\+Component\+Splitter\+Layout.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/packing/\+Tile\+To\+Rows\+C\+C\+Packer.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/\+F\+M\+M\+M\+Layout.\+h$>$}\newline
 {\ttfamily \#include $<$ogdf/energybased/\+Spring\+Embedder\+Grid\+Variant.\+h$>$}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$typeinfo$>$}\newline
 Include dependency graph for layout.\+hh\+:\nopagebreak
 \begin{figure}[H]
@@ -58,7 +58,7 @@ struct \hyperlink{structtmap_1_1GraphProperties}{tmap\+::\+Graph\+Properties}
 \item 
 \mbox{\Hypertarget{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}\label{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}} 
 enum \hyperlink{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}{tmap\+::\+Placer} \{ \newline
-{\bfseries tmap\+::\+Placer\+::\+Barycenter} = 0, 
+{\bfseries tmap\+::\+Placer\+::\+Barycenter}, 
 {\bfseries tmap\+::\+Placer\+::\+Solar} = 1, 
 {\bfseries tmap\+::\+Placer\+::\+Circle} = 2, 
 {\bfseries tmap\+::\+Placer\+::\+Median} = 3, 
@@ -68,16 +68,16 @@ enum \hyperlink{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}{tmap\+::\+Placer} 
  \}\begin{DoxyCompactList}\small\item\em The placers available in O\+G\+DF. \end{DoxyCompactList}
 \item 
 \mbox{\Hypertarget{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}\label{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}} 
-enum \hyperlink{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}{tmap\+::\+Merger} \{ {\bfseries tmap\+::\+Merger\+::\+Edge\+Cover} = 0, 
-{\bfseries tmap\+::\+Merger\+::\+Local\+Biconnected} = 1, 
+enum \hyperlink{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}{tmap\+::\+Merger} \{ {\bfseries tmap\+::\+Merger\+::\+Edge\+Cover}, 
+{\bfseries tmap\+::\+Merger\+::\+Local\+Biconnected}, 
 {\bfseries tmap\+::\+Merger\+::\+Solar} = 2, 
-{\bfseries tmap\+::\+Merger\+::\+Independent\+Set} = 3
+{\bfseries tmap\+::\+Merger\+::\+Independent\+Set}
  \}\begin{DoxyCompactList}\small\item\em The mergers available in O\+G\+DF. \end{DoxyCompactList}
 \item 
 \mbox{\Hypertarget{layout_8hh_a50ec215c9e54cf12b9dd0a0056160761}\label{layout_8hh_a50ec215c9e54cf12b9dd0a0056160761}} 
 enum \hyperlink{layout_8hh_a50ec215c9e54cf12b9dd0a0056160761}{tmap\+::\+Scaling\+Type} \{ {\bfseries tmap\+::\+Scaling\+Type\+::\+Absolute} = 0, 
-{\bfseries tmap\+::\+Scaling\+Type\+::\+Relative\+To\+Avg\+Length} = 1, 
-{\bfseries tmap\+::\+Scaling\+Type\+::\+Relative\+To\+Desired\+Length} = 2, 
+{\bfseries tmap\+::\+Scaling\+Type\+::\+Relative\+To\+Avg\+Length}, 
+{\bfseries tmap\+::\+Scaling\+Type\+::\+Relative\+To\+Desired\+Length}, 
 {\bfseries tmap\+::\+Scaling\+Type\+::\+Relative\+To\+Drawing} = 3
  \}\begin{DoxyCompactList}\small\item\em The scaling types available in O\+G\+DF. \end{DoxyCompactList}
 \end{DoxyCompactItemize}

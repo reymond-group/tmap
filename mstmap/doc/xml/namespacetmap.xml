@@ -14,7 +14,8 @@
         <name>Placer</name>
         <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90babbbb1a06b3b22c3ccc5648b57aef0e87" prot="public">
           <name>Barycenter</name>
-          <initializer>= 0</initializer>
+          <initializer>=
+    0</initializer>
           <briefdescription>
 <para>Places a vertex at the barycenter of its neighbors&apos; position. </para>          </briefdescription>
           <detaileddescription>
@@ -24,41 +25,41 @@
           <name>Solar</name>
           <initializer>= 1</initializer>
           <briefdescription>
-<para>Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Uses information of the merging phase of the solar merger. Places a new vertex on the direct line between two suns. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba30954d90085f6eaaf5817917fc5fecb3" prot="public">
           <name>Circle</name>
           <initializer>= 2</initializer>
           <briefdescription>
-<para>Places the vertices in a circle around the barycenter and outside of the current drawing. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Places the vertices in a circle around the barycenter and outside of the current drawing </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba66851a3adec6655a7bd563743e4a55a2" prot="public">
           <name>Median</name>
           <initializer>= 3</initializer>
           <briefdescription>
-<para>Places a vertex at the median position of the neighbor nodes for each coordinate axis. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Places a vertex at the median position of the neighbor nodes for each coordinate axis. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90ba64663f4646781c9c0110838b905daa23" prot="public">
           <name>Random</name>
           <initializer>= 4</initializer>
           <briefdescription>
-<para>Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Places a vertex at a random position within the smallest circle containing all vertices around the barycenter of the current drawing. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1afdc98947e81dc6f4c30f256e6f42f90bad7ed4ee1df437474d005188535f74875" prot="public">
           <name>Zero</name>
           <initializer>= 5</initializer>
           <briefdescription>
-<para>Places a vertex at the same position as its representative in the previous level. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Places a vertex at the same position as its representative in the previous level. </para>          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>The placers available in OGDF. </para>        </briefdescription>
@@ -66,37 +67,40 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="62" column="1" bodyfile="src/tmap/layout.hh" bodystart="61" bodyend="69"/>
+        <location file="tmap/layout.hh" line="62" column="1" bodyfile="tmap/layout.hh" bodystart="61" bodyend="76"/>
       </memberdef>
       <memberdef kind="enum" id="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" prot="public" static="no">
         <name>Merger</name>
         <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa63dbd8d091f1e5944a41cf67c314cbd5" prot="public">
           <name>EdgeCover</name>
-          <initializer>= 0</initializer>
+          <initializer>=
+    0</initializer>
           <briefdescription>
-<para>Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Based on the matching merger. Computes an edge cover such that each contained edge is incident to at least one unmatched vertex. The cover edges are then used to merge their adjacent vertices. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa18f7761401e380de1934a428c869b056" prot="public">
           <name>LocalBiconnected</name>
-          <initializer>= 1</initializer>
+          <initializer>=
+    1</initializer>
           <briefdescription>
-<para>Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Based on the edge cover merger. Avoids distortions by checking whether biconnectivity will be lost in the local neighborhood around the potential merging position. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa352ccd39c4ed093da3690db82cca8ca0" prot="public">
           <name>Solar</name>
           <initializer>= 2</initializer>
           <briefdescription>
-<para>Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Vertices are partitioned into solar systems, consisting of sun, planets and moons. The systems are then merged into the sun vertices. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1a8c7bb9956a1a724233182a166cfdc0ffa8b4d6dc43f32b455d6f6aeb880d12e0e" prot="public">
           <name>IndependentSet</name>
-          <initializer>= 3</initializer>
+          <initializer>=
+    3</initializer>
           <briefdescription>
 <para>Uses a maximal independent set filtration. See GRIP for details. </para>          </briefdescription>
           <detaileddescription>
@@ -108,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="77" column="1" bodyfile="src/tmap/layout.hh" bodystart="76" bodyend="82"/>
+        <location file="tmap/layout.hh" line="85" column="1" bodyfile="tmap/layout.hh" bodystart="84" bodyend="99"/>
       </memberdef>
       <memberdef kind="enum" id="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" prot="public" static="no">
         <name>ScalingType</name>
@@ -116,13 +120,14 @@
           <name>Absolute</name>
           <initializer>= 0</initializer>
           <briefdescription>
-<para>Absolute factor, can be used to scale relative to level size change. </para>          </briefdescription>
+          </briefdescription>
           <detaileddescription>
-          </detaileddescription>
+<para>Absolute factor, can be used to scale relative to level size change. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761a50457e66866f1b7c064de1aed711b13a" prot="public">
           <name>RelativeToAvgLength</name>
-          <initializer>= 1</initializer>
+          <initializer>=
+    1</initializer>
           <briefdescription>
 <para>Scales by a factor relative to the average edge weights. </para>          </briefdescription>
           <detaileddescription>
@@ -130,7 +135,8 @@
         </enumvalue>
         <enumvalue id="dummy_1a50ec215c9e54cf12b9dd0a0056160761a51099521cc62379bc5d5c9f3be2251c8" prot="public">
           <name>RelativeToDesiredLength</name>
-          <initializer>= 2</initializer>
+          <initializer>=
+    2</initializer>
           <briefdescription>
 <para>Scales by a factor relative to the disired edge length. </para>          </briefdescription>
           <detaileddescription>
@@ -150,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="90" column="1" bodyfile="src/tmap/layout.hh" bodystart="89" bodyend="95"/>
+        <location file="tmap/layout.hh" line="110" column="1" bodyfile="tmap/layout.hh" bodystart="109" bodyend="118"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -159,42 +165,49 @@
         <definition>const std::string tmap::placer_values[]</definition>
         <argsstring>[]</argsstring>
         <name>placer_values</name>
-        <initializer>= {&quot;Barycenter&quot;, &quot;Solar&quot;, &quot;Circle&quot;, &quot;Median&quot;, &quot;Random&quot;, &quot;Zero&quot;}</initializer>
+        <initializer>= { &quot;Barycenter&quot;, &quot;Solar&quot;,  &quot;Circle&quot;,
+                                             &quot;Median&quot;,     &quot;Random&quot;, &quot;Zero&quot; }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="70" column="1" bodyfile="src/tmap/layout.hh" bodystart="70" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="77" column="1" bodyfile="tmap/layout.hh" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="layout_8hh_1a3ad0dd2b53d82fa20916d19ff367794a" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
         <definition>const std::string tmap::merger_values[]</definition>
         <argsstring>[]</argsstring>
         <name>merger_values</name>
-        <initializer>= {&quot;EdgeCover&quot;, &quot;LocalBiconnected&quot;, &quot;Solar&quot;, &quot;IndependentSet&quot;}</initializer>
+        <initializer>= { &quot;EdgeCover&quot;,
+                                             &quot;LocalBiconnected&quot;,
+                                             &quot;Solar&quot;,
+                                             &quot;IndependentSet&quot; }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="83" column="1" bodyfile="src/tmap/layout.hh" bodystart="83" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="100" column="1" bodyfile="tmap/layout.hh" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="layout_8hh_1a93ab7e5f6b6a0e80c1cd2662157219dd" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
         <definition>const std::string tmap::scaling_types_values[]</definition>
         <argsstring>[]</argsstring>
         <name>scaling_types_values</name>
-        <initializer>= {&quot;Absolute&quot;, &quot;RelativeToAvgLength&quot;, &quot;RelativeToDesiredLength&quot;, &quot;RelativeToDrawing&quot;}</initializer>
+        <initializer>= { &quot;Absolute&quot;,
+                                                    &quot;RelativeToAvgLength&quot;,
+                                                    &quot;RelativeToDesiredLength&quot;,
+                                                    &quot;RelativeToDrawing&quot; }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="96" column="1" bodyfile="src/tmap/layout.hh" bodystart="96" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="119" column="1" bodyfile="tmap/layout.hh" bodystart="119" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -270,7 +283,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="185" column="1" bodyfile="src/tmap/layout.cc" bodystart="179" bodyend="231"/>
+        <location file="tmap/layout.hh" line="247" column="1" bodyfile="tmap/layout.cc" bodystart="201" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
@@ -331,7 +344,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="198" column="1" bodyfile="src/tmap/layout.cc" bodystart="144" bodyend="176"/>
+        <location file="tmap/layout.hh" line="266" column="1" bodyfile="tmap/layout.cc" bodystart="161" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -392,7 +405,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="210" column="1" bodyfile="src/tmap/layout.cc" bodystart="234" bodyend="277"/>
+        <location file="tmap/layout.hh" line="287" column="1" bodyfile="tmap/layout.cc" bodystart="263" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -451,13 +464,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="223" column="1"/>
+        <location file="tmap/layout.hh" line="308" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/layout.hh" line="53" column="1"/>
+    <location file="tmap/layout.hh" line="53" column="1"/>
   </compounddef>
 </doxygen>

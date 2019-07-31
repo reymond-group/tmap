@@ -174,7 +174,6 @@ PYBIND11_MODULE(tmap, m)
         py::arg("config") = LayoutConfiguration(),
         py::arg("create_mst") = true,
         py::arg("clear_lsh_forest") = false,
-        py::arg("weighted") = false,
         R"pbdoc(
         Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance.
         
@@ -185,7 +184,6 @@ PYBIND11_MODULE(tmap, m)
             config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
             create_mst (:obj:`bool`): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
             clear_lsh_forest (:obj:`bool`): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
-            weighted (:obj:`bool`): Whether the MinHash vectors in the :obj:`LSHForest` instance are weighted
 
         Returns:
             :obj:`Tuple[VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
@@ -196,7 +194,6 @@ PYBIND11_MODULE(tmap, m)
         py::arg("lsh_forest"),
         py::arg("k"),
         py::arg("kc") = 10,
-        py::arg("weighted") = false,
         R"pbdoc(
         Create minimum spanning tree topology from an :obj:`LSHForest` instance.
         
@@ -206,7 +203,6 @@ PYBIND11_MODULE(tmap, m)
         
         Keyword Arguments:
             int kc (:obj:`int`): The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned
-            weighted (:obj:`bool`): Whether the MinHash vectors in the :obj:`LSHForest` instance are weighted
 
         Returns:
             :obj:`Tuple[VectorUint, VectorUint]`: the topology of the minimum spanning tree of the data indexed in the LSH forest
@@ -236,11 +232,12 @@ PYBIND11_MODULE(tmap, m)
   py::class_<LSHForest>(m, "LSHForest", R"pbdoc(
         A LSH forest data structure which incorporates optional linear scan to increase the recovery performance. Most query methods are available in parallelized versions named with a :obj:`batch_` prefix.
     )pbdoc")
-    .def(py::init<unsigned int, unsigned int, bool, bool>(),
+    .def(py::init<unsigned int, unsigned int, bool, bool, bool>(),
          py::arg("d") = 128,
          py::arg("l") = 8,
          py::arg("store") = true,
          py::arg("file_backed") = false,
+         py::arg("weighted") = false,
          R"pbdoc(
             Constructor for the class :obj:`LSHForest`.
 
@@ -276,7 +273,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("vec"),
          py::arg("k"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Query k-nearest neighbors with a LSH forest / linear scan combination. :obj:`k`*:obj:`kc` nearest neighbors are searched for using LSH forest; from these, the :obj:`k` nearest neighbors are retrieved using linear scan.             
 
@@ -286,7 +282,6 @@ PYBIND11_MODULE(tmap, m)
             
             Keyword Arguments:
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
             
             Returns:
                 :obj:`List` of :obj:`Tuple[float, int]`: The results of the query
@@ -297,7 +292,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("k"),
          py::arg("exclude"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Query k-nearest neighbors with a LSH forest / linear scan combination. :obj:`k`*:obj:`kc` nearest neighbors are searched for using LSH forest; from these, the :obj:`k` nearest neighbors are retrieved using linear scan.             
 
@@ -308,7 +302,6 @@ PYBIND11_MODULE(tmap, m)
             Keyword Arguments:
                 exclude (:obj:`List` of :obj:`VectorUint`) A list of ids of indexed MinHash vectors to be excluded from the search
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
             
             Returns:
                 :obj:`List` of :obj:`Tuple[float, int]`: The results of the query
@@ -318,7 +311,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("id"),
          py::arg("k"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Query k-nearest neighbors with a LSH forest / linear scan combination. :obj:`k`*:obj:`kc` nearest neighbors are searched for using LSH forest; from these, the :obj:`k` nearest neighbors are retrieved using linear scan.             
 
@@ -328,7 +320,6 @@ PYBIND11_MODULE(tmap, m)
             
             Keyword Arguments:
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
             
             Returns:
                 :obj:`List` of :obj:`Tuple[float, int]`: The results of the query
@@ -339,7 +330,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("k"),
          py::arg("exclude"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Query k-nearest neighbors with a LSH forest / linear scan combination. :obj:`k`*:obj:`kc` nearest neighbors are searched for using LSH forest; from these, the :obj:`k` nearest neighbors are retrieved using linear scan.             
 
@@ -350,7 +340,6 @@ PYBIND11_MODULE(tmap, m)
             Keyword Arguments:
                 exclude (:obj:`List` of :obj:`VectorUint`) A list of ids of indexed MinHash vectors to be excluded from the search
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
             
             Returns:
                 :obj:`List` of :obj:`Tuple[float, int]`: The results of the query
@@ -360,7 +349,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("vec"),
          py::arg("indices"),
          py::arg("k") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Query a subset of indexed MinHash vectors using linear scan.
 
@@ -370,7 +358,6 @@ PYBIND11_MODULE(tmap, m)
 
             Keyword arguments:
                 k (:obj:`int`): The number of nearest neighbors to be retrieved
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
 
             Returns:
                 :obj:`List` of :obj:`Tuple[float, int]`: The results of the query
@@ -431,7 +418,6 @@ PYBIND11_MODULE(tmap, m)
          &LSHForest::GetAllNearestNeighbors,
          py::arg("k"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Get the k-nearest neighbors of all indexed MinHash vectors.
 
@@ -440,7 +426,6 @@ PYBIND11_MODULE(tmap, m)
 
             Keyword Arguments:
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
 
             Returns:
                 :obj:`VectorUint` The ids of all k-nearest neighbors
@@ -452,7 +437,6 @@ PYBIND11_MODULE(tmap, m)
          py::arg("weight"),
          py::arg("k"),
          py::arg("kc") = 10,
-         py::arg("weighted") = false,
          R"pbdoc(
             Construct the k-nearest neighbor graph of the indexed MinHash vectors. It will be written to out parameters :obj:`from`, :obj:`to`, and :obj:`weight` as an edge list.
             
@@ -464,7 +448,6 @@ PYBIND11_MODULE(tmap, m)
 
             Keyword Arguments:
                 kc (:obj:`int`): The factor by which :obj:`k` is multiplied for LSH forest retreival
-                weighted (:obj:`bool`): Whether the MinHash vectors in this :obj:`LSHForest` instance are weighted
         )pbdoc")
     .def("get_distance", &LSHForest::GetDistance, R"pbdoc(
             Calculate the Jaccard distance between two MinHash vectors.

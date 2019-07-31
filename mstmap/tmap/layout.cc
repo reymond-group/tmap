@@ -160,8 +160,7 @@ ConnectGraph(Graph& g,
 std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
 tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
                        uint32_t k,
-                       uint32_t kc,
-                       bool weighted)
+                       uint32_t kc)
 {
   EdgeWeightedGraph<float> g;
   uint32_t vertex_count = lsh_forest.size();
@@ -170,7 +169,7 @@ tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
   std::vector<uint32_t> to;
   std::vector<float> weight;
 
-  lsh_forest.GetKNNGraph(from, to, weight, k, kc, weighted);
+  lsh_forest.GetKNNGraph(from, to, weight, k, kc);
 
   std::vector<node> index_to_node(lsh_forest.size());
 
@@ -201,8 +200,7 @@ std::tuple<std::vector<float>,
 tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
                           tmap::LayoutConfiguration config,
                           bool create_mst,
-                          bool clear_lsh_forest,
-                          bool weighted)
+                          bool clear_lsh_forest)
 {
   tmap::GraphProperties gp;
   EdgeWeightedGraph<float> g;
@@ -214,7 +212,7 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
   std::vector<uint32_t> degrees(vertex_count);
   std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
 
-  lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc, weighted);
+  lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc);
 
   if (clear_lsh_forest)
     lsh_forest.Clear();

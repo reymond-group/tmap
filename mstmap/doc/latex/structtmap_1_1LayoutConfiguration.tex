@@ -20,15 +20,12 @@ std\+::string \hyperlink{structtmap_1_1LayoutConfiguration_a498341508ea4806795f4
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a80ddc818732d708764fbd83ad7b7d153}\label{structtmap_1_1LayoutConfiguration_a80ddc818732d708764fbd83ad7b7d153}} 
 int \hyperlink{structtmap_1_1LayoutConfiguration_a80ddc818732d708764fbd83ad7b7d153}{k}
-\begin{DoxyCompactList}\small\item\em The number of nearest neighbors used to create the k-\/nearest neighbor graph. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_ae63c0a1d5956cbdb837f3aff1978f867}\label{structtmap_1_1LayoutConfiguration_ae63c0a1d5956cbdb837f3aff1978f867}} 
+\item 
 int \hyperlink{structtmap_1_1LayoutConfiguration_ae63c0a1d5956cbdb837f3aff1978f867}{kc}
-\begin{DoxyCompactList}\small\item\em The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_aa0b26a532aedb8f0fe4490c9c90b0e84}\label{structtmap_1_1LayoutConfiguration_aa0b26a532aedb8f0fe4490c9c90b0e84}} 
+\item 
 int \hyperlink{structtmap_1_1LayoutConfiguration_aa0b26a532aedb8f0fe4490c9c90b0e84}{fme\+\_\+iterations}
-\begin{DoxyCompactList}\small\item\em Maximum number of iterations of the fast multipole embedder. \end{DoxyCompactList}\item 
+\item 
 \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a821bf612fb3063344ca0c6b161424a7b}\label{structtmap_1_1LayoutConfiguration_a821bf612fb3063344ca0c6b161424a7b}} 
 bool \hyperlink{structtmap_1_1LayoutConfiguration_a821bf612fb3063344ca0c6b161424a7b}{fme\+\_\+randomize}
 \begin{DoxyCompactList}\small\item\em Whether or not to randomize the layout at the start. \end{DoxyCompactList}\item 
@@ -56,21 +53,16 @@ double \hyperlink{structtmap_1_1LayoutConfiguration_aa29669e99b7e1df2bcb95d6379d
 \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_aff2347eb71c98bbc72f16b4de32d4af0}\label{structtmap_1_1LayoutConfiguration_aff2347eb71c98bbc72f16b4de32d4af0}} 
 int \hyperlink{structtmap_1_1LayoutConfiguration_aff2347eb71c98bbc72f16b4de32d4af0}{mmm\+\_\+repeats}
 \begin{DoxyCompactList}\small\item\em Number of repeats of the per-\/level layout algorithm. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_ae81108ee33f42b2c084b540f902bbb7d}\label{structtmap_1_1LayoutConfiguration_ae81108ee33f42b2c084b540f902bbb7d}} 
 \hyperlink{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}{Placer} \hyperlink{structtmap_1_1LayoutConfiguration_ae81108ee33f42b2c084b540f902bbb7d}{placer}
-\begin{DoxyCompactList}\small\item\em The method by which the initial positons of the vertices at eachlevel are defined. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_aeee45308fd8dbda38fbc7b8c7ff9212f}\label{structtmap_1_1LayoutConfiguration_aeee45308fd8dbda38fbc7b8c7ff9212f}} 
+\item 
 \hyperlink{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}{Merger} \hyperlink{structtmap_1_1LayoutConfiguration_aeee45308fd8dbda38fbc7b8c7ff9212f}{merger}
-\begin{DoxyCompactList}\small\item\em The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a72fe4f8f738d2d400f70db97c4273a46}\label{structtmap_1_1LayoutConfiguration_a72fe4f8f738d2d400f70db97c4273a46}} 
+\item 
 double \hyperlink{structtmap_1_1LayoutConfiguration_a72fe4f8f738d2d400f70db97c4273a46}{merger\+\_\+factor}
-\begin{DoxyCompactList}\small\item\em The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a16109420c8ec0a4c3021345fd943daf6}\label{structtmap_1_1LayoutConfiguration_a16109420c8ec0a4c3021345fd943daf6}} 
+\item 
 int \hyperlink{structtmap_1_1LayoutConfiguration_a16109420c8ec0a4c3021345fd943daf6}{merger\+\_\+adjustment}
-\begin{DoxyCompactList}\small\item\em The edge length adjustment of the merging algorithm. Does notapply to all merging strategies. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a9a97e2c0c9edb212190d3afcc3ce2924}\label{structtmap_1_1LayoutConfiguration_a9a97e2c0c9edb212190d3afcc3ce2924}} 
+\item 
 float \hyperlink{structtmap_1_1LayoutConfiguration_a9a97e2c0c9edb212190d3afcc3ce2924}{node\+\_\+size}
-\begin{DoxyCompactList}\small\item\em The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -92,6 +84,57 @@ std\+::string
 \end{DoxyReturn}
 
 
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_aa0b26a532aedb8f0fe4490c9c90b0e84}\label{structtmap_1_1LayoutConfiguration_aa0b26a532aedb8f0fe4490c9c90b0e84}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!fme\+\_\+iterations@{fme\+\_\+iterations}}
+\index{fme\+\_\+iterations@{fme\+\_\+iterations}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{fme\+\_\+iterations}{fme\_iterations}}
+{\footnotesize\ttfamily int tmap\+::\+Layout\+Configuration\+::fme\+\_\+iterations}
+
+Maximum number of iterations of the fast multipole embedder. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a80ddc818732d708764fbd83ad7b7d153}\label{structtmap_1_1LayoutConfiguration_a80ddc818732d708764fbd83ad7b7d153}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!k@{k}}
+\index{k@{k}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily int tmap\+::\+Layout\+Configuration\+::k}
+
+The number of nearest neighbors used to create the k-\/nearest neighbor graph. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_ae63c0a1d5956cbdb837f3aff1978f867}\label{structtmap_1_1LayoutConfiguration_ae63c0a1d5956cbdb837f3aff1978f867}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!kc@{kc}}
+\index{kc@{kc}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{kc}{kc}}
+{\footnotesize\ttfamily int tmap\+::\+Layout\+Configuration\+::kc}
+
+The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_aeee45308fd8dbda38fbc7b8c7ff9212f}\label{structtmap_1_1LayoutConfiguration_aeee45308fd8dbda38fbc7b8c7ff9212f}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!merger@{merger}}
+\index{merger@{merger}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{merger}{merger}}
+{\footnotesize\ttfamily \hyperlink{layout_8hh_a8c7bb9956a1a724233182a166cfdc0ff}{Merger} tmap\+::\+Layout\+Configuration\+::merger}
+
+The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a16109420c8ec0a4c3021345fd943daf6}\label{structtmap_1_1LayoutConfiguration_a16109420c8ec0a4c3021345fd943daf6}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!merger\+\_\+adjustment@{merger\+\_\+adjustment}}
+\index{merger\+\_\+adjustment@{merger\+\_\+adjustment}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{merger\+\_\+adjustment}{merger\_adjustment}}
+{\footnotesize\ttfamily int tmap\+::\+Layout\+Configuration\+::merger\+\_\+adjustment}
+
+The edge length adjustment of the merging algorithm. Does notapply to all merging strategies. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a72fe4f8f738d2d400f70db97c4273a46}\label{structtmap_1_1LayoutConfiguration_a72fe4f8f738d2d400f70db97c4273a46}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!merger\+\_\+factor@{merger\+\_\+factor}}
+\index{merger\+\_\+factor@{merger\+\_\+factor}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{merger\+\_\+factor}{merger\_factor}}
+{\footnotesize\ttfamily double tmap\+::\+Layout\+Configuration\+::merger\+\_\+factor}
+
+The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_a9a97e2c0c9edb212190d3afcc3ce2924}\label{structtmap_1_1LayoutConfiguration_a9a97e2c0c9edb212190d3afcc3ce2924}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!node\+\_\+size@{node\+\_\+size}}
+\index{node\+\_\+size@{node\+\_\+size}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{node\+\_\+size}{node\_size}}
+{\footnotesize\ttfamily float tmap\+::\+Layout\+Configuration\+::node\+\_\+size}
+
+The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree. \mbox{\Hypertarget{structtmap_1_1LayoutConfiguration_ae81108ee33f42b2c084b540f902bbb7d}\label{structtmap_1_1LayoutConfiguration_ae81108ee33f42b2c084b540f902bbb7d}} 
+\index{tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}!placer@{placer}}
+\index{placer@{placer}!tmap\+::\+Layout\+Configuration@{tmap\+::\+Layout\+Configuration}}
+\subsubsection{\texorpdfstring{placer}{placer}}
+{\footnotesize\ttfamily \hyperlink{layout_8hh_afdc98947e81dc6f4c30f256e6f42f90b}{Placer} tmap\+::\+Layout\+Configuration\+::placer}
+
+The method by which the initial positons of the vertices at eachlevel are defined. 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/tmap/\hyperlink{layout_8hh}{layout.\+hh}\end{DoxyCompactItemize}
+tmap/\hyperlink{layout_8hh}{layout.\+hh}\end{DoxyCompactItemize}

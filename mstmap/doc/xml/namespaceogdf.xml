@@ -6,6 +6,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/layout.cc" line="13" column="1"/>
+    <location file="tmap/layout.cc" line="14" column="1"/>
   </compounddef>
 </doxygen>

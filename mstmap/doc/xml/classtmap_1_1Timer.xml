@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="95" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="95" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="102" column="1" bodyfile="tmap/lshforest.hh" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classtmap_1_1Timer_1addf460f0c3049c76be06adce7c1ae49f" prot="private" static="no">
         <type>std::chrono::duration&lt; double, std::ratio&lt; 1 &gt; &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="96" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="96" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="103" column="1" bodyfile="tmap/lshforest.hh" bodystart="103" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="97" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="97" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="104" column="1" bodyfile="tmap/lshforest.hh" bodystart="104" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="77" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="77" bodyend="77"/>
+        <location file="tmap/lshforest.hh" line="80" column="1" bodyfile="tmap/lshforest.hh" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Timer_1acf16459c9388f5a3702c934e6135edf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="83" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="83" bodyend="83"/>
+        <location file="tmap/lshforest.hh" line="88" column="1" bodyfile="tmap/lshforest.hh" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Timer_1a34a0281aaced5d7768c5bc60ebcd0751" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>double</type>
@@ -85,14 +85,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/lshforest.hh" line="90" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="90" bodyend="92"/>
+        <location file="tmap/lshforest.hh" line="95" column="1" bodyfile="tmap/lshforest.hh" bodystart="95" bodyend="99"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>A simple timer class used to check performance during development. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/lshforest.hh" line="71" column="1" bodyfile="src/tmap/lshforest.hh" bodystart="70" bodyend="98"/>
+    <location file="tmap/lshforest.hh" line="74" column="1" bodyfile="tmap/lshforest.hh" bodystart="73" bodyend="105"/>
     <listofallmembers>
       <member refid="classtmap_1_1Timer_1ab89bdfce6def0dd6923f82f9b54921a3" prot="private" virt="non-virtual"><scope>tmap::Timer</scope><name>beg_</name></member>
       <member refid="classtmap_1_1Timer_1a2001cdda01582ead02621725ca521626" prot="private" virt="non-virtual"><scope>tmap::Timer</scope><name>clock_</name></member>

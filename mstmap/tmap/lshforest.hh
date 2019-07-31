@@ -124,7 +124,8 @@ public:
   LSHForest(unsigned int d = 128,
             unsigned int l = 8,
             bool store = true,
-            bool file_backed = false);
+            bool file_backed = false,
+            bool weighted = false);
 
   /**
    * @brief Destroy the LSHForest object.
@@ -197,15 +198,12 @@ public:
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results are picked to create the k-nearest neighbor
    * graph.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    */
   void GetKNNGraph(std::vector<uint32_t>& from,
                    std::vector<uint32_t>& to,
                    std::vector<float>& weight,
                    unsigned int k,
-                   unsigned int kc = 10,
-                   bool weighted = false);
+                   unsigned int kc = 10);
 
   /**
    * @brief Get the k-nearest neighbors of a query.
@@ -215,16 +213,13 @@ public:
    * @param kc The scalar by which k is multiplied before querying the LSH
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results returned.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<std::pair<float, uint32_t>> The distances and indices
    * of the k-nearest neighbors.
    */
   std::vector<std::pair<float, uint32_t>> QueryLinearScan(
     const std::vector<uint32_t>& vec,
     unsigned int k,
-    unsigned int kc = 10,
-    bool weighted = false);
+    unsigned int kc = 10);
 
   /**
    * @brief Get the k-nearest neighbors of a query except those defined in the
@@ -236,16 +231,13 @@ public:
    * @param kc The scalar by which k is multiplied before querying the LSH
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results returned.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<std::pair<float, uint32_t>>
    */
   std::vector<std::pair<float, uint32_t>> QueryLinearScanExclude(
     const std::vector<uint32_t>& vec,
     unsigned int k,
     std::vector<uint32_t>& exclude,
-    unsigned int kc = 10,
-    bool weighted = false);
+    unsigned int kc = 10);
 
   /**
    * @brief Get the k-nearest neighbors of an entry.
@@ -255,16 +247,13 @@ public:
    * @param kc The scalar by which k is multiplied before querying the LSH
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results returned.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<std::pair<float, uint32_t>> The distances and indices
    * of the k-nearest neighbors.
    */
   std::vector<std::pair<float, uint32_t>> QueryLinearScanById(
     uint32_t id,
     unsigned int k,
-    unsigned int kc = 10,
-    bool weighted = false);
+    unsigned int kc = 10);
 
   /**
    * @brief Get the k-nearest neighbors of an entry except those defined in the
@@ -276,8 +265,6 @@ public:
    * @param kc The scalar by which k is multiplied before querying the LSH
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results returned.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<std::pair<float, uint32_t>> The distances and indices
    * of the k-nearest neighbors.
    */
@@ -285,8 +272,7 @@ public:
     uint32_t id,
     unsigned int k,
     std::vector<uint32_t>& exclude,
-    unsigned int kc = 10,
-    bool weighted = false);
+    unsigned int kc = 10);
 
   /**
    * @brief Get the k-nearest neighbors of a query using linear scan.
@@ -294,16 +280,13 @@ public:
    * @param vec The query MinHash.
    * @param indices A list of indices to on which to run the linear scan.
    * @param k The number of k-nearest neighbors to return.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<std::pair<float, uint32_t>> The distances and indices
    * of the k-nearest neighbors.
    */
   std::vector<std::pair<float, uint32_t>> LinearScan(
     const std::vector<uint32_t>& vec,
     std::vector<uint32_t>& indices,
-    unsigned int k = 10,
-    bool weighted = false);
+    unsigned int k = 10);
 
   /**
    * @brief Query the LSH forest for k-nearest neighbors.
@@ -368,14 +351,11 @@ public:
    * @param kc The scalar by which k is multiplied before querying the LSH
    * forest. The results are then ordered decreasing based on linear-scan
    * distances and the top k results returned.
-   * @param weighted Whether the MinHashes contained within this instance of an
-   * LSH forest are weighted.
    * @return std::vector<uint32_t> The IDs of the nearest neighbors of all LSH
    * forest entries.
    */
   std::vector<uint32_t> GetAllNearestNeighbors(unsigned int k,
-                                               unsigned int kc = 10,
-                                               bool weighted = false);
+                                               unsigned int kc = 10);
 
   /**
    * @brief Get the MinHash of an entry at a given index. The index is defined
@@ -454,7 +434,7 @@ public:
 private:
   unsigned int d_, l_, k_;
   unsigned long size_;
-  bool clean_, store_, file_backed_;
+  bool clean_, store_, file_backed_, weighted_;
   std::vector<spp::sparse_hash_map<std::vector<uint8_t>,
                                    std::vector<uint32_t>,
                                    SimpleHash>>

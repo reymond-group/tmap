@@ -36,7 +36,7 @@
 
   \indexspace
   \bigletter F
-  \item \spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{11}
+  \item \spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{from\_string\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
   \item \spxentry{from\_weight\_array()}\spxextra{tmap.Minhash method}, \hyperpage{12}
@@ -73,7 +73,7 @@
   \bigletter M
   \item \spxentry{Merger}\spxextra{class in tmap}, \hyperpage{19}
   \item \spxentry{Minhash}\spxextra{class in tmap}, \hyperpage{10}
-  \item \spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}, \hyperpage{18}
+  \item \spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}, \hyperpage{19}
   \item \spxentry{mst\_weight}\spxextra{tmap.GraphProperties attribute}, \hyperpage{21}
 
   \indexspace

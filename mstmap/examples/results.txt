@@ -343,3 +343,59 @@ Adding the data took 46.02870999951847ms.
 Indexing took 13.651195011334494ms.
 The kNN search took 0.19133399473503232ms.
 
+Generating the data took 1264.3138470011763ms.
+Encoding the data took 679.9816359998658ms.
+Adding the data took 49.80520700337365ms.
+Indexing took 12.707977002719417ms.
+The kNN search took 0.21008600015193224ms.
+Generating the data took 1286.7967759957537ms.
+Encoding the data took 683.0259489943273ms.
+Adding the data took 48.948701994959265ms.
+Indexing took 12.669878007727675ms.
+The kNN search took 0.1976249914150685ms.
+
+
+Generating the data took 1254.6584380033892ms.
+Encoding the data took 685.6284470122773ms.
+Adding the data took 48.639852000633255ms.
+Indexing took 12.03924699802883ms.
+The kNN search took 0.2019929961534217ms.
+Generating the data took 1239.2154679982923ms.
+Encoding the data took 671.8104369938374ms.
+Adding the data took 48.01767198659945ms.
+Indexing took 12.122978005209006ms.
+The kNN search took 0.2731939894147217ms.
+
+Generating the data took 1247.4986939923838ms.
+Encoding the data took 673.7285179988248ms.
+Adding the data took 48.70303701318335ms.
+Indexing took 12.794606998795643ms.
+The kNN search took 0.21675400785170496ms.
+Generating the data took 1251.770912000211ms.
+Encoding the data took 677.4943649943452ms.
+Adding the data took 48.477386997547ms.
+Indexing took 12.595720996614546ms.
+The kNN search took 0.20192499505355954ms.
+
+Generating the data took 1289.8792430059984ms.
+Encoding the data took 306.6797530045733ms.
+Adding the data took 25.98155799205415ms.
+Indexing took 5.531972987228073ms.
+The kNN search took 0.2469930041115731ms.
+Generating the data took 1266.0255000082543ms.
+Encoding the data took 254.50950500089675ms.
+Adding the data took 24.93541500007268ms.
+Indexing took 6.265696007176302ms.
+The kNN search took 0.24408900935668498ms.
+
+Generating the data took 1229.8556760069914ms.
+Encoding the data took 173.60857999301516ms.
+Adding the data took 14.92455399420578ms.
+Indexing took 5.217543002800085ms.
+The kNN search took 0.25007399381138384ms.
+Generating the data took 1241.151574999094ms.
+Encoding the data took 172.57724700903054ms.
+Adding the data took 15.037386998301372ms.
+Indexing took 4.9129209946841ms.
+The kNN search took 0.24788000155240297ms.
+

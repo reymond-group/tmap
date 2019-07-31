@@ -5,7 +5,7 @@
 \indexentry{batch\_from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{batch\_from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}|hyperpage}{11}
 \indexentry{batch\_from\_string\_array() (tmap.Minhash method)@\spxentry{batch\_from\_string\_array()}\spxextra{tmap.Minhash method}|hyperpage}{11}
 \indexentry{batch\_from\_weight\_array() (tmap.Minhash method)@\spxentry{batch\_from\_weight\_array()}\spxextra{tmap.Minhash method}|hyperpage}{11}
-\indexentry{from\_binary\_array() (tmap.Minhash method)@\spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}|hyperpage}{11}
+\indexentry{from\_binary\_array() (tmap.Minhash method)@\spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}|hyperpage}{12}
 \indexentry{from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}|hyperpage}{12}
 \indexentry{from\_string\_array() (tmap.Minhash method)@\spxentry{from\_string\_array()}\spxextra{tmap.Minhash method}|hyperpage}{12}
 \indexentry{from\_weight\_array() (tmap.Minhash method)@\spxentry{from\_weight\_array()}\spxextra{tmap.Minhash method}|hyperpage}{12}
@@ -41,7 +41,7 @@
 \indexentry{store() (tmap.LSHForest method)@\spxentry{store()}\spxextra{tmap.LSHForest method}|hyperpage}{18}
 \indexentry{layout\_from\_lsh\_forest() (in module tmap)@\spxentry{layout\_from\_lsh\_forest()}\spxextra{in module tmap}|hyperpage}{18}
 \indexentry{layout\_from\_edge\_list() (in module tmap)@\spxentry{layout\_from\_edge\_list()}\spxextra{in module tmap}|hyperpage}{18}
-\indexentry{mst\_from\_lsh\_forest() (in module tmap)@\spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}|hyperpage}{18}
+\indexentry{mst\_from\_lsh\_forest() (in module tmap)@\spxentry{mst\_from\_lsh\_forest()}\spxextra{in module tmap}|hyperpage}{19}
 \indexentry{ScalingType (class in tmap)@\spxentry{ScalingType}\spxextra{class in tmap}|hyperpage}{19}
 \indexentry{Placer (class in tmap)@\spxentry{Placer}\spxextra{class in tmap}|hyperpage}{19}
 \indexentry{Merger (class in tmap)@\spxentry{Merger}\spxextra{class in tmap}|hyperpage}{19}

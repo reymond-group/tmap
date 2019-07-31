@@ -42,7 +42,7 @@ std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtma
 \begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of an entry. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_af8cff8cd9cf3b1d30823e9d36938745b}{Query\+Linear\+Scan\+Exclude\+By\+Id} (uint32\+\_\+t id, unsigned int k, std\+::vector$<$ uint32\+\_\+t $>$ \&exclude, unsigned int kc=10, bool weighted=false)
 \begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of an entry except those defined in the argument exclude. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_a63e22972fbd38e3edc8f321f88a6be8d}{Linear\+Scan} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&indices, unsigned int k=0, bool weighted=false)
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_a5eace395a8f84f4a93b6a7f52834517b}{Linear\+Scan} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&indices, unsigned int k=10, bool weighted=false)
 \begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of a query using linear scan. \end{DoxyCompactList}\item 
 std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a0da6325b50a92db6ff6c49bd62a5e95b}{Query} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, unsigned int k)
 \begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors. \end{DoxyCompactList}\item 
@@ -349,11 +349,11 @@ true
 
 false 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classtmap_1_1LSHForest_a63e22972fbd38e3edc8f321f88a6be8d}\label{classtmap_1_1LSHForest_a63e22972fbd38e3edc8f321f88a6be8d}} 
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a5eace395a8f84f4a93b6a7f52834517b}\label{classtmap_1_1LSHForest_a5eace395a8f84f4a93b6a7f52834517b}} 
 \index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Linear\+Scan@{Linear\+Scan}}
 \index{Linear\+Scan@{Linear\+Scan}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
 \subsubsection{\texorpdfstring{Linear\+Scan()}{LinearScan()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Linear\+Scan (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{indices,  }\item[{unsigned int}]{k = {\ttfamily 0},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Linear\+Scan (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{indices,  }\item[{unsigned int}]{k = {\ttfamily 10},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -604,5 +604,5 @@ Write / serialize the current L\+SH forest to the disk.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/tmap/\hyperlink{lshforest_8hh}{lshforest.\+hh}\item 
-src/tmap/\hyperlink{lshforest_8cc}{lshforest.\+cc}\end{DoxyCompactItemize}
+tmap/\hyperlink{lshforest_8hh}{lshforest.\+hh}\item 
+tmap/\hyperlink{lshforest_8cc}{lshforest.\+cc}\end{DoxyCompactItemize}

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="167" column="1" bodyfile="src/tmap/layout.hh" bodystart="167" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="219" column="1" bodyfile="tmap/layout.hh" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="168" column="1" bodyfile="src/tmap/layout.hh" bodystart="168" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="220" column="1" bodyfile="tmap/layout.hh" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="169" column="1" bodyfile="src/tmap/layout.hh" bodystart="169" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="221" column="1" bodyfile="tmap/layout.hh" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" prot="public" static="no" mutable="no">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="170" column="1" bodyfile="src/tmap/layout.hh" bodystart="170" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="222" column="1" bodyfile="tmap/layout.hh" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" prot="public" static="no" mutable="no">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -70,14 +70,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tmap/layout.hh" line="171" column="1" bodyfile="src/tmap/layout.hh" bodystart="171" bodyend="-1"/>
+        <location file="tmap/layout.hh" line="224" column="1" bodyfile="tmap/layout.hh" bodystart="224" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>The properties of a generated graph. An instance of this struct is returned from the layout functions. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/tmap/layout.hh" line="166" column="1" bodyfile="src/tmap/layout.hh" bodystart="165" bodyend="172"/>
+    <location file="tmap/layout.hh" line="218" column="1" bodyfile="tmap/layout.hh" bodystart="217" bodyend="225"/>
     <listofallmembers>
       <member refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" prot="public" virt="non-virtual"><scope>tmap::GraphProperties</scope><name>adjacency_list</name></member>
       <member refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" prot="public" virt="non-virtual"><scope>tmap::GraphProperties</scope><name>degrees</name></member>

@@ -234,8 +234,6 @@ struct GraphProperties
  * @param create_mst Whether to create an MST before laying out the graph.
  * @param clear_lsh_forest Whether to clear the LSHForest after it's use (might
  * save memory).
- * @param weighted Whether the LSHForest instance contains weighted MinHash
- * data.
  * @return std::tuple<std::vector<float>, std::vector<float>,
  * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
  */
@@ -247,8 +245,7 @@ std::tuple<std::vector<float>,
 LayoutFromLSHForest(LSHForest& lsh_forest,
                     LayoutConfiguration config = LayoutConfiguration(),
                     bool create_mst = true,
-                    bool clear_lsh_forest = false,
-                    bool weighted = false);
+                    bool clear_lsh_forest = false);
 
 /**
  * @brief Generates an MST (via a kNN graph) from an LSHForest instance.
@@ -258,15 +255,10 @@ LayoutFromLSHForest(LSHForest& lsh_forest,
  * @param k The number of nearest neighbors used to create the kNN graph.
  * @param kc The factor by which k is multiplied when retrieving nearest
  * neighbors.
- * @param weighted Whether the LSHForest instance contains weighted MinHash
- * data.
  * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
  */
 std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
-MSTFromLSHForest(LSHForest& lsh_forest,
-                 uint32_t k,
-                 uint32_t kc = 10,
-                 bool weighted = false);
+MSTFromLSHForest(LSHForest& lsh_forest, uint32_t k, uint32_t kc = 10);
 
 /**
  * @brief Genereates coordinates, edges and properties of a MST from an edge

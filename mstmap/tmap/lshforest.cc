@@ -12,12 +12,14 @@
 tmap::LSHForest::LSHForest(unsigned int d,
                            unsigned int l,
                            bool store,
-                           bool file_backed)
+                           bool file_backed,
+                           bool weighted)
   : d_(d)
   , l_(l)
   , size_(0)
   , store_(store)
   , file_backed_(file_backed)
+  , weighted_(weighted)
   , hashtables_(l)
   , hashranges_(l)
   , sorted_hashtable_pointers_(l)
@@ -176,63 +178,68 @@ tmap::LSHForest::GetHash(uint32_t id)
 std::vector<std::pair<float, uint32_t>>
 tmap::LSHForest::QueryLinearScan(const std::vector<uint32_t>& vec,
                                  unsigned int k,
-                                 unsigned int kc,
-                                 bool weighted)
+                                 unsigned int kc)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   auto tmp = Query(vec, k * kc);
-  return LinearScan(vec, tmp, k, weighted);
+  return LinearScan(vec, tmp, k);
 }
 
 std::vector<std::pair<float, uint32_t>>
 tmap::LSHForest::QueryLinearScanExclude(const std::vector<uint32_t>& vec,
                                         unsigned int k,
                                         std::vector<uint32_t>& exclude,
-                                        unsigned int kc,
-                                        bool weighted)
+                                        unsigned int kc)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   auto tmp = QueryExclude(vec, exclude, k * kc);
-  return LinearScan(vec, tmp, k, weighted);
+  return LinearScan(vec, tmp, k);
 }
 
 std::vector<std::pair<float, uint32_t>>
 tmap::LSHForest::QueryLinearScanById(uint32_t id,
                                      unsigned int k,
-                                     unsigned int kc,
-                                     bool weighted)
+                                     unsigned int kc)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
-  return QueryLinearScan(GetData(id), k, kc, weighted);
+  return QueryLinearScan(GetData(id), k, kc);
 }
 
 std::vector<std::pair<float, uint32_t>>
 tmap::LSHForest::QueryLinearScanExcludeById(uint32_t id,
                                             unsigned int k,
                                             std::vector<uint32_t>& exclude,
-                                            unsigned int kc,
-                                            bool weighted)
+                                            unsigned int kc)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
-  return QueryLinearScanExclude(GetData(id), k, exclude, kc, weighted);
+  return QueryLinearScanExclude(GetData(id), k, exclude, kc);
 }
 
 std::vector<std::pair<float, uint32_t>>
 tmap::LSHForest::LinearScan(const std::vector<uint32_t>& vec,
                             std::vector<uint32_t>& indices,
-                            unsigned int k,
-                            bool weighted)
+                            unsigned int k)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   if (k == 0 || k > indices.size())
     k = indices.size();
@@ -241,7 +248,7 @@ tmap::LSHForest::LinearScan(const std::vector<uint32_t>& vec,
 
   for (size_t i = 0; i < indices.size(); i++) {
     auto data = GetData(indices[i]);
-    if (weighted)
+    if (weighted_)
       result[i] =
         std::pair<float, uint32_t>(GetWeightedDistance(vec, data), indices[i]);
     else
@@ -293,6 +300,8 @@ tmap::LSHForest::QueryById(uint32_t id, unsigned int k)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   return Query(GetData(id), k);
 }
@@ -304,6 +313,8 @@ tmap::LSHForest::QueryExcludeById(uint32_t id,
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   return QueryExclude(GetData(id), exclude, k);
 }
@@ -323,14 +334,13 @@ tmap::LSHForest::BatchQuery(const std::vector<std::vector<uint32_t>>& vecs,
 
 std::vector<uint32_t>
 tmap::LSHForest::GetAllNearestNeighbors(unsigned int k,
-                                        unsigned int kc,
-                                        bool weighted)
+                                        unsigned int kc)
 {
   std::vector<uint32_t> results(size_, 0);
 
 #pragma omp parallel for
   for (int i = 0; i < size_; i++) {
-    auto result = QueryLinearScanById(i, k, kc, weighted);
+    auto result = QueryLinearScanById(i, k, kc);
     if (result.size() > 1)
       results[i] = result[1].second;
   }
@@ -343,11 +353,12 @@ tmap::LSHForest::GetKNNGraph(std::vector<uint32_t>& from,
                              std::vector<uint32_t>& to,
                              std::vector<float>& weight,
                              unsigned int k,
-                             unsigned int kc,
-                             bool weighted)
+                             unsigned int kc)
 {
   if (!store_)
     throw std::runtime_error("LSHForest was not instantiated with store=true");
+  if (!clean_)
+    throw std::runtime_error("LSHForest has not been (re)indexed");
 
   from.resize(size_ * k);
   to.resize(size_ * k);
@@ -359,7 +370,7 @@ tmap::LSHForest::GetKNNGraph(std::vector<uint32_t>& from,
 
 #pragma omp parallel for
   for (int i = 0; i < size_; i++) {
-    auto result = QueryLinearScan(GetData(i), k, kc, weighted);
+    auto result = QueryLinearScan(GetData(i), k, kc);
 
     for (size_t j = 0; j < result.size(); j++) {
       if (result[j].second == i)
@@ -668,24 +679,3 @@ tmap::LSHForest::GetKeysFromHashtable(
 
   return keys;
 }
-
-// std::tuple<std::vector<float>, std::vector<float>, std::vector<uint32_t>,
-// std::vector<uint32_t>, GraphProperties>
-// tmap::LSHForest::GetLayout(LayoutConfiguration config, bool create_mst, bool
-// mem_dump)
-// {
-//     std::string tmp_path = std::tmpnam(nullptr);
-//     if (mem_dump) {
-//         Store(tmp_path);
-//     }
-
-//     auto result = LayoutFromLSHForest(*this, config, create_mst, mem_dump);
-
-//     if (mem_dump)
-//     {
-//         Restore(tmp_path);
-//         std::remove(tmp_path.c_str());
-//     }
-
-//     return result;
-// }
