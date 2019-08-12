@@ -184,16 +184,17 @@ tmap::Minhash::BatchFromStringArray(std::vector<std::vector<std::string>>& vecs)
 
 std::vector<uint8_t>
 tmap::Minhash::ExpandIntWeightArray(std::vector<uint32_t>& vec,
+                                    std::vector<uint32_t>& min_vec,
                                     std::vector<uint32_t>& max_vec,
                                     uint32_t size)
 {
-  std::vector<uint8_t> vec_expanded(size);
+  std::vector<uint8_t> vec_expanded(size, 0);
   size_t index = 0;
 
   for (size_t i = 0; i < vec.size(); i++) {
     // LOL (I might leave this in as a monument to why it's a bad idea to code
     // at 2am on a Saturday)
-    for (size_t j = 0; j < max_vec[i] - vec[i]; j++)
+    for (size_t j = min_vec[i]; j < max_vec[i] - vec[i]; j++)
       index++;
 
     for (size_t j = 0; j < vec[i]; j++)
@@ -204,25 +205,43 @@ tmap::Minhash::ExpandIntWeightArray(std::vector<uint32_t>& vec,
 }
 
 std::vector<std::vector<uint32_t>>
-tmap::Minhash::BatchFromIntWeightArray(std::vector<std::vector<uint32_t>>& vecs)
+tmap::Minhash::BatchFromIntWeightArray(std::vector<std::vector<uint32_t>>& vecs, 
+                                       uint8_t divide_by)
 {
   size_t size = vecs[0].size();
 
   // Get the maxima to expand the array by
   std::vector<uint32_t> max_vec(size, 0);
-
+  std::vector<uint32_t> min_vec(size, UINT32_MAX);
+  
   for (size_t i = 0; i < vecs.size(); i++)
-    for (size_t j = 0; j < size; j++)
+    for (size_t j = 0; j < size; j++) {
       max_vec[j] = std::max(vecs[i][j], max_vec[j]);
+      min_vec[j] = std::min(vecs[i][j], min_vec[j]);
+    }
 
   uint32_t extended_size = std::accumulate(max_vec.begin(), max_vec.end(), 0);
 
   std::vector<std::vector<uint8_t>> tmp_results(vecs.size());
   std::vector<std::vector<uint32_t>> results(vecs.size());
 
+  bool is_divide_by_pow_two = std::ceil(std::log2(divide_by)) == floor(std::log2(divide_by));
+  if (is_divide_by_pow_two)
+    divide_by = std::log2(divide_by); // will be -inf when divide_by == 0
+
 #pragma omp parallel for
-  for (int i = 0; i < vecs.size(); i++)
-    tmp_results[i] = ExpandIntWeightArray(vecs[i], max_vec, extended_size);
+  for (int i = 0; i < vecs.size(); i++) {
+    if (divide_by > 0) {
+      if (is_divide_by_pow_two) {
+        for(size_t j = 0; j < vecs[i].size(); j++)
+          vecs[i][j] = vecs[i][j] >> divide_by;
+      } else {
+        for(size_t j = 0; j < vecs[i].size(); j++)
+          vecs[i][j] /= divide_by;
+      }
+    }
+    tmp_results[i] = ExpandIntWeightArray(vecs[i], min_vec, max_vec, extended_size);
+  }
 
 #pragma omp parallel for
   for (int i = 0; i < vecs.size(); i++)

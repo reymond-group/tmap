@@ -626,7 +626,7 @@ PYBIND11_MODULE(tmap, m)
             Create MinHash vectors from :obj:`float` arrays (parallelized).
 
             Arguments:
-                vec (:obj:`List` of :obj:`VectorFloat`): A list of vectors containing :obj:`float` values
+                vecs (:obj:`List` of :obj:`VectorFloat`): A list of vectors containing :obj:`float` values
 
             Keyword Arguments:
                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
@@ -636,11 +636,14 @@ PYBIND11_MODULE(tmap, m)
         )pbdoc")
     .def("batch_from_int_weight_array",
          &Minhash::BatchFromIntWeightArray,
+         py::arg("vecs"),
+         py::arg("divide_by") = 0,
          R"pbdoc(
             Create MinHash vectors from :obj:`int` arrays, where entries are weights rather than indices of ones (parallelized).
 
             Arguments:
-                vec (:obj:`List` of :obj:`VectorUint`): A list of vectors containing :obj:`int` values
+                vecs (:obj:`List` of :obj:`VectorUint`): A list of vectors containing :obj:`int` values
+                divide_by (:obj:`int`): A integer by which each value of each vector is divided. Information is lost, but the running time will be lowered. Faster if :obj:`divide_by` is a power of two.
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors

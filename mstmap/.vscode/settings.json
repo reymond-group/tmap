@@ -60,5 +60,5 @@
         "string": "cpp"
     },
     "restructuredtext.confPath": "",
-    "python.pythonPath": "env/bin/python3"
+    "python.pythonPath": "/home/daenu/miniconda3/bin/python"
 }

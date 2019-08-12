@@ -67,7 +67,7 @@ def main():
         for j in annoy.get_nns_by_item(i, 10):
             edge_list.append((i, j, cosine_distance(data[i], data[j])))
 
-    # Comput the layout from the edge list
+    # Compute the layout from the edge list
     x, y, s, t, _ = tm.layout_from_edge_list(len(data), edge_list)
 
     legend_labels = [(0, "No Target Probe Negative Control"), (1, "Stained Sample")]

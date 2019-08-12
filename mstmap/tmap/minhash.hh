@@ -18,6 +18,7 @@
 #include <random>
 #include <stdexcept>
 #include <stdint.h>
+#include <math.h> 
 #include <valarray>
 #include <vector>
 
@@ -121,10 +122,12 @@ public:
    *
    * @param vec A vector containing integer weights.
    * @param max_vec The maxima for all columns.
+   * @param min_vec The minima for all columns.
    * @param size The size of the expanded array.
    * @return std::vector<uint8_t>
    */
   std::vector<uint8_t> ExpandIntWeightArray(std::vector<uint32_t>& vec,
+                                            std::vector<uint32_t>& min_vec,
                                             std::vector<uint32_t>& max_vec,
                                             uint32_t size);
 
@@ -136,7 +139,7 @@ public:
    * @return std::vector<std::vector<uint32_t>>
    */
   std::vector<std::vector<uint32_t>> BatchFromIntWeightArray(
-    std::vector<std::vector<uint32_t>>& vecs);
+    std::vector<std::vector<uint32_t>>& vecs, uint8_t divide_by = 0);
 
   /**
    * @brief Get the distance between two MinHashes.
