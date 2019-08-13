@@ -36,11 +36,12 @@
     <member refid="classtmap_1_1LSHForest_1aabb23f14c1f7d76a1741dc33d9e51d3c" kind="variable"><name>clean_</name></member>
     <member refid="classtmap_1_1LSHForest_1a43d398f5d4969af3c9b434cd75ec0e02" kind="variable"><name>store_</name></member>
     <member refid="classtmap_1_1LSHForest_1a68a849c2293744ce6ae973e5d26ceef4" kind="variable"><name>file_backed_</name></member>
+    <member refid="classtmap_1_1LSHForest_1ae360cd3968379632b68084f98f0c14c2" kind="variable"><name>weighted_</name></member>
     <member refid="classtmap_1_1LSHForest_1a5f50bc70de1b4948b2cd0626c0732f28" kind="variable"><name>hashtables_</name></member>
     <member refid="classtmap_1_1LSHForest_1a9af1d81da0477216a87e51a5c006d9fb" kind="variable"><name>hashranges_</name></member>
     <member refid="classtmap_1_1LSHForest_1a2e195f4ba7d59af6b833c6096a95f118" kind="variable"><name>sorted_hashtable_pointers_</name></member>
     <member refid="classtmap_1_1LSHForest_1a6b7cb1e666ac685746d811126a6f0788" kind="variable"><name>data_</name></member>
-    <member refid="classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0" kind="function"><name>LSHForest</name></member>
+    <member refid="classtmap_1_1LSHForest_1a90a9f6e40e63f90838c7ece0e0e3ec25" kind="function"><name>LSHForest</name></member>
     <member refid="classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4" kind="function"><name>~LSHForest</name></member>
     <member refid="classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a" kind="function"><name>Add</name></member>
     <member refid="classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb" kind="function"><name>BatchAdd</name></member>
@@ -49,18 +50,18 @@
     <member refid="classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51" kind="function"><name>Store</name></member>
     <member refid="classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8" kind="function"><name>Restore</name></member>
     <member refid="classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c" kind="function"><name>GetHash</name></member>
-    <member refid="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f" kind="function"><name>GetKNNGraph</name></member>
-    <member refid="classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569" kind="function"><name>QueryLinearScan</name></member>
-    <member refid="classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e" kind="function"><name>QueryLinearScanExclude</name></member>
-    <member refid="classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6" kind="function"><name>QueryLinearScanById</name></member>
-    <member refid="classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b" kind="function"><name>QueryLinearScanExcludeById</name></member>
-    <member refid="classtmap_1_1LSHForest_1a5eace395a8f84f4a93b6a7f52834517b" kind="function"><name>LinearScan</name></member>
+    <member refid="classtmap_1_1LSHForest_1a3b7e2142901c7d42ff6d0d31de078f96" kind="function"><name>GetKNNGraph</name></member>
+    <member refid="classtmap_1_1LSHForest_1aabeaf82b4aac9a1965c4a48b65b9895f" kind="function"><name>QueryLinearScan</name></member>
+    <member refid="classtmap_1_1LSHForest_1a168ac3398d9f43b280dba3481c145179" kind="function"><name>QueryLinearScanExclude</name></member>
+    <member refid="classtmap_1_1LSHForest_1aacdadf3d1b559f690692e6e25bfb816e" kind="function"><name>QueryLinearScanById</name></member>
+    <member refid="classtmap_1_1LSHForest_1acf55212ce9875726bb6d00b3a870c2ef" kind="function"><name>QueryLinearScanExcludeById</name></member>
+    <member refid="classtmap_1_1LSHForest_1a452e1020000d47c1464165664c70af8a" kind="function"><name>LinearScan</name></member>
     <member refid="classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b" kind="function"><name>Query</name></member>
     <member refid="classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db" kind="function"><name>QueryExclude</name></member>
     <member refid="classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999" kind="function"><name>QueryById</name></member>
     <member refid="classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86" kind="function"><name>QueryExcludeById</name></member>
     <member refid="classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c" kind="function"><name>BatchQuery</name></member>
-    <member refid="classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84" kind="function"><name>GetAllNearestNeighbors</name></member>
+    <member refid="classtmap_1_1LSHForest_1a5aad873dbf746403a5dd2962ca636f70" kind="function"><name>GetAllNearestNeighbors</name></member>
     <member refid="classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609" kind="function"><name>GetData</name></member>
     <member refid="classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df" kind="function"><name>GetAllDistances</name></member>
     <member refid="classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92" kind="function"><name>GetDistance</name></member>
@@ -110,8 +111,8 @@
     <member refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" kind="function"><name>BatchFromStringArray</name></member>
     <member refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" kind="function"><name>FromWeightArray</name></member>
     <member refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" kind="function"><name>BatchFromWeightArray</name></member>
-    <member refid="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863" kind="function"><name>ExpandIntWeightArray</name></member>
-    <member refid="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620" kind="function"><name>BatchFromIntWeightArray</name></member>
+    <member refid="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" kind="function"><name>ExpandIntWeightArray</name></member>
+    <member refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" kind="function"><name>BatchFromIntWeightArray</name></member>
     <member refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" kind="function"><name>GetDistance</name></member>
     <member refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kind="function"><name>GetWeightedDistance</name></member>
     <member refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" kind="function"><name>~Minhash</name></member>
@@ -166,8 +167,8 @@
     <member refid="layout_8hh_1add5cf34d9d933fc3bfe2b06c86574215" kind="variable"><name>placer_values</name></member>
     <member refid="layout_8hh_1a3ad0dd2b53d82fa20916d19ff367794a" kind="variable"><name>merger_values</name></member>
     <member refid="layout_8hh_1a93ab7e5f6b6a0e80c1cd2662157219dd" kind="variable"><name>scaling_types_values</name></member>
-    <member refid="layout_8hh_1acd9c409403d706202320359541674ba8" kind="function"><name>LayoutFromLSHForest</name></member>
-    <member refid="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" kind="function"><name>MSTFromLSHForest</name></member>
+    <member refid="layout_8hh_1a1b41a97f59e18234250f76085a7d437b" kind="function"><name>LayoutFromLSHForest</name></member>
+    <member refid="layout_8hh_1a033d33fa567d893125d956e56933335f" kind="function"><name>MSTFromLSHForest</name></member>
     <member refid="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" kind="function"><name>LayoutFromEdgeList</name></member>
     <member refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kind="function"><name>LayoutInternal</name></member>
   </compound>

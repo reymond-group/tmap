@@ -211,10 +211,10 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="layout_8hh_1acd9c409403d706202320359541674ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="layout_8hh_1a1b41a97f59e18234250f76085a7d437b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
         <definition>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, tmap::GraphProperties &gt; tmap::LayoutFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true, bool clear_lsh_forest=false, bool weighted=false)</argsstring>
+        <argsstring>(LSHForest &amp;lsh_forest, LayoutConfiguration config=LayoutConfiguration(), bool create_mst=true, bool clear_lsh_forest=false)</argsstring>
         <name>LayoutFromLSHForest</name>
         <param>
           <type><ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> &amp;</type>
@@ -233,11 +233,6 @@
         <param>
           <type>bool</type>
           <declname>clear_lsh_forest</declname>
-          <defval>false</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
           <defval>false</defval>
         </param>
         <briefdescription>
@@ -271,24 +266,17 @@
 <parameterdescription>
 <para>Whether to clear the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> after it&apos;s use (might save memory). </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&gt; </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="247" column="1" bodyfile="tmap/layout.cc" bodystart="201" bodyend="256"/>
+        <location file="tmap/layout.hh" line="245" column="1" bodyfile="tmap/layout.cc" bodystart="200" bodyend="254"/>
       </memberdef>
-      <memberdef kind="function" id="layout_8hh_1a3d7180c2fcc2a1ec72838f18177d6840" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="layout_8hh_1a033d33fa567d893125d956e56933335f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
         <definition>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt; tmap::MSTFromLSHForest</definition>
-        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc=10, bool weighted=false)</argsstring>
+        <argsstring>(LSHForest &amp;lsh_forest, uint32_t k, uint32_t kc=10)</argsstring>
         <name>MSTFromLSHForest</name>
         <param>
           <type><ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> &amp;</type>
@@ -302,11 +290,6 @@
           <type>uint32_t</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Generates an MST (via a kNN graph) from an <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance. </para>        </briefdescription>
@@ -332,19 +315,12 @@
 <parameterdescription>
 <para>The factor by which k is multiplied when retrieving nearest neighbors. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the <ref refid="classtmap_1_1LSHForest" kindref="compound">LSHForest</ref> instance contains weighted MinHash data. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::tuple&lt;std::vector&lt;uint32_t&gt;, std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="266" column="1" bodyfile="tmap/layout.cc" bodystart="161" bodyend="194"/>
+        <location file="tmap/layout.hh" line="261" column="1" bodyfile="tmap/layout.cc" bodystart="161" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -405,7 +381,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="287" column="1" bodyfile="tmap/layout.cc" bodystart="263" bodyend="332"/>
+        <location file="tmap/layout.hh" line="279" column="1" bodyfile="tmap/layout.cc" bodystart="261" bodyend="330"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -464,7 +440,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="308" column="1"/>
+        <location file="tmap/layout.hh" line="300" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

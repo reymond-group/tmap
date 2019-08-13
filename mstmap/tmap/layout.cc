@@ -114,7 +114,6 @@ RemoveDisconnectedComponents(Graph& g)
 
   for (int i = 0; i < num_ccs; i++) {
     int cc_size = info.numberOfNodes(i);
-    std::cout << i << " " << cc_size << std::endl;
     if (cc_size > max) {
       max = cc_size;
       cc = i;
@@ -124,8 +123,6 @@ RemoveDisconnectedComponents(Graph& g)
   for (int i = 0; i < num_ccs; i++) {
     if (i == cc)
       continue;
-
-    std::cout << "Removing " << i << std::endl;
 
     for (int j = info.startNode(i); j < info.stopNode(i); ++j) {
       node v = info.v(j);
@@ -264,34 +261,23 @@ tmap::LayoutFromEdgeList(
   tmap::LayoutConfiguration config,
   bool create_mst)
 {
-  std::cout << "a" << std::endl;
   tmap::GraphProperties gp;
   EdgeWeightedGraph<float> g;
 
   std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
-
   std::vector<uint32_t> degrees(vertex_count);
-
   std::vector<node> index_to_node(vertex_count);
-
-  std::cout << "b" << std::endl;
 
   for (uint32_t i = 0; i < vertex_count; i++)
     index_to_node[i] = g.newNode();
-
-  std::cout << "c" << std::endl;
 
   for (size_t i = 0; i < edges.size(); i++)
     g.newEdge(index_to_node[std::get<0>(edges[i])],
               index_to_node[std::get<1>(edges[i])],
               std::get<2>(edges[i]));
 
-  std::cout << "d" << std::endl;
-
   ogdf::makeLoopFree(g);
   ogdf::makeParallelFreeUndirected(g);
-
-  std::cout << "e" << std::endl;
 
   uint32_t i = 0;
   for (node v : g.nodes)
@@ -301,8 +287,6 @@ tmap::LayoutFromEdgeList(
 
   if (create_mst)
     gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
-
-  std::cout << "f" << std::endl;
 
   i = 0;
   for (node v : g.nodes) {
@@ -315,16 +299,9 @@ tmap::LayoutFromEdgeList(
   }
 
   gp.adjacency_list = adjacency_list;
-
-  std::cout << g.edges.size() << std::endl;
-  std::cout << g.nodes.size() << std::endl;
+  
   GraphAttributes graph_attributes(g);
-
-  std::cout << ",,," << std::endl;
-
   MultilevelGraph mlg(g);
-
-  std::cout << "..." << std::endl;
 
   return LayoutInternal(g, vertex_count, config, gp);
 }
@@ -348,24 +325,16 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   gp.n_connected_components = n_connected_components;
   gp.n_isolated_vertices = isolated_nodes.size();
 
-  std::cout << "Gotten isolated nodes and ccs ..." << std::endl;
-
   GraphAttributes ga(g);
 
   ga.setAllHeight(config.node_size);
   ga.setAllWidth(config.node_size);
 
-  std::cout << "Set graph attributes ..." << std::endl;
-
   for (edge e : g.edges)
     g.setWeight(e, 1.0);
 
-  std::cout << "Set edge weights ..." << std::endl;
-
   // Starting the layout
   MultilevelGraph mlg(ga);
-
-  std::cout << "Initialized multilevel graph ..." << std::endl;
 
   // The FastMultipoleEmbedder is used for the single level layout.
   FastMultipoleEmbedder* fme = new FastMultipoleEmbedder();

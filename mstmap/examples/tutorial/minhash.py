@@ -2,6 +2,8 @@ import tmap as tm
 
 
 def main():
+    """ Main function """
+
     enc = tm.Minhash()
 
     mh_a = enc.from_binary_array(tm.VectorUchar([1, 1, 1, 1, 0, 1, 0, 1, 1, 0]))

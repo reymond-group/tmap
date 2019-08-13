@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 
 
 def main():
+    """ Main function """
+
     n = 1000
     edge_list = []
     weights = {}

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="455" column="1" bodyfile="tmap/lshforest.hh" bodystart="455" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="435" column="1" bodyfile="tmap/lshforest.hh" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a24a8cf97f3d63ead2768acf8e0c3d8fa" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="455" column="1" bodyfile="tmap/lshforest.hh" bodystart="455" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="435" column="1" bodyfile="tmap/lshforest.hh" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a335cda32466ccb96b08709bc9a3cc890" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="455" column="1" bodyfile="tmap/lshforest.hh" bodystart="455" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="435" column="1" bodyfile="tmap/lshforest.hh" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1ad9a6dbe4c57320d45683e87a9894fd13" prot="private" static="no" mutable="no">
         <type>unsigned long</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="456" column="1" bodyfile="tmap/lshforest.hh" bodystart="456" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="436" column="1" bodyfile="tmap/lshforest.hh" bodystart="436" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1aabb23f14c1f7d76a1741dc33d9e51d3c" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="457" column="1" bodyfile="tmap/lshforest.hh" bodystart="457" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="437" column="1" bodyfile="tmap/lshforest.hh" bodystart="437" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a43d398f5d4969af3c9b434cd75ec0e02" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="457" column="1" bodyfile="tmap/lshforest.hh" bodystart="457" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="437" column="1" bodyfile="tmap/lshforest.hh" bodystart="437" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a68a849c2293744ce6ae973e5d26ceef4" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -93,7 +93,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="457" column="1" bodyfile="tmap/lshforest.hh" bodystart="457" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="437" column="1" bodyfile="tmap/lshforest.hh" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1LSHForest_1ae360cd3968379632b68084f98f0c14c2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tmap::LSHForest::weighted_</definition>
+        <argsstring></argsstring>
+        <name>weighted_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/lshforest.hh" line="437" column="1" bodyfile="tmap/lshforest.hh" bodystart="437" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a5f50bc70de1b4948b2cd0626c0732f28" prot="private" static="no" mutable="no">
         <type>std::vector&lt; spp::sparse_hash_map&lt; std::vector&lt; uint8_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1SimpleHash" kindref="compound">SimpleHash</ref> &gt; &gt;</type>
@@ -106,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="461" column="1" bodyfile="tmap/lshforest.hh" bodystart="461" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="441" column="1" bodyfile="tmap/lshforest.hh" bodystart="441" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a9af1d81da0477216a87e51a5c006d9fb" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::tuple&lt; uint32_t, uint32_t &gt; &gt;</type>
@@ -119,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="462" column="1" bodyfile="tmap/lshforest.hh" bodystart="462" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="442" column="1" bodyfile="tmap/lshforest.hh" bodystart="442" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a2e195f4ba7d59af6b833c6096a95f118" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::vector&lt; <ref refid="structtmap_1_1MapKeyPointer" kindref="compound">MapKeyPointer</ref> &gt; &gt;</type>
@@ -132,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="463" column="1" bodyfile="tmap/lshforest.hh" bodystart="463" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="443" column="1" bodyfile="tmap/lshforest.hh" bodystart="443" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1LSHForest_1a6b7cb1e666ac685746d811126a6f0788" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -145,14 +158,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="464" column="1" bodyfile="tmap/lshforest.hh" bodystart="464" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="444" column="1" bodyfile="tmap/lshforest.hh" bodystart="444" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1a90a9f6e40e63f90838c7ece0e0e3ec25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>tmap::LSHForest::LSHForest</definition>
-        <argsstring>(unsigned int d=128, unsigned int l=8, bool store=true, bool file_backed=false)</argsstring>
+        <argsstring>(unsigned int d=128, unsigned int l=8, bool store=true, bool file_backed=false, bool weighted=false)</argsstring>
         <name>LSHForest</name>
         <param>
           <type>unsigned int</type>
@@ -172,6 +185,11 @@
         <param>
           <type>bool</type>
           <declname>file_backed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>weighted</declname>
           <defval>false</defval>
         </param>
         <briefdescription>
@@ -209,7 +227,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="124" column="1" bodyfile="tmap/lshforest.cc" bodystart="12" bodyend="36"/>
+        <location file="tmap/lshforest.hh" line="124" column="1" bodyfile="tmap/lshforest.cc" bodystart="12" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -222,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="133" column="1" bodyfile="tmap/lshforest.hh" bodystart="133" bodyend="133"/>
+        <location file="tmap/lshforest.hh" line="134" column="1" bodyfile="tmap/lshforest.hh" bodystart="134" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -247,7 +265,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="140" column="1" bodyfile="tmap/lshforest.cc" bodystart="39" bodyend="60"/>
+        <location file="tmap/lshforest.hh" line="141" column="1" bodyfile="tmap/lshforest.cc" bodystart="41" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -272,7 +290,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="147" column="1" bodyfile="tmap/lshforest.cc" bodystart="63" bodyend="104"/>
+        <location file="tmap/lshforest.hh" line="148" column="1" bodyfile="tmap/lshforest.cc" bodystart="65" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1aba68c9cab8cc3c32e684e08b4f9d0a33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -285,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="153" column="1" bodyfile="tmap/lshforest.cc" bodystart="107" bodyend="122"/>
+        <location file="tmap/lshforest.hh" line="154" column="1" bodyfile="tmap/lshforest.cc" bodystart="109" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -300,7 +318,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="161" column="1" bodyfile="tmap/lshforest.cc" bodystart="142" bodyend="145"/>
+        <location file="tmap/lshforest.hh" line="162" column="1" bodyfile="tmap/lshforest.cc" bodystart="144" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -325,7 +343,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="168" column="1" bodyfile="tmap/lshforest.cc" bodystart="148" bodyend="154"/>
+        <location file="tmap/lshforest.hh" line="169" column="1" bodyfile="tmap/lshforest.cc" bodystart="150" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -350,7 +368,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="176" column="1" bodyfile="tmap/lshforest.cc" bodystart="157" bodyend="168"/>
+        <location file="tmap/lshforest.hh" line="177" column="1" bodyfile="tmap/lshforest.cc" bodystart="159" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -376,12 +394,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="185" column="1" bodyfile="tmap/lshforest.cc" bodystart="171" bodyend="174"/>
+        <location file="tmap/lshforest.hh" line="186" column="1" bodyfile="tmap/lshforest.cc" bodystart="173" bodyend="176"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1a3b7e2142901c7d42ff6d0d31de078f96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void tmap::LSHForest::GetKNNGraph</definition>
-        <argsstring>(std::vector&lt; uint32_t &gt; &amp;from, std::vector&lt; uint32_t &gt; &amp;to, std::vector&lt; float &gt; &amp;weight, unsigned int k, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;from, std::vector&lt; uint32_t &gt; &amp;to, std::vector&lt; float &gt; &amp;weight, unsigned int k, unsigned int kc=10)</argsstring>
         <name>GetKNNGraph</name>
         <param>
           <type>std::vector&lt; uint32_t &gt; &amp;</type>
@@ -403,11 +421,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbor graph of the data stored in this LSH forest instance. It will be written to out parameters as an edge list. </para>        </briefdescription>
@@ -447,23 +460,16 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results are picked to create the k-nearest neighbor graph. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="203" column="1" bodyfile="tmap/lshforest.cc" bodystart="342" bodyend="373"/>
+        <location file="tmap/lshforest.hh" line="202" column="1" bodyfile="tmap/lshforest.cc" bodystart="352" bodyend="384"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1aabeaf82b4aac9a1965c4a48b65b9895f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt; tmap::LSHForest::QueryLinearScan</definition>
-        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, unsigned int k, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, unsigned int k, unsigned int kc=10)</argsstring>
         <name>QueryLinearScan</name>
         <param>
           <type>const std::vector&lt; uint32_t &gt; &amp;</type>
@@ -477,11 +483,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of a query. </para>        </briefdescription>
@@ -507,24 +508,17 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;std::pair&lt;float, uint32_t&gt;&gt; The distances and indices of the k-nearest neighbors. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="223" column="1" bodyfile="tmap/lshforest.cc" bodystart="177" bodyend="187"/>
+        <location file="tmap/lshforest.hh" line="219" column="1" bodyfile="tmap/lshforest.cc" bodystart="179" bodyend="190"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1a168ac3398d9f43b280dba3481c145179" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt; tmap::LSHForest::QueryLinearScanExclude</definition>
-        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, unsigned int k, std::vector&lt; uint32_t &gt; &amp;exclude, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, unsigned int k, std::vector&lt; uint32_t &gt; &amp;exclude, unsigned int kc=10)</argsstring>
         <name>QueryLinearScanExclude</name>
         <param>
           <type>const std::vector&lt; uint32_t &gt; &amp;</type>
@@ -542,11 +536,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of a query except those defined in the argument exclude. </para>        </briefdescription>
@@ -579,24 +568,17 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;std::pair&lt;float, uint32_t&gt;&gt; </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="243" column="1" bodyfile="tmap/lshforest.cc" bodystart="190" bodyend="201"/>
+        <location file="tmap/lshforest.hh" line="236" column="1" bodyfile="tmap/lshforest.cc" bodystart="193" bodyend="205"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1aacdadf3d1b559f690692e6e25bfb816e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt; tmap::LSHForest::QueryLinearScanById</definition>
-        <argsstring>(uint32_t id, unsigned int k, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(uint32_t id, unsigned int k, unsigned int kc=10)</argsstring>
         <name>QueryLinearScanById</name>
         <param>
           <type>uint32_t</type>
@@ -610,11 +592,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of an entry. </para>        </briefdescription>
@@ -640,24 +617,17 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;std::pair&lt;float, uint32_t&gt;&gt; The distances and indices of the k-nearest neighbors. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="263" column="1" bodyfile="tmap/lshforest.cc" bodystart="204" bodyend="213"/>
+        <location file="tmap/lshforest.hh" line="253" column="1" bodyfile="tmap/lshforest.cc" bodystart="208" bodyend="218"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1acf55212ce9875726bb6d00b3a870c2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt; tmap::LSHForest::QueryLinearScanExcludeById</definition>
-        <argsstring>(uint32_t id, unsigned int k, std::vector&lt; uint32_t &gt; &amp;exclude, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(uint32_t id, unsigned int k, std::vector&lt; uint32_t &gt; &amp;exclude, unsigned int kc=10)</argsstring>
         <name>QueryLinearScanExcludeById</name>
         <param>
           <type>uint32_t</type>
@@ -675,11 +645,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of an entry except those defined in the argument exclude. </para>        </briefdescription>
@@ -712,24 +677,17 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;std::pair&lt;float, uint32_t&gt;&gt; The distances and indices of the k-nearest neighbors. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="284" column="1" bodyfile="tmap/lshforest.cc" bodystart="216" bodyend="226"/>
+        <location file="tmap/lshforest.hh" line="271" column="1" bodyfile="tmap/lshforest.cc" bodystart="221" bodyend="232"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a5eace395a8f84f4a93b6a7f52834517b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1a452e1020000d47c1464165664c70af8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; float, uint32_t &gt; &gt; tmap::LSHForest::LinearScan</definition>
-        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, std::vector&lt; uint32_t &gt; &amp;indices, unsigned int k=10, bool weighted=false)</argsstring>
+        <argsstring>(const std::vector&lt; uint32_t &gt; &amp;vec, std::vector&lt; uint32_t &gt; &amp;indices, unsigned int k=10)</argsstring>
         <name>LinearScan</name>
         <param>
           <type>const std::vector&lt; uint32_t &gt; &amp;</type>
@@ -743,11 +701,6 @@
           <type>unsigned int</type>
           <declname>k</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of a query using linear scan. </para>        </briefdescription>
@@ -773,19 +726,12 @@
 <parameterdescription>
 <para>The number of k-nearest neighbors to return. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;std::pair&lt;float, uint32_t&gt;&gt; The distances and indices of the k-nearest neighbors. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="302" column="1" bodyfile="tmap/lshforest.cc" bodystart="229" bodyend="256"/>
+        <location file="tmap/lshforest.hh" line="286" column="1" bodyfile="tmap/lshforest.cc" bodystart="235" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -822,7 +768,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="315" column="1" bodyfile="tmap/lshforest.cc" bodystart="260" bodyend="272"/>
+        <location file="tmap/lshforest.hh" line="298" column="1" bodyfile="tmap/lshforest.cc" bodystart="267" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -870,7 +816,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="326" column="1" bodyfile="tmap/lshforest.cc" bodystart="275" bodyend="289"/>
+        <location file="tmap/lshforest.hh" line="309" column="1" bodyfile="tmap/lshforest.cc" bodystart="282" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -907,7 +853,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="337" column="1" bodyfile="tmap/lshforest.cc" bodystart="292" bodyend="298"/>
+        <location file="tmap/lshforest.hh" line="320" column="1" bodyfile="tmap/lshforest.cc" bodystart="299" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -955,7 +901,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="348" column="1" bodyfile="tmap/lshforest.cc" bodystart="301" bodyend="309"/>
+        <location file="tmap/lshforest.hh" line="331" column="1" bodyfile="tmap/lshforest.cc" bodystart="310" bodyend="320"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -992,12 +938,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="360" column="1" bodyfile="tmap/lshforest.cc" bodystart="312" bodyend="322"/>
+        <location file="tmap/lshforest.hh" line="343" column="1" bodyfile="tmap/lshforest.cc" bodystart="323" bodyend="333"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1LSHForest_1a5aad873dbf746403a5dd2962ca636f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
         <definition>std::vector&lt; uint32_t &gt; tmap::LSHForest::GetAllNearestNeighbors</definition>
-        <argsstring>(unsigned int k, unsigned int kc=10, bool weighted=false)</argsstring>
+        <argsstring>(unsigned int k, unsigned int kc=10)</argsstring>
         <name>GetAllNearestNeighbors</name>
         <param>
           <type>unsigned int</type>
@@ -1007,11 +953,6 @@
           <type>unsigned int</type>
           <declname>kc</declname>
           <defval>10</defval>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>weighted</declname>
-          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Get the k-nearest neighbors of all LSH forest entries. </para>        </briefdescription>
@@ -1030,19 +971,12 @@
 <parameterdescription>
 <para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para></parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>weighted</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Whether the MinHashes contained within this instance of an LSH forest are weighted. </para></parameterdescription>
-</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>std::vector&lt;uint32_t&gt; The IDs of the nearest neighbors of all LSH forest entries. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="376" column="1" bodyfile="tmap/lshforest.cc" bodystart="325" bodyend="339"/>
+        <location file="tmap/lshforest.hh" line="357" column="1" bodyfile="tmap/lshforest.cc" bodystart="336" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -1068,7 +1002,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="387" column="1" bodyfile="tmap/lshforest.cc" bodystart="125" bodyend="139"/>
+        <location file="tmap/lshforest.hh" line="367" column="1" bodyfile="tmap/lshforest.cc" bodystart="127" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; float &gt;</type>
@@ -1094,7 +1028,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="396" column="1" bodyfile="tmap/lshforest.cc" bodystart="567" bodyend="577"/>
+        <location file="tmap/lshforest.hh" line="376" column="1" bodyfile="tmap/lshforest.cc" bodystart="578" bodyend="588"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -1131,7 +1065,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="405" column="1" bodyfile="tmap/lshforest.cc" bodystart="580" bodyend="590"/>
+        <location file="tmap/lshforest.hh" line="385" column="1" bodyfile="tmap/lshforest.cc" bodystart="591" bodyend="601"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -1168,7 +1102,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="415" column="1" bodyfile="tmap/lshforest.cc" bodystart="593" bodyend="602"/>
+        <location file="tmap/lshforest.hh" line="395" column="1" bodyfile="tmap/lshforest.cc" bodystart="604" bodyend="613"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -1205,7 +1139,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="425" column="1" bodyfile="tmap/lshforest.cc" bodystart="605" bodyend="611"/>
+        <location file="tmap/lshforest.hh" line="405" column="1" bodyfile="tmap/lshforest.cc" bodystart="616" bodyend="622"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -1242,7 +1176,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="434" column="1" bodyfile="tmap/lshforest.cc" bodystart="614" bodyend="620"/>
+        <location file="tmap/lshforest.hh" line="414" column="1" bodyfile="tmap/lshforest.cc" bodystart="625" bodyend="631"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1255,7 +1189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="445" column="1" bodyfile="tmap/lshforest.cc" bodystart="629" bodyend="657"/>
+        <location file="tmap/lshforest.hh" line="425" column="1" bodyfile="tmap/lshforest.cc" bodystart="640" bodyend="668"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1269,7 +1203,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="452" column="1" bodyfile="tmap/lshforest.cc" bodystart="623" bodyend="626"/>
+        <location file="tmap/lshforest.hh" line="432" column="1" bodyfile="tmap/lshforest.cc" bodystart="634" bodyend="637"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1297,7 +1231,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="472" column="1" bodyfile="tmap/lshforest.cc" bodystart="515" bodyend="519"/>
+        <location file="tmap/lshforest.hh" line="452" column="1" bodyfile="tmap/lshforest.cc" bodystart="526" bodyend="530"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a675ec2992594b7de64098479d902af9e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -1323,7 +1257,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="480" column="1" bodyfile="tmap/lshforest.cc" bodystart="522" bodyend="530"/>
+        <location file="tmap/lshforest.hh" line="460" column="1" bodyfile="tmap/lshforest.cc" bodystart="533" bodyend="541"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a2235f35382fcefeb16575b537ffde02b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -1349,7 +1283,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="488" column="1" bodyfile="tmap/lshforest.cc" bodystart="533" bodyend="545"/>
+        <location file="tmap/lshforest.hh" line="468" column="1" bodyfile="tmap/lshforest.cc" bodystart="544" bodyend="556"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ab11ee9e3ef4c9866b5270417255f20eb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint8_t &gt; &gt;</type>
@@ -1375,7 +1309,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="497" column="1" bodyfile="tmap/lshforest.cc" bodystart="660" bodyend="670"/>
+        <location file="tmap/lshforest.hh" line="477" column="1" bodyfile="tmap/lshforest.cc" bodystart="671" bodyend="681"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1ad8404030c8b42a0081b254ce44ce0e8f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -1401,7 +1335,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="508" column="1" bodyfile="tmap/lshforest.cc" bodystart="490" bodyend="498"/>
+        <location file="tmap/lshforest.hh" line="488" column="1" bodyfile="tmap/lshforest.cc" bodystart="501" bodyend="509"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a4bd94ac93808d29f06572c7bca68b9d4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -1427,7 +1361,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="516" column="1" bodyfile="tmap/lshforest.cc" bodystart="501" bodyend="512"/>
+        <location file="tmap/lshforest.hh" line="496" column="1" bodyfile="tmap/lshforest.cc" bodystart="512" bodyend="523"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1aa5163edbebbe53935afaa159e76378a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -1464,7 +1398,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="525" column="1" bodyfile="tmap/lshforest.cc" bodystart="548" bodyend="564"/>
+        <location file="tmap/lshforest.hh" line="505" column="1" bodyfile="tmap/lshforest.cc" bodystart="559" bodyend="575"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a3a6a1622e6e632482f3f21b41b9f6d09" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1522,7 +1456,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="537" column="1" bodyfile="tmap/lshforest.cc" bodystart="376" bodyend="429"/>
+        <location file="tmap/lshforest.hh" line="517" column="1" bodyfile="tmap/lshforest.cc" bodystart="387" bodyend="440"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1LSHForest_1a1afc68344dd9bd364c0346c375651b01" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1591,14 +1525,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="551" column="1" bodyfile="tmap/lshforest.cc" bodystart="432" bodyend="487"/>
+        <location file="tmap/lshforest.hh" line="531" column="1" bodyfile="tmap/lshforest.cc" bodystart="443" bodyend="498"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Provides locality sensitive hashing forest functionalities. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="tmap/lshforest.hh" line="112" column="1" bodyfile="tmap/lshforest.hh" bodystart="111" bodyend="556"/>
+    <location file="tmap/lshforest.hh" line="112" column="1" bodyfile="tmap/lshforest.hh" bodystart="111" bodyend="536"/>
     <listofallmembers>
       <member refid="classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Add</name></member>
       <member refid="classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>BatchAdd</name></member>
@@ -1610,13 +1544,13 @@
       <member refid="classtmap_1_1LSHForest_1a6b7cb1e666ac685746d811126a6f0788" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>data_</name></member>
       <member refid="classtmap_1_1LSHForest_1a68a849c2293744ce6ae973e5d26ceef4" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>file_backed_</name></member>
       <member refid="classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetAllDistances</name></member>
-      <member refid="classtmap_1_1LSHForest_1a378f0494bce3354bb0d618558f316c84" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetAllNearestNeighbors</name></member>
+      <member refid="classtmap_1_1LSHForest_1a5aad873dbf746403a5dd2962ca636f70" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetAllNearestNeighbors</name></member>
       <member refid="classtmap_1_1LSHForest_1ac4ec080057307f69548e6ca756ce5609" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetData</name></member>
       <member refid="classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetDistance</name></member>
       <member refid="classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetDistanceById</name></member>
       <member refid="classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetHash</name></member>
       <member refid="classtmap_1_1LSHForest_1ab11ee9e3ef4c9866b5270417255f20eb" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetKeysFromHashtable</name></member>
-      <member refid="classtmap_1_1LSHForest_1a11ccbeea4356cce12b579566925d865f" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetKNNGraph</name></member>
+      <member refid="classtmap_1_1LSHForest_1a3b7e2142901c7d42ff6d0d31de078f96" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetKNNGraph</name></member>
       <member refid="classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetWeightedDistance</name></member>
       <member refid="classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>GetWeightedDistanceById</name></member>
       <member refid="classtmap_1_1LSHForest_1ad8404030c8b42a0081b254ce44ce0e8f" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Hash</name></member>
@@ -1627,18 +1561,18 @@
       <member refid="classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>IsClean</name></member>
       <member refid="classtmap_1_1LSHForest_1a335cda32466ccb96b08709bc9a3cc890" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>k_</name></member>
       <member refid="classtmap_1_1LSHForest_1a24a8cf97f3d63ead2768acf8e0c3d8fa" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>l_</name></member>
-      <member refid="classtmap_1_1LSHForest_1a5eace395a8f84f4a93b6a7f52834517b" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>LinearScan</name></member>
-      <member refid="classtmap_1_1LSHForest_1a153cb1f5090432257a17f2e9dacc32a0" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>LSHForest</name></member>
+      <member refid="classtmap_1_1LSHForest_1a452e1020000d47c1464165664c70af8a" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>LinearScan</name></member>
+      <member refid="classtmap_1_1LSHForest_1a90a9f6e40e63f90838c7ece0e0e3ec25" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>LSHForest</name></member>
       <member refid="classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Query</name></member>
       <member refid="classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryById</name></member>
       <member refid="classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryExclude</name></member>
       <member refid="classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryExcludeById</name></member>
       <member refid="classtmap_1_1LSHForest_1a3a6a1622e6e632482f3f21b41b9f6d09" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryInternal</name></member>
       <member refid="classtmap_1_1LSHForest_1a1afc68344dd9bd364c0346c375651b01" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryInternalExclude</name></member>
-      <member refid="classtmap_1_1LSHForest_1a2ba770074cd9c0e6860b30679793c569" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScan</name></member>
-      <member refid="classtmap_1_1LSHForest_1ae4e013129270d53af27091c2f3e4e5d6" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanById</name></member>
-      <member refid="classtmap_1_1LSHForest_1a5afd77e1f9349edcdec32a1d7aa3f38e" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanExclude</name></member>
-      <member refid="classtmap_1_1LSHForest_1af8cff8cd9cf3b1d30823e9d36938745b" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanExcludeById</name></member>
+      <member refid="classtmap_1_1LSHForest_1aabeaf82b4aac9a1965c4a48b65b9895f" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScan</name></member>
+      <member refid="classtmap_1_1LSHForest_1aacdadf3d1b559f690692e6e25bfb816e" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanById</name></member>
+      <member refid="classtmap_1_1LSHForest_1a168ac3398d9f43b280dba3481c145179" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanExclude</name></member>
+      <member refid="classtmap_1_1LSHForest_1acf55212ce9875726bb6d00b3a870c2ef" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>QueryLinearScanExcludeById</name></member>
       <member refid="classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Restore</name></member>
       <member refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>size</name></member>
       <member refid="classtmap_1_1LSHForest_1ad9a6dbe4c57320d45683e87a9894fd13" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>size_</name></member>
@@ -1648,6 +1582,7 @@
       <member refid="classtmap_1_1LSHForest_1ab6a7383a94d8f3d0bfe8eaf87a83b89e" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Swap</name></member>
       <member refid="classtmap_1_1LSHForest_1a675ec2992594b7de64098479d902af9e" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Swap</name></member>
       <member refid="classtmap_1_1LSHForest_1a2235f35382fcefeb16575b537ffde02b" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>Swap</name></member>
+      <member refid="classtmap_1_1LSHForest_1ae360cd3968379632b68084f98f0c14c2" prot="private" virt="non-virtual"><scope>tmap::LSHForest</scope><name>weighted_</name></member>
       <member refid="classtmap_1_1LSHForest_1a3ab5789f702f9dac3f801c7b9d53afd4" prot="public" virt="non-virtual"><scope>tmap::LSHForest</scope><name>~LSHForest</name></member>
     </listofallmembers>
   </compounddef>

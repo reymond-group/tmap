@@ -5,6 +5,8 @@ import tmap as tm
 
 
 def main():
+    """ Main function """
+
     # Use 128 permutations to create the MinHash
     enc = tm.Minhash(128)
     lf = tm.LSHForest(128)

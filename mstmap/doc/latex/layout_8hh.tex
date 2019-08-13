@@ -84,9 +84,9 @@ enum \hyperlink{layout_8hh_a50ec215c9e54cf12b9dd0a0056160761}{tmap\+::\+Scaling\
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, Graph\+Properties $>$ \hyperlink{layout_8hh_acd9c409403d706202320359541674ba8}{tmap\+::\+Layout\+From\+L\+S\+H\+Forest} (L\+S\+H\+Forest \&lsh\+\_\+forest, Layout\+Configuration config=Layout\+Configuration(), bool create\+\_\+mst=true, bool clear\+\_\+lsh\+\_\+forest=false, bool weighted=false)
+std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, Graph\+Properties $>$ \hyperlink{layout_8hh_a1b41a97f59e18234250f76085a7d437b}{tmap\+::\+Layout\+From\+L\+S\+H\+Forest} (L\+S\+H\+Forest \&lsh\+\_\+forest, Layout\+Configuration config=Layout\+Configuration(), bool create\+\_\+mst=true, bool clear\+\_\+lsh\+\_\+forest=false)
 \begin{DoxyCompactList}\small\item\em Genereates coordinates, edges and properties of a M\+ST (via a k\+NN graph) from an \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} instance. \end{DoxyCompactList}\item 
-std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{layout_8hh_a3d7180c2fcc2a1ec72838f18177d6840}{tmap\+::\+M\+S\+T\+From\+L\+S\+H\+Forest} (L\+S\+H\+Forest \&lsh\+\_\+forest, uint32\+\_\+t k, uint32\+\_\+t kc=10, bool weighted=false)
+std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{layout_8hh_a033d33fa567d893125d956e56933335f}{tmap\+::\+M\+S\+T\+From\+L\+S\+H\+Forest} (L\+S\+H\+Forest \&lsh\+\_\+forest, uint32\+\_\+t k, uint32\+\_\+t kc=10)
 \begin{DoxyCompactList}\small\item\em Generates an M\+ST (via a k\+NN graph) from an \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} instance. \end{DoxyCompactList}\item 
 std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, Graph\+Properties $>$ \hyperlink{layout_8hh_a780993ad8dd7e349b77f55895cc33451}{tmap\+::\+Layout\+From\+Edge\+List} (uint32\+\_\+t vertex\+\_\+count, const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, float $>$$>$ \&edges, Layout\+Configuration config=Layout\+Configuration(), bool create\+\_\+mst=true)
 \begin{DoxyCompactList}\small\item\em Genereates coordinates, edges and properties of a M\+ST from an edge list. \end{DoxyCompactList}\item 
@@ -133,11 +133,11 @@ Genereates coordinates, edges and properties of a M\+ST from an edge list.
 \begin{DoxyReturn}{Returns}
 std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, Graph\+Properties$>$ 
 \end{DoxyReturn}
-\mbox{\Hypertarget{layout_8hh_file_acd9c409403d706202320359541674ba8}\label{layout_8hh_file_acd9c409403d706202320359541674ba8}} 
+\mbox{\Hypertarget{layout_8hh_file_a1b41a97f59e18234250f76085a7d437b}\label{layout_8hh_file_a1b41a97f59e18234250f76085a7d437b}} 
 \index{layout.\+hh@{layout.\+hh}!Layout\+From\+L\+S\+H\+Forest@{Layout\+From\+L\+S\+H\+Forest}}
 \index{Layout\+From\+L\+S\+H\+Forest@{Layout\+From\+L\+S\+H\+Forest}!layout.\+hh@{layout.\+hh}}
 \subsubsection{\texorpdfstring{Layout\+From\+L\+S\+H\+Forest()}{LayoutFromLSHForest()}}
-{\footnotesize\ttfamily std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, \hyperlink{structtmap_1_1GraphProperties}{tmap\+::\+Graph\+Properties} $>$ tmap\+::\+Layout\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classtmap_1_1LSHForest}{tmap\+::\+L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{\hyperlink{structtmap_1_1LayoutConfiguration}{tmap\+::\+Layout\+Configuration}}]{config = {\ttfamily \hyperlink{structtmap_1_1LayoutConfiguration}{Layout\+Configuration}()},  }\item[{bool}]{create\+\_\+mst = {\ttfamily true},  }\item[{bool}]{clear\+\_\+lsh\+\_\+forest = {\ttfamily false},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, \hyperlink{structtmap_1_1GraphProperties}{tmap\+::\+Graph\+Properties} $>$ tmap\+::\+Layout\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classtmap_1_1LSHForest}{tmap\+::\+L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{\hyperlink{structtmap_1_1LayoutConfiguration}{tmap\+::\+Layout\+Configuration}}]{config = {\ttfamily \hyperlink{structtmap_1_1LayoutConfiguration}{Layout\+Configuration}()},  }\item[{bool}]{create\+\_\+mst = {\ttfamily true},  }\item[{bool}]{clear\+\_\+lsh\+\_\+forest = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -152,8 +152,6 @@ Genereates coordinates, edges and properties of a M\+ST (via a k\+NN graph) from
 {\em create\+\_\+mst} & Whether to create an M\+ST before laying out the graph. \\
 \hline
 {\em clear\+\_\+lsh\+\_\+forest} & Whether to clear the L\+S\+H\+Forest after it\textquotesingle{}s use (might save memory). \\
-\hline
-{\em weighted} & Whether the L\+S\+H\+Forest instance contains weighted Min\+Hash data. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -183,11 +181,11 @@ Laying out an O\+G\+DF graph.
 \begin{DoxyReturn}{Returns}
 std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, Graph\+Properties$>$ 
 \end{DoxyReturn}
-\mbox{\Hypertarget{layout_8hh_file_a3d7180c2fcc2a1ec72838f18177d6840}\label{layout_8hh_file_a3d7180c2fcc2a1ec72838f18177d6840}} 
+\mbox{\Hypertarget{layout_8hh_file_a033d33fa567d893125d956e56933335f}\label{layout_8hh_file_a033d33fa567d893125d956e56933335f}} 
 \index{layout.\+hh@{layout.\+hh}!M\+S\+T\+From\+L\+S\+H\+Forest@{M\+S\+T\+From\+L\+S\+H\+Forest}}
 \index{M\+S\+T\+From\+L\+S\+H\+Forest@{M\+S\+T\+From\+L\+S\+H\+Forest}!layout.\+hh@{layout.\+hh}}
 \subsubsection{\texorpdfstring{M\+S\+T\+From\+L\+S\+H\+Forest()}{MSTFromLSHForest()}}
-{\footnotesize\ttfamily std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+M\+S\+T\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classtmap_1_1LSHForest}{tmap\+::\+L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{uint32\+\_\+t}]{k,  }\item[{uint32\+\_\+t}]{kc = {\ttfamily 10},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+M\+S\+T\+From\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{\hyperlink{classtmap_1_1LSHForest}{tmap\+::\+L\+S\+H\+Forest} \&}]{lsh\+\_\+forest,  }\item[{uint32\+\_\+t}]{k,  }\item[{uint32\+\_\+t}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
 
 
 
@@ -200,8 +198,6 @@ Generates an M\+ST (via a k\+NN graph) from an L\+S\+H\+Forest instance.
 {\em k} & The number of nearest neighbors used to create the k\+NN graph. \\
 \hline
 {\em kc} & The factor by which k is multiplied when retrieving nearest neighbors. \\
-\hline
-{\em weighted} & Whether the L\+S\+H\+Forest instance contains weighted Min\+Hash data. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

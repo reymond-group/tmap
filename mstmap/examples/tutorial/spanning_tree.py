@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 
 
 def main():
+    """ Main function """
+
     n = 10
     edge_list = []
     weights = {}
@@ -29,13 +31,8 @@ def main():
             weights[i][j] = 1.0 - weight
             weights[j][i] = 1.0 - weight
 
-    # Set the initial randomized positioning to True
-    # Otherwise, OGDF tends to segfault
-    cfg = tm.LayoutConfiguration()
-    cfg.fme_randomize = True
-
     # Compute the layout
-    x, y, s, t, _ = tm.layout_from_edge_list(n, edge_list, config=cfg, create_mst=False)
+    x, y, s, t, _ = tm.layout_from_edge_list(n, edge_list, create_mst=False)
     x_mst, y_mst, s_mst, t_mst, _ = tm.layout_from_edge_list(
         n, edge_list, create_mst=True
     )

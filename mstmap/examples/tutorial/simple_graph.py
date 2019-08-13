@@ -1,10 +1,11 @@
 import tmap as tm
 import numpy as np
 from matplotlib import pyplot as plt
-from time import sleep
 
 
 def main():
+    """ Main function """
+
     n = 25
     edge_list = []
 
@@ -13,14 +14,9 @@ def main():
         for j in np.random.randint(0, high=n, size=2):
             edge_list.append([i, j, np.random.rand(1)])
 
-    # Set the initial randomized positioning to True
-    # Otherwise, OGDF tends to segfault
-    cfg = tm.LayoutConfiguration()
-    cfg.fme_randomize = True
-
     # Compute the layout
-    x, y, s, t, gp = tm.layout_from_edge_list(
-        n, edge_list, config=cfg, create_mst=False
+    x, y, s, t, _ = tm.layout_from_edge_list(
+        n, edge_list, create_mst=False
     )
 
     # Plot the edges
@@ -36,7 +32,7 @@ def main():
 
     # Plot the vertices
     plt.scatter(x, y, zorder=2)
-
+    plt.tight_layout()
     plt.savefig("simple_graph.png")
 
 

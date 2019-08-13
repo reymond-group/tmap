@@ -10,47 +10,44 @@
     <includes local="no">random</includes>
     <includes local="no">stdexcept</includes>
     <includes local="no">stdint.h</includes>
+    <includes local="no">math.h</includes>
     <includes local="no">valarray</includes>
     <includes local="no">vector</includes>
     <includes local="yes">omp.h</includes>
     <includedby refid="bindings_8cc" local="yes">tmap/bindings.cc</includedby>
     <includedby refid="minhash_8cc" local="yes">tmap/minhash.cc</includedby>
     <incdepgraph>
-      <node id="271">
+      <node id="274">
         <label>valarray</label>
       </node>
-      <node id="267">
+      <node id="269">
         <label>limits</label>
       </node>
-      <node id="264">
+      <node id="266">
         <label>stdint.h</label>
       </node>
-      <node id="262">
+      <node id="264">
         <label>cassert</label>
       </node>
-      <node id="270">
+      <node id="272">
         <label>stdexcept</label>
       </node>
-      <node id="268">
+      <node id="270">
         <label>numeric</label>
       </node>
-      <node id="263">
+      <node id="265">
         <label>string</label>
       </node>
-      <node id="273">
+      <node id="276">
         <label>omp.h</label>
       </node>
-      <node id="269">
+      <node id="271">
         <label>random</label>
       </node>
-      <node id="260">
+      <node id="262">
         <label>tmap/minhash.hh</label>
         <link refid="minhash_8hh"/>
-        <childnode refid="261" relation="include">
-        </childnode>
-        <childnode refid="265" relation="include">
-        </childnode>
-        <childnode refid="266" relation="include">
+        <childnode refid="263" relation="include">
         </childnode>
         <childnode refid="267" relation="include">
         </childnode>
@@ -60,49 +57,58 @@
         </childnode>
         <childnode refid="270" relation="include">
         </childnode>
-        <childnode refid="264" relation="include">
-        </childnode>
         <childnode refid="271" relation="include">
         </childnode>
         <childnode refid="272" relation="include">
         </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
         <childnode refid="273" relation="include">
         </childnode>
-      </node>
-      <node id="272">
-        <label>vector</label>
-      </node>
-      <node id="266">
-        <label>iostream</label>
-      </node>
-      <node id="261">
-        <label>fnv.hh</label>
-        <link refid="fnv_8hh_source"/>
-        <childnode refid="262" relation="include">
+        <childnode refid="274" relation="include">
         </childnode>
-        <childnode refid="263" relation="include">
-        </childnode>
-        <childnode refid="264" relation="include">
-        </childnode>
-      </node>
-      <node id="265">
-        <label>algorithm</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="275">
-        <label>tmap/bindings.cc</label>
-        <link refid="bindings_8cc"/>
-      </node>
-      <node id="274">
-        <label>tmap/minhash.hh</label>
-        <link refid="minhash_8hh"/>
         <childnode refid="275" relation="include">
         </childnode>
         <childnode refid="276" relation="include">
         </childnode>
       </node>
-      <node id="276">
+      <node id="275">
+        <label>vector</label>
+      </node>
+      <node id="273">
+        <label>math.h</label>
+      </node>
+      <node id="268">
+        <label>iostream</label>
+      </node>
+      <node id="263">
+        <label>fnv.hh</label>
+        <link refid="fnv_8hh_source"/>
+        <childnode refid="264" relation="include">
+        </childnode>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="267">
+        <label>algorithm</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="278">
+        <label>tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+      </node>
+      <node id="277">
+        <label>tmap/minhash.hh</label>
+        <link refid="minhash_8hh"/>
+        <childnode refid="278" relation="include">
+        </childnode>
+        <childnode refid="279" relation="include">
+        </childnode>
+      </node>
+      <node id="279">
         <label>tmap/minhash.cc</label>
         <link refid="minhash_8cc"/>
       </node>
@@ -129,76 +135,78 @@
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;valarray&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetmap" kindref="compound">tmap</ref><sp/>{</highlight></codeline>
-<codeline lineno="31" refid="classtmap_1_1Minhash" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtmap_1_1Minhash" kindref="compound">Minhash</ref></highlight></codeline>
-<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" kindref="member">Minhash</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>128,</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/>42,</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sample_size<sp/>=<sp/>128);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" kindref="member">FromBinaryArray</ref>(std::vector&lt;uint8_t&gt;&amp;<sp/>vec);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" kindref="member">BatchFromBinaryArray</ref>(</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" kindref="member">FromSparseBinaryArray</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" kindref="member">BatchFromSparseBinaryArray</ref>(</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" kindref="member">FromStringArray</ref>(std::vector&lt;std::string&gt;&amp;<sp/>vec);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" kindref="member">BatchFromStringArray</ref>(</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" kindref="member">FromWeightArray</ref>(std::vector&lt;float&gt;&amp;<sp/>vec,</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>method<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" kindref="member">BatchFromWeightArray</ref>(</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;&amp;<sp/>vecs,</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>method<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863" kindref="member">ExpandIntWeightArray</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec,</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>max_vec,</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620" kindref="member">BatchFromIntWeightArray</ref>(</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" kindref="member">GetDistance</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec_a,<sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>vec_b);</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kindref="member">GetWeightedDistance</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec_a,</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>vec_b);</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164" refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" kindref="member">~Minhash</ref>()<sp/>{}</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_,<sp/>sample_size_;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>uint64_t<sp/>prime_<sp/>=<sp/>2305843009213693951UL;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>uint32_t<sp/>max_hash_<sp/>=<sp/>4294967295;</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>perms_a_;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>perms_b_;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>rs_;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>rs_2_;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>ln_cs_;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>cs_;</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>betas_;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>betas_2_;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/>std::hash&lt;std::string&gt;<sp/>hasher;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/>uint64_t<sp/>fast_mod_long(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>input,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>ceil)</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>input<sp/>&gt;=<sp/>ceil<sp/>?<sp/>input<sp/>%<sp/>ceil<sp/>:<sp/>input;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="184"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="185"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tmap</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;valarray&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;omp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetmap" kindref="compound">tmap</ref><sp/>{</highlight></codeline>
+<codeline lineno="32" refid="classtmap_1_1Minhash" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classtmap_1_1Minhash" kindref="compound">Minhash</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" kindref="member">Minhash</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/>42,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sample_size<sp/>=<sp/>128);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" kindref="member">FromBinaryArray</ref>(std::vector&lt;uint8_t&gt;&amp;<sp/>vec);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" kindref="member">BatchFromBinaryArray</ref>(</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" kindref="member">FromSparseBinaryArray</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" kindref="member">BatchFromSparseBinaryArray</ref>(</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" kindref="member">FromStringArray</ref>(std::vector&lt;std::string&gt;&amp;<sp/>vec);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" kindref="member">BatchFromStringArray</ref>(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;<sp/>vecs);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" kindref="member">FromWeightArray</ref>(std::vector&lt;float&gt;&amp;<sp/>vec,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>method<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" kindref="member">BatchFromWeightArray</ref>(</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;float&gt;&gt;&amp;<sp/>vecs,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>method<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/><ref refid="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" kindref="member">ExpandIntWeightArray</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>min_vec,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>max_vec,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;<sp/><ref refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" kindref="member">BatchFromIntWeightArray</ref>(</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::vector&lt;uint32_t&gt;&gt;&amp;<sp/>vecs,<sp/>uint8_t<sp/>divide_by<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" kindref="member">GetDistance</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec_a,<sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>vec_b);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kindref="member">GetWeightedDistance</ref>(std::vector&lt;uint32_t&gt;&amp;<sp/>vec_a,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;&amp;<sp/>vec_b);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" kindref="member">~Minhash</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>d_,<sp/>sample_size_;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>uint64_t<sp/>prime_<sp/>=<sp/>2305843009213693951UL;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>uint32_t<sp/>max_hash_<sp/>=<sp/>4294967295;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>perms_a_;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>std::valarray&lt;uint32_t&gt;<sp/>perms_b_;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>rs_;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>rs_2_;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>ln_cs_;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>cs_;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>betas_;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>std::vector&lt;std::valarray&lt;float&gt;&gt;<sp/>betas_2_;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>std::hash&lt;std::string&gt;<sp/>hasher;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>uint64_t<sp/>fast_mod_long(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>input,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>ceil)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>input<sp/>&gt;=<sp/>ceil<sp/>?<sp/>input<sp/>%<sp/>ceil<sp/>:<sp/>input;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="tmap/minhash.hh"/>
   </compounddef>

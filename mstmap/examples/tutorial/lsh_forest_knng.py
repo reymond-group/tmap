@@ -5,18 +5,20 @@ import tmap as tm
 
 
 def main():
+    """ Main function """
+
     # Use 128 permutations to create the MinHash
     enc = tm.Minhash(128)
     lf = tm.LSHForest(128)
 
     d = 1000
-    n = 1000000
+    n = 10000
 
     data = []
 
     # Generating some random data
     start = timer()
-    for i in range(n):
+    for _ in range(n):
         data.append(tm.VectorUchar(np.random.randint(0, high=2, size=d)))
     print(f"Generating the data took {(timer() - start) * 1000}ms.")
 

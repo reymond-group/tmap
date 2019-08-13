@@ -30,9 +30,9 @@ std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_aac0a45bdf6a6
 \begin{DoxyCompactList}\small\item\em Create a Min\+Hash from an array containing weights. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a8fe5c588003e8a3089d0a04df7b0f6e9}{Batch\+From\+Weight\+Array} (std\+::vector$<$ std\+::vector$<$ float $>$$>$ \&vecs, const std\+::string \&method=\char`\"{}I\+C\+WS\char`\"{})
 \begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a vector of weight arrays (parallelized). \end{DoxyCompactList}\item 
-std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_af515f50f6724d7fb16d39743d7652863}{Expand\+Int\+Weight\+Array} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&max\+\_\+vec, uint32\+\_\+t size)
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}{Expand\+Int\+Weight\+Array} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&min\+\_\+vec, std\+::vector$<$ uint32\+\_\+t $>$ \&max\+\_\+vec, uint32\+\_\+t size)
 \begin{DoxyCompactList}\small\item\em Expand a integer weight array into a binary array. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_ac0112cf3a99b2e882803a07dc0f0a620}{Batch\+From\+Int\+Weight\+Array} (std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs)
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}{Batch\+From\+Int\+Weight\+Array} (std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs, uint8\+\_\+t divide\+\_\+by=0)
 \begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a expanded integer weight array (parallelized). \end{DoxyCompactList}\item 
 float \hyperlink{classtmap_1_1Minhash_a21df254dd86462a1dcbe45285c747e71}{Get\+Distance} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+a, std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+b)
 \begin{DoxyCompactList}\small\item\em Get the distance between two Min\+Hashes. \end{DoxyCompactList}\item 
@@ -87,11 +87,11 @@ Create Min\+Hashes from a batch of binary arrays (parallelized).
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classtmap_1_1Minhash_ac0112cf3a99b2e882803a07dc0f0a620}\label{classtmap_1_1Minhash_ac0112cf3a99b2e882803a07dc0f0a620}} 
+\mbox{\Hypertarget{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}\label{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}} 
 \index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+Int\+Weight\+Array@{Batch\+From\+Int\+Weight\+Array}}
 \index{Batch\+From\+Int\+Weight\+Array@{Batch\+From\+Int\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
 \subsubsection{\texorpdfstring{Batch\+From\+Int\+Weight\+Array()}{BatchFromIntWeightArray()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs,  }\item[{uint8\+\_\+t}]{divide\+\_\+by = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
@@ -159,11 +159,11 @@ Create Min\+Hashes from a vector of weight arrays (parallelized).
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classtmap_1_1Minhash_af515f50f6724d7fb16d39743d7652863}\label{classtmap_1_1Minhash_af515f50f6724d7fb16d39743d7652863}} 
+\mbox{\Hypertarget{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}\label{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}} 
 \index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Expand\+Int\+Weight\+Array@{Expand\+Int\+Weight\+Array}}
 \index{Expand\+Int\+Weight\+Array@{Expand\+Int\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
 \subsubsection{\texorpdfstring{Expand\+Int\+Weight\+Array()}{ExpandIntWeightArray()}}
-{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ tmap\+::\+Minhash\+::\+Expand\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{max\+\_\+vec,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ tmap\+::\+Minhash\+::\+Expand\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{min\+\_\+vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{max\+\_\+vec,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
 
 
 
@@ -174,6 +174,8 @@ Expand a integer weight array into a binary array.
 {\em vec} & A vector containing integer weights. \\
 \hline
 {\em max\+\_\+vec} & The maxima for all columns. \\
+\hline
+{\em min\+\_\+vec} & The minima for all columns. \\
 \hline
 {\em size} & The size of the expanded array. \\
 \hline

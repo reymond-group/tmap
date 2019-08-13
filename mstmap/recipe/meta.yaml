@@ -1,6 +1,6 @@
 package:
   name: tmap
-  version: 0.2
+  version: 1.0.0
 
 build:
   number: 0
@@ -14,8 +14,7 @@ source:
   
 requirements:
   build:
-    # Use system compiler on linux
-    - {{ compiler('cxx') }} # [win]
+    - {{ compiler('cxx') }}
     - cmake
     - python
     - setuptools

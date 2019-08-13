@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="167" column="1" bodyfile="tmap/minhash.hh" bodystart="167" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="170" column="1" bodyfile="tmap/minhash.hh" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a34a66e3017e7af70512345fb25561df7" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="167" column="1" bodyfile="tmap/minhash.hh" bodystart="167" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="170" column="1" bodyfile="tmap/minhash.hh" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1aca2956f403e064b190f167b97ab277f3" prot="private" static="no" mutable="no">
         <type>uint64_t</type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="168" column="1" bodyfile="tmap/minhash.hh" bodystart="168" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="171" column="1" bodyfile="tmap/minhash.hh" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a9896333e6380782f7dfb2302c637505a" prot="private" static="no" mutable="no">
         <type>uint32_t</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="169" column="1" bodyfile="tmap/minhash.hh" bodystart="169" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="172" column="1" bodyfile="tmap/minhash.hh" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1ad520a822758d7a21c30ce2c357d2256f" prot="private" static="no" mutable="no">
         <type>std::valarray&lt; uint32_t &gt;</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="170" column="1" bodyfile="tmap/minhash.hh" bodystart="170" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="173" column="1" bodyfile="tmap/minhash.hh" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1aa17875b6bd063dceab5421e44550d8e8" prot="private" static="no" mutable="no">
         <type>std::valarray&lt; uint32_t &gt;</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="171" column="1" bodyfile="tmap/minhash.hh" bodystart="171" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="174" column="1" bodyfile="tmap/minhash.hh" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1aa69b61510f378880238f6c80739859e8" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="172" column="1" bodyfile="tmap/minhash.hh" bodystart="172" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="175" column="1" bodyfile="tmap/minhash.hh" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1af359adc42ba921a684cf46f8afedc567" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="173" column="1" bodyfile="tmap/minhash.hh" bodystart="173" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="176" column="1" bodyfile="tmap/minhash.hh" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a1d0729379f4a17b8d3668a2fee71621f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="174" column="1" bodyfile="tmap/minhash.hh" bodystart="174" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="177" column="1" bodyfile="tmap/minhash.hh" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a7c94b59844d5e2f2dc00742fb7679a95" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="175" column="1" bodyfile="tmap/minhash.hh" bodystart="175" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="178" column="1" bodyfile="tmap/minhash.hh" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a57ba77382d9ae6d5b472b9204deba311" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="176" column="1" bodyfile="tmap/minhash.hh" bodystart="176" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="179" column="1" bodyfile="tmap/minhash.hh" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1a12f2664a59d0390ae26987bec1d0029e" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="177" column="1" bodyfile="tmap/minhash.hh" bodystart="177" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="180" column="1" bodyfile="tmap/minhash.hh" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtmap_1_1Minhash_1aa6803c60bdf58ddaa0a52a703efb7d87" prot="private" static="no" mutable="no">
         <type>std::hash&lt; std::string &gt;</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="178" column="1" bodyfile="tmap/minhash.hh" bodystart="178" bodyend="-1"/>
+        <location file="tmap/minhash.hh" line="181" column="1" bodyfile="tmap/minhash.hh" bodystart="181" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -225,7 +225,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="41" column="1" bodyfile="tmap/minhash.cc" bodystart="12" bodyend="88"/>
+        <location file="tmap/minhash.hh" line="42" column="1" bodyfile="tmap/minhash.cc" bodystart="12" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -251,7 +251,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="51" column="1" bodyfile="tmap/minhash.cc" bodystart="91" bodyend="109"/>
+        <location file="tmap/minhash.hh" line="52" column="1" bodyfile="tmap/minhash.cc" bodystart="91" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -277,7 +277,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="59" column="1" bodyfile="tmap/minhash.cc" bodystart="112" bodyend="121"/>
+        <location file="tmap/minhash.hh" line="60" column="1" bodyfile="tmap/minhash.cc" bodystart="112" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -303,7 +303,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="69" column="1" bodyfile="tmap/minhash.cc" bodystart="124" bodyend="139"/>
+        <location file="tmap/minhash.hh" line="70" column="1" bodyfile="tmap/minhash.cc" bodystart="124" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -329,7 +329,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="78" column="1" bodyfile="tmap/minhash.cc" bodystart="142" bodyend="152"/>
+        <location file="tmap/minhash.hh" line="79" column="1" bodyfile="tmap/minhash.cc" bodystart="142" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -355,7 +355,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="87" column="1" bodyfile="tmap/minhash.cc" bodystart="155" bodyend="171"/>
+        <location file="tmap/minhash.hh" line="88" column="1" bodyfile="tmap/minhash.cc" bodystart="155" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -381,7 +381,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="95" column="1" bodyfile="tmap/minhash.cc" bodystart="174" bodyend="183"/>
+        <location file="tmap/minhash.hh" line="96" column="1" bodyfile="tmap/minhash.cc" bodystart="174" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint32_t &gt;</type>
@@ -419,7 +419,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="106" column="1" bodyfile="tmap/minhash.cc" bodystart="235" bodyend="302"/>
+        <location file="tmap/minhash.hh" line="107" column="1" bodyfile="tmap/minhash.cc" bodystart="254" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
@@ -450,16 +450,20 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="115" column="1" bodyfile="tmap/minhash.cc" bodystart="305" bodyend="315"/>
+        <location file="tmap/minhash.hh" line="116" column="1" bodyfile="tmap/minhash.cc" bodystart="324" bodyend="334"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
         <definition>std::vector&lt; uint8_t &gt; tmap::Minhash::ExpandIntWeightArray</definition>
-        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec, std::vector&lt; uint32_t &gt; &amp;max_vec, uint32_t size)</argsstring>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec, std::vector&lt; uint32_t &gt; &amp;min_vec, std::vector&lt; uint32_t &gt; &amp;max_vec, uint32_t size)</argsstring>
         <name>ExpandIntWeightArray</name>
         <param>
           <type>std::vector&lt; uint32_t &gt; &amp;</type>
           <declname>vec</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>min_vec</declname>
         </param>
         <param>
           <type>std::vector&lt; uint32_t &gt; &amp;</type>
@@ -488,6 +492,13 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>min_vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The minima for all columns. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>size</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -498,16 +509,21 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="127" column="1" bodyfile="tmap/minhash.cc" bodystart="186" bodyend="204"/>
+        <location file="tmap/minhash.hh" line="129" column="1" bodyfile="tmap/minhash.cc" bodystart="186" bodyend="205"/>
       </memberdef>
-      <memberdef kind="function" id="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
         <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromIntWeightArray</definition>
-        <argsstring>(std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;vecs)</argsstring>
+        <argsstring>(std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;vecs, uint8_t divide_by=0)</argsstring>
         <name>BatchFromIntWeightArray</name>
         <param>
           <type>std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;</type>
           <declname>vecs</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>divide_by</declname>
+          <defval>0</defval>
         </param>
         <briefdescription>
 <para>Create MinHashes from a expanded integer weight array (parallelized). </para>        </briefdescription>
@@ -524,7 +540,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="138" column="1" bodyfile="tmap/minhash.cc" bodystart="207" bodyend="232"/>
+        <location file="tmap/minhash.hh" line="141" column="1" bodyfile="tmap/minhash.cc" bodystart="208" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -561,7 +577,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="148" column="1" bodyfile="tmap/minhash.cc" bodystart="318" bodyend="329"/>
+        <location file="tmap/minhash.hh" line="151" column="1" bodyfile="tmap/minhash.cc" bodystart="337" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -598,7 +614,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="157" column="1" bodyfile="tmap/minhash.cc" bodystart="332" bodyend="343"/>
+        <location file="tmap/minhash.hh" line="160" column="1" bodyfile="tmap/minhash.cc" bodystart="351" bodyend="362"/>
       </memberdef>
       <memberdef kind="function" id="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -611,7 +627,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="164" column="1" bodyfile="tmap/minhash.hh" bodystart="164" bodyend="164"/>
+        <location file="tmap/minhash.hh" line="167" column="1" bodyfile="tmap/minhash.hh" bodystart="167" bodyend="167"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -634,17 +650,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/minhash.hh" line="180" column="1" bodyfile="tmap/minhash.hh" bodystart="180" bodyend="183"/>
+        <location file="tmap/minhash.hh" line="183" column="1" bodyfile="tmap/minhash.hh" bodystart="183" bodyend="186"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>An implementation of MinHash and weighted MinHash using SHA1. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="tmap/minhash.hh" line="32" column="1" bodyfile="tmap/minhash.hh" bodystart="31" bodyend="184"/>
+    <location file="tmap/minhash.hh" line="33" column="1" bodyfile="tmap/minhash.hh" bodystart="32" bodyend="187"/>
     <listofallmembers>
       <member refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromBinaryArray</name></member>
-      <member refid="classtmap_1_1Minhash_1ac0112cf3a99b2e882803a07dc0f0a620" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromIntWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromIntWeightArray</name></member>
       <member refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromSparseBinaryArray</name></member>
       <member refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromStringArray</name></member>
       <member refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromWeightArray</name></member>
@@ -652,7 +668,7 @@
       <member refid="classtmap_1_1Minhash_1a12f2664a59d0390ae26987bec1d0029e" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>betas_2_</name></member>
       <member refid="classtmap_1_1Minhash_1a7c94b59844d5e2f2dc00742fb7679a95" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>cs_</name></member>
       <member refid="classtmap_1_1Minhash_1a054c6a486352453aa98c6f04d7b88e9a" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>d_</name></member>
-      <member refid="classtmap_1_1Minhash_1af515f50f6724d7fb16d39743d7652863" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>ExpandIntWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>ExpandIntWeightArray</name></member>
       <member refid="classtmap_1_1Minhash_1a0f5968ec8e66d65ca8fa529f0f658b26" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>fast_mod_long</name></member>
       <member refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromBinaryArray</name></member>
       <member refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromSparseBinaryArray</name></member>
