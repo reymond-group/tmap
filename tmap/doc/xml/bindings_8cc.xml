@@ -1,0 +1,1225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="bindings_8cc" kind="file" language="C++">
+    <compoundname>bindings.cc</compoundname>
+    <includes refid="layout_8hh" local="yes">layout.hh</includes>
+    <includes refid="lshforest_8hh" local="yes">lshforest.hh</includes>
+    <includes local="yes">cereal/cereal.hpp</includes>
+    <includes local="no">sstream</includes>
+    <includes local="yes">cereal/types/concepts/pair_associative_container.hpp</includes>
+    <includes local="no">map</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">string</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">iterator</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">new</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">iosfwd</includes>
+    <includes local="no">ios</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_stdint.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_config.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_traits.h</includes>
+    <includes local="yes">/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_utils.h</includes>
+    <includes local="no">initializer_list</includes>
+    <includes refid="minhash_8hh" local="yes">minhash.hh</includes>
+    <includes local="no">pybind11/pybind11.h</includes>
+    <includes local="no">pybind11/stl.h</includes>
+    <includes local="no">pybind11/stl_bind.h</includes>
+    <incdepgraph>
+      <node id="67">
+        <label>valarray</label>
+      </node>
+      <node id="33">
+        <label>functional</label>
+      </node>
+      <node id="47">
+        <label>limits</label>
+      </node>
+      <node id="38">
+        <label>cereal/types/map.hpp</label>
+      </node>
+      <node id="57">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_stdint.h</label>
+      </node>
+      <node id="48">
+        <label>iterator</label>
+      </node>
+      <node id="23">
+        <label>ogdf/packing/TileToRowsCCPacker.h</label>
+      </node>
+      <node id="37">
+        <label>cereal/archives/binary.hpp</label>
+      </node>
+      <node id="39">
+        <label>cereal/types/tuple.hpp</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+      <node id="29">
+        <label>lshforest.hh</label>
+        <link refid="lshforest_8hh"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>cassert</label>
+      </node>
+      <node id="36">
+        <label>stdexcept</label>
+      </node>
+      <node id="64">
+        <label>numeric</label>
+      </node>
+      <node id="22">
+        <label>ogdf/packing/ComponentSplitterLayout.h</label>
+      </node>
+      <node id="46">
+        <label>string</label>
+      </node>
+      <node id="20">
+        <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
+      </node>
+      <node id="15">
+        <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
+      </node>
+      <node id="34">
+        <label>map</label>
+      </node>
+      <node id="7">
+        <label>ogdf/basic/extended_graph_alg.h</label>
+      </node>
+      <node id="58">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_config.h</label>
+      </node>
+      <node id="41">
+        <label>sparsepp/spp.h</label>
+      </node>
+      <node id="68">
+        <label>omp.h</label>
+      </node>
+      <node id="5">
+        <label>ogdf/basic/Graph.h</label>
+      </node>
+      <node id="26">
+        <label>fstream</label>
+      </node>
+      <node id="60">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_utils.h</label>
+      </node>
+      <node id="10">
+        <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
+      </node>
+      <node id="9">
+        <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
+      </node>
+      <node id="0">
+        <label>tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>ogdf/energybased/FMMMLayout.h</label>
+      </node>
+      <node id="25">
+        <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
+      </node>
+      <node id="65">
+        <label>random</label>
+      </node>
+      <node id="1">
+        <label>layout.hh</label>
+        <link refid="layout_8hh"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>ios</label>
+      </node>
+      <node id="28">
+        <label>typeinfo</label>
+      </node>
+      <node id="54">
+        <label>cstdio</label>
+      </node>
+      <node id="3">
+        <label>tuple</label>
+      </node>
+      <node id="21">
+        <label>ogdf/basic/PreprocessorLayout.h</label>
+      </node>
+      <node id="62">
+        <label>minhash.hh</label>
+        <link refid="minhash_8hh"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="52">
+        <label>new</label>
+      </node>
+      <node id="16">
+        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
+      </node>
+      <node id="53">
+        <label>utility</label>
+      </node>
+      <node id="43">
+        <label>sstream</label>
+      </node>
+      <node id="69">
+        <label>pybind11/pybind11.h</label>
+      </node>
+      <node id="13">
+        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
+      </node>
+      <node id="11">
+        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
+      </node>
+      <node id="42">
+        <label>cereal/cereal.hpp</label>
+      </node>
+      <node id="66">
+        <label>math.h</label>
+      </node>
+      <node id="55">
+        <label>iosfwd</label>
+      </node>
+      <node id="50">
+        <label>cstdlib</label>
+      </node>
+      <node id="27">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>ogdf/basic/GraphAttributes.h</label>
+      </node>
+      <node id="8">
+        <label>ogdf/fileformats/GraphIO.h</label>
+      </node>
+      <node id="51">
+        <label>cstddef</label>
+      </node>
+      <node id="31">
+        <label>chrono</label>
+      </node>
+      <node id="14">
+        <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
+      </node>
+      <node id="59">
+        <label>/home/daenu/Code/conda-mstmap/mstmap/tmap/sparsepp/spp_traits.h</label>
+      </node>
+      <node id="63">
+        <label>fnv.hh</label>
+        <link refid="fnv_8hh_source"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>set</label>
+      </node>
+      <node id="44">
+        <label>cereal/types/concepts/pair_associative_container.hpp</label>
+      </node>
+      <node id="19">
+        <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
+      </node>
+      <node id="30">
+        <label>algorithm</label>
+      </node>
+      <node id="12">
+        <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
+      </node>
+      <node id="71">
+        <label>pybind11/stl_bind.h</label>
+      </node>
+      <node id="32">
+        <label>cstring</label>
+      </node>
+      <node id="40">
+        <label>cereal/types/vector.hpp</label>
+      </node>
+      <node id="49">
+        <label>memory</label>
+      </node>
+      <node id="61">
+        <label>initializer_list</label>
+      </node>
+      <node id="17">
+        <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
+      </node>
+      <node id="70">
+        <label>pybind11/stl.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="bindings_8cc_1a8cc96963394e1bf2d1f2c8c298a8961f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint8_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="21" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1adf1d3c96cae502b5022e395df7c8f792" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint16_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint16_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a27eff19ba73a3e99fe1f7951db3a05a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a0ac4737d613502a5272d1c7c55c75000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; uint64_t &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; uint64_t &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="24" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1adc31052ce19269023b82cb33511fbc37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MAKE_OPAQUE</definition>
+        <argsstring>(std::vector&lt; float &gt;)</argsstring>
+        <name>PYBIND11_MAKE_OPAQUE</name>
+        <param>
+          <type>std::vector&lt; float &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="25" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="bindings_8cc_1a4274a51ba9942c31b5553c1678c70e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PYBIND11_MODULE</definition>
+        <argsstring>(tmap, m)</argsstring>
+        <name>PYBIND11_MODULE</name>
+        <param>
+          <type>tmap</type>
+        </param>
+        <param>
+          <type>m</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="27" column="1" bodyfile="tmap/bindings.cc" bodystart="27" bodyend="671"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pybind11 bindings for tmap. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Daniel Probst (<ulink url="mailto:daenuprobst@gmail.com">daenuprobst@gmail.com</ulink>) </para></simplesect>
+<simplesect kind="version"><para>0.1 </para></simplesect>
+<simplesect kind="date"><para>2019-06-17 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="layout_8hh" kindref="compound">layout.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="lshforest_8hh" kindref="compound">lshforest.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="minhash_8hh" kindref="compound">minhash.hh</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pybind11/pybind11.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pybind11/stl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pybind11/stl_bind.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacetmap" kindref="compound">tmap</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">py<sp/>=<sp/>pybind11;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint8_t&gt;);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint16_t&gt;);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint32_t&gt;);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;uint64_t&gt;);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">PYBIND11_MAKE_OPAQUE(std::vector&lt;float&gt;);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">PYBIND11_MODULE(<ref refid="namespacetmap" kindref="compound">tmap</ref>,<sp/>m)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint8_t&gt;&gt;(</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUchar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unsigned<sp/>8-bit<sp/>int<sp/>vector.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint16_t&gt;&gt;(</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUsmall&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unsigned<sp/>16-bit<sp/>int<sp/>vector.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint32_t&gt;&gt;(</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUint&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unsigned<sp/>32-bit<sp/>int<sp/>vector.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>py::bind_vector&lt;std::vector&lt;float&gt;&gt;(</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>m,<sp/></highlight><highlight class="stringliteral">&quot;VectorFloat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unsigned<sp/>32-bit<sp/>float<sp/>vector.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>py::bind_vector&lt;std::vector&lt;uint64_t&gt;&gt;(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>m,<sp/></highlight><highlight class="stringliteral">&quot;VectorUlong&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unsigned<sp/>64-bit<sp/>int<sp/>vector.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>py::enum_&lt;ScalingType&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;ScalingType&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic(),<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="41"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>scaling<sp/>types<sp/>available<sp/>in<sp/>OGDF.<sp/>The<sp/>class<sp/>is<sp/>to<sp/>be<sp/>used<sp/>as<sp/>an<sp/>enum.</highlight></codeline>
+<codeline lineno="42"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="43"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Notes:</highlight></codeline>
+<codeline lineno="44"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>available<sp/>values<sp/>are</highlight></codeline>
+<codeline lineno="45"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="46"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`ScalingType.Absolute`:<sp/>Absolute<sp/>factor,<sp/>can<sp/>be<sp/>used<sp/>to<sp/>scale<sp/>relative<sp/>to<sp/>level<sp/>size<sp/>change.</highlight></codeline>
+<codeline lineno="47"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`ScalingType.RelativeToAvgLength`:<sp/>Scales<sp/>by<sp/>a<sp/>factor<sp/>relative<sp/>to<sp/>the<sp/>average<sp/>edge<sp/>weights.</highlight></codeline>
+<codeline lineno="49"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`ScalingType.RelativeToDesiredLength`:<sp/>Scales<sp/>by<sp/>a<sp/>factor<sp/>relative<sp/>to<sp/>the<sp/>disired<sp/>edge<sp/>length.</highlight></codeline>
+<codeline lineno="51"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`ScalingType.RelativeToDrawing`:<sp/>Scales<sp/>by<sp/>a<sp/>factor<sp/>relative<sp/>to<sp/>the<sp/>drawing.</highlight></codeline>
+<codeline lineno="53"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="54"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Absolute&quot;</highlight><highlight class="normal">,<sp/>ScalingType::Absolute)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToAvgLength&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToAvgLength)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToDesiredLength&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToDesiredLength)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;RelativeToDrawing&quot;</highlight><highlight class="normal">,<sp/>ScalingType::RelativeToDrawing)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>py::enum_&lt;Placer&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Placer&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic(),<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="61"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>places<sp/>available<sp/>in<sp/>OGDF.<sp/>The<sp/>class<sp/>is<sp/>to<sp/>be<sp/>used<sp/>as<sp/>an<sp/>enum.</highlight></codeline>
+<codeline lineno="62"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Notes:</highlight></codeline>
+<codeline lineno="64"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>available<sp/>values<sp/>are</highlight></codeline>
+<codeline lineno="65"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="66"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Barycenter`:<sp/>Places<sp/>a<sp/>vertex<sp/>at<sp/>the<sp/>barycenter<sp/>of<sp/>its<sp/>neighbors&apos;<sp/>position.</highlight></codeline>
+<codeline lineno="67"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Solar`:<sp/>Uses<sp/>information<sp/>of<sp/>the<sp/>merging<sp/>phase<sp/>of<sp/>the<sp/>solar<sp/>merger.<sp/>Places<sp/>a<sp/>new<sp/>vertex<sp/>on<sp/>the<sp/>direct<sp/>line<sp/>between<sp/>two<sp/>suns.</highlight></codeline>
+<codeline lineno="69"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Circle`:<sp/>Places<sp/>the<sp/>vertices<sp/>in<sp/>a<sp/>circle<sp/>around<sp/>the<sp/>barycenter<sp/>and<sp/>outside<sp/>of<sp/>the<sp/>current<sp/>drawing</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Median`:<sp/>Places<sp/>a<sp/>vertex<sp/>at<sp/>the<sp/>median<sp/>position<sp/>of<sp/>the<sp/>neighbor<sp/>nodes<sp/>for<sp/>each<sp/>coordinate<sp/>axis.</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Random`:<sp/>Places<sp/>a<sp/>vertex<sp/>at<sp/>a<sp/>random<sp/>position<sp/>within<sp/>the<sp/>smallest<sp/>circle<sp/>containing<sp/>all<sp/>vertices<sp/>around<sp/>the<sp/>barycenter<sp/>of<sp/>the<sp/>current<sp/>drawing.</highlight></codeline>
+<codeline lineno="75"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Placer.Zero`:<sp/>Places<sp/>a<sp/>vertex<sp/>at<sp/>the<sp/>same<sp/>position<sp/>as<sp/>its<sp/>representative<sp/>in<sp/>the<sp/>previous<sp/>level.</highlight></codeline>
+<codeline lineno="77"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="78"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Barycenter&quot;</highlight><highlight class="normal">,<sp/>Placer::Barycenter)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/>Placer::Solar)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Circle&quot;</highlight><highlight class="normal">,<sp/>Placer::Circle)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Median&quot;</highlight><highlight class="normal">,<sp/>Placer::Median)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Random&quot;</highlight><highlight class="normal">,<sp/>Placer::Random)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Zero&quot;</highlight><highlight class="normal">,<sp/>Placer::Zero)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>py::enum_&lt;Merger&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Merger&quot;</highlight><highlight class="normal">,<sp/>py::arithmetic(),<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="87"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>mergers<sp/>available<sp/>in<sp/>OGDF.<sp/>The<sp/>class<sp/>is<sp/>to<sp/>be<sp/>used<sp/>as<sp/>an<sp/>enum.</highlight></codeline>
+<codeline lineno="88"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="89"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Notes:</highlight></codeline>
+<codeline lineno="90"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>available<sp/>values<sp/>are</highlight></codeline>
+<codeline lineno="91"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="92"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Merger.EdgeCover`:<sp/>Based<sp/>on<sp/>the<sp/>matching<sp/>merger.<sp/>Computes<sp/>an<sp/>edge<sp/>cover<sp/>such<sp/>that<sp/>each<sp/>contained<sp/>edge<sp/>is<sp/>incident<sp/>to<sp/>at<sp/>least<sp/>one<sp/>unmatched<sp/>vertex.<sp/>The<sp/>cover<sp/>edges<sp/>are<sp/>then<sp/>used<sp/>to<sp/>merge<sp/>their<sp/>adjacent<sp/>vertices.</highlight></codeline>
+<codeline lineno="93"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Merger.LocalBiconnected`:<sp/>Based<sp/>on<sp/>the<sp/>edge<sp/>cover<sp/>merger.<sp/>Avoids<sp/>distortions<sp/>by<sp/>checking<sp/>whether<sp/>biconnectivity<sp/>will<sp/>be<sp/>lost<sp/>in<sp/>the<sp/>local<sp/>neighborhood<sp/>around<sp/>the<sp/>potential<sp/>merging<sp/>position.</highlight></codeline>
+<codeline lineno="95"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Merger.Solar`:<sp/>Vertices<sp/>are<sp/>partitioned<sp/>into<sp/>solar<sp/>systems,<sp/>consisting<sp/>of<sp/>sun,<sp/>planets<sp/>and<sp/>moons.<sp/>The<sp/>systems<sp/>are<sp/>then<sp/>merged<sp/>into<sp/>the<sp/>sun<sp/>vertices.</highlight></codeline>
+<codeline lineno="97"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Merger.IndependentSet`:<sp/>Uses<sp/>a<sp/>maximal<sp/>independent<sp/>set<sp/>filtration.<sp/>See<sp/>GRIP<sp/>for<sp/>details.</highlight></codeline>
+<codeline lineno="99"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="100"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;EdgeCover&quot;</highlight><highlight class="normal">,<sp/>Merger::EdgeCover)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;LocalBiconnected&quot;</highlight><highlight class="normal">,<sp/>Merger::LocalBiconnected)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;Solar&quot;</highlight><highlight class="normal">,<sp/>Merger::Solar)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>.value(</highlight><highlight class="stringliteral">&quot;IndependentSet&quot;</highlight><highlight class="normal">,<sp/>Merger::IndependentSet)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>.export_values();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>py::class_&lt;LayoutConfiguration&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;LayoutConfiguration&quot;</highlight><highlight class="normal">,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="107"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>container<sp/>for<sp/>configuration<sp/>options<sp/>for<sp/>:obj:`layout_from_lsh_forest()`<sp/>and<sp/>:obj:`layout_from_edge_list()`.</highlight></codeline>
+<codeline lineno="108"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="109"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Attributes:</highlight></codeline>
+<codeline lineno="110"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>used<sp/>to<sp/>create<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph.</highlight></codeline>
+<codeline lineno="111"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>scalar<sp/>by<sp/>which<sp/>k<sp/>is<sp/>multiplied<sp/>before<sp/>querying<sp/>the<sp/>LSH<sp/>forest.<sp/>The<sp/>results<sp/>are<sp/>then<sp/>ordered<sp/>decreasing<sp/>based<sp/>on<sp/>linear-scan<sp/>distances<sp/>and<sp/>the<sp/>top<sp/>k<sp/>results<sp/>returned.</highlight></codeline>
+<codeline lineno="112"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>fme_iterations<sp/>(:obj:`int`):<sp/>Maximum<sp/>number<sp/>of<sp/>iterations<sp/>of<sp/>the<sp/>fast<sp/>multipole<sp/>embedder.</highlight></codeline>
+<codeline lineno="113"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>fme_randomize<sp/>(:obj:`bool`):<sp/>Whether<sp/>or<sp/>not<sp/>to<sp/>randomize<sp/>the<sp/>layout<sp/>at<sp/>the<sp/>start.</highlight></codeline>
+<codeline lineno="114"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>fme_threads<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>threads<sp/>for<sp/>the<sp/>fast<sp/>multipole<sp/>embedder.</highlight></codeline>
+<codeline lineno="115"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>fme_precision<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>coefficients<sp/>of<sp/>the<sp/>multipole<sp/>expansion.</highlight></codeline>
+<codeline lineno="116"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>sl_repeats<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>repeats<sp/>of<sp/>the<sp/>scaling<sp/>layout<sp/>algorithm.</highlight></codeline>
+<codeline lineno="117"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>sl_extra_scaling_steps<sp/>(:obj:`int`):<sp/>Sets<sp/>the<sp/>number<sp/>of<sp/>repeats<sp/>of<sp/>the<sp/>scaling.</highlight></codeline>
+<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>sl_scaling_min<sp/>(:obj:`float`):<sp/>The<sp/>minimum<sp/>scaling<sp/>factor.</highlight></codeline>
+<codeline lineno="119"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>sl_scaling_max<sp/>(:obj:`float`):<sp/>The<sp/>maximum<sp/>scaling<sp/>factor.</highlight></codeline>
+<codeline lineno="120"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ScalingType<sp/>sl_scaling_type<sp/>(:obj:`ScalingType`):<sp/>Defines<sp/>the<sp/>(relative)<sp/>scale<sp/>of<sp/>the<sp/>graph.</highlight></codeline>
+<codeline lineno="121"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>mmm_repeats<sp/>(:obj:`int`):<sp/>Number<sp/>of<sp/>repeats<sp/>of<sp/>the<sp/>per-level<sp/>layout<sp/>algorithm.</highlight></codeline>
+<codeline lineno="122"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Placer<sp/>placer<sp/>(:obj:`Placer`):<sp/>The<sp/><sp/>method<sp/><sp/>by<sp/><sp/>which<sp/><sp/>the<sp/><sp/>initial<sp/><sp/>positons<sp/><sp/>of<sp/><sp/>the<sp/><sp/>vertices<sp/><sp/>at<sp/><sp/>eachlevel<sp/>are<sp/>defined.</highlight></codeline>
+<codeline lineno="123"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Merger<sp/>merger<sp/>(:obj:`Merger`):<sp/>The<sp/>vertex<sp/>merging<sp/>strategy<sp/>applied<sp/>during<sp/>the<sp/>coarsening<sp/>phaseof<sp/>the<sp/>multilevel<sp/>algorithm.</highlight></codeline>
+<codeline lineno="124"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double<sp/>merger_factor<sp/>(:obj:`float`):<sp/>The<sp/>ratio<sp/>of<sp/>the<sp/>sizes<sp/>between<sp/>two<sp/>levels<sp/>up<sp/>to<sp/>which<sp/>the<sp/>mergingis<sp/>run.<sp/><sp/>Does<sp/>not<sp/>apply<sp/>to<sp/>all<sp/>merging<sp/>strategies.</highlight></codeline>
+<codeline lineno="125"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>merger_adjustment<sp/>(:obj:`int`):<sp/>The<sp/><sp/>edge<sp/><sp/>length<sp/><sp/>adjustment<sp/><sp/>of<sp/><sp/>the<sp/><sp/>merging<sp/><sp/>algorithm.<sp/><sp/><sp/>Does<sp/><sp/>notapply<sp/>to<sp/>all<sp/>merging<sp/>strategies.</highlight></codeline>
+<codeline lineno="126"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>node_size<sp/>(:obj:`float`):<sp/>The<sp/>size<sp/>of<sp/>the<sp/>nodes,<sp/>which<sp/>affects<sp/>the<sp/>magnitude<sp/>of<sp/>their<sp/>repellingforce.<sp/>Decreasing<sp/><sp/>this<sp/><sp/>value<sp/><sp/>generally<sp/><sp/>resolves<sp/><sp/>overlaps<sp/><sp/>in<sp/><sp/>a<sp/><sp/>verycrowded<sp/>tree.</highlight></codeline>
+<codeline lineno="127"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="128"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(py::init(),<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="129"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Constructor<sp/>for<sp/>the<sp/>class<sp/>:obj:`LayoutConfiguration`.</highlight></codeline>
+<codeline lineno="130"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="131"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" kindref="member">LayoutConfiguration::k</ref>)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" kindref="member">LayoutConfiguration::kc</ref>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_iterations&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84" kindref="member">LayoutConfiguration::fme_iterations</ref>)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_randomize&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b" kindref="member">LayoutConfiguration::fme_randomize</ref>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_threads&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92" kindref="member">LayoutConfiguration::fme_threads</ref>)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;fme_precision&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7" kindref="member">LayoutConfiguration::fme_precision</ref>)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_repeats&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7" kindref="member">LayoutConfiguration::sl_repeats</ref>)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_extra_scaling_steps&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440" kindref="member">LayoutConfiguration::sl_extra_scaling_steps</ref>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_min&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a" kindref="member">LayoutConfiguration::sl_scaling_min</ref>)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_max&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3" kindref="member">LayoutConfiguration::sl_scaling_max</ref>)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;sl_scaling_type&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec" kindref="member">LayoutConfiguration::sl_scaling_type</ref>)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;mmm_repeats&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0" kindref="member">LayoutConfiguration::mmm_repeats</ref>)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;placer&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d" kindref="member">LayoutConfiguration::placer</ref>)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f" kindref="member">LayoutConfiguration::merger</ref>)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger_factor&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46" kindref="member">LayoutConfiguration::merger_factor</ref>)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;merger_adjustment&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6" kindref="member">LayoutConfiguration::merger_adjustment</ref>)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readwrite(</highlight><highlight class="stringliteral">&quot;node_size&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924" kindref="member">LayoutConfiguration::node_size</ref>)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;__repr__&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11" kindref="member">LayoutConfiguration::ToString</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>py::class_&lt;GraphProperties&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;GraphProperties&quot;</highlight><highlight class="normal">,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="152"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Contains<sp/>properties<sp/>of<sp/>the<sp/>minimum<sp/>spanning<sp/>tree<sp/>(or<sp/>forest)<sp/>generated<sp/>by<sp/>:obj:`layout_from_lsh_forest()`<sp/>and<sp/>:obj:`layout_from_edge_list()`.</highlight></codeline>
+<codeline lineno="153"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="154"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Attributes:</highlight></codeline>
+<codeline lineno="155"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mst_weight<sp/>(:obj:`float`):<sp/>The<sp/>total<sp/>weight<sp/>of<sp/>the<sp/>minimum<sp/>spanning<sp/>tree.</highlight></codeline>
+<codeline lineno="156"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n_connected_components<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>connected<sp/>components<sp/>in<sp/>the<sp/>minimum<sp/>spanning<sp/>forest.</highlight></codeline>
+<codeline lineno="157"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n_isolated_vertices<sp/>(:obj:`int`)<sp/>The<sp/>number<sp/>of<sp/>isolated<sp/>vertices<sp/>in<sp/>the<sp/>minimum<sp/>spanning<sp/>forest.</highlight></codeline>
+<codeline lineno="158"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>degrees<sp/>(:obj:`VectorUint`):<sp/>The<sp/>degrees<sp/>of<sp/>all<sp/>vertices<sp/>in<sp/>the<sp/>minimum<sp/>spanning<sp/>tree<sp/>(or<sp/>forest).</highlight></codeline>
+<codeline lineno="159"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adjacency_list(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`):<sp/>The<sp/>adjaceny<sp/>lists<sp/>for<sp/>all<sp/>vertices<sp/>in<sp/>the<sp/>minimum<sp/>spanning<sp/>tree<sp/>(or<sp/>forest).</highlight></codeline>
+<codeline lineno="160"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="161"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(py::init(),<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="162"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Constructor<sp/>for<sp/>the<sp/>class<sp/>:obj:`GraphProperties`.</highlight></codeline>
+<codeline lineno="163"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="164"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def_readonly(</highlight><highlight class="stringliteral">&quot;mst_weight&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1GraphProperties_1a51fa52c1cc9c8d382d507349e99447be" kindref="member">GraphProperties::mst_weight</ref>)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readonly(</highlight><highlight class="stringliteral">&quot;n_connected_components&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="structtmap_1_1GraphProperties_1a3467571c1e645268e55416504809f7c5" kindref="member">GraphProperties::n_connected_components</ref>)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readonly(</highlight><highlight class="stringliteral">&quot;n_isolated_vertices&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1GraphProperties_1a954e8fd087b44b3c568ea07ae2f1efea" kindref="member">GraphProperties::n_isolated_vertices</ref>)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readonly(</highlight><highlight class="stringliteral">&quot;degrees&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1GraphProperties_1af4c85653b3bf56c6dbf19d7a38af40bc" kindref="member">GraphProperties::degrees</ref>)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>.def_readonly(</highlight><highlight class="stringliteral">&quot;adjacency_list&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="structtmap_1_1GraphProperties_1a04c11168f810fdaf8b7bfecf96413ba7" kindref="member">GraphProperties::adjacency_list</ref>);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;layout_from_lsh_forest&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;LayoutFromLSHForest,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;lsh_forest&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;config&quot;</highlight><highlight class="normal">)<sp/>=<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;create_mst&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;clear_lsh_forest&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="178"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>minimum<sp/>spanning<sp/>tree<sp/>or<sp/>k-nearest<sp/>neighbor<sp/>graph<sp/>coordinates<sp/>and<sp/>topology<sp/>from<sp/>an<sp/>:obj:`LSHForest`<sp/>instance.</highlight></codeline>
+<codeline lineno="179"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="181"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lsh_forest<sp/>(:obj:`LSHForest`):<sp/>An<sp/>:obj:`LSHForest`<sp/>instance</highlight></codeline>
+<codeline lineno="182"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="184"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config<sp/>(:obj:`LayoutConfiguration`,<sp/>optional):<sp/>An<sp/>:obj:`LayoutConfiguration`<sp/>instance</highlight></codeline>
+<codeline lineno="185"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_mst<sp/>(:obj:`bool`):<sp/>Whether<sp/>to<sp/>create<sp/>a<sp/>minimum<sp/>spanning<sp/>tree<sp/>or<sp/>to<sp/>return<sp/>coordinates<sp/>and<sp/>topology<sp/>for<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph</highlight></codeline>
+<codeline lineno="186"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clear_lsh_forest<sp/>(:obj:`bool`):<sp/>Whether<sp/>to<sp/>run<sp/>:obj:`clear()`<sp/>on<sp/>the<sp/>:obj:`LSHForest`<sp/>instance<sp/>after<sp/>k-nearest<sp/>negihbor<sp/>graph<sp/>and<sp/>MST<sp/>creation<sp/>and<sp/>before<sp/>layout</highlight></codeline>
+<codeline lineno="187"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="188"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="189"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Tuple[VectorFloat,<sp/>VectorFloat,<sp/>VectorUint,<sp/>VectorUint,<sp/>GraphProperties]`<sp/>The<sp/>x<sp/>and<sp/>y<sp/>coordinates<sp/>of<sp/>the<sp/>vertices,<sp/>the<sp/>ids<sp/>of<sp/>the<sp/>vertices<sp/>spanning<sp/>the<sp/>edges,<sp/>and<sp/>information<sp/>on<sp/>the<sp/>graph</highlight></codeline>
+<codeline lineno="190"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;);</highlight></codeline>
+<codeline lineno="191"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="192"><highlight class="stringliteral"><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;mst_from_lsh_forest&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;MSTFromLSHForest,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;lsh_forest&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="198"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>minimum<sp/>spanning<sp/>tree<sp/>topology<sp/>from<sp/>an<sp/>:obj:`LSHForest`<sp/>instance.</highlight></codeline>
+<codeline lineno="199"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="201"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lsh_forest<sp/>(:obj:`LSHForest`):<sp/>An<sp/>:obj:`LSHForest`<sp/>instance</highlight></codeline>
+<codeline lineno="202"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>used<sp/>to<sp/>create<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph</highlight></codeline>
+<codeline lineno="203"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="205"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>scalar<sp/>by<sp/>which<sp/>k<sp/>is<sp/>multiplied<sp/>before<sp/>querying<sp/>the<sp/>LSH<sp/>forest.<sp/>The<sp/>results<sp/>are<sp/>then<sp/>ordered<sp/>decreasing<sp/>based<sp/>on<sp/>linear-scan<sp/>distances<sp/>and<sp/>the<sp/>top<sp/>k<sp/>results<sp/>returned</highlight></codeline>
+<codeline lineno="206"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="207"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="208"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Tuple[VectorUint,<sp/>VectorUint]`:<sp/>the<sp/>topology<sp/>of<sp/>the<sp/>minimum<sp/>spanning<sp/>tree<sp/>of<sp/>the<sp/>data<sp/>indexed<sp/>in<sp/>the<sp/>LSH<sp/>forest</highlight></codeline>
+<codeline lineno="209"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;);</highlight></codeline>
+<codeline lineno="210"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="211"><highlight class="stringliteral"><sp/><sp/>m.def(</highlight><highlight class="stringliteral">&quot;layout_from_edge_list&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;LayoutFromEdgeList,</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vertex_count&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;edges&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;config&quot;</highlight><highlight class="normal">)<sp/>=<sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref>(),</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;create_mst&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="218"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>minimum<sp/>spanning<sp/>tree<sp/>or<sp/>k-nearest<sp/>neighbor<sp/>graph<sp/>coordinates<sp/>and<sp/>topology<sp/>from<sp/>an<sp/>edge<sp/>list.</highlight></codeline>
+<codeline lineno="219"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="220"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="221"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertex_count<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>vertices<sp/>in<sp/>the<sp/>edge<sp/>list</highlight></codeline>
+<codeline lineno="222"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>edges<sp/>(:obj:`List`<sp/>of<sp/>:obj:`Tuple[int,<sp/>int,<sp/>float]`):<sp/>An<sp/>edge<sp/>list<sp/>defining<sp/>a<sp/>graph</highlight></codeline>
+<codeline lineno="223"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="225"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config<sp/>(:obj:`LayoutConfiguration`,<sp/>optional):<sp/>An<sp/>:obj:`LayoutConfiguration`<sp/>instance</highlight></codeline>
+<codeline lineno="226"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_mst<sp/>(:obj:`bool`):<sp/>Whether<sp/>to<sp/>create<sp/>a<sp/>minimum<sp/>spanning<sp/>tree<sp/>or<sp/>to<sp/>return<sp/>coordinates<sp/>and<sp/>topology<sp/>for<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph</highlight></codeline>
+<codeline lineno="227"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="228"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="229"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`Tuple[VectorFloat,<sp/>VectorFloat,<sp/>VectorUint,<sp/>VectorUint,<sp/>GraphProperties]`:<sp/>The<sp/>x<sp/>and<sp/>y<sp/>coordinates<sp/>of<sp/>the<sp/>vertices,<sp/>the<sp/>ids<sp/>of<sp/>the<sp/>vertices<sp/>spanning<sp/>the<sp/>edges,<sp/>and<sp/>information<sp/>on<sp/>the<sp/>graph</highlight></codeline>
+<codeline lineno="230"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;);</highlight></codeline>
+<codeline lineno="231"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="232"><highlight class="stringliteral"><sp/><sp/>py::class_&lt;LSHForest&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;LSHForest&quot;</highlight><highlight class="normal">,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="233"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>LSH<sp/>forest<sp/>data<sp/>structure<sp/>which<sp/>incorporates<sp/>optional<sp/>linear<sp/>scan<sp/>to<sp/>increase<sp/>the<sp/>recovery<sp/>performance.<sp/>Most<sp/>query<sp/>methods<sp/>are<sp/>available<sp/>in<sp/>parallelized<sp/>versions<sp/>named<sp/>with<sp/>a<sp/>:obj:`batch_`<sp/>prefix.</highlight></codeline>
+<codeline lineno="234"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="235"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(py::init&lt;unsigned<sp/>int,<sp/>unsigned<sp/>int,<sp/>bool,<sp/>bool,<sp/>bool&gt;(),</highlight></codeline>
+<codeline lineno="236"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;l&quot;</highlight><highlight class="normal">)<sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;store&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;file_backed&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weighted&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="242"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Constructor<sp/>for<sp/>the<sp/>class<sp/>:obj:`LSHForest`.</highlight></codeline>
+<codeline lineno="243"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="244"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="245"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d<sp/>(:obj:`int`):<sp/>The<sp/>dimensionality<sp/>of<sp/>the<sp/>MinHashe<sp/>vectors<sp/>to<sp/>be<sp/>added</highlight></codeline>
+<codeline lineno="246"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>prefix<sp/>trees<sp/>used<sp/>when<sp/>indexing<sp/>data</highlight></codeline>
+<codeline lineno="247"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>store<sp/>(:obj:`bool`)<sp/>Whether<sp/>to<sp/>store<sp/>the<sp/>added<sp/>MinHash<sp/>vectors.<sp/>This<sp/>is<sp/>required<sp/>when<sp/>using<sp/>linear<sp/>scan<sp/>in<sp/>queries</highlight></codeline>
+<codeline lineno="248"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file_backed<sp/>(:obj:`bool`)<sp/>Whether<sp/>to<sp/>store<sp/>the<sp/>data<sp/>on<sp/>disk<sp/>rather<sp/>than<sp/>in<sp/>main<sp/>memory<sp/>(experimental)</highlight></codeline>
+<codeline lineno="249"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="250"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;add&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a480d0de16bc1e4b1365bf97b9b60223a" kindref="member">LSHForest::Add</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="251"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Add<sp/>a<sp/>MinHash<sp/>vector<sp/>to<sp/>the<sp/>LSH<sp/>forest.</highlight></codeline>
+<codeline lineno="252"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="253"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="254"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs<sp/>(:obj:`VectorUint`):<sp/>A<sp/>MinHash<sp/>vector<sp/>that<sp/>is<sp/>to<sp/>be<sp/>added<sp/>to<sp/>the<sp/>LSH<sp/>forest</highlight></codeline>
+<codeline lineno="255"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="256"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_add&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1ab3f73f59918a37b63662679461828cbb" kindref="member">LSHForest::BatchAdd</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="257"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Add<sp/>a<sp/>list<sp/>MinHash<sp/>vectors<sp/>to<sp/>the<sp/>LSH<sp/>forest<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="258"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="259"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="260"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`):<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors<sp/>that<sp/>is<sp/>to<sp/>be<sp/>added<sp/>to<sp/>the<sp/>LSH<sp/>forest</highlight></codeline>
+<codeline lineno="261"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="262"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;index&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1aba68c9cab8cc3c32e684e08b4f9d0a33" kindref="member">LSHForest::Index</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="263"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Index<sp/>the<sp/>LSH<sp/>forest.<sp/>This<sp/>has<sp/>to<sp/>be<sp/>run<sp/>after<sp/>each<sp/>time<sp/>new<sp/>MinHashes<sp/>were<sp/>added.</highlight></codeline>
+<codeline lineno="264"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="265"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;is_clean&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a7785c1a7f17eddd5e943db4b5d6d7cf2" kindref="member">LSHForest::IsClean</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="266"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>a<sp/>boolean<sp/>indicating<sp/>whether<sp/>or<sp/>not<sp/>the<sp/>LSH<sp/>forest<sp/>has<sp/>been<sp/>indexed<sp/>after<sp/>the<sp/>last<sp/>MinHash<sp/>vector<sp/>was<sp/>added.</highlight></codeline>
+<codeline lineno="267"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="268"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="269"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`bool`:<sp/>:obj:`True`<sp/>if<sp/>:obj:`index()`<sp/>has<sp/>been<sp/>run<sp/>since<sp/>MinHash<sp/>vectors<sp/>have<sp/>last<sp/>been<sp/>added<sp/>using<sp/>:obj:`add()`<sp/>or<sp/>:obj:`batch_add()`.<sp/>:obj:`False`<sp/>otherwise</highlight></codeline>
+<codeline lineno="270"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="271"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1aabeaf82b4aac9a1965c4a48b65b9895f" kindref="member">LSHForest::QueryLinearScan</ref>,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="277"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>k-nearest<sp/>neighbors<sp/>with<sp/>a<sp/>LSH<sp/>forest<sp/>/<sp/>linear<sp/>scan<sp/>combination.<sp/>:obj:`k`*:obj:`kc`<sp/>nearest<sp/>neighbors<sp/>are<sp/>searched<sp/>for<sp/>using<sp/>LSH<sp/>forest;<sp/>from<sp/>these,<sp/>the<sp/>:obj:`k`<sp/>nearest<sp/>neighbors<sp/>are<sp/>retrieved<sp/>using<sp/>linear<sp/>scan.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="278"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="279"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="280"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="281"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="282"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="283"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="284"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="285"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="286"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="287"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`Tuple[float,<sp/>int]`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="288"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="289"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_exclude&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a168ac3398d9f43b280dba3481c145179" kindref="member">LSHForest::QueryLinearScanExclude</ref>,</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;exclude&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="296"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>k-nearest<sp/>neighbors<sp/>with<sp/>a<sp/>LSH<sp/>forest<sp/>/<sp/>linear<sp/>scan<sp/>combination.<sp/>:obj:`k`*:obj:`kc`<sp/>nearest<sp/>neighbors<sp/>are<sp/>searched<sp/>for<sp/>using<sp/>LSH<sp/>forest;<sp/>from<sp/>these,<sp/>the<sp/>:obj:`k`<sp/>nearest<sp/>neighbors<sp/>are<sp/>retrieved<sp/>using<sp/>linear<sp/>scan.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="297"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="298"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="299"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="300"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="301"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="302"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="303"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exclude<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`)<sp/>A<sp/>list<sp/>of<sp/>ids<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>to<sp/>be<sp/>excluded<sp/>from<sp/>the<sp/>search</highlight></codeline>
+<codeline lineno="304"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="305"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="307"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`Tuple[float,<sp/>int]`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="308"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="309"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_by_id&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1aacdadf3d1b559f690692e6e25bfb816e" kindref="member">LSHForest::QueryLinearScanById</ref>,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="315"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>k-nearest<sp/>neighbors<sp/>with<sp/>a<sp/>LSH<sp/>forest<sp/>/<sp/>linear<sp/>scan<sp/>combination.<sp/>:obj:`k`*:obj:`kc`<sp/>nearest<sp/>neighbors<sp/>are<sp/>searched<sp/>for<sp/>using<sp/>LSH<sp/>forest;<sp/>from<sp/>these,<sp/>the<sp/>:obj:`k`<sp/>nearest<sp/>neighbors<sp/>are<sp/>retrieved<sp/>using<sp/>linear<sp/>scan.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="316"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="317"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="318"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="319"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="320"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="321"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="322"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="323"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="324"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="325"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`Tuple[float,<sp/>int]`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="326"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="327"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_linear_scan_exclude_by_id&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1acf55212ce9875726bb6d00b3a870c2ef" kindref="member">LSHForest::QueryLinearScanExcludeById</ref>,</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;exclude&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="334"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>k-nearest<sp/>neighbors<sp/>with<sp/>a<sp/>LSH<sp/>forest<sp/>/<sp/>linear<sp/>scan<sp/>combination.<sp/>:obj:`k`*:obj:`kc`<sp/>nearest<sp/>neighbors<sp/>are<sp/>searched<sp/>for<sp/>using<sp/>LSH<sp/>forest;<sp/>from<sp/>these,<sp/>the<sp/>:obj:`k`<sp/>nearest<sp/>neighbors<sp/>are<sp/>retrieved<sp/>using<sp/>linear<sp/>scan.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="335"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="336"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="337"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="338"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="339"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="340"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="341"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exclude<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`)<sp/>A<sp/>list<sp/>of<sp/>ids<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>to<sp/>be<sp/>excluded<sp/>from<sp/>the<sp/>search</highlight></codeline>
+<codeline lineno="342"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="343"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="344"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="345"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`Tuple[float,<sp/>int]`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="346"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="347"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;linear_scan&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a452e1020000d47c1464165664c70af8a" kindref="member">LSHForest::LinearScan</ref>,</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;indices&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="353"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>a<sp/>subset<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>using<sp/>linear<sp/>scan.</highlight></codeline>
+<codeline lineno="354"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="355"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="356"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="357"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices<sp/>(:obj:`VectorUint`)<sp/>The<sp/>ids<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>that<sp/>define<sp/>the<sp/>subset<sp/>to<sp/>be<sp/>queried</highlight></codeline>
+<codeline lineno="358"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="359"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>arguments:</highlight></codeline>
+<codeline lineno="360"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="361"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="362"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="363"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`Tuple[float,<sp/>int]`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="364"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="365"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a0da6325b50a92db6ff6c49bd62a5e95b" kindref="member">LSHForest::Query</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="366"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>the<sp/>LSH<sp/>forest<sp/>for<sp/>k-nearest<sp/>neighbors.</highlight></codeline>
+<codeline lineno="367"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="368"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="369"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="370"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="371"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="372"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="373"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="374"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="375"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_exclude&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a7aba9b1df0273b71ed2d9233d05ed0db" kindref="member">LSHForest::QueryExclude</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="376"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>the<sp/>LSH<sp/>forest<sp/>for<sp/>k-nearest<sp/>neighbors.</highlight></codeline>
+<codeline lineno="377"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="378"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="379"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="380"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exclude<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`)<sp/>A<sp/>list<sp/>of<sp/>ids<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>to<sp/>be<sp/>excluded<sp/>from<sp/>the<sp/>search</highlight></codeline>
+<codeline lineno="381"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="382"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="383"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="384"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="385"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="386"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1aa200b72cc60947e5e03fd72ea726a999" kindref="member">LSHForest::QueryById</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="387"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>the<sp/>LSH<sp/>forest<sp/>for<sp/>k-nearest<sp/>neighbors.</highlight></codeline>
+<codeline lineno="388"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="389"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="390"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="391"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="392"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="393"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="394"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="395"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="396"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;query_exclude_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a0bcdb607c4e08e0e620b4d1d1dd12f86" kindref="member">LSHForest::QueryExcludeById</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="397"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>the<sp/>LSH<sp/>forest<sp/>for<sp/>k-nearest<sp/>neighbors.</highlight></codeline>
+<codeline lineno="398"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="399"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="400"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="401"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exclude<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`)<sp/>A<sp/>list<sp/>of<sp/>ids<sp/>of<sp/>indexed<sp/>MinHash<sp/>vectors<sp/>to<sp/>be<sp/>excluded<sp/>from<sp/>the<sp/>search</highlight></codeline>
+<codeline lineno="402"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="403"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="404"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="405"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="406"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="407"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_query&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1adec697793677c79683490b776ae8642c" kindref="member">LSHForest::BatchQuery</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="408"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>the<sp/>LSH<sp/>forest<sp/>for<sp/>k-nearest<sp/>neighbors<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="409"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="410"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="411"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="412"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="413"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="414"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="415"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>The<sp/>results<sp/>of<sp/>the<sp/>queries</highlight></codeline>
+<codeline lineno="416"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="417"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_all_nearest_neighbors&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a5aad873dbf746403a5dd2962ca636f70" kindref="member">LSHForest::GetAllNearestNeighbors</ref>,</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="422"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Get<sp/>the<sp/>k-nearest<sp/>neighbors<sp/>of<sp/>all<sp/>indexed<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="423"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="424"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="425"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved</highlight></codeline>
+<codeline lineno="426"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="427"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="428"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="429"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="430"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="431"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`<sp/>The<sp/>ids<sp/>of<sp/>all<sp/>k-nearest<sp/>neighbors</highlight></codeline>
+<codeline lineno="432"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="433"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_knn_graph&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a3b7e2142901c7d42ff6d0d31de078f96" kindref="member">LSHForest::GetKNNGraph</ref>,</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;from&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;to&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;weight&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;k&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;kc&quot;</highlight><highlight class="normal">)<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="441"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Construct<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph<sp/>of<sp/>the<sp/>indexed<sp/>MinHash<sp/>vectors.<sp/>It<sp/>will<sp/>be<sp/>written<sp/>to<sp/>out<sp/>parameters<sp/>:obj:`from`,<sp/>:obj:`to`,<sp/>and<sp/>:obj:`weight`<sp/>as<sp/>an<sp/>edge<sp/>list.</highlight></codeline>
+<codeline lineno="442"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="443"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="444"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>(:obj:`VectorUint`):<sp/>A<sp/>vector<sp/>to<sp/>which<sp/>the<sp/>ids<sp/>for<sp/>the<sp/>from<sp/>vertices<sp/>are<sp/>written</highlight></codeline>
+<codeline lineno="445"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>(:obj:`VectorUint`):<sp/>A<sp/>vector<sp/>to<sp/>which<sp/>the<sp/>ids<sp/>for<sp/>the<sp/>to<sp/>vertices<sp/>are<sp/>written</highlight></codeline>
+<codeline lineno="446"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>weight<sp/>(:obj:`VectorFloat`):<sp/>A<sp/>vector<sp/>to<sp/>which<sp/>the<sp/>edge<sp/>weights<sp/>are<sp/>written</highlight></codeline>
+<codeline lineno="447"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>nearest<sp/>neighbors<sp/>to<sp/>be<sp/>retrieved<sp/>during<sp/>the<sp/>construction<sp/>of<sp/>the<sp/>k-nearest<sp/>neighbor<sp/>graph</highlight></codeline>
+<codeline lineno="448"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="449"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="450"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kc<sp/>(:obj:`int`):<sp/>The<sp/>factor<sp/>by<sp/>which<sp/>:obj:`k`<sp/>is<sp/>multiplied<sp/>for<sp/>LSH<sp/>forest<sp/>retreival</highlight></codeline>
+<codeline lineno="451"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="452"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1ab1c5e002deea04a625ab141f280bab92" kindref="member">LSHForest::GetDistance</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="453"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="454"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="455"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="456"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_a<sp/>(:obj:`VectorUint`):<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="457"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_b<sp/>(:obj:`VectorUint`):<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="458"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="459"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="460"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="461"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="462"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1aa6c035b27040909b3d7a8782ad1c63b8" kindref="member">LSHForest::GetWeightedDistance</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="463"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>weighted<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="464"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="465"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="466"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_a<sp/>(:obj:`VectorUint`):<sp/>A<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="467"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_b<sp/>(:obj:`VectorUint`):<sp/>A<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="468"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="469"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="470"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="471"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="472"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_all_distances&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a438a46f67fb257ae85c3dd16e8b194df" kindref="member">LSHForest::GetAllDistances</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="473"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>Jaccard<sp/>distances<sp/>of<sp/>a<sp/>MinHash<sp/>vector<sp/>to<sp/>all<sp/>indexed<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="474"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="475"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="476"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>The<sp/>query<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="477"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="478"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="479"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`float`:<sp/>The<sp/>Jaccard<sp/>distances</highlight></codeline>
+<codeline lineno="480"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="481"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance_by_id&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a8fc81622125b40114951a61cbe90863f" kindref="member">LSHForest::GetDistanceById</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="482"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>indexed<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="483"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="484"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="485"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="486"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="487"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="488"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="489"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="490"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="491"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance_by_id&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1LSHForest_1ab00052289bb6bea152e6024049eebcc5" kindref="member">LSHForest::GetWeightedDistanceById</ref>,</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="494"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>indexed<sp/>weighted<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="495"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="496"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="497"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="498"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="499"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="500"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="501"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>weighted<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="502"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="503"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;store&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a1731bf94cd09e7ebc4a10dd42145dc51" kindref="member">LSHForest::Store</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="504"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serializes<sp/>the<sp/>current<sp/>state<sp/>of<sp/>this<sp/>instance<sp/>of<sp/>:obj:`LSHForest`<sp/>to<sp/>the<sp/>disk<sp/>in<sp/>binary<sp/>format.<sp/>The<sp/>index<sp/>is<sp/>not<sp/>serialized<sp/>and<sp/>has<sp/>to<sp/>be<sp/>rebuilt<sp/>after<sp/>deserialization.</highlight></codeline>
+<codeline lineno="505"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="506"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="507"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>(:obj:`str`):<sp/>The<sp/>path<sp/>to<sp/>which<sp/>to<sp/>searialize<sp/>the<sp/>file</highlight></codeline>
+<codeline lineno="508"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="509"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;restore&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a869273bd3d4c72c4c296dc42519558c8" kindref="member">LSHForest::Restore</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="510"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Deserializes<sp/>a<sp/>previously<sp/>serialized<sp/>(using<sp/>:obj:`store()`)<sp/>state<sp/>into<sp/>this<sp/>instance<sp/>of<sp/>:obj:`LSHForest`<sp/>and<sp/>recreates<sp/>the<sp/>index.</highlight></codeline>
+<codeline lineno="511"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="512"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="513"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>(:obj:`str`):<sp/>The<sp/>path<sp/>to<sp/>the<sp/>file<sp/>which<sp/>is<sp/>deserialized</highlight></codeline>
+<codeline lineno="514"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="515"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a8ba5c1f500e915c6717c64ac24744874" kindref="member">LSHForest::size</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="516"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>the<sp/>number<sp/>of<sp/>MinHash<sp/>vectors<sp/>in<sp/>this<sp/>LSHForest<sp/>instance.</highlight></codeline>
+<codeline lineno="517"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="518"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="519"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`int`:<sp/>The<sp/>number<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="520"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="521"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_hash&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a78106dd9e3a9a9ec012e5405445be78c" kindref="member">LSHForest::GetHash</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="522"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Retrieve<sp/>the<sp/>MinHash<sp/>vector<sp/>of<sp/>an<sp/>indexed<sp/>entry<sp/>given<sp/>its<sp/>index.<sp/>The<sp/>index<sp/>is<sp/>defined<sp/>by<sp/>order<sp/>of<sp/>insertion.</highlight></codeline>
+<codeline lineno="523"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="524"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="525"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>(:obj:`int`):<sp/>The<sp/>id<sp/>of<sp/>an<sp/>indexed<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="526"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="527"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="528"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`<sp/>The<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="529"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="530"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;clear&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1LSHForest_1a9ee2595fb0f85d917989234ab4aaee8d" kindref="member">LSHForest::Clear</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="531"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Clears<sp/>all<sp/>the<sp/>added<sp/>data<sp/>and<sp/>computed<sp/>indices<sp/>from<sp/>this<sp/>:obj:`LSHForest`<sp/>instance.</highlight></codeline>
+<codeline lineno="532"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;);</highlight></codeline>
+<codeline lineno="533"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="534"><highlight class="stringliteral"><sp/><sp/>py::class_&lt;Minhash&gt;(m,<sp/></highlight><highlight class="stringliteral">&quot;Minhash&quot;</highlight><highlight class="normal">,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="535"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>generator<sp/>for<sp/>MinHash<sp/>vectors<sp/>that<sp/>supports<sp/>binary,<sp/>indexed,<sp/>string<sp/>and<sp/>also<sp/>:obj:`int`<sp/>and<sp/>:obj:`float`<sp/>weighted<sp/>vectors<sp/>as<sp/>input.</highlight></codeline>
+<codeline lineno="536"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="537"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(py::init&lt;unsigned<sp/>int,<sp/>unsigned<sp/>int,<sp/>unsigned<sp/>int&gt;(),</highlight></codeline>
+<codeline lineno="538"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;seed&quot;</highlight><highlight class="normal">)<sp/>=<sp/>42,</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;sample_size&quot;</highlight><highlight class="normal">)<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="542"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Constructor<sp/>for<sp/>the<sp/>class<sp/>:obj:`Minhash`.</highlight></codeline>
+<codeline lineno="543"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="544"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="545"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d<sp/>(:obj:`int`):<sp/>The<sp/>number<sp/>of<sp/>permutations<sp/>used<sp/>for<sp/>hashing</highlight></codeline>
+<codeline lineno="546"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seed<sp/>(:obj:`int`):<sp/>The<sp/>seed<sp/>used<sp/>for<sp/>the<sp/>random<sp/>number<sp/>generator(s)</highlight></codeline>
+<codeline lineno="547"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sample_size<sp/>(:obj:`int`):<sp/>The<sp/>sample<sp/>size<sp/>when<sp/>generating<sp/>a<sp/>weighted<sp/>MinHash</highlight></codeline>
+<codeline lineno="548"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="549"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" kindref="member">Minhash::FromBinaryArray</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="550"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>a<sp/>MinHash<sp/>vector<sp/>from<sp/>a<sp/>binary<sp/>array.</highlight></codeline>
+<codeline lineno="551"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="552"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="553"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUchar`):<sp/>A<sp/>vector<sp/>containing<sp/>binary<sp/>values</highlight></codeline>
+<codeline lineno="554"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="555"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="556"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="557"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="558"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" kindref="member">Minhash::BatchFromBinaryArray</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="559"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>MinHash<sp/>vectors<sp/>from<sp/>binary<sp/>arrays<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="560"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="561"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="562"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUchar`):<sp/>A<sp/>list<sp/>of<sp/>vectors<sp/>containing<sp/>binary<sp/>values</highlight></codeline>
+<codeline lineno="563"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="564"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="565"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="566"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="567"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_sparse_binary_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" kindref="member">Minhash::FromSparseBinaryArray</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="568"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>a<sp/>MinHash<sp/>vector<sp/>from<sp/>a<sp/>sparse<sp/>binary<sp/>array.</highlight></codeline>
+<codeline lineno="569"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="570"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="571"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorUint`):<sp/>A<sp/>vector<sp/>containing<sp/>indices<sp/>of<sp/>ones<sp/>in<sp/>a<sp/>binary<sp/>array</highlight></codeline>
+<codeline lineno="572"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="573"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="574"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="575"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="576"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_sparse_binary_array&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" kindref="member">Minhash::BatchFromSparseBinaryArray</ref>,</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="579"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>MinHash<sp/>vectors<sp/>from<sp/>sparse<sp/>binary<sp/>arrays<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="580"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="581"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="582"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`):<sp/>A<sp/>list<sp/>of<sp/>vectors<sp/>containing<sp/>indices<sp/>of<sp/>ones<sp/>in<sp/>a<sp/>binary<sp/>array</highlight></codeline>
+<codeline lineno="583"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="584"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="585"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="586"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="587"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_string_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" kindref="member">Minhash::FromStringArray</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="588"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>a<sp/>MinHash<sp/>vector<sp/>from<sp/>a<sp/>string<sp/>array.</highlight></codeline>
+<codeline lineno="589"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="590"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="591"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`List`<sp/>of<sp/>:obj:`str`):<sp/>A<sp/>vector<sp/>containing<sp/>strings</highlight></codeline>
+<codeline lineno="592"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="593"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="594"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="595"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="596"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_string_array&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" kindref="member">Minhash::BatchFromStringArray</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="597"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>MinHash<sp/>vectors<sp/>from<sp/>string<sp/>arrays<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="598"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="599"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="600"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`List`<sp/>of<sp/>:obj:`List`<sp/>of<sp/>:obj:`str`):<sp/>A<sp/>list<sp/>of<sp/>list<sp/>of<sp/>strings</highlight></codeline>
+<codeline lineno="601"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="602"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="603"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="604"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="605"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;from_weight_array&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" kindref="member">Minhash::FromWeightArray</ref>,</highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vec&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;method&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="610"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>a<sp/>MinHash<sp/>vector<sp/>from<sp/>a<sp/>:obj:`float`<sp/>array.</highlight></codeline>
+<codeline lineno="611"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="612"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="613"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>(:obj:`VectorFloat`):<sp/>A<sp/>vector<sp/>containing<sp/>:obj:`float`<sp/>values</highlight></codeline>
+<codeline lineno="614"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="615"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="616"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>(:obj:`str`):<sp/>The<sp/>weighted<sp/>hashing<sp/>method<sp/>to<sp/>use<sp/>(ICWS<sp/>or<sp/>I2CWS)</highlight></codeline>
+<codeline lineno="617"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="618"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="619"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`VectorUint`:<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="620"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="621"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_weight_array&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" kindref="member">Minhash::BatchFromWeightArray</ref>,</highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vecs&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="624"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;method&quot;</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ICWS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="625"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="626"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>MinHash<sp/>vectors<sp/>from<sp/>:obj:`float`<sp/>arrays<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="627"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="628"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="629"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorFloat`):<sp/>A<sp/>list<sp/>of<sp/>vectors<sp/>containing<sp/>:obj:`float`<sp/>values</highlight></codeline>
+<codeline lineno="630"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="631"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Keyword<sp/>Arguments:</highlight></codeline>
+<codeline lineno="632"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>(:obj:`str`):<sp/>The<sp/>weighted<sp/>hashing<sp/>method<sp/>to<sp/>use<sp/>(ICWS<sp/>or<sp/>I2CWS)</highlight></codeline>
+<codeline lineno="633"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="634"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="635"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="636"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="637"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;batch_from_int_weight_array&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="638"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" kindref="member">Minhash::BatchFromIntWeightArray</ref>,</highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;vecs&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>py::arg(</highlight><highlight class="stringliteral">&quot;divide_by&quot;</highlight><highlight class="normal">)<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="642"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Create<sp/>MinHash<sp/>vectors<sp/>from<sp/>:obj:`int`<sp/>arrays,<sp/>where<sp/>entries<sp/>are<sp/>weights<sp/>rather<sp/>than<sp/>indices<sp/>of<sp/>ones<sp/>(parallelized).</highlight></codeline>
+<codeline lineno="643"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="644"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="645"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs<sp/>(:obj:`List`<sp/>of<sp/>:obj:`VectorUint`):<sp/>A<sp/>list<sp/>of<sp/>vectors<sp/>containing<sp/>:obj:`int`<sp/>values</highlight></codeline>
+<codeline lineno="646"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>divide_by<sp/>(:obj:`int`):<sp/>A<sp/>integer<sp/>by<sp/>which<sp/>each<sp/>value<sp/>of<sp/>each<sp/>vector<sp/>is<sp/>divided.<sp/>Information<sp/>is<sp/>lost,<sp/>but<sp/>the<sp/>running<sp/>time<sp/>will<sp/>be<sp/>lowered.<sp/>Faster<sp/>if<sp/>:obj:`divide_by`<sp/>is<sp/>a<sp/>power<sp/>of<sp/>two.</highlight></codeline>
+<codeline lineno="647"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="648"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="649"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`List`<sp/>of<sp/>:obj:`VectorUint`:<sp/>A<sp/>list<sp/>of<sp/>MinHash<sp/>vectors</highlight></codeline>
+<codeline lineno="650"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="651"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" kindref="member">Minhash::GetDistance</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="652"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="653"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="654"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="655"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_a<sp/>(:obj:`VectorUint`):<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="656"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_b<sp/>(:obj:`VectorUint`):<sp/>A<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="657"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="658"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="659"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="660"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;)</highlight></codeline>
+<codeline lineno="661"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>.def(</highlight><highlight class="stringliteral">&quot;get_weighted_distance&quot;</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kindref="member">Minhash::GetWeightedDistance</ref>,<sp/>R</highlight><highlight class="stringliteral">&quot;pbdoc(</highlight></codeline>
+<codeline lineno="662"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculate<sp/>the<sp/>weighted<sp/>Jaccard<sp/>distance<sp/>between<sp/>two<sp/>MinHash<sp/>vectors.</highlight></codeline>
+<codeline lineno="663"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="664"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="665"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_a<sp/>(:obj:`VectorUint`):<sp/>A<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="666"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec_b<sp/>(:obj:`VectorUint`):<sp/>A<sp/>weighted<sp/>MinHash<sp/>vector</highlight></codeline>
+<codeline lineno="667"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="668"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="669"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:obj:`float`<sp/>The<sp/>Jaccard<sp/>distance</highlight></codeline>
+<codeline lineno="670"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)pbdoc&quot;);</highlight></codeline>
+<codeline lineno="671"><highlight class="stringliteral">}</highlight></codeline>
+    </programlisting>
+    <location file="tmap/bindings.cc"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structtmap_1_1LayoutConfiguration" kind="struct" language="C++" prot="public">
+    <compoundname>tmap::LayoutConfiguration</compoundname>
+    <includes refid="layout_8hh" local="no">layout.hh</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::k</definition>
+        <argsstring></argsstring>
+        <name>k</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of nearest neighbors used to create the k-nearest neighbor graph. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="181" column="1" bodyfile="tmap/layout.hh" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::kc</definition>
+        <argsstring></argsstring>
+        <name>kc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="183" column="1" bodyfile="tmap/layout.hh" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::fme_iterations</definition>
+        <argsstring></argsstring>
+        <name>fme_iterations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum number of iterations of the fast multipole embedder. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="186" column="1" bodyfile="tmap/layout.hh" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tmap::LayoutConfiguration::fme_randomize</definition>
+        <argsstring></argsstring>
+        <name>fme_randomize</name>
+        <briefdescription>
+<para>Whether or not to randomize the layout at the start. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="188" column="1" bodyfile="tmap/layout.hh" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::fme_threads</definition>
+        <argsstring></argsstring>
+        <name>fme_threads</name>
+        <briefdescription>
+<para>The number of threads for the fast multipole embedder. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="189" column="1" bodyfile="tmap/layout.hh" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::fme_precision</definition>
+        <argsstring></argsstring>
+        <name>fme_precision</name>
+        <briefdescription>
+<para>The number of coefficients of the multipole expansion. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="190" column="1" bodyfile="tmap/layout.hh" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::sl_repeats</definition>
+        <argsstring></argsstring>
+        <name>sl_repeats</name>
+        <briefdescription>
+<para>The number of repeats of the scaling layout algorithm. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="191" column="1" bodyfile="tmap/layout.hh" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::sl_extra_scaling_steps</definition>
+        <argsstring></argsstring>
+        <name>sl_extra_scaling_steps</name>
+        <briefdescription>
+<para>Sets the number of repeats of the scaling. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="192" column="1" bodyfile="tmap/layout.hh" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double tmap::LayoutConfiguration::sl_scaling_min</definition>
+        <argsstring></argsstring>
+        <name>sl_scaling_min</name>
+        <briefdescription>
+<para>The minimum scaling factor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="193" column="1" bodyfile="tmap/layout.hh" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double tmap::LayoutConfiguration::sl_scaling_max</definition>
+        <argsstring></argsstring>
+        <name>sl_scaling_max</name>
+        <briefdescription>
+<para>The maximum scaling factor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="194" column="1" bodyfile="tmap/layout.hh" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec" prot="public" static="no" mutable="no">
+        <type><ref refid="layout_8hh_1a50ec215c9e54cf12b9dd0a0056160761" kindref="member">ScalingType</ref></type>
+        <definition>ScalingType tmap::LayoutConfiguration::sl_scaling_type</definition>
+        <argsstring></argsstring>
+        <name>sl_scaling_type</name>
+        <briefdescription>
+<para>Defines the (relative) scale of the graph. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="195" column="1" bodyfile="tmap/layout.hh" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::mmm_repeats</definition>
+        <argsstring></argsstring>
+        <name>mmm_repeats</name>
+        <briefdescription>
+<para>Number of repeats of the per-level layout algorithm. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="196" column="1" bodyfile="tmap/layout.hh" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d" prot="public" static="no" mutable="no">
+        <type><ref refid="layout_8hh_1afdc98947e81dc6f4c30f256e6f42f90b" kindref="member">Placer</ref></type>
+        <definition>Placer tmap::LayoutConfiguration::placer</definition>
+        <argsstring></argsstring>
+        <name>placer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The method by which the initial positons of the vertices at eachlevel are defined. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="197" column="1" bodyfile="tmap/layout.hh" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f" prot="public" static="no" mutable="no">
+        <type><ref refid="layout_8hh_1a8c7bb9956a1a724233182a166cfdc0ff" kindref="member">Merger</ref></type>
+        <definition>Merger tmap::LayoutConfiguration::merger</definition>
+        <argsstring></argsstring>
+        <name>merger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="199" column="1" bodyfile="tmap/layout.hh" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double tmap::LayoutConfiguration::merger_factor</definition>
+        <argsstring></argsstring>
+        <name>merger_factor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="201" column="1" bodyfile="tmap/layout.hh" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tmap::LayoutConfiguration::merger_adjustment</definition>
+        <argsstring></argsstring>
+        <name>merger_adjustment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The edge length adjustment of the merging algorithm. Does notapply to all merging strategies. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="204" column="1" bodyfile="tmap/layout.hh" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float tmap::LayoutConfiguration::node_size</definition>
+        <argsstring></argsstring>
+        <name>node_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="207" column="1" bodyfile="tmap/layout.hh" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tmap::LayoutConfiguration::LayoutConfiguration</definition>
+        <argsstring>()</argsstring>
+        <name>LayoutConfiguration</name>
+        <briefdescription>
+<para>Construct a new Layout Configuration object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="135" column="1" bodyfile="tmap/layout.hh" bodystart="135" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tmap::LayoutConfiguration::ToString</definition>
+        <argsstring>() const</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+<para>Returns a string describing the set options. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>std::string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="160" column="1" bodyfile="tmap/layout.hh" bodystart="160" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A struct containing all the configuration options available for and applied to a layout. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tmap/layout.hh" line="130" column="1" bodyfile="tmap/layout.hh" bodystart="129" bodyend="210"/>
+    <listofallmembers>
+      <member refid="structtmap_1_1LayoutConfiguration_1aa0b26a532aedb8f0fe4490c9c90b0e84" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>fme_iterations</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a9e4d43d8f65c21404cc9912c11a3eba7" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>fme_precision</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a821bf612fb3063344ca0c6b161424a7b" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>fme_randomize</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a7630a7d7513c3f51ea00802a3f67ba92" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>fme_threads</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a80ddc818732d708764fbd83ad7b7d153" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>k</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1ae63c0a1d5956cbdb837f3aff1978f867" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>kc</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a45335a69efe4408b49283554a3bb8875" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>LayoutConfiguration</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1aeee45308fd8dbda38fbc7b8c7ff9212f" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>merger</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a16109420c8ec0a4c3021345fd943daf6" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>merger_adjustment</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a72fe4f8f738d2d400f70db97c4273a46" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>merger_factor</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1aff2347eb71c98bbc72f16b4de32d4af0" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>mmm_repeats</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a9a97e2c0c9edb212190d3afcc3ce2924" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>node_size</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1ae81108ee33f42b2c084b540f902bbb7d" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>placer</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1aefd713cfba563ea8ee9a432c0359c440" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>sl_extra_scaling_steps</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1adf81cfbcba521fd87a73dd25eb9c21e7" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>sl_repeats</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1aa29669e99b7e1df2bcb95d6379da7cc3" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>sl_scaling_max</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1af2e01075c5fe2a36c6018b40a6919d7a" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>sl_scaling_min</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a618d286e035eca76e0e464513624beec" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>sl_scaling_type</name></member>
+      <member refid="structtmap_1_1LayoutConfiguration_1a498341508ea4806795f44e376af18e11" prot="public" virt="non-virtual"><scope>tmap::LayoutConfiguration</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

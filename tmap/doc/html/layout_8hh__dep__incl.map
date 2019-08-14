@@ -1,0 +1,6 @@
+<map id="tmap/layout.hh" name="tmap/layout.hh">
+<area shape="rect" id="node2" href="$bindings_8cc.html" title="Pybind11 bindings for tmap. " alt="" coords="5,155,127,181"/>
+<area shape="rect" id="node3" href="$lshforest_8hh.html" title="An LSH forest algorithm implementation. " alt="" coords="151,80,274,107"/>
+<area shape="rect" id="node4" href="$layout_8cc.html" title="Functions used for generating graph layouts from LSHForest instances and edge lists. " alt="" coords="299,155,407,181"/>
+<area shape="rect" id="node5" href="$lshforest_8cc.html" title="An LSH forest algorithm implementation. " alt="" coords="151,155,274,181"/>
+</map>

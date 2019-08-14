@@ -1,0 +1,594 @@
+\hypertarget{classtmap_1_1LSHForest}{}\section{tmap\+:\+:L\+S\+H\+Forest Class Reference}
+\label{classtmap_1_1LSHForest}\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+
+
+Provides locality sensitive hashing forest functionalities.  
+
+
+
+
+{\ttfamily \#include $<$lshforest.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtmap_1_1LSHForest_a90a9f6e40e63f90838c7ece0e0e3ec25}{L\+S\+H\+Forest} (unsigned int d=128, unsigned int l=8, bool store=true, bool file\+\_\+backed=false, bool weighted=false)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a3ab5789f702f9dac3f801c7b9d53afd4}\label{classtmap_1_1LSHForest_a3ab5789f702f9dac3f801c7b9d53afd4}} 
+\hyperlink{classtmap_1_1LSHForest_a3ab5789f702f9dac3f801c7b9d53afd4}{$\sim$\+L\+S\+H\+Forest} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} object. \end{DoxyCompactList}\item 
+void \hyperlink{classtmap_1_1LSHForest_a480d0de16bc1e4b1365bf97b9b60223a}{Add} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Add a Min\+Hash to this \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} instance. \end{DoxyCompactList}\item 
+void \hyperlink{classtmap_1_1LSHForest_ab3f73f59918a37b63662679461828cbb}{Batch\+Add} (std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs)
+\begin{DoxyCompactList}\small\item\em Add Minhashes to this \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} (parallelized). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtmap_1_1LSHForest_aba68c9cab8cc3c32e684e08b4f9d0a33}\label{classtmap_1_1LSHForest_aba68c9cab8cc3c32e684e08b4f9d0a33}} 
+void \hyperlink{classtmap_1_1LSHForest_aba68c9cab8cc3c32e684e08b4f9d0a33}{Index} ()
+\begin{DoxyCompactList}\small\item\em Create the index (trees). \end{DoxyCompactList}\item 
+bool \hyperlink{classtmap_1_1LSHForest_a7785c1a7f17eddd5e943db4b5d6d7cf2}{Is\+Clean} ()
+\begin{DoxyCompactList}\small\item\em Check whether the added Min\+Hashes have been indexed. \end{DoxyCompactList}\item 
+void \hyperlink{classtmap_1_1LSHForest_a1731bf94cd09e7ebc4a10dd42145dc51}{Store} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Write / serialize the current L\+SH forest to the disk. \end{DoxyCompactList}\item 
+void \hyperlink{classtmap_1_1LSHForest_a869273bd3d4c72c4c296dc42519558c8}{Restore} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Read / deserialize a L\+SH forest instance form the disk. The forest is indexed automatically. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a78106dd9e3a9a9ec012e5405445be78c}{Get\+Hash} (uint32\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Get the Min\+Hash of an entry at a given index. The index is defined by order of insertion. \end{DoxyCompactList}\item 
+void \hyperlink{classtmap_1_1LSHForest_a3b7e2142901c7d42ff6d0d31de078f96}{Get\+K\+N\+N\+Graph} (std\+::vector$<$ uint32\+\_\+t $>$ \&from, std\+::vector$<$ uint32\+\_\+t $>$ \&to, std\+::vector$<$ float $>$ \&weight, unsigned int k, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbor graph of the data stored in this L\+SH forest instance. It will be written to out parameters as an edge list. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_aabeaf82b4aac9a1965c4a48b65b9895f}{Query\+Linear\+Scan} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, unsigned int k, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of a query. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_a168ac3398d9f43b280dba3481c145179}{Query\+Linear\+Scan\+Exclude} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, unsigned int k, std\+::vector$<$ uint32\+\_\+t $>$ \&exclude, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of a query except those defined in the argument exclude. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_aacdadf3d1b559f690692e6e25bfb816e}{Query\+Linear\+Scan\+By\+Id} (uint32\+\_\+t id, unsigned int k, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of an entry. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_acf55212ce9875726bb6d00b3a870c2ef}{Query\+Linear\+Scan\+Exclude\+By\+Id} (uint32\+\_\+t id, unsigned int k, std\+::vector$<$ uint32\+\_\+t $>$ \&exclude, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of an entry except those defined in the argument exclude. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_a452e1020000d47c1464165664c70af8a}{Linear\+Scan} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&indices, unsigned int k=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of a query using linear scan. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a0da6325b50a92db6ff6c49bd62a5e95b}{Query} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, unsigned int k)
+\begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a7aba9b1df0273b71ed2d9233d05ed0db}{Query\+Exclude} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&exclude, unsigned int k)
+\begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors. Exclude a list of entries by ID. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_aa200b72cc60947e5e03fd72ea726a999}{Query\+By\+Id} (uint32\+\_\+t id, unsigned int k)
+\begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a0bcdb607c4e08e0e620b4d1d1dd12f86}{Query\+Exclude\+By\+Id} (uint32\+\_\+t id, std\+::vector$<$ uint32\+\_\+t $>$ \&exclude, unsigned int k)
+\begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors. Exclude a list of entries by ID. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1LSHForest_adec697793677c79683490b776ae8642c}{Batch\+Query} (const std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs, unsigned int k)
+\begin{DoxyCompactList}\small\item\em Query the L\+SH forest for k-\/nearest neighbors (parallelized). \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_a5aad873dbf746403a5dd2962ca636f70}{Get\+All\+Nearest\+Neighbors} (unsigned int k, unsigned int kc=10)
+\begin{DoxyCompactList}\small\item\em Get the k-\/nearest neighbors of all L\+SH forest entries. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1LSHForest_ac4ec080057307f69548e6ca756ce5609}{Get\+Data} (uint32\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Get the Min\+Hash of an entry at a given index. The index is defined by order of insertion. Alias for Get\+Hash. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \hyperlink{classtmap_1_1LSHForest_a438a46f67fb257ae85c3dd16e8b194df}{Get\+All\+Distances} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Get the distances of a Min\+Hash to all entries in the L\+SH forest. \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1LSHForest_ab1c5e002deea04a625ab141f280bab92}{Get\+Distance} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+a, const std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two Min\+Hashes. \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1LSHForest_aa6c035b27040909b3d7a8782ad1c63b8}{Get\+Weighted\+Distance} (const std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+a, const std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two weighted Min\+Hashes. \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1LSHForest_a8fc81622125b40114951a61cbe90863f}{Get\+Distance\+By\+Id} (uint32\+\_\+t a, uint32\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two Min\+Hashes. \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1LSHForest_ab00052289bb6bea152e6024049eebcc5}{Get\+Weighted\+Distance\+By\+Id} (uint32\+\_\+t a, uint32\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two weighted Min\+Hashes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a9ee2595fb0f85d917989234ab4aaee8d}\label{classtmap_1_1LSHForest_a9ee2595fb0f85d917989234ab4aaee8d}} 
+void \hyperlink{classtmap_1_1LSHForest_a9ee2595fb0f85d917989234ab4aaee8d}{Clear} ()
+\begin{DoxyCompactList}\small\item\em Remove all entries and the index from the L\+SH forest. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classtmap_1_1LSHForest_a8ba5c1f500e915c6717c64ac24744874}{size} ()
+\begin{DoxyCompactList}\small\item\em Get the number of entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides locality sensitive hashing forest functionalities. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a90a9f6e40e63f90838c7ece0e0e3ec25}\label{classtmap_1_1LSHForest_a90a9f6e40e63f90838c7ece0e0e3ec25}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!L\+S\+H\+Forest@{L\+S\+H\+Forest}}
+\index{L\+S\+H\+Forest@{L\+S\+H\+Forest}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{L\+S\+H\+Forest()}{LSHForest()}}
+{\footnotesize\ttfamily tmap\+::\+L\+S\+H\+Forest\+::\+L\+S\+H\+Forest (\begin{DoxyParamCaption}\item[{unsigned int}]{d = {\ttfamily 128},  }\item[{unsigned int}]{l = {\ttfamily 8},  }\item[{bool}]{store = {\ttfamily true},  }\item[{bool}]{file\+\_\+backed = {\ttfamily false},  }\item[{bool}]{weighted = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dimensionality of the Min\+Hashes to be added to this \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest}. \\
+\hline
+{\em l} & The number of prefix trees used. \\
+\hline
+{\em store} & Whether or not to store the data for later enhanced (using parameter kc) retrievel. \\
+\hline
+{\em file\+\_\+backed} & Whether to store the data on disk rather than in R\+AM (experimental). \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a480d0de16bc1e4b1365bf97b9b60223a}\label{classtmap_1_1LSHForest_a480d0de16bc1e4b1365bf97b9b60223a}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Add@{Add}}
+\index{Add@{Add}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void tmap\+::\+L\+S\+H\+Forest\+::\+Add (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Add a Min\+Hash to this \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A Min\+Hash vector. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_ab3f73f59918a37b63662679461828cbb}\label{classtmap_1_1LSHForest_ab3f73f59918a37b63662679461828cbb}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Batch\+Add@{Batch\+Add}}
+\index{Batch\+Add@{Batch\+Add}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Batch\+Add()}{BatchAdd()}}
+{\footnotesize\ttfamily void tmap\+::\+L\+S\+H\+Forest\+::\+Batch\+Add (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs }\end{DoxyParamCaption})}
+
+
+
+Add Minhashes to this \hyperlink{classtmap_1_1LSHForest}{L\+S\+H\+Forest} (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector containing Min\+Hash vectors. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_adec697793677c79683490b776ae8642c}\label{classtmap_1_1LSHForest_adec697793677c79683490b776ae8642c}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Batch\+Query@{Batch\+Query}}
+\index{Batch\+Query@{Batch\+Query}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Batch\+Query()}{BatchQuery()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Batch\+Query (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+
+
+
+Query the L\+SH forest for k-\/nearest neighbors (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of Min\+Hashes. \\
+\hline
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ A vector of the indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a438a46f67fb257ae85c3dd16e8b194df}\label{classtmap_1_1LSHForest_a438a46f67fb257ae85c3dd16e8b194df}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+All\+Distances@{Get\+All\+Distances}}
+\index{Get\+All\+Distances@{Get\+All\+Distances}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+All\+Distances()}{GetAllDistances()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Get\+All\+Distances (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Get the distances of a Min\+Hash to all entries in the L\+SH forest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$float$>$ The distances form the input Min\+Hash to all the entries in the L\+SH forest. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a5aad873dbf746403a5dd2962ca636f70}\label{classtmap_1_1LSHForest_a5aad873dbf746403a5dd2962ca636f70}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+All\+Nearest\+Neighbors@{Get\+All\+Nearest\+Neighbors}}
+\index{Get\+All\+Nearest\+Neighbors@{Get\+All\+Nearest\+Neighbors}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+All\+Nearest\+Neighbors()}{GetAllNearestNeighbors()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Get\+All\+Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{unsigned int}]{k,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of all L\+SH forest entries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+{\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The I\+Ds of the nearest neighbors of all L\+SH forest entries. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_ac4ec080057307f69548e6ca756ce5609}\label{classtmap_1_1LSHForest_ac4ec080057307f69548e6ca756ce5609}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Data@{Get\+Data}}
+\index{Get\+Data@{Get\+Data}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Data()}{GetData()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Data (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the Min\+Hash of an entry at a given index. The index is defined by order of insertion. Alias for Get\+Hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The index (order of insertion) of a entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The Min\+Hash associated with an index. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_ab1c5e002deea04a625ab141f280bab92}\label{classtmap_1_1LSHForest_ab1c5e002deea04a625ab141f280bab92}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Distance@{Get\+Distance}}
+\index{Get\+Distance@{Get\+Distance}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Distance()}{GetDistance()}}
+{\footnotesize\ttfamily float tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Distance (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+a,  }\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Get the distance between two Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+\_\+a} & A Min\+Hash. \\
+\hline
+{\em vec\+\_\+b} & A Min\+Hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a8fc81622125b40114951a61cbe90863f}\label{classtmap_1_1LSHForest_a8fc81622125b40114951a61cbe90863f}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Distance\+By\+Id@{Get\+Distance\+By\+Id}}
+\index{Get\+Distance\+By\+Id@{Get\+Distance\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Distance\+By\+Id()}{GetDistanceById()}}
+{\footnotesize\ttfamily float tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Distance\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{a,  }\item[{uint32\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Get the distance between two Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The id of an L\+SH forest entry. \\
+\hline
+{\em b} & The id of an L\+SH forest entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a78106dd9e3a9a9ec012e5405445be78c}\label{classtmap_1_1LSHForest_a78106dd9e3a9a9ec012e5405445be78c}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Hash@{Get\+Hash}}
+\index{Get\+Hash@{Get\+Hash}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Hash()}{GetHash()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Hash (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the Min\+Hash of an entry at a given index. The index is defined by order of insertion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The index (order of insertion) of a entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The Min\+Hash associated with an index. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a3b7e2142901c7d42ff6d0d31de078f96}\label{classtmap_1_1LSHForest_a3b7e2142901c7d42ff6d0d31de078f96}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+K\+N\+N\+Graph@{Get\+K\+N\+N\+Graph}}
+\index{Get\+K\+N\+N\+Graph@{Get\+K\+N\+N\+Graph}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+K\+N\+N\+Graph()}{GetKNNGraph()}}
+{\footnotesize\ttfamily void tmap\+::\+L\+S\+H\+Forest\+::\+Get\+K\+N\+N\+Graph (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{from,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{to,  }\item[{std\+::vector$<$ float $>$ \&}]{weight,  }\item[{unsigned int}]{k,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbor graph of the data stored in this L\+SH forest instance. It will be written to out parameters as an edge list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em from} & A vector to which the from vertices will be written. \\
+\hline
+\mbox{\tt out}  & {\em to} & A vector to which the to vertices will be written. \\
+\hline
+\mbox{\tt out}  & {\em weight} & A vector to which the float weights of the edges will be written. \\
+\hline
+ & {\em k} & The degree of the nearest neighbor graph. \\
+\hline
+ & {\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results are picked to create the k-\/nearest neighbor graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_aa6c035b27040909b3d7a8782ad1c63b8}\label{classtmap_1_1LSHForest_aa6c035b27040909b3d7a8782ad1c63b8}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Weighted\+Distance@{Get\+Weighted\+Distance}}
+\index{Get\+Weighted\+Distance@{Get\+Weighted\+Distance}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Weighted\+Distance()}{GetWeightedDistance()}}
+{\footnotesize\ttfamily float tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Weighted\+Distance (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+a,  }\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Get the distance between two weighted Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+\_\+a} & A weighted Min\+Hash. \\
+\hline
+{\em vec\+\_\+b} & A weighted Min\+Hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_ab00052289bb6bea152e6024049eebcc5}\label{classtmap_1_1LSHForest_ab00052289bb6bea152e6024049eebcc5}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Get\+Weighted\+Distance\+By\+Id@{Get\+Weighted\+Distance\+By\+Id}}
+\index{Get\+Weighted\+Distance\+By\+Id@{Get\+Weighted\+Distance\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Get\+Weighted\+Distance\+By\+Id()}{GetWeightedDistanceById()}}
+{\footnotesize\ttfamily float tmap\+::\+L\+S\+H\+Forest\+::\+Get\+Weighted\+Distance\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{a,  }\item[{uint32\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Get the distance between two weighted Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The id of an L\+SH forest entry. \\
+\hline
+{\em b} & The id of an L\+SH forest entry. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a7785c1a7f17eddd5e943db4b5d6d7cf2}\label{classtmap_1_1LSHForest_a7785c1a7f17eddd5e943db4b5d6d7cf2}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Is\+Clean@{Is\+Clean}}
+\index{Is\+Clean@{Is\+Clean}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Is\+Clean()}{IsClean()}}
+{\footnotesize\ttfamily bool tmap\+::\+L\+S\+H\+Forest\+::\+Is\+Clean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check whether the added Min\+Hashes have been indexed. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a452e1020000d47c1464165664c70af8a}\label{classtmap_1_1LSHForest_a452e1020000d47c1464165664c70af8a}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Linear\+Scan@{Linear\+Scan}}
+\index{Linear\+Scan@{Linear\+Scan}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Linear\+Scan()}{LinearScan()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Linear\+Scan (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{indices,  }\item[{unsigned int}]{k = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of a query using linear scan. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+{\em indices} & A list of indices to on which to run the linear scan. \\
+\hline
+{\em k} & The number of k-\/nearest neighbors to return. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$float, uint32\+\_\+t$>$$>$ The distances and indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a0da6325b50a92db6ff6c49bd62a5e95b}\label{classtmap_1_1LSHForest_a0da6325b50a92db6ff6c49bd62a5e95b}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query@{Query}}
+\index{Query@{Query}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query()}{Query()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+
+
+
+Query the L\+SH forest for k-\/nearest neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_aa200b72cc60947e5e03fd72ea726a999}\label{classtmap_1_1LSHForest_aa200b72cc60947e5e03fd72ea726a999}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+By\+Id@{Query\+By\+Id}}
+\index{Query\+By\+Id@{Query\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+By\+Id()}{QueryById()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+
+
+
+Query the L\+SH forest for k-\/nearest neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the query entry. \\
+\hline
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a7aba9b1df0273b71ed2d9233d05ed0db}\label{classtmap_1_1LSHForest_a7aba9b1df0273b71ed2d9233d05ed0db}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Exclude@{Query\+Exclude}}
+\index{Query\+Exclude@{Query\+Exclude}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Exclude()}{QueryExclude()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Exclude (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{exclude,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+
+
+
+Query the L\+SH forest for k-\/nearest neighbors. Exclude a list of entries by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+{\em exclude} & A list of indices to be excluded from the search. \\
+\hline
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a0bcdb607c4e08e0e620b4d1d1dd12f86}\label{classtmap_1_1LSHForest_a0bcdb607c4e08e0e620b4d1d1dd12f86}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Exclude\+By\+Id@{Query\+Exclude\+By\+Id}}
+\index{Query\+Exclude\+By\+Id@{Query\+Exclude\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Exclude\+By\+Id()}{QueryExcludeById()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Exclude\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{exclude,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
+
+
+
+Query the L\+SH forest for k-\/nearest neighbors. Exclude a list of entries by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the query entry. \\
+\hline
+{\em exclude} & A list of indices to be excluded from the search. \\
+\hline
+{\em k} & The number of nearest neighbors to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ The indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_aabeaf82b4aac9a1965c4a48b65b9895f}\label{classtmap_1_1LSHForest_aabeaf82b4aac9a1965c4a48b65b9895f}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Linear\+Scan@{Query\+Linear\+Scan}}
+\index{Query\+Linear\+Scan@{Query\+Linear\+Scan}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Linear\+Scan()}{QueryLinearScan()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Linear\+Scan (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{unsigned int}]{k,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of a query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+{\em k} & The number of k-\/nearest neighbors to return. \\
+\hline
+{\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$float, uint32\+\_\+t$>$$>$ The distances and indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_aacdadf3d1b559f690692e6e25bfb816e}\label{classtmap_1_1LSHForest_aacdadf3d1b559f690692e6e25bfb816e}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Linear\+Scan\+By\+Id@{Query\+Linear\+Scan\+By\+Id}}
+\index{Query\+Linear\+Scan\+By\+Id@{Query\+Linear\+Scan\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Linear\+Scan\+By\+Id()}{QueryLinearScanById()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Linear\+Scan\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id,  }\item[{unsigned int}]{k,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of an entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the query entry. \\
+\hline
+{\em k} & The number of k-\/nearest neighbors to return. \\
+\hline
+{\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$float, uint32\+\_\+t$>$$>$ The distances and indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a168ac3398d9f43b280dba3481c145179}\label{classtmap_1_1LSHForest_a168ac3398d9f43b280dba3481c145179}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Linear\+Scan\+Exclude@{Query\+Linear\+Scan\+Exclude}}
+\index{Query\+Linear\+Scan\+Exclude@{Query\+Linear\+Scan\+Exclude}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Linear\+Scan\+Exclude()}{QueryLinearScanExclude()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Linear\+Scan\+Exclude (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{unsigned int}]{k,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{exclude,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of a query except those defined in the argument exclude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The query Min\+Hash. \\
+\hline
+{\em k} & The number of k-\/nearest neighbors to return. \\
+\hline
+{\em exclude} & A list of indices to be excluded from the search \\
+\hline
+{\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$float, uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_acf55212ce9875726bb6d00b3a870c2ef}\label{classtmap_1_1LSHForest_acf55212ce9875726bb6d00b3a870c2ef}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Query\+Linear\+Scan\+Exclude\+By\+Id@{Query\+Linear\+Scan\+Exclude\+By\+Id}}
+\index{Query\+Linear\+Scan\+Exclude\+By\+Id@{Query\+Linear\+Scan\+Exclude\+By\+Id}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Query\+Linear\+Scan\+Exclude\+By\+Id()}{QueryLinearScanExcludeById()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ float, uint32\+\_\+t $>$ $>$ tmap\+::\+L\+S\+H\+Forest\+::\+Query\+Linear\+Scan\+Exclude\+By\+Id (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{id,  }\item[{unsigned int}]{k,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{exclude,  }\item[{unsigned int}]{kc = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Get the k-\/nearest neighbors of an entry except those defined in the argument exclude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the query entry. \\
+\hline
+{\em k} & The number of k-\/nearest neighbors to return. \\
+\hline
+{\em exclude} & A list of indices to be excluded from the search. \\
+\hline
+{\em kc} & The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$float, uint32\+\_\+t$>$$>$ The distances and indices of the k-\/nearest neighbors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a869273bd3d4c72c4c296dc42519558c8}\label{classtmap_1_1LSHForest_a869273bd3d4c72c4c296dc42519558c8}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Restore@{Restore}}
+\index{Restore@{Restore}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Restore()}{Restore()}}
+{\footnotesize\ttfamily void tmap\+::\+L\+S\+H\+Forest\+::\+Restore (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Read / deserialize a L\+SH forest instance form the disk. The forest is indexed automatically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The location from where to load the L\+SH forest. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a8ba5c1f500e915c6717c64ac24744874}\label{classtmap_1_1LSHForest_a8ba5c1f500e915c6717c64ac24744874}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!size@{size}}
+\index{size@{size}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t tmap\+::\+L\+S\+H\+Forest\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the number of entries. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1LSHForest_a1731bf94cd09e7ebc4a10dd42145dc51}\label{classtmap_1_1LSHForest_a1731bf94cd09e7ebc4a10dd42145dc51}} 
+\index{tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}!Store@{Store}}
+\index{Store@{Store}!tmap\+::\+L\+S\+H\+Forest@{tmap\+::\+L\+S\+H\+Forest}}
+\subsubsection{\texorpdfstring{Store()}{Store()}}
+{\footnotesize\ttfamily void tmap\+::\+L\+S\+H\+Forest\+::\+Store (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Write / serialize the current L\+SH forest to the disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The location where the L\+SH forest should be stored on disk. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tmap/\hyperlink{lshforest_8hh}{lshforest.\+hh}\item 
+tmap/\hyperlink{lshforest_8cc}{lshforest.\+cc}\end{DoxyCompactItemize}

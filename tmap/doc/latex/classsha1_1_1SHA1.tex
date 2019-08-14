@@ -1,0 +1,55 @@
+\hypertarget{classsha1_1_1SHA1}{}\section{sha1\+:\+:S\+H\+A1 Class Reference}
+\label{classsha1_1_1SHA1}\index{sha1\+::\+S\+H\+A1@{sha1\+::\+S\+H\+A1}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a15f384f39d235a8912d5042dc920595f}\label{classsha1_1_1SHA1_a15f384f39d235a8912d5042dc920595f}} 
+typedef uint32\+\_\+t {\bfseries digest32\+\_\+t}\mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a62b6c7838c4cdcb81700a6cc64fde994}\label{classsha1_1_1SHA1_a62b6c7838c4cdcb81700a6cc64fde994}} 
+typedef uint8\+\_\+t {\bfseries digest8\+\_\+t}\mbox{[}20\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a1d63d04a7f146a42000e0a2a35314c6f}\label{classsha1_1_1SHA1_a1d63d04a7f146a42000e0a2a35314c6f}} 
+{\bfseries S\+H\+A1} (const \hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \&s)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_ae8f2ccbee9a15968482057e0d03a4247}\label{classsha1_1_1SHA1_ae8f2ccbee9a15968482057e0d03a4247}} 
+const \hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \& {\bfseries operator=} (const \hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \&s)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_ae2f5530e5be0837e6a222a1f244cbe6d}\label{classsha1_1_1SHA1_ae2f5530e5be0837e6a222a1f244cbe6d}} 
+\hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \& {\bfseries reset} ()
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a8f7edf8ccfea07f988d5f40c4b5c768b}\label{classsha1_1_1SHA1_a8f7edf8ccfea07f988d5f40c4b5c768b}} 
+\hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \& {\bfseries process\+Byte} (uint8\+\_\+t octet)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_af5e58568ad3bcaf91640c7fd5e448d85}\label{classsha1_1_1SHA1_af5e58568ad3bcaf91640c7fd5e448d85}} 
+\hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \& {\bfseries process\+Block} (const void $\ast$const start, const void $\ast$const end)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_abf8a680503b98b8f773f98752e34dbca}\label{classsha1_1_1SHA1_abf8a680503b98b8f773f98752e34dbca}} 
+\hyperlink{classsha1_1_1SHA1}{S\+H\+A1} \& {\bfseries process\+Bytes} (const void $\ast$const data, size\+\_\+t len)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a7a097712264451da60aa0f30096dd516}\label{classsha1_1_1SHA1_a7a097712264451da60aa0f30096dd516}} 
+const uint32\+\_\+t $\ast$ {\bfseries get\+Digest} (digest32\+\_\+t digest)
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a4fd38b624cba611b65730a9e747c584e}\label{classsha1_1_1SHA1_a4fd38b624cba611b65730a9e747c584e}} 
+const uint8\+\_\+t $\ast$ {\bfseries get\+Digest\+Bytes} (digest8\+\_\+t digest)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_a88fa19fad6a3b06522b2826a5966f355}\label{classsha1_1_1SHA1_a88fa19fad6a3b06522b2826a5966f355}} 
+static uint32\+\_\+t {\bfseries Left\+Rotate} (uint32\+\_\+t value, size\+\_\+t count)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsha1_1_1SHA1_af00112a350d5f1f67a9ac00a0fee6793}\label{classsha1_1_1SHA1_af00112a350d5f1f67a9ac00a0fee6793}} 
+void {\bfseries process\+Block} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/tmap/Tiny\+S\+H\+A1.\+hh\end{DoxyCompactItemize}

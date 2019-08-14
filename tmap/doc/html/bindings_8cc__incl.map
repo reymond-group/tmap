@@ -1,0 +1,5 @@
+<map id="tmap/bindings.cc" name="tmap/bindings.cc">
+<area shape="rect" id="node2" href="$layout_8hh.html" title="Functions used for generating graph layouts from LSHForest instances and edge lists. " alt="" coords="2073,184,2148,211"/>
+<area shape="rect" id="node21" href="$lshforest_8hh.html" title="An LSH forest algorithm implementation. " alt="" coords="3083,95,3173,121"/>
+<area shape="rect" id="node47" href="$minhash_8hh.html" title="A MinHash algorithm implementation. " alt="" coords="3391,95,3481,121"/>
+</map>

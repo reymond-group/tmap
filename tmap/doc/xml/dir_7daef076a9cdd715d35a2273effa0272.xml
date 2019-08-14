@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_7daef076a9cdd715d35a2273effa0272" kind="dir">
+    <compoundname>src/tmap</compoundname>
+    <innerfile refid="bindings_8cc">bindings.cc</innerfile>
+    <innerfile refid="layout_8cc">layout.cc</innerfile>
+    <innerfile refid="layout_8hh">layout.hh</innerfile>
+    <innerfile refid="lshforest_8cc">lshforest.cc</innerfile>
+    <innerfile refid="lshforest_8hh">lshforest.hh</innerfile>
+    <innerfile refid="minhash_8cc">minhash.cc</innerfile>
+    <innerfile refid="minhash_8hh">minhash.hh</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tmap/"/>
+  </compounddef>
+</doxygen>

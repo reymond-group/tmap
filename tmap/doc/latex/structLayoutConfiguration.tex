@@ -1,0 +1,97 @@
+\hypertarget{structLayoutConfiguration}{}\section{Layout\+Configuration Struct Reference}
+\label{structLayoutConfiguration}\index{Layout\+Configuration@{Layout\+Configuration}}
+
+
+A struct containing all the configuration options available for and applied to a layout.  
+
+
+
+
+{\ttfamily \#include $<$layout.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a76742074edbb0cf0fad8d8c2d2f32be4}\label{structLayoutConfiguration_a76742074edbb0cf0fad8d8c2d2f32be4}} 
+\hyperlink{structLayoutConfiguration_a76742074edbb0cf0fad8d8c2d2f32be4}{Layout\+Configuration} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Layout Configuration object. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{structLayoutConfiguration_a8be8ea09a3143cf9ba54a5069f0934d1}{To\+String} () const
+\begin{DoxyCompactList}\small\item\em Returns a string describing the set options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structLayoutConfiguration_aeaf7404656862b423dfc63035f5e8bee}\label{structLayoutConfiguration_aeaf7404656862b423dfc63035f5e8bee}} 
+int \hyperlink{structLayoutConfiguration_aeaf7404656862b423dfc63035f5e8bee}{k}
+\begin{DoxyCompactList}\small\item\em The number of nearest neighbors used to create the k-\/nearest neighbor graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_ac3e7def530d8c31537b8f9de6cd89fdc}\label{structLayoutConfiguration_ac3e7def530d8c31537b8f9de6cd89fdc}} 
+int \hyperlink{structLayoutConfiguration_ac3e7def530d8c31537b8f9de6cd89fdc}{kc}
+\begin{DoxyCompactList}\small\item\em The scalar by which k is multiplied before querying the L\+SH forest. The results are then ordered decreasing based on linear-\/scan distances and the top k results returned. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_afe033986b179ba0e419166b6fcb1dd35}\label{structLayoutConfiguration_afe033986b179ba0e419166b6fcb1dd35}} 
+int \hyperlink{structLayoutConfiguration_afe033986b179ba0e419166b6fcb1dd35}{fme\+\_\+iterations}
+\begin{DoxyCompactList}\small\item\em Maximum number of iterations of the fast multipole embedder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a44383f49d302581f3e8300fb4677663e}\label{structLayoutConfiguration_a44383f49d302581f3e8300fb4677663e}} 
+bool \hyperlink{structLayoutConfiguration_a44383f49d302581f3e8300fb4677663e}{fme\+\_\+randomize}
+\begin{DoxyCompactList}\small\item\em Whether or not to randomize the layout at the start. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_ab356194e6ee8b8ad276fd196b540ac02}\label{structLayoutConfiguration_ab356194e6ee8b8ad276fd196b540ac02}} 
+int \hyperlink{structLayoutConfiguration_ab356194e6ee8b8ad276fd196b540ac02}{fme\+\_\+threads}
+\begin{DoxyCompactList}\small\item\em The number of threads for the fast multipole embedder. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a086e941fb5a53c068de377f740e330d7}\label{structLayoutConfiguration_a086e941fb5a53c068de377f740e330d7}} 
+int \hyperlink{structLayoutConfiguration_a086e941fb5a53c068de377f740e330d7}{fme\+\_\+precision}
+\begin{DoxyCompactList}\small\item\em The number of coefficients of the multipole expansion. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_ac48f682786c633d2e43c7ae83fa400e0}\label{structLayoutConfiguration_ac48f682786c633d2e43c7ae83fa400e0}} 
+int \hyperlink{structLayoutConfiguration_ac48f682786c633d2e43c7ae83fa400e0}{sl\+\_\+repeats}
+\begin{DoxyCompactList}\small\item\em The number of repeats of the scaling layout algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a5f21efd9d16cb86fde8c9f273ae8a05f}\label{structLayoutConfiguration_a5f21efd9d16cb86fde8c9f273ae8a05f}} 
+int \hyperlink{structLayoutConfiguration_a5f21efd9d16cb86fde8c9f273ae8a05f}{sl\+\_\+extra\+\_\+scaling\+\_\+steps}
+\begin{DoxyCompactList}\small\item\em Sets the number of repeats of the scaling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a267835cca2b8e0d694b7709009d7eaa5}\label{structLayoutConfiguration_a267835cca2b8e0d694b7709009d7eaa5}} 
+double \hyperlink{structLayoutConfiguration_a267835cca2b8e0d694b7709009d7eaa5}{sl\+\_\+scaling\+\_\+min}
+\begin{DoxyCompactList}\small\item\em The minimum scaling factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a96f6f38497727a3844acab6be2ae021a}\label{structLayoutConfiguration_a96f6f38497727a3844acab6be2ae021a}} 
+double \hyperlink{structLayoutConfiguration_a96f6f38497727a3844acab6be2ae021a}{sl\+\_\+scaling\+\_\+max}
+\begin{DoxyCompactList}\small\item\em The maximum scaling factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a7975f6fe7f0ca315af9c631a325b98af}\label{structLayoutConfiguration_a7975f6fe7f0ca315af9c631a325b98af}} 
+\hyperlink{layout_8hh_ae327227c361ab0e868a1f25017cb3ae2}{Scaling\+Type} \hyperlink{structLayoutConfiguration_a7975f6fe7f0ca315af9c631a325b98af}{sl\+\_\+scaling\+\_\+type}
+\begin{DoxyCompactList}\small\item\em Defines the (relative) scale of the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a73bfc92692894cafdfa063b0a45bc065}\label{structLayoutConfiguration_a73bfc92692894cafdfa063b0a45bc065}} 
+int \hyperlink{structLayoutConfiguration_a73bfc92692894cafdfa063b0a45bc065}{mmm\+\_\+repeats}
+\begin{DoxyCompactList}\small\item\em Number of repeats of the per-\/level layout algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a139a9d88f1bcce6769b440f0f49130f0}\label{structLayoutConfiguration_a139a9d88f1bcce6769b440f0f49130f0}} 
+\hyperlink{layout_8hh_a93e50260439be3f5fe75b271c0ce2c96}{Placer} \hyperlink{structLayoutConfiguration_a139a9d88f1bcce6769b440f0f49130f0}{placer}
+\begin{DoxyCompactList}\small\item\em The method by which the initial positons of the vertices at eachlevel are defined. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a70222497c34b2ffa597cd364d0a1d318}\label{structLayoutConfiguration_a70222497c34b2ffa597cd364d0a1d318}} 
+\hyperlink{layout_8hh_a87e3986b1a6733e81a1c0b4bbd6aba18}{Merger} \hyperlink{structLayoutConfiguration_a70222497c34b2ffa597cd364d0a1d318}{merger}
+\begin{DoxyCompactList}\small\item\em The vertex merging strategy applied during the coarsening phaseof the multilevel algorithm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a98f6187e2dc15b0f06bcbfef5562beae}\label{structLayoutConfiguration_a98f6187e2dc15b0f06bcbfef5562beae}} 
+double \hyperlink{structLayoutConfiguration_a98f6187e2dc15b0f06bcbfef5562beae}{merger\+\_\+factor}
+\begin{DoxyCompactList}\small\item\em The ratio of the sizes between two levels up to which the mergingis run. Does not apply to all merging strategies. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a382a084c8d4785151b9328221c4ba132}\label{structLayoutConfiguration_a382a084c8d4785151b9328221c4ba132}} 
+int \hyperlink{structLayoutConfiguration_a382a084c8d4785151b9328221c4ba132}{merger\+\_\+adjustment}
+\begin{DoxyCompactList}\small\item\em The edge length adjustment of the merging algorithm. Does notapply to all merging strategies. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structLayoutConfiguration_a54a32d5173963abca63aae5bfa9d68e1}\label{structLayoutConfiguration_a54a32d5173963abca63aae5bfa9d68e1}} 
+float \hyperlink{structLayoutConfiguration_a54a32d5173963abca63aae5bfa9d68e1}{node\+\_\+size}
+\begin{DoxyCompactList}\small\item\em The size of the nodes, which affects the magnitude of their repellingforce. Decreasing this value generally resolves overlaps in a verycrowded tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A struct containing all the configuration options available for and applied to a layout. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structLayoutConfiguration_a8be8ea09a3143cf9ba54a5069f0934d1}\label{structLayoutConfiguration_a8be8ea09a3143cf9ba54a5069f0934d1}} 
+\index{Layout\+Configuration@{Layout\+Configuration}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!Layout\+Configuration@{Layout\+Configuration}}
+\subsubsection{\texorpdfstring{To\+String()}{ToString()}}
+{\footnotesize\ttfamily std\+::string Layout\+Configuration\+::\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a string describing the set options. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/tmap/\hyperlink{layout_8hh}{layout.\+hh}\end{DoxyCompactItemize}

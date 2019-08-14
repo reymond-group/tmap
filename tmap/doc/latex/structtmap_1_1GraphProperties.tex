@@ -1,0 +1,37 @@
+\hypertarget{structtmap_1_1GraphProperties}{}\section{tmap\+:\+:Graph\+Properties Struct Reference}
+\label{structtmap_1_1GraphProperties}\index{tmap\+::\+Graph\+Properties@{tmap\+::\+Graph\+Properties}}
+
+
+The properties of a generated graph. An instance of this struct is returned from the layout functions.  
+
+
+
+
+{\ttfamily \#include $<$layout.\+hh$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structtmap_1_1GraphProperties_a51fa52c1cc9c8d382d507349e99447be}\label{structtmap_1_1GraphProperties_a51fa52c1cc9c8d382d507349e99447be}} 
+float \hyperlink{structtmap_1_1GraphProperties_a51fa52c1cc9c8d382d507349e99447be}{mst\+\_\+weight} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The total weight of the created spanning tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structtmap_1_1GraphProperties_a3467571c1e645268e55416504809f7c5}\label{structtmap_1_1GraphProperties_a3467571c1e645268e55416504809f7c5}} 
+uint32\+\_\+t \hyperlink{structtmap_1_1GraphProperties_a3467571c1e645268e55416504809f7c5}{n\+\_\+connected\+\_\+components} = 0
+\begin{DoxyCompactList}\small\item\em The number of connected components. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structtmap_1_1GraphProperties_a954e8fd087b44b3c568ea07ae2f1efea}\label{structtmap_1_1GraphProperties_a954e8fd087b44b3c568ea07ae2f1efea}} 
+uint32\+\_\+t \hyperlink{structtmap_1_1GraphProperties_a954e8fd087b44b3c568ea07ae2f1efea}{n\+\_\+isolated\+\_\+vertices} = 0
+\begin{DoxyCompactList}\small\item\em The number of isolated (lone) vertices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structtmap_1_1GraphProperties_af4c85653b3bf56c6dbf19d7a38af40bc}\label{structtmap_1_1GraphProperties_af4c85653b3bf56c6dbf19d7a38af40bc}} 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{structtmap_1_1GraphProperties_af4c85653b3bf56c6dbf19d7a38af40bc}{degrees}
+\begin{DoxyCompactList}\small\item\em The degrees of the vertices in the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structtmap_1_1GraphProperties_a04c11168f810fdaf8b7bfecf96413ba7}\label{structtmap_1_1GraphProperties_a04c11168f810fdaf8b7bfecf96413ba7}} 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{structtmap_1_1GraphProperties_a04c11168f810fdaf8b7bfecf96413ba7}{adjacency\+\_\+list}
+\begin{DoxyCompactList}\small\item\em The adjacency list of the spanning tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The properties of a generated graph. An instance of this struct is returned from the layout functions. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tmap/\hyperlink{layout_8hh}{layout.\+hh}\end{DoxyCompactItemize}

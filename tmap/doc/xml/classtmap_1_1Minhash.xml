@@ -1,0 +1,692 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classtmap_1_1Minhash" kind="class" language="C++" prot="public">
+    <compoundname>tmap::Minhash</compoundname>
+    <includes refid="minhash_8hh" local="no">minhash.hh</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a054c6a486352453aa98c6f04d7b88e9a" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tmap::Minhash::d_</definition>
+        <argsstring></argsstring>
+        <name>d_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="170" column="1" bodyfile="tmap/minhash.hh" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a34a66e3017e7af70512345fb25561df7" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tmap::Minhash::sample_size_</definition>
+        <argsstring></argsstring>
+        <name>sample_size_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="170" column="1" bodyfile="tmap/minhash.hh" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1aca2956f403e064b190f167b97ab277f3" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tmap::Minhash::prime_</definition>
+        <argsstring></argsstring>
+        <name>prime_</name>
+        <initializer>= 2305843009213693951UL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="171" column="1" bodyfile="tmap/minhash.hh" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a9896333e6380782f7dfb2302c637505a" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t tmap::Minhash::max_hash_</definition>
+        <argsstring></argsstring>
+        <name>max_hash_</name>
+        <initializer>= 4294967295</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="172" column="1" bodyfile="tmap/minhash.hh" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1ad520a822758d7a21c30ce2c357d2256f" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; uint32_t &gt;</type>
+        <definition>std::valarray&lt;uint32_t&gt; tmap::Minhash::perms_a_</definition>
+        <argsstring></argsstring>
+        <name>perms_a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="173" column="1" bodyfile="tmap/minhash.hh" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1aa17875b6bd063dceab5421e44550d8e8" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; uint32_t &gt;</type>
+        <definition>std::valarray&lt;uint32_t&gt; tmap::Minhash::perms_b_</definition>
+        <argsstring></argsstring>
+        <name>perms_b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="174" column="1" bodyfile="tmap/minhash.hh" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1aa69b61510f378880238f6c80739859e8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::rs_</definition>
+        <argsstring></argsstring>
+        <name>rs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="175" column="1" bodyfile="tmap/minhash.hh" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1af359adc42ba921a684cf46f8afedc567" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::rs_2_</definition>
+        <argsstring></argsstring>
+        <name>rs_2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="176" column="1" bodyfile="tmap/minhash.hh" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a1d0729379f4a17b8d3668a2fee71621f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::ln_cs_</definition>
+        <argsstring></argsstring>
+        <name>ln_cs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="177" column="1" bodyfile="tmap/minhash.hh" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a7c94b59844d5e2f2dc00742fb7679a95" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::cs_</definition>
+        <argsstring></argsstring>
+        <name>cs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="178" column="1" bodyfile="tmap/minhash.hh" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a57ba77382d9ae6d5b472b9204deba311" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::betas_</definition>
+        <argsstring></argsstring>
+        <name>betas_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="179" column="1" bodyfile="tmap/minhash.hh" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1a12f2664a59d0390ae26987bec1d0029e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::valarray&lt; float &gt; &gt;</type>
+        <definition>std::vector&lt;std::valarray&lt;float&gt; &gt; tmap::Minhash::betas_2_</definition>
+        <argsstring></argsstring>
+        <name>betas_2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="180" column="1" bodyfile="tmap/minhash.hh" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtmap_1_1Minhash_1aa6803c60bdf58ddaa0a52a703efb7d87" prot="private" static="no" mutable="no">
+        <type>std::hash&lt; std::string &gt;</type>
+        <definition>std::hash&lt;std::string&gt; tmap::Minhash::hasher</definition>
+        <argsstring></argsstring>
+        <name>hasher</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="181" column="1" bodyfile="tmap/minhash.hh" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tmap::Minhash::Minhash</definition>
+        <argsstring>(unsigned int d=128, unsigned int seed=42, unsigned int sample_size=128)</argsstring>
+        <name>Minhash</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>d</declname>
+          <defval>128</defval>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>seed</declname>
+          <defval>42</defval>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>sample_size</declname>
+          <defval>128</defval>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classtmap_1_1Minhash" kindref="compound">Minhash</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of permutations used for hashing. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The seed for the random number generator. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sample_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sample size when generating a weighted MinHash. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="42" column="1" bodyfile="tmap/minhash.cc" bodystart="12" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt; uint32_t &gt; tmap::Minhash::FromBinaryArray</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt; &amp;vec)</argsstring>
+        <name>FromBinaryArray</name>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Create a MinHash from a binary array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing binary values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;uint32_t&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="52" column="1" bodyfile="tmap/minhash.cc" bodystart="91" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromBinaryArray</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; uint8_t &gt;&gt; &amp;vecs)</argsstring>
+        <name>BatchFromBinaryArray</name>
+        <param>
+          <type>std::vector&lt; std::vector&lt; uint8_t &gt;&gt; &amp;</type>
+          <declname>vecs</declname>
+        </param>
+        <briefdescription>
+<para>Create MinHashes from a batch of binary arrays (parallelized). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of a vector containing binary values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="60" column="1" bodyfile="tmap/minhash.cc" bodystart="112" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt; uint32_t &gt; tmap::Minhash::FromSparseBinaryArray</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec)</argsstring>
+        <name>FromSparseBinaryArray</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Create a MinHash from a sparse binary array (values are the indices of 1s). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of indices. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;uint32_t&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="70" column="1" bodyfile="tmap/minhash.cc" bodystart="124" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromSparseBinaryArray</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;vecs)</argsstring>
+        <name>BatchFromSparseBinaryArray</name>
+        <param>
+          <type>std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;</type>
+          <declname>vecs</declname>
+        </param>
+        <briefdescription>
+<para>Create MinHashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of vectors of indices. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="79" column="1" bodyfile="tmap/minhash.cc" bodystart="142" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt; uint32_t &gt; tmap::Minhash::FromStringArray</definition>
+        <argsstring>(std::vector&lt; std::string &gt; &amp;vec)</argsstring>
+        <name>FromStringArray</name>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+<para>Create a MinHash from an array of strings. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of strings. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;uint32_t&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="88" column="1" bodyfile="tmap/minhash.cc" bodystart="155" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromStringArray</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; std::string &gt;&gt; &amp;vecs)</argsstring>
+        <name>BatchFromStringArray</name>
+        <param>
+          <type>std::vector&lt; std::vector&lt; std::string &gt;&gt; &amp;</type>
+          <declname>vecs</declname>
+        </param>
+        <briefdescription>
+<para>Create MinHashes from a vector of string arrays (parallelized). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of string vectors. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="96" column="1" bodyfile="tmap/minhash.cc" bodystart="174" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt; uint32_t &gt; tmap::Minhash::FromWeightArray</definition>
+        <argsstring>(std::vector&lt; float &gt; &amp;vec, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>FromWeightArray</name>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Create a MinHash from an array containing weights. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of float weights. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The method which to use to calculate the weighted fingerprint. Options are &quot;I2CWS&quot; and &quot;ICWS&quot;. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;uint32_t&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="107" column="1" bodyfile="tmap/minhash.cc" bodystart="254" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromWeightArray</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; float &gt;&gt; &amp;vecs, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>BatchFromWeightArray</name>
+        <param>
+          <type>std::vector&lt; std::vector&lt; float &gt;&gt; &amp;</type>
+          <declname>vecs</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Create MinHashes from a vector of weight arrays (parallelized). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of float vector weights. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="116" column="1" bodyfile="tmap/minhash.cc" bodystart="324" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt; uint8_t &gt; tmap::Minhash::ExpandIntWeightArray</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec, std::vector&lt; uint32_t &gt; &amp;min_vec, std::vector&lt; uint32_t &gt; &amp;max_vec, uint32_t size)</argsstring>
+        <name>ExpandIntWeightArray</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>min_vec</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>max_vec</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Expand a integer weight array into a binary array. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing integer weights. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maxima for all columns. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>min_vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The minima for all columns. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the expanded array. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;uint8_t&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="129" column="1" bodyfile="tmap/minhash.cc" bodystart="186" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt; std::vector&lt; uint32_t &gt; &gt; tmap::Minhash::BatchFromIntWeightArray</definition>
+        <argsstring>(std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;vecs, uint8_t divide_by=0)</argsstring>
+        <name>BatchFromIntWeightArray</name>
+        <param>
+          <type>std::vector&lt; std::vector&lt; uint32_t &gt;&gt; &amp;</type>
+          <declname>vecs</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>divide_by</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Create MinHashes from a expanded integer weight array (parallelized). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vecs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of expanded integer weight vectors. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::vector&lt;std::vector&lt;uint32_t&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="141" column="1" bodyfile="tmap/minhash.cc" bodystart="208" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float tmap::Minhash::GetDistance</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec_a, std::vector&lt; uint32_t &gt; &amp;vec_b)</argsstring>
+        <name>GetDistance</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec_a</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec_b</declname>
+        </param>
+        <briefdescription>
+<para>Get the distance between two MinHashes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A MinHash vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vec_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A MinHash vector. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="151" column="1" bodyfile="tmap/minhash.cc" bodystart="337" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float tmap::Minhash::GetWeightedDistance</definition>
+        <argsstring>(std::vector&lt; uint32_t &gt; &amp;vec_a, std::vector&lt; uint32_t &gt; &amp;vec_b)</argsstring>
+        <name>GetWeightedDistance</name>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec_a</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; &amp;</type>
+          <declname>vec_b</declname>
+        </param>
+        <briefdescription>
+<para>Get the weighted distance between two MinHashes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vec_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A weighted MinHash vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vec_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A weighted MinHash vector. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="160" column="1" bodyfile="tmap/minhash.cc" bodystart="351" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tmap::Minhash::~Minhash</definition>
+        <argsstring>()</argsstring>
+        <name>~Minhash</name>
+        <briefdescription>
+<para>Destroy the <ref refid="classtmap_1_1Minhash" kindref="compound">Minhash</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="167" column="1" bodyfile="tmap/minhash.hh" bodystart="167" bodyend="167"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtmap_1_1Minhash_1a0f5968ec8e66d65ca8fa529f0f658b26" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t tmap::Minhash::fast_mod_long</definition>
+        <argsstring>(const uint64_t input, const uint64_t ceil)</argsstring>
+        <name>fast_mod_long</name>
+        <param>
+          <type>const uint64_t</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>ceil</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/minhash.hh" line="183" column="1" bodyfile="tmap/minhash.hh" bodystart="183" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An implementation of MinHash and weighted MinHash using SHA1. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="tmap/minhash.hh" line="33" column="1" bodyfile="tmap/minhash.hh" bodystart="32" bodyend="187"/>
+    <listofallmembers>
+      <member refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromIntWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromStringArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>BatchFromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a57ba77382d9ae6d5b472b9204deba311" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>betas_</name></member>
+      <member refid="classtmap_1_1Minhash_1a12f2664a59d0390ae26987bec1d0029e" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>betas_2_</name></member>
+      <member refid="classtmap_1_1Minhash_1a7c94b59844d5e2f2dc00742fb7679a95" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>cs_</name></member>
+      <member refid="classtmap_1_1Minhash_1a054c6a486352453aa98c6f04d7b88e9a" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>d_</name></member>
+      <member refid="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>ExpandIntWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a0f5968ec8e66d65ca8fa529f0f658b26" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>fast_mod_long</name></member>
+      <member refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromStringArray</name></member>
+      <member refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>FromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>GetDistance</name></member>
+      <member refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>GetWeightedDistance</name></member>
+      <member refid="classtmap_1_1Minhash_1aa6803c60bdf58ddaa0a52a703efb7d87" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>hasher</name></member>
+      <member refid="classtmap_1_1Minhash_1a1d0729379f4a17b8d3668a2fee71621f" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>ln_cs_</name></member>
+      <member refid="classtmap_1_1Minhash_1a9896333e6380782f7dfb2302c637505a" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>max_hash_</name></member>
+      <member refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>Minhash</name></member>
+      <member refid="classtmap_1_1Minhash_1ad520a822758d7a21c30ce2c357d2256f" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>perms_a_</name></member>
+      <member refid="classtmap_1_1Minhash_1aa17875b6bd063dceab5421e44550d8e8" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>perms_b_</name></member>
+      <member refid="classtmap_1_1Minhash_1aca2956f403e064b190f167b97ab277f3" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>prime_</name></member>
+      <member refid="classtmap_1_1Minhash_1aa69b61510f378880238f6c80739859e8" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>rs_</name></member>
+      <member refid="classtmap_1_1Minhash_1af359adc42ba921a684cf46f8afedc567" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>rs_2_</name></member>
+      <member refid="classtmap_1_1Minhash_1a34a66e3017e7af70512345fb25561df7" prot="private" virt="non-virtual"><scope>tmap::Minhash</scope><name>sample_size_</name></member>
+      <member refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" prot="public" virt="non-virtual"><scope>tmap::Minhash</scope><name>~Minhash</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

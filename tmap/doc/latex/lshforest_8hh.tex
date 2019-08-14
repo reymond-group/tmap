@@ -1,0 +1,64 @@
+\hypertarget{lshforest_8hh}{}\section{tmap/lshforest.hh File Reference}
+\label{lshforest_8hh}\index{tmap/lshforest.\+hh@{tmap/lshforest.\+hh}}
+
+
+An L\+SH forest algorithm implementation.  
+
+
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}cereal/archives/binary.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cereal/types/map.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cereal/types/tuple.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cereal/types/vector.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}layout.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sparsepp/spp.\+h\char`\"{}}\newline
+Include dependency graph for lshforest.\+hh\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lshforest_8hh__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lshforest_8hh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtmap_1_1SimpleHash}{tmap\+::\+Simple\+Hash}
+\begin{DoxyCompactList}\small\item\em Hash struct used for the sparsepp sparse hash map. \end{DoxyCompactList}\item 
+struct \hyperlink{structtmap_1_1MapKeyPointer}{tmap\+::\+Map\+Key\+Pointer}
+\begin{DoxyCompactList}\small\item\em The pointer map used for pointing to the keys from the sorted hash map. \end{DoxyCompactList}\item 
+class \hyperlink{classtmap_1_1Timer}{tmap\+::\+Timer}
+\begin{DoxyCompactList}\small\item\em A simple timer class used to check performance during development. \end{DoxyCompactList}\item 
+class \hyperlink{classtmap_1_1LSHForest}{tmap\+::\+L\+S\+H\+Forest}
+\begin{DoxyCompactList}\small\item\em Provides locality sensitive hashing forest functionalities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An L\+SH forest algorithm implementation. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Probst (\href{mailto:daenuprobst@gmail.com}{\tt daenuprobst@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2019-\/06-\/17 
+\end{DoxyDate}

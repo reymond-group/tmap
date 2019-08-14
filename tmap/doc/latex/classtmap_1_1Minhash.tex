@@ -1,0 +1,305 @@
+\hypertarget{classtmap_1_1Minhash}{}\section{tmap\+:\+:Minhash Class Reference}
+\label{classtmap_1_1Minhash}\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+
+
+An implementation of Min\+Hash and weighted Min\+Hash using S\+H\+A1.  
+
+
+
+
+{\ttfamily \#include $<$minhash.\+hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtmap_1_1Minhash_ae35f57de5ec2316538384c9d2f588d52}{Minhash} (unsigned int d=128, unsigned int seed=42, unsigned int sample\+\_\+size=128)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classtmap_1_1Minhash}{Minhash} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_a1418049bb8c8f70255c336e58a9b9fec}{From\+Binary\+Array} (std\+::vector$<$ uint8\+\_\+t $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Create a Min\+Hash from a binary array. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a083c1328a9830ec585613c213b1730cc}{Batch\+From\+Binary\+Array} (std\+::vector$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$ \&vecs)
+\begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a batch of binary arrays (parallelized). \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_aec48525d1c8006f573b0c534e53d894a}{From\+Sparse\+Binary\+Array} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Create a Min\+Hash from a sparse binary array (values are the indices of 1s). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a490cf682e7445393fcf2908d74498ea5}{Batch\+From\+Sparse\+Binary\+Array} (std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs)
+\begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized). \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_ab21e92280c7265a8df9477734361b8fc}{From\+String\+Array} (std\+::vector$<$ std\+::string $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Create a Min\+Hash from an array of strings. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a9382e443b9f622c4564449373051d006}{Batch\+From\+String\+Array} (std\+::vector$<$ std\+::vector$<$ std\+::string $>$$>$ \&vecs)
+\begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a vector of string arrays (parallelized). \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_aac0a45bdf6a6517e711a171357c8c73b}{From\+Weight\+Array} (std\+::vector$<$ float $>$ \&vec, const std\+::string \&method=\char`\"{}I\+C\+WS\char`\"{})
+\begin{DoxyCompactList}\small\item\em Create a Min\+Hash from an array containing weights. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a8fe5c588003e8a3089d0a04df7b0f6e9}{Batch\+From\+Weight\+Array} (std\+::vector$<$ std\+::vector$<$ float $>$$>$ \&vecs, const std\+::string \&method=\char`\"{}I\+C\+WS\char`\"{})
+\begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a vector of weight arrays (parallelized). \end{DoxyCompactList}\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}{Expand\+Int\+Weight\+Array} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec, std\+::vector$<$ uint32\+\_\+t $>$ \&min\+\_\+vec, std\+::vector$<$ uint32\+\_\+t $>$ \&max\+\_\+vec, uint32\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Expand a integer weight array into a binary array. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ \hyperlink{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}{Batch\+From\+Int\+Weight\+Array} (std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&vecs, uint8\+\_\+t divide\+\_\+by=0)
+\begin{DoxyCompactList}\small\item\em Create Min\+Hashes from a expanded integer weight array (parallelized). \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1Minhash_a21df254dd86462a1dcbe45285c747e71}{Get\+Distance} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+a, std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Get the distance between two Min\+Hashes. \end{DoxyCompactList}\item 
+float \hyperlink{classtmap_1_1Minhash_a7a8090c1629a6783fe0e17b227bd59ca}{Get\+Weighted\+Distance} (std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+a, std\+::vector$<$ uint32\+\_\+t $>$ \&vec\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Get the weighted distance between two Min\+Hashes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtmap_1_1Minhash_ae5e1e056f6a1179651b7fa6c196bf220}\label{classtmap_1_1Minhash_ae5e1e056f6a1179651b7fa6c196bf220}} 
+\hyperlink{classtmap_1_1Minhash_ae5e1e056f6a1179651b7fa6c196bf220}{$\sim$\+Minhash} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \hyperlink{classtmap_1_1Minhash}{Minhash} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An implementation of Min\+Hash and weighted Min\+Hash using S\+H\+A1. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtmap_1_1Minhash_ae35f57de5ec2316538384c9d2f588d52}\label{classtmap_1_1Minhash_ae35f57de5ec2316538384c9d2f588d52}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Minhash@{Minhash}}
+\index{Minhash@{Minhash}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Minhash()}{Minhash()}}
+{\footnotesize\ttfamily tmap\+::\+Minhash\+::\+Minhash (\begin{DoxyParamCaption}\item[{unsigned int}]{d = {\ttfamily 128},  }\item[{unsigned int}]{seed = {\ttfamily 42},  }\item[{unsigned int}]{sample\+\_\+size = {\ttfamily 128} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classtmap_1_1Minhash}{Minhash} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The number of permutations used for hashing. \\
+\hline
+{\em seed} & The seed for the random number generator. \\
+\hline
+{\em sample\+\_\+size} & The sample size when generating a weighted Min\+Hash. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a083c1328a9830ec585613c213b1730cc}\label{classtmap_1_1Minhash_a083c1328a9830ec585613c213b1730cc}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+Binary\+Array@{Batch\+From\+Binary\+Array}}
+\index{Batch\+From\+Binary\+Array@{Batch\+From\+Binary\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Batch\+From\+Binary\+Array()}{BatchFromBinaryArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Binary\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$ \&}]{vecs }\end{DoxyParamCaption})}
+
+
+
+Create Min\+Hashes from a batch of binary arrays (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of a vector containing binary values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}\label{classtmap_1_1Minhash_a1f2ae587c6b9e98be1cbdc7e9a81c2e7}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+Int\+Weight\+Array@{Batch\+From\+Int\+Weight\+Array}}
+\index{Batch\+From\+Int\+Weight\+Array@{Batch\+From\+Int\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Batch\+From\+Int\+Weight\+Array()}{BatchFromIntWeightArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs,  }\item[{uint8\+\_\+t}]{divide\+\_\+by = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Create Min\+Hashes from a expanded integer weight array (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of expanded integer weight vectors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a490cf682e7445393fcf2908d74498ea5}\label{classtmap_1_1Minhash_a490cf682e7445393fcf2908d74498ea5}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+Sparse\+Binary\+Array@{Batch\+From\+Sparse\+Binary\+Array}}
+\index{Batch\+From\+Sparse\+Binary\+Array@{Batch\+From\+Sparse\+Binary\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Batch\+From\+Sparse\+Binary\+Array()}{BatchFromSparseBinaryArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Sparse\+Binary\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$$>$ \&}]{vecs }\end{DoxyParamCaption})}
+
+
+
+Create Min\+Hashes from a vector of sparse binary arrays (values are the indices of 1s) (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of vectors of indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a9382e443b9f622c4564449373051d006}\label{classtmap_1_1Minhash_a9382e443b9f622c4564449373051d006}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+String\+Array@{Batch\+From\+String\+Array}}
+\index{Batch\+From\+String\+Array@{Batch\+From\+String\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Batch\+From\+String\+Array()}{BatchFromStringArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+String\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::string $>$$>$ \&}]{vecs }\end{DoxyParamCaption})}
+
+
+
+Create Min\+Hashes from a vector of string arrays (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of string vectors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a8fe5c588003e8a3089d0a04df7b0f6e9}\label{classtmap_1_1Minhash_a8fe5c588003e8a3089d0a04df7b0f6e9}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Batch\+From\+Weight\+Array@{Batch\+From\+Weight\+Array}}
+\index{Batch\+From\+Weight\+Array@{Batch\+From\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Batch\+From\+Weight\+Array()}{BatchFromWeightArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ tmap\+::\+Minhash\+::\+Batch\+From\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ float $>$$>$ \&}]{vecs,  }\item[{const std\+::string \&}]{method = {\ttfamily \char`\"{}ICWS\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Create Min\+Hashes from a vector of weight arrays (parallelized). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & A vector of float vector weights. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$uint32\+\_\+t$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}\label{classtmap_1_1Minhash_a5419c90e01785149b570f94308e82430}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Expand\+Int\+Weight\+Array@{Expand\+Int\+Weight\+Array}}
+\index{Expand\+Int\+Weight\+Array@{Expand\+Int\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Expand\+Int\+Weight\+Array()}{ExpandIntWeightArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ tmap\+::\+Minhash\+::\+Expand\+Int\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{min\+\_\+vec,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{max\+\_\+vec,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Expand a integer weight array into a binary array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector containing integer weights. \\
+\hline
+{\em max\+\_\+vec} & The maxima for all columns. \\
+\hline
+{\em min\+\_\+vec} & The minima for all columns. \\
+\hline
+{\em size} & The size of the expanded array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint8\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a1418049bb8c8f70255c336e58a9b9fec}\label{classtmap_1_1Minhash_a1418049bb8c8f70255c336e58a9b9fec}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!From\+Binary\+Array@{From\+Binary\+Array}}
+\index{From\+Binary\+Array@{From\+Binary\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{From\+Binary\+Array()}{FromBinaryArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+Minhash\+::\+From\+Binary\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Create a Min\+Hash from a binary array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector containing binary values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_aec48525d1c8006f573b0c534e53d894a}\label{classtmap_1_1Minhash_aec48525d1c8006f573b0c534e53d894a}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!From\+Sparse\+Binary\+Array@{From\+Sparse\+Binary\+Array}}
+\index{From\+Sparse\+Binary\+Array@{From\+Sparse\+Binary\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{From\+Sparse\+Binary\+Array()}{FromSparseBinaryArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+Minhash\+::\+From\+Sparse\+Binary\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Create a Min\+Hash from a sparse binary array (values are the indices of 1s). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector of indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_ab21e92280c7265a8df9477734361b8fc}\label{classtmap_1_1Minhash_ab21e92280c7265a8df9477734361b8fc}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!From\+String\+Array@{From\+String\+Array}}
+\index{From\+String\+Array@{From\+String\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{From\+String\+Array()}{FromStringArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+Minhash\+::\+From\+String\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Create a Min\+Hash from an array of strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector of strings. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_aac0a45bdf6a6517e711a171357c8c73b}\label{classtmap_1_1Minhash_aac0a45bdf6a6517e711a171357c8c73b}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!From\+Weight\+Array@{From\+Weight\+Array}}
+\index{From\+Weight\+Array@{From\+Weight\+Array}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{From\+Weight\+Array()}{FromWeightArray()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ tmap\+::\+Minhash\+::\+From\+Weight\+Array (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{vec,  }\item[{const std\+::string \&}]{method = {\ttfamily \char`\"{}ICWS\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Create a Min\+Hash from an array containing weights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A vector of float weights. \\
+\hline
+{\em method} & The method which to use to calculate the weighted fingerprint. Options are \char`\"{}\+I2\+C\+W\+S\char`\"{} and \char`\"{}\+I\+C\+W\+S\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$uint32\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a21df254dd86462a1dcbe45285c747e71}\label{classtmap_1_1Minhash_a21df254dd86462a1dcbe45285c747e71}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Get\+Distance@{Get\+Distance}}
+\index{Get\+Distance@{Get\+Distance}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Get\+Distance()}{GetDistance()}}
+{\footnotesize\ttfamily float tmap\+::\+Minhash\+::\+Get\+Distance (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+a,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Get the distance between two Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+\_\+a} & A Min\+Hash vector. \\
+\hline
+{\em vec\+\_\+b} & A Min\+Hash vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtmap_1_1Minhash_a7a8090c1629a6783fe0e17b227bd59ca}\label{classtmap_1_1Minhash_a7a8090c1629a6783fe0e17b227bd59ca}} 
+\index{tmap\+::\+Minhash@{tmap\+::\+Minhash}!Get\+Weighted\+Distance@{Get\+Weighted\+Distance}}
+\index{Get\+Weighted\+Distance@{Get\+Weighted\+Distance}!tmap\+::\+Minhash@{tmap\+::\+Minhash}}
+\subsubsection{\texorpdfstring{Get\+Weighted\+Distance()}{GetWeightedDistance()}}
+{\footnotesize\ttfamily float tmap\+::\+Minhash\+::\+Get\+Weighted\+Distance (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+a,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$ \&}]{vec\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Get the weighted distance between two Min\+Hashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+\_\+a} & A weighted Min\+Hash vector. \\
+\hline
+{\em vec\+\_\+b} & A weighted Min\+Hash vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tmap/\hyperlink{minhash_8hh}{minhash.\+hh}\item 
+tmap/\hyperlink{minhash_8cc}{minhash.\+cc}\end{DoxyCompactItemize}
