@@ -2,6 +2,20 @@
 ## Getting started
 tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python.
 
+### Availability
+| Language | Operating System | Status                 |
+| -------- | ---------------- | ---------------------- |
+| Python   | Linux            | Available              |
+|          | Windows          | Available<sup>1</sup>  |
+|          | macOS            | Unvailable<sup>2</sup> |
+| R        |                  | Unvailable<sup>3</sup> |
+
+<span class="small"><sup>1</sup>Works with
+[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>  
+<span class="small"><sup>2</sup>Availble by 19.08.2019</span>  
+<span class="small"><sup>3</sup>FOSS R developers
+[wanted](https://github.com/reymond-group/tmap)\!</span>
+
 ### Installation
 tmap is installed using the conda package manager. Don't have conda? Download miniconda.
 
