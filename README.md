@@ -1,4 +1,5 @@
 # tmap
+![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg)
 ![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/fmnist/fmnist.jpg)
 
 ## Examples
