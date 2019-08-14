@@ -1,5 +1,5 @@
 # tmap
-![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/mnist/mnist.jpg)
+![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/fmnist/fmnist.jpg)
 
 ## Examples
 
