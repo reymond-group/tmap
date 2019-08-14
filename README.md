@@ -1,9 +1,7 @@
 # tmap
-![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg)
-![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/fmnist/fmnist.jpg)
-
 ## Examples
-
+<img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg" height="280px" align="left" />
+<img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/fmnist/fmnist.jpg" height="280px" align="left" />
 
 ## Getting started
 tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python. tmaps graph layouts are based on the [OGDF](https://ogdf.uos.de/) library.
