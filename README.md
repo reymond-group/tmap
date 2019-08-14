@@ -1,6 +1,11 @@
 # tmap
+![tmap example layout](https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/mnist/mnist.jpg)
+
+## Examples
+
+
 ## Getting started
-tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python.
+tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python. tmaps graph layouts are based on the [OGDF](https://ogdf.uos.de/) library.
 
 ### Availability
 | Language | Operating System | Status                 |
