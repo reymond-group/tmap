@@ -12,8 +12,8 @@ if(MSVC)
     set(CMAKE_CXX_FLAGS_DEBUG "/openmp /O2")
     set(CMAKE_CXX_FLAGS_RELEASE "/openmp /O2")
 else()
-    set(CMAKE_CXX_FLAGS_DEBUG "-g -O3 -funroll-loops -fopenmp")
-    set(CMAKE_CXX_FLAGS_RELEASE "-g -O3 -funroll-loops -fopenmp")
+    set(CMAKE_CXX_FLAGS_DEBUG "-O3 -funroll-loops -fopenmp")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
 endif(MSVC)
 
 
