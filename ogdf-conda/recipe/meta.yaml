@@ -19,14 +19,6 @@ requirements:
         - {{ compiler('cxx') }} # [not osx]
         - cmake
 
-test:
-  files:
-    - test.cc
-
-# test:
-#     commands:
-#         - test -f ${PREFIX}/lib/libOGDF.so  # [unix]
-
 about:
     home: http://www.ogdf.net/
     license: GPLv3
