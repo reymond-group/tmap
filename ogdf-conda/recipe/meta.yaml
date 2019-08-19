@@ -16,7 +16,7 @@ extra:
 
 requirements:
     build:
-        - {{ compiler('cxx') }} # [not osx]
+        - {{ compiler('cxx') }}
         - cmake
 
 about:

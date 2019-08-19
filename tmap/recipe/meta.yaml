@@ -14,7 +14,8 @@ source:
   
 requirements:
   build:
-    - {{ compiler('cxx') }} #[not osx]
+    - {{ compiler('cxx') }}
+    - llvm-openmp # [osx]
     - cmake
     - python
     - setuptools
