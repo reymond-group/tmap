@@ -21,13 +21,12 @@ tmap is a very fast visualization library for large, high-dimensional data sets.
 | -------- | ---------------- | ---------------------- |
 | Python   | Linux            | Available              |
 |          | Windows          | Available<sup>1</sup>  |
-|          | macOS            | Unvailable<sup>2</sup> |
-| R        |                  | Unvailable<sup>3</sup> |
+|          | macOS            | Available              |
+| R        |                  | Unvailable<sup>2</sup> |
 
 <span class="small"><sup>1</sup>Works with
 [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>  
-<span class="small"><sup>2</sup>Availble by 19.08.2019</span>  
-<span class="small"><sup>3</sup>FOSS R developers
+<span class="small"><sup>2</sup>FOSS R developers
 [wanted](https://github.com/reymond-group/tmap)\!</span>
 
 ### Installation
