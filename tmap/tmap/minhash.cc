@@ -42,7 +42,7 @@ tmap::Minhash::Minhash(unsigned int d,
       a = dist_a(rand);
     }
 
-    while (std::find(perms_b_tmp.begin(), perms_b_tmp.end(), a) !=
+    while (std::find(perms_b_tmp.begin(), perms_b_tmp.end(), b) !=
            perms_b_tmp.end()) {
       b = dist_a(rand);
     }
