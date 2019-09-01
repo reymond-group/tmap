@@ -1,6 +1,9 @@
 # tmap
 tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python. tmaps graph layouts are based on the [OGDF](https://ogdf.uos.de/) library.
 
+### Tutorial and Documentation
+See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
+
 ## Examples
 <img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg" height="290px"/>  <img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/mnist/mnist.jpg" height="290px" />
 
@@ -42,5 +45,3 @@ We suggest using faerun to plot the data layed out by tmap. But you can of cours
 pip install faerun
 # pip install matplotlib
 ```
-### Tutorial and Documentation
-See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
