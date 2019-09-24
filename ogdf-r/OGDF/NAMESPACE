@@ -1,0 +1,3 @@
+useDynLib(OGDF)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
