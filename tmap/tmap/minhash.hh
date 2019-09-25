@@ -18,8 +18,7 @@
 #include <random>
 #include <stdexcept>
 #include <stdint.h>
-#include <math.h> 
-#include <valarray>
+#include <math.h>
 #include <vector>
 
 #include "omp.h"
@@ -170,14 +169,14 @@ private:
   unsigned int d_, sample_size_;
   uint64_t prime_ = 2305843009213693951UL;
   uint32_t max_hash_ = 4294967295;
-  std::valarray<uint32_t> perms_a_;
-  std::valarray<uint32_t> perms_b_;
-  std::vector<std::valarray<float>> rs_;
-  std::vector<std::valarray<float>> rs_2_;
-  std::vector<std::valarray<float>> ln_cs_;
-  std::vector<std::valarray<float>> cs_;
-  std::vector<std::valarray<float>> betas_;
-  std::vector<std::valarray<float>> betas_2_;
+  std::vector<uint32_t> perms_a_;
+  std::vector<uint32_t> perms_b_;
+  std::vector<std::vector<float>> rs_;
+  std::vector<std::vector<float>> rs_2_;
+  std::vector<std::vector<float>> ln_cs_;
+  std::vector<std::vector<float>> cs_;
+  std::vector<std::vector<float>> betas_;
+  std::vector<std::vector<float>> betas_2_;
   std::hash<std::string> hasher;
 
   uint64_t fast_mod_long(const uint64_t input, const uint64_t ceil)

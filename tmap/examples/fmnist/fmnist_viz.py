@@ -54,7 +54,7 @@ def main():
 
     print("Running tmap ...")
     start = timer()
-    lf.batch_add(enc.batch_from_weight_array(tmp, method="I2CWS"))
+    lf.batch_add(enc.batch_from_weight_array(tmp))
     lf.index()
     x, y, s, t, _ = tm.layout_from_lsh_forest(lf, CFG)
     print("tmap: " + str(timer() - start))
@@ -72,9 +72,7 @@ def main():
         (9, "Ankle boot"),
     ]
 
-    faerun = Faerun(
-        "FMNIST", clear_color="#111111", view="front", coords=False
-    )
+    faerun = Faerun("FMNIST", clear_color="#111111", view="front", coords=False)
     faerun.add_scatter(
         "FMNIST",
         {"x": x, "y": y, "c": LABELS, "labels": IMAGE_LABELS},

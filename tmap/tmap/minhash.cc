@@ -14,8 +14,8 @@ tmap::Minhash::Minhash(unsigned int d,
                        unsigned int sample_size)
   : d_(d)
   , sample_size_(sample_size)
-  , perms_a_((uint32_t)0, d)
-  , perms_b_((uint32_t)0, d)
+  , perms_a_(d, 0)
+  , perms_b_(d, 0)
   , rs_(sample_size)
   , rs_2_(sample_size)
   , ln_cs_(sample_size)
@@ -23,6 +23,8 @@ tmap::Minhash::Minhash(unsigned int d,
   , betas_(sample_size)
   , betas_2_(sample_size)
 {
+  
+
   // Permutations for the standard minhash
   std::mt19937 rand;
   rand.seed(seed);
@@ -69,12 +71,12 @@ tmap::Minhash::Minhash(unsigned int d,
   std::uniform_real_distribution<float> dist_beta_2(0.0f, 1.0f);
 
   for (unsigned int i = 0; i < sample_size_; i++) {
-    rs_[i] = std::valarray<float>(0.0f, d_);
-    rs_2_[i] = std::valarray<float>(0.0f, d_);
-    ln_cs_[i] = std::valarray<float>(0.0f, d_);
-    cs_[i] = std::valarray<float>(0.0f, d_);
-    betas_[i] = std::valarray<float>(0.0f, d_);
-    betas_2_[i] = std::valarray<float>(0.0f, d_);
+    rs_[i] = std::vector<float>(d_, 0.0f);
+    rs_2_[i] = std::vector<float>(d_, 0.0f);
+    ln_cs_[i] = std::vector<float>(d_, 0.0f);
+    cs_[i] = std::vector<float>(d_, 0.0f);
+    betas_[i] = std::vector<float>(d_, 0.0f);
+    betas_2_[i] = std::vector<float>(d_, 0.0f);
 
     for (unsigned int j = 0; j < d_; j++) {
       rs_[i][j] = gamma_dist(rand_gamma);
@@ -256,64 +258,50 @@ tmap::Minhash::FromWeightArray(std::vector<float>& vec,
 {
   std::vector<uint32_t> mh(sample_size_ * 2);
 
-  std::vector<float> vals;
-  std::vector<size_t> indices;
-  std::valarray<bool> mask(vec.size());
-
-  for (size_t i = 0; i < vec.size(); i++) {
-    if (vec[i] > 0) {
-      indices.emplace_back(i);
-
-      if (vec[i] > 0)
-        vals.emplace_back(vec[i]);
-
-      mask[i] = true;
-    } else
-      mask[i] = false;
-  }
-
-  std::valarray<float> vals_log(vals.data(), vals.size());
-
   if (method == "ICWS") {
     // ICWS
     for (unsigned int s = 0; s < sample_size_; s++) {
-      std::valarray<float> rs = rs_[s][mask];
-      std::valarray<float> betas = betas_[s][mask];
-      std::valarray<float> ln_cs = ln_cs_[s][mask];
+      std::vector<float> vec_tmp(vec);
+      std::vector<float> ln_a(d_, std::numeric_limits<float>::max());
+      std::vector<float> rs = rs_[s];
+      std::vector<float> betas = betas_[s];
+      std::vector<float> ln_cs = ln_cs_[s];
 
-      std::valarray<float> t = (vals_log / rs) + betas;
-      t = t.apply([](float x) { return std::floor(x); });
+      for (size_t i = 0; i < vec_tmp.size(); i++) {
+        if (vec_tmp[i] <= 0) continue;
+        vec_tmp[i] = std::floor((vec_tmp[i] / rs[i]) + betas[i]);
+        float ln_y = (vec_tmp[i] - betas[i]) * rs[i];
+        ln_a[i] = ln_cs[i] - ln_y - rs[i];
+      }
 
-      std::valarray<float> ln_y = (t - betas) * rs;
-      std::valarray<float> ln_a = ln_cs - ln_y - rs;
+      uint32_t k_star = std::min_element(ln_a.begin(), ln_a.end()) - ln_a.begin();
 
-      uint32_t k_star = std::distance(
-        std::begin(ln_a), std::min_element(std::begin(ln_a), std::end(ln_a)));
-
-      mh[2 * s] = indices[k_star];
-      mh[2 * s + 1] = (uint32_t)t[k_star];
+      mh[2 * s] = k_star;
+      mh[2 * s + 1] = (uint32_t)vec_tmp[k_star];
     }
   } else {
     // I2CWS
-    for (unsigned int i = 0; i < sample_size_; i++) {
-      std::valarray<float> rs = rs_[i][mask];
-      std::valarray<float> rs_2 = rs_2_[i][mask];
-      std::valarray<float> betas = betas_[i][mask];
-      std::valarray<float> betas_2 = betas_2_[i][mask];
-      std::valarray<float> cs = cs_[i][mask];
+    for (unsigned int s = 0; s < sample_size_; s++) {
+      std::vector<float> vec_tmp(d_, 0);
+      std::vector<float> a(d_, std::numeric_limits<float>::max());
+      std::vector<float> rs = rs_[s];
+      std::vector<float> rs_2 = rs_2_[s];
+      std::vector<float> betas = betas_[s];
+      std::vector<float> betas_2 = betas_2_[s];
+      std::vector<float> cs = cs_[s];
 
-      std::valarray<float> t = (vals_log / rs_2) + betas_2;
-      t = t.apply([](float x) { return std::floor(x); });
+      for (size_t i = 0; i < vec_tmp.size(); i++) {
+        if (vec[i] <= 0) continue;
+        vec_tmp[i] = std::floor((log(vec[i]) / rs_2[i]) + betas_2[i]);
+        float z = std::exp(rs_2[i] * (vec_tmp[i] - betas_2[i] + 1));
+        a[i] = cs[i] / z;
+      }
 
-      std::valarray<float> z = std::exp(rs_2 * (t - betas_2 + 1));
-      std::valarray<float> a = cs / z;
+      uint32_t k_star = std::min_element(a.begin(), a.end()) - a.begin();
+      uint32_t t_k = std::floor((log(vec[k_star]) / rs[k_star]) + betas[k_star]);
 
-      uint32_t k_star = std::distance(
-        std::begin(a), std::min_element(std::begin(a), std::end(a)));
-      uint32_t t_k = std::floor(vals_log[k_star] / rs[k_star] + betas[k_star]);
-
-      mh[2 * i] = indices[k_star];
-      mh[2 * i + 1] = t_k;
+      mh[2 * s] = k_star;
+      mh[2 * s + 1] = std::exp(rs[k_star] * (t_k - betas[k_star]));
     }
   }
 
