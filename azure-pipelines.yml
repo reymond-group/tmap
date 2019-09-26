@@ -4,50 +4,83 @@ trigger:
 
 
 jobs:
-  - job: Ubuntu
+  # - job: Ubuntu
+  #   pool:
+  #     vmImage: 'ubuntu-latest'
+
+  #   steps:
+  #   - script: sudo install -d -m 0777 /usr/envs
+  #     displayName: Fix Conda permissions
+  #   - task: CondaEnvironment@0
+  #     inputs:
+  #       environmentName: 'tmbuild'
+  #       packageSpecs: 'python=3.7'
+  #   - script: conda install -y conda-build
+  #     displayName: Install dependencies with conda
+  #   - bash: cd tmap
+  #   - script: conda build .
+  #     displayName: 'Conda build tmap'
+  #   - task: CopyFiles@2
+  #     displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+  #     inputs:
+  #       SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
+  #       Contents: '*.tar.bz2'
+  #       TargetFolder: '$(build.artifactStagingDirectory)'
+  #   - task: PublishBuildArtifacts@1
+  #     displayName: 'Publish Artifact: LinuxPackages'
+
+
+  # - job: Windows
+  #   pool:
+  #     vmImage: vs2017-win2016
+  #   steps:
+  #   - task: CondaEnvironment@0
+  #     inputs:
+  #       environmentName: 'tmbuild'
+  #       packageSpecs: 'python=3.7'
+  #   - script: conda install -y conda-build
+  #     displayName: Install dependencies with conda
+  #   - bash: cd tmap
+  #   - script: conda build .
+  #     displayName: 'Conda build tmap'
+  #   - task: CopyFiles@2
+  #     displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+  #     inputs:
+  #       SourceFolder: 'C:\Miniconda\envs\tmbuild\conda-bld\win-64\'
+  #       Contents: '*.tar.bz2'
+  #       TargetFolder: '$(build.artifactStagingDirectory)'
+  #   - task: PublishBuildArtifacts@1
+  #     displayName: 'Publish Artifact: WindowsPackages'
+
+  - job: MacOS
     pool:
-      vmImage: 'ubuntu-latest'
-
-    steps:
-    - script: sudo install -d -m 0777 /usr/envs
-      displayName: Fix Conda permissions
-    - task: CondaEnvironment@0
-      inputs:
-        environmentName: 'tmbuild'
-        packageSpecs: 'python=3.7'
-    - script: conda install -y conda-build
-      displayName: Install dependencies with conda
-    - bash: cd tmap
-    - script: conda build .
-      displayName: 'Conda build tmap'
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
-      inputs:
-        SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
-        Contents: '*.tar.bz2'
-        TargetFolder: '$(build.artifactStagingDirectory)'
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: LinuxPackages'
-
-
-  - job: Windows
-    pool:
-      vmImage: vs2017-win2016
-    steps:
-    - task: CondaEnvironment@0
-      inputs:
-        environmentName: 'tmbuild'
-        packageSpecs: 'python=3.7'
-    - script: conda install -y conda-build
-      displayName: Install dependencies with conda
-    - bash: cd tmap
-    - script: conda build .
-      displayName: 'Conda build tmap'
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
-      inputs:
-        SourceFolder: 'C:\Miniconda\envs\tmbuild\conda-bld\win-64\'
-        Contents: '*.tar.bz2'
-        TargetFolder: '$(build.artifactStagingDirectory)'
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: WindowsPackages'
+      vmImage: macos-10.13
+      steps:
+      - bash: |
+          wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
+          tar Jxvf MacOSX$(target_platform).sdk.tar.xz
+        displayName: Install MacOSX $(target_platform) SDK
+      - script: |
+          echo "Removing homebrew from Azure to avoid conflicts."
+          curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+          chmod +x ~/uninstall_homebrew
+          ~/uninstall_homebrew -fq
+          rm ~/uninstall_homebrew
+        displayName: Remove Homebrew
+      - task: CondaEnvironment@0
+        inputs:
+          environmentName: 'tmbuild'
+          packageSpecs: 'python=3.7'
+      - script: conda install -y conda-build
+        displayName: Install dependencies with conda
+      - bash: cd tmap
+      - script: conda build .
+        displayName: 'Conda build tmap'
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+        inputs:
+          SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
+          Contents: '*.tar.bz2'
+          TargetFolder: '$(build.artifactStagingDirectory)'
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: LinuxPackages'
