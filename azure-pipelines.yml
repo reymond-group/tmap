@@ -82,7 +82,10 @@ jobs:
     - script: conda install -y conda-build
       displayName: Install dependencies with conda
     - bash: cd tmap
-    - script: conda build .
+    - script: |
+        conda config --set always_yes yes --set changeps1 no
+        conda update -q conda
+        conda build .
       displayName: 'Conda build tmap'
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
