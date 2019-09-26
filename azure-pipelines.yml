@@ -60,7 +60,7 @@ jobs:
     steps:
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
-        mkdir /opt
+        sudo mkdir /opt
         tar Jxvf MacOSX$(target_platform).sdk.tar.xz -C /opt
       displayName: Install MacOSX $(target_platform) SDK
     - script: |
