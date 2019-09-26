@@ -11,6 +11,8 @@ steps:
   inputs:
     environmentName: 'tmbuild'
     packageSpecs: 'python=3.7'
+- script: conda install conda-build
+  displayName: Install dependencies with conda
 - script: conda build .
   displayName: 'Conda build tmap'
 
