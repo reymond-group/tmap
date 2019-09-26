@@ -90,7 +90,7 @@ jobs:
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
       inputs:
-        SourceFolder: '/usr/envs/tmbuild/conda-bld/osx-64/'
+        SourceFolder: '/usr/local/miniconda/envs/tmbuild/conda-bld/osx-64/'
         Contents: '*.tar.bz2'
         TargetFolder: '$(build.artifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
