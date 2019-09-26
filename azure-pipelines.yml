@@ -4,30 +4,31 @@ trigger:
 
 
 jobs:
-  # - job: Ubuntu
-  #   pool:
-  #     vmImage: 'ubuntu-latest'
+  - job: Ubuntu
+    pool:
+      vmImage: 'ubuntu-latest'
 
-  #   steps:
-  #   - script: sudo install -d -m 0777 /usr/envs
-  #     displayName: Fix Conda permissions
-  #   - task: CondaEnvironment@0
-  #     inputs:
-  #       environmentName: 'tmbuild'
-  #       packageSpecs: 'python=3.7'
-  #   - script: conda install -y conda-build
-  #     displayName: Install dependencies with conda
-  #   - bash: cd tmap
-  #   - script: conda build .
-  #     displayName: 'Conda build tmap'
-  #   - task: CopyFiles@2
-  #     displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
-  #     inputs:
-  #       SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
-  #       Contents: '*.tar.bz2'
-  #       TargetFolder: '$(build.artifactStagingDirectory)'
-  #   - task: PublishBuildArtifacts@1
-  #     displayName: 'Publish Artifact: drop'
+    steps:
+    - script: sudo install -d -m 0777 /usr/envs
+      displayName: Fix Conda permissions
+    - task: CondaEnvironment@0
+      inputs:
+        environmentName: 'tmbuild'
+        packageSpecs: 'python=3.7'
+    - script: conda install -y conda-build
+      displayName: Install dependencies with conda
+    - bash: cd tmap
+    - script: conda build .
+      displayName: 'Conda build tmap'
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+      inputs:
+        SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
+        Contents: '*.tar.bz2'
+        TargetFolder: '$(build.artifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: LinuxPackages'
+
 
   - job: Windows
     pool:
@@ -42,3 +43,11 @@ jobs:
     - bash: cd tmap
     - script: conda build .
       displayName: 'Conda build tmap'
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+      inputs:
+        SourceFolder: 'C:\Miniconda\envs\tmbuild\conda-bld\win-64\'
+        Contents: '*.tar.bz2'
+        TargetFolder: '$(build.artifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: WindowsPackages'
