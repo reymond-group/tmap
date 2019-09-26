@@ -55,6 +55,8 @@ jobs:
   - job: MacOS
     pool:
       vmImage: macos-10.13
+    variables:
+      target_platform: 10.9
     steps:
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
