@@ -61,6 +61,7 @@ jobs:
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
         sudo mkdir /opt
+        sudo install -d -m 0777 /opt
         tar Jxvf MacOSX$(target_platform).sdk.tar.xz -C /opt
       displayName: Install MacOSX $(target_platform) SDK
     - script: |
