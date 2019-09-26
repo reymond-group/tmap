@@ -13,6 +13,7 @@ steps:
     packageSpecs: 'python=3.7'
 - script: conda install conda-build
   displayName: Install dependencies with conda
+- bash: cd tmap
 - script: conda build .
   displayName: 'Conda build tmap'
 
