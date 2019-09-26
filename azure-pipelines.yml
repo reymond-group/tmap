@@ -69,9 +69,11 @@ jobs:
         ~/uninstall_homebrew -fq
         rm ~/uninstall_homebrew
       displayName: Remove Homebrew
-    - script: sudo install -d -m 0777 /usr/local/miniconda/
+    - bash: |
+        sudo install -d -m 0777 /usr/local/miniconda/
+        sudo install -d -m 0777 /usr/local/miniconda/envs/
       displayName: Fix Conda permissions
-    - task: CondaEnvironment@1
+    - task: CondaEnvironment@0
       inputs:
         environmentName: 'tmbuild'
         packageSpecs: 'python=3.7'
