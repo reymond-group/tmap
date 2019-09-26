@@ -16,4 +16,9 @@ steps:
 - bash: cd tmap
 - script: conda build .
   displayName: 'Conda build tmap'
-
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    itemPattern: '/usr/envs/tmbuild/conda-bld/linux-64/*.tar.bz2'
+    downloadPath: '$(System.ArtifactsDirectory)'
