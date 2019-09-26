@@ -58,7 +58,6 @@ jobs:
     variables:
       target_platform: 10.9
     steps:
-    - script: chmod 777 /usr/envs
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
         tar Jxvf MacOSX$(target_platform).sdk.tar.xz
@@ -70,7 +69,7 @@ jobs:
         ~/uninstall_homebrew -fq
         rm ~/uninstall_homebrew
       displayName: Remove Homebrew
-    - task: CondaEnvironment@0
+    - task: CondaEnvironment@1
       inputs:
         environmentName: 'tmbuild'
         packageSpecs: 'python=3.7'
