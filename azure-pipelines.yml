@@ -58,6 +58,7 @@ jobs:
     variables:
       target_platform: 10.9
     steps:
+    - script: sudo install -d -m 0777 /usr/envs
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
         tar Jxvf MacOSX$(target_platform).sdk.tar.xz
