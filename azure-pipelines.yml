@@ -60,7 +60,7 @@ jobs:
     steps:
     - bash: |
         wget https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX$(target_platform).sdk.tar.xz
-        tar Jxvf MacOSX$(target_platform).sdk.tar.xz
+        tar -C /opt Jxvf MacOSX$(target_platform).sdk.tar.xz
       displayName: Install MacOSX $(target_platform) SDK
     - script: |
         echo "Removing homebrew from Azure to avoid conflicts."
