@@ -75,7 +75,7 @@ jobs:
         sudo install -d -m 0777 /usr/local/miniconda/
         sudo install -d -m 0777 /usr/local/miniconda/envs/
       displayName: Fix Conda permissions
-    - task: CondaEnvironment@0
+    - task: CondaEnvironment@1
       inputs:
         environmentName: 'tmbuild'
         packageSpecs: 'python=3.7'
