@@ -16,9 +16,11 @@ steps:
 - bash: cd tmap
 - script: conda build .
   displayName: 'Conda build tmap'
-- task: DownloadBuildArtifacts@0
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
   inputs:
-    buildType: 'current'
-    downloadType: 'specific'
-    itemPattern: '/usr/envs/tmbuild/conda-bld/linux-64/*.tar.bz2'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    SourceFolder: '/usr/envs/tmbuild/conda-bld/linux-64/'
+    Contents: '*.tar.bz2'
+    TargetFolder: '$(build.artifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
