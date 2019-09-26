@@ -5,10 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: sudo install -d -m 0777 /usr/envs
+  displayName: Fix Conda permissions
 - task: CondaEnvironment@0
   inputs:
     environmentName: 'tmbuild'
     packageSpecs: 'python=3.7'
-- script: conda build folly
-  displayName: 'Conda build folly'
+- script: conda build .
+  displayName: 'Conda build tmap'
 
