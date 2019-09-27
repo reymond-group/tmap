@@ -24,14 +24,6 @@ jobs:
         conda activate tmbuild
         conda build .
       displayName: 'Conda build tmap'
-    - script: |
-        source ${CONDA}/etc/profile.d/conda.sh
-        conda activate tmbuild
-        conda install -y tmap --use-local
-        conda install -y pytest
-        cd tmap/tests
-        pytest
-      displayName: Tests
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
       inputs:
