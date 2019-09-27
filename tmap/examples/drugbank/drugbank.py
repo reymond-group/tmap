@@ -46,6 +46,11 @@ def main():
     cfg = tm.LayoutConfiguration()
     cfg.k = 100
     cfg.node_size = 1 / 20
+
+    f = tm.VectorUint()
+    t = tm.VectorUint()
+    w = tm.VectorFloat()
+
     x, y, s, t, _ = tm.layout_from_lsh_forest(lf, config=cfg)
 
     # Rank the molecules between 0.0 and 1.0 on values

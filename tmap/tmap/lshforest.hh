@@ -22,6 +22,7 @@
 #include <stdint.h>
 #include <tuple>
 #include <vector>
+#include <limits>
 
 #include "cereal/archives/binary.hpp"
 #include "cereal/types/map.hpp"
