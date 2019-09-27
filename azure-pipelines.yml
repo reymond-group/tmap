@@ -32,6 +32,14 @@ jobs:
         TargetFolder: '$(build.artifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact: LinuxPackages'
+    - script: |
+        source ${CONDA}/etc/profile.d/conda.sh
+        conda activate tmbuild
+        conda install -y tmap --use-local
+        conda install -y pytest
+        cd tmap/tests
+        pytest
+      displayName: Tests
 
 
   - job: Windows
