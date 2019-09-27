@@ -86,6 +86,7 @@ jobs:
       displayName: Setup Conda
     - bash: cd tmap
     - script: |
+        source ${CONDA}/etc/profile.d/conda.sh
         conda build .
       displayName: 'Conda build tmap'
     - task: CopyFiles@2
