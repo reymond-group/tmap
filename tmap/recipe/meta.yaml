@@ -32,6 +32,12 @@ requirements:
     - python
     - ogdf
 
+test:
+  imports:
+    - tmap
+  requires:
+    - pytest
+
 about:
   home: http://gdb.tools
   license: MIT
