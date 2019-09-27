@@ -38,6 +38,8 @@ jobs:
     pool:
       vmImage: vs2017-win2016
     steps:
+    - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
+      displayName: Setup build environment
     - script: |
         conda config --set always_yes yes --set changeps1 no
         conda update -q conda
