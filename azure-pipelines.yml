@@ -55,7 +55,7 @@ jobs:
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
       inputs:
-        SourceFolder: 'C:\Miniconda\envs\tmbuild\conda-bld\win-64\'
+        SourceFolder: 'C:\Miniconda\conda-bld\win-64\'
         Contents: '*.tar.bz2'
         TargetFolder: '$(build.artifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
