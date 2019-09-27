@@ -24,14 +24,6 @@ jobs:
         conda activate tmbuild
         conda build .
       displayName: 'Conda build tmap'
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
-      inputs:
-        SourceFolder: '/usr/share/miniconda/envs/tmbuild/conda-bld/linux-64/'
-        Contents: '*.tar.bz2'
-        TargetFolder: '$(build.artifactStagingDirectory)'
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: LinuxPackages'
     - script: |
         source ${CONDA}/etc/profile.d/conda.sh
         conda activate tmbuild
@@ -40,6 +32,15 @@ jobs:
         cd tmap/tests
         pytest
       displayName: Tests
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactStagingDirectory)'
+      inputs:
+        SourceFolder: '/usr/share/miniconda/envs/tmbuild/conda-bld/linux-64/'
+        Contents: '*.tar.bz2'
+        TargetFolder: '$(build.artifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: LinuxPackages'
+    
 
 
   - job: Windows
