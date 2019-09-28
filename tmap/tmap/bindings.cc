@@ -13,6 +13,9 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
+#include <stdint.h>
+#include <tuple>
+#include <vector>
 
 using namespace tmap;
 
@@ -23,6 +26,37 @@ PYBIND11_MAKE_OPAQUE(std::vector<uint16_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint32_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint64_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<float>);
+
+// In order to make the python module useable from R via reticulate,
+// layout methods that return native python lists rather than bound
+// std vectors are implemented.
+py::tuple LayoutFromLSHForestNative(LSHForest& lsh_forest,
+                                    LayoutConfiguration config = LayoutConfiguration(),
+                                    bool create_mst = true,
+                                    bool clear_lsh_forest = false) {
+
+    auto result = LayoutFromLSHForest(lsh_forest, config, create_mst, clear_lsh_forest);
+    py::list x = py::cast(std::get<0>(result));
+    py::list y = py::cast(std::get<1>(result));
+    py::list s = py::cast(std::get<2>(result));
+    py::list t = py::cast(std::get<3>(result));
+    py::object gp = py::cast(std::get<4>(result));
+    return py::make_tuple(x, y, s, t, gp);
+}
+
+py::tuple LayoutFromEdgeListNative(uint32_t vertex_count,
+                             const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
+                             LayoutConfiguration config = LayoutConfiguration(),
+                             bool create_mst = true) {
+    
+    auto result = LayoutFromEdgeList(vertex_count, edges, config, create_mst);
+    py::list x = py::cast(std::get<0>(result));
+    py::list y = py::cast(std::get<1>(result));
+    py::list s = py::cast(std::get<2>(result));
+    py::list t = py::cast(std::get<3>(result));
+    py::object gp = py::cast(std::get<4>(result));
+    return py::make_tuple(x, y, s, t, gp);
+}
 
 PYBIND11_MODULE(tmap, m)
 {
@@ -189,6 +223,27 @@ PYBIND11_MODULE(tmap, m)
             :obj:`Tuple[VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
     )pbdoc");
 
+    m.def("layout_from_lsh_forest_native",
+        &LayoutFromLSHForestNative,
+        py::arg("lsh_forest"),
+        py::arg("config") = LayoutConfiguration(),
+        py::arg("create_mst") = true,
+        py::arg("clear_lsh_forest") = false,
+        R"pbdoc(
+        Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
+        
+        Arguments:
+            lsh_forest (:obj:`LSHForest`): An :obj:`LSHForest` instance
+        
+        Keyword Arguments:
+            config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
+            create_mst (:obj:`bool`): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
+            clear_lsh_forest (:obj:`bool`): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
+
+        Returns:
+            :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    )pbdoc");
+
   m.def("mst_from_lsh_forest",
         &MSTFromLSHForest,
         py::arg("lsh_forest"),
@@ -216,6 +271,27 @@ PYBIND11_MODULE(tmap, m)
         py::arg("create_mst") = true,
         R"pbdoc(
         Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an edge list.
+        
+        Arguments:
+            vertex_count (:obj:`int`): The number of vertices in the edge list
+            edges (:obj:`List` of :obj:`Tuple[int, int, float]`): An edge list defining a graph
+        
+        Keyword Arguments:
+            config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
+            create_mst (:obj:`bool`): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
+
+        Returns:
+            :obj:`Tuple[VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties]`: The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    )pbdoc");
+
+  m.def("layout_from_edge_list_native",
+        &LayoutFromEdgeListNative,
+        py::arg("vertex_count"),
+        py::arg("edges"),
+        py::arg("config") = LayoutConfiguration(),
+        py::arg("create_mst") = true,
+        R"pbdoc(
+        Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an edge list. This method returns native python lists and objects.
         
         Arguments:
             vertex_count (:obj:`int`): The number of vertices in the edge list
