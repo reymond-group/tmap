@@ -488,3 +488,26 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
 
   return std::make_tuple(x, y, s, t, gp);
 }
+
+std::tuple<std::vector<float>,
+           std::vector<float>,
+           std::vector<float>,
+           std::vector<float>>
+tmap::MakeEdgeList(
+  std::vector<float> x, std::vector<float> y,
+  std::vector<uint32_t> s, std::vector<uint32_t> t) 
+{
+  std::vector<float> x1(s.size());
+  std::vector<float> y1(s.size());
+  std::vector<float> x2(s.size());
+  std::vector<float> y2(s.size());
+
+  for (size_t i = 0; i < s.size(); i++) {
+    x1[i] = x[s[i]];
+    y1[i] = y[s[i]];
+    x2[i] = x[t[i]];
+    y2[i] = y[t[i]];
+  }
+
+  return std::make_tuple(x1, y1, x2, y2);
+}

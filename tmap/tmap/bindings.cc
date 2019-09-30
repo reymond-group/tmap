@@ -34,7 +34,6 @@ py::tuple LayoutFromLSHForestNative(LSHForest& lsh_forest,
                                     LayoutConfiguration config = LayoutConfiguration(),
                                     bool create_mst = true,
                                     bool clear_lsh_forest = false) {
-
     auto result = LayoutFromLSHForest(lsh_forest, config, create_mst, clear_lsh_forest);
     py::list x = py::cast(std::get<0>(result));
     py::list y = py::cast(std::get<1>(result));
@@ -45,10 +44,9 @@ py::tuple LayoutFromLSHForestNative(LSHForest& lsh_forest,
 }
 
 py::tuple LayoutFromEdgeListNative(uint32_t vertex_count,
-                             const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
-                             LayoutConfiguration config = LayoutConfiguration(),
-                             bool create_mst = true) {
-    
+                                   const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
+                                   LayoutConfiguration config = LayoutConfiguration(),
+                                   bool create_mst = true) {
     auto result = LayoutFromEdgeList(vertex_count, edges, config, create_mst);
     py::list x = py::cast(std::get<0>(result));
     py::list y = py::cast(std::get<1>(result));
@@ -56,6 +54,16 @@ py::tuple LayoutFromEdgeListNative(uint32_t vertex_count,
     py::list t = py::cast(std::get<3>(result));
     py::object gp = py::cast(std::get<4>(result));
     return py::make_tuple(x, y, s, t, gp);
+}
+
+py::tuple MakeEdgeListNative(std::vector<float> x, std::vector<float> y,
+                             std::vector<uint32_t> s, std::vector<uint32_t> t) {
+    auto result = MakeEdgeList(x, y, s, t);
+    py::list x1 = py::cast(std::get<0>(result));
+    py::list y1 = py::cast(std::get<1>(result));
+    py::list x2 = py::cast(std::get<2>(result));
+    py::list y2 = py::cast(std::get<3>(result));
+    return py::make_tuple(x1, y1, x2, y2, py::cast(x), py::cast(y));
 }
 
 PYBIND11_MODULE(tmap, m)
@@ -303,6 +311,44 @@ PYBIND11_MODULE(tmap, m)
 
         Returns:
             :obj:`Tuple[VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties]`: The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    )pbdoc");
+
+  m.def("make_edge_list",
+        &MakeEdgeList,
+        py::arg("x"),
+        py::arg("y"),
+        py::arg("s"),
+        py::arg("t"),
+        R"pbdoc(
+        brief Creates an edge list from x, y coordinates and edge indices.
+        
+        Arguments:
+            x (:obj:`VectorFloat`): The x coordinates
+            y (:obj:`VectorFloat`): The y coordinates
+            s (:obj:`VectorUint`): The indices of the from vertices
+            t (:obj:`VectorUint`): The indices of the to vertices
+        
+        Returns:
+            :obj:`Tuple[VectorFloat, VectorFloat, VectorFloat, VectorFloat]`: Coordinates in edge list form
+    )pbdoc");
+
+  m.def("make_edge_list_native",
+        &MakeEdgeListNative,
+        py::arg("x"),
+        py::arg("y"),
+        py::arg("s"),
+        py::arg("t"),
+        R"pbdoc(
+        brief Creates an edge list from x, y coordinates and edge indices. This method returns native python lists and objects. Also returns coordinates of vertices
+        
+        Arguments:
+            x (:obj:`VectorFloat`): The x coordinates
+            y (:obj:`VectorFloat`): The y coordinates
+            s (:obj:`VectorUint`): The indices of the from vertices
+            t (:obj:`VectorUint`): The indices of the to vertices
+        
+        Returns:
+            :obj:`Tuple[List, List, List, List, List, List]`: Coordinates in edge list form and the vertex coordinates
     )pbdoc");
 
   py::class_<LSHForest>(m, "LSHForest", R"pbdoc(

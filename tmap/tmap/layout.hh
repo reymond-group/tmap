@@ -301,5 +301,23 @@ LayoutInternal(ogdf::EdgeWeightedGraph<float>& g,
                uint32_t vertex_count,
                LayoutConfiguration config,
                GraphProperties& gp);
+
+/**
+ * @brief Creates an edge list from x, y coordinates and edge indices.
+ *
+ * @param x The x coordinates
+ * @param y The y coordinates
+ * @param s The indices of the from vertices
+ * @param t The indices of the to vertices
+ * @return std::tuple<std::vector<float>, std::vector<float>,
+ * std::vector<float>, std::vector<float>>
+ */
+std::tuple<std::vector<float>,
+           std::vector<float>,
+           std::vector<float>,
+           std::vector<float>>
+MakeEdgeList(std::vector<float> x, std::vector<float> y,
+             std::vector<uint32_t> s, std::vector<uint32_t> t);
+
 }; // namespace tmap
 #endif
