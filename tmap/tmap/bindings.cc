@@ -21,6 +21,73 @@ using namespace tmap;
 
 namespace py = pybind11;
 
+// Used to convert python lists to STL vectors
+template <class T>
+std::vector<T> convert_list(py::list& l) {
+    std::vector<T> vec(l.size());
+    for (size_t i = 0; i < l.size(); i++)
+        vec[i] = l[i].cast<T>();
+    return vec;
+}
+
+// Used to convert python lists of lists to STL vectors of vectors
+template <class T>
+std::vector<std::vector<T>> convert_list_of_lists(py::list& l) {
+    std::vector<std::vector<T>> vecs(l.size());
+    for (size_t i = 0; i < l.size(); i++) {
+        py::list sl = (py::list)l[i];
+        vecs[i] = std::vector<T>(sl.size());
+        for (size_t j = 0; j < sl.size(); j++)
+            vecs[i][j] = sl[j].cast<T>();
+    }
+    return vecs;
+}
+
+// Extending the Minhash class to allow for passing lists as well as
+// opaque types
+class PyMinhash : public Minhash {
+public:
+    using Minhash::Minhash;
+    using Minhash::FromBinaryArray;
+    using Minhash::BatchFromBinaryArray;
+    using Minhash::FromSparseBinaryArray;
+    using Minhash::BatchFromSparseBinaryArray;
+    using Minhash::FromWeightArray;
+    using Minhash::BatchFromWeightArray;
+
+    std::vector<uint32_t> FromBinaryArray(py::list& list) {
+        std::vector<uint8_t> vec = convert_list<uint8_t>(list);
+        return Minhash::FromBinaryArray(vec);
+    }
+
+    std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::list& list) {
+        std::vector<std::vector<uint8_t>> vecs = convert_list_of_lists<uint8_t>(list);
+        return Minhash::BatchFromBinaryArray(vecs);
+    }
+    
+    std::vector<uint32_t> FromSparseBinaryArray(py::list& list) {
+        std::vector<uint32_t> vec = convert_list<uint32_t>(list);
+        return Minhash::FromSparseBinaryArray(vec);
+    }
+
+    std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::list& list) {
+        std::vector<std::vector<uint32_t>> vecs = convert_list_of_lists<uint32_t>(list);
+        return Minhash::BatchFromSparseBinaryArray(vecs);
+    }
+    
+    std::vector<uint32_t> FromWeightArray(py::list& list, const std::string& method = "ICWS") {
+        std::vector<float> vec = convert_list<float>(list);
+        return Minhash::FromWeightArray(vec, method);
+    }
+
+    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::list& list, const std::string& method = "ICWS") {
+        std::vector<std::vector<float>> vecs = convert_list_of_lists<float>(list);
+        return Minhash::BatchFromWeightArray(vecs, method);
+    }
+};
+
+
+// Defining opaque types (see bindings below as well)
 PYBIND11_MAKE_OPAQUE(std::vector<uint8_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint16_t>);
 PYBIND11_MAKE_OPAQUE(std::vector<uint32_t>);
@@ -653,7 +720,7 @@ PYBIND11_MODULE(tmap, m)
             Clears all the added data and computed indices from this :obj:`LSHForest` instance.
         )pbdoc");
 
-  py::class_<Minhash>(m, "Minhash", R"pbdoc(
+  py::class_<PyMinhash>(m, "Minhash", R"pbdoc(
         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
     )pbdoc")
     .def(py::init<unsigned int, unsigned int, unsigned int>(),
@@ -668,7 +735,18 @@ PYBIND11_MODULE(tmap, m)
                 seed (:obj:`int`): The seed used for the random number generator(s)
                 sample_size (:obj:`int`): The sample size when generating a weighted MinHash
         )pbdoc")
-    .def("from_binary_array", &Minhash::FromBinaryArray, R"pbdoc(
+    .def("from_binary_array", 
+         py::overload_cast<py::list&>(&PyMinhash::FromBinaryArray), R"pbdoc(
+            Create a MinHash vector from a binary array.
+
+            Arguments:
+                vec (:obj:`List`): A Python list containing binary values
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_binary_array", 
+         py::overload_cast<std::vector<uint8_t>&>(&PyMinhash::FromBinaryArray), R"pbdoc(
             Create a MinHash vector from a binary array.
 
             Arguments:
@@ -677,7 +755,18 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
-    .def("batch_from_binary_array", &Minhash::BatchFromBinaryArray, R"pbdoc(
+    .def("batch_from_binary_array", 
+         py::overload_cast<py::list&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+            Create MinHash vectors from binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`List`): A list of lists containing binary values
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_binary_array", 
+         py::overload_cast<std::vector<std::vector<uint8_t>>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
             Create MinHash vectors from binary arrays (parallelized).
 
             Arguments:
@@ -686,17 +775,39 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
-    .def("from_sparse_binary_array", &Minhash::FromSparseBinaryArray, R"pbdoc(
+    .def("from_sparse_binary_array",
+         py::overload_cast<py::list&>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
             Create a MinHash vector from a sparse binary array.
 
             Arguments:
-                vec (:obj:`VectorUint`): A vector containing indices of ones in a binary array
+                vec (:obj:`List`): A Python list containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_sparse_binary_array", 
+         py::overload_cast<std::vector<uint32_t>&>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+            Create a MinHash vector from a sparse binary array.
+
+            Arguments:
+                vec (:obj:`VectorUint`): A Python list containing indices of ones in a binary array
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
     .def("batch_from_sparse_binary_array",
-         &Minhash::BatchFromSparseBinaryArray,
+         py::overload_cast<py::list&>(&PyMinhash::BatchFromSparseBinaryArray),
+         R"pbdoc(
+            Create MinHash vectors from sparse binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`List`): A list of Python lists containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_sparse_binary_array",
+         py::overload_cast<std::vector<std::vector<uint32_t>>&>(&PyMinhash::BatchFromSparseBinaryArray),
          R"pbdoc(
             Create MinHash vectors from sparse binary arrays (parallelized).
 
@@ -706,7 +817,7 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
-    .def("from_string_array", &Minhash::FromStringArray, R"pbdoc(
+    .def("from_string_array", &PyMinhash::FromStringArray, R"pbdoc(
             Create a MinHash vector from a string array.
 
             Arguments:
@@ -715,7 +826,7 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
-    .def("batch_from_string_array", &Minhash::BatchFromStringArray, R"pbdoc(
+    .def("batch_from_string_array", &PyMinhash::BatchFromStringArray, R"pbdoc(
             Create MinHash vectors from string arrays (parallelized).
 
             Arguments:
@@ -725,7 +836,23 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
     .def("from_weight_array",
-         &Minhash::FromWeightArray,
+         py::overload_cast<py::list&, const std::string&>(&PyMinhash::FromWeightArray),
+         py::arg("vec"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create a MinHash vector from a :obj:`List`.
+
+            Arguments:
+                vec (:obj:`List`): A Python list containing :obj:`float` values
+            
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_weight_array",
+         py::overload_cast<std::vector<float>&, const std::string&>(&PyMinhash::FromWeightArray),
          py::arg("vec"),
          py::arg("method") = "ICWS",
          R"pbdoc(
@@ -741,7 +868,23 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
     .def("batch_from_weight_array",
-         &Minhash::BatchFromWeightArray,
+         py::overload_cast<py::list&, const std::string&>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`List` of :obj:`List`): A list of Python lists containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         py::overload_cast<std::vector<std::vector<float>>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
          py::arg("vecs"),
          py::arg("method") = "ICWS",
          R"pbdoc(
@@ -757,7 +900,7 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
     .def("batch_from_int_weight_array",
-         &Minhash::BatchFromIntWeightArray,
+         &PyMinhash::BatchFromIntWeightArray,
          py::arg("vecs"),
          py::arg("divide_by") = 0,
          R"pbdoc(
@@ -770,7 +913,7 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
-    .def("get_distance", &Minhash::GetDistance, R"pbdoc(
+    .def("get_distance", &PyMinhash::GetDistance, R"pbdoc(
             Calculate the Jaccard distance between two MinHash vectors.
 
             Arguments:
@@ -780,7 +923,7 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`float` The Jaccard distance
         )pbdoc")
-    .def("get_weighted_distance", &Minhash::GetWeightedDistance, R"pbdoc(
+    .def("get_weighted_distance", &PyMinhash::GetWeightedDistance, R"pbdoc(
             Calculate the weighted Jaccard distance between two MinHash vectors.
 
             Arguments:
