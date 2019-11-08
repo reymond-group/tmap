@@ -13,6 +13,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
+#include <pybind11/numpy.h>
 #include <stdint.h>
 #include <tuple>
 #include <vector>
@@ -40,6 +41,56 @@ std::vector<std::vector<T>> convert_list_of_lists(py::list& l) {
         for (size_t j = 0; j < sl.size(); j++)
             vecs[i][j] = sl[j].cast<T>();
     }
+
+    return vecs;
+}
+
+// Used to convert python 2D arrays to STL vectors
+template <class T>
+std::vector<std::vector<T>> convert_array(py::array_t<T> arr) {
+    py::buffer_info buffi = arr.request();
+    T* ptr = (T *)buffi.ptr;
+    int rows = buffi.shape[0];
+    int cols = buffi.shape[1];
+
+    std::vector<std::vector<T>> vecs(rows);
+
+    for (size_t i = 0; i < rows; i++) {
+        vecs[i] = std::vector<T>(cols);
+        for (size_t j = 0; j < cols; j++) {
+            vecs[i][j] = ptr[i * cols + j];
+        }
+    }
+    
+    return vecs;
+}
+
+// Used to convert python 2D arrays to STL vectors, including a type change
+template <class T>
+std::vector<std::vector<float>> convert_array_to_float(py::array_t<T> arr) {
+    py::buffer_info buffi = arr.request();
+    T* ptr = (T *)buffi.ptr;
+    int rows = buffi.shape[0];
+    int cols = buffi.shape[1];
+
+    // std::cout << rows << std::endl;
+    // std::cout << cols << std::endl;
+
+    std::vector<std::vector<float>> vecs(rows);
+
+    for (size_t i = 0; i < rows; i++) {
+        vecs[i] = std::vector<float>(cols);
+        for (size_t j = 0; j < cols; j++) {
+            vecs[i][j] = (float)ptr[j * rows + i];
+        }
+
+        // std::cout << i << std::endl;
+    }
+
+    // std::cout << "done" << std::endl;
+    // std::cout << rows << std::endl;
+    // std::cout << cols << std::endl;
+    
     return vecs;
 }
 
@@ -64,6 +115,11 @@ public:
         std::vector<std::vector<uint8_t>> vecs = convert_list_of_lists<uint8_t>(list);
         return Minhash::BatchFromBinaryArray(vecs);
     }
+
+    std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::array_t<uint8_t>& arr) {
+        std::vector<std::vector<uint8_t>> vecs = convert_array<uint8_t>(arr);
+        return Minhash::BatchFromBinaryArray(vecs);
+    }
     
     std::vector<uint32_t> FromSparseBinaryArray(py::list& list) {
         std::vector<uint32_t> vec = convert_list<uint32_t>(list);
@@ -74,6 +130,11 @@ public:
         std::vector<std::vector<uint32_t>> vecs = convert_list_of_lists<uint32_t>(list);
         return Minhash::BatchFromSparseBinaryArray(vecs);
     }
+
+    std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::array_t<uint32_t>& arr) {
+        std::vector<std::vector<uint32_t>> vecs = convert_array<uint32_t>(arr);
+        return Minhash::BatchFromSparseBinaryArray(vecs);
+    }
     
     std::vector<uint32_t> FromWeightArray(py::list& list, const std::string& method = "ICWS") {
         std::vector<float> vec = convert_list<float>(list);
@@ -82,6 +143,16 @@ public:
 
     std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::list& list, const std::string& method = "ICWS") {
         std::vector<std::vector<float>> vecs = convert_list_of_lists<float>(list);
+        return Minhash::BatchFromWeightArray(vecs, method);
+    }
+
+    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<float, 32>& arr, const std::string& method = "ICWS") {
+        std::vector<std::vector<float>> vecs = convert_array<float>(arr);
+        return Minhash::BatchFromWeightArray(vecs, method);
+    }
+
+    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<double>& arr, const std::string& method = "ICWS") {
+        std::vector<std::vector<float>> vecs = convert_array_to_float<double>(arr);
         return Minhash::BatchFromWeightArray(vecs, method);
     }
 };
@@ -131,6 +202,56 @@ py::tuple MakeEdgeListNative(std::vector<float> x, std::vector<float> y,
     py::list x2 = py::cast(std::get<2>(result));
     py::list y2 = py::cast(std::get<3>(result));
     return py::make_tuple(x1, y1, x2, y2, py::cast(x), py::cast(y));
+}
+
+// Make life easier for R people
+template <class T>
+py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
+              std::string& dtype = "binary",
+              LayoutConfiguration config = LayoutConfiguration(),
+              bool file_backed = false, 
+              unsigned int seed = 42) {
+    py::tuple result;
+    if (dtype == "binary") {
+        Minhash mh(dims);
+        LSHForest lf(dims, n_trees, true, file_backed, false);
+
+        auto vecs = convert_array<uint8_t>(arr);
+        auto hashes = mh.BatchFromBinaryArray(vecs);
+        lf.BatchAdd(hashes);
+        lf.Index();
+        result = LayoutFromLSHForestNative(lf, config);
+    } else if (dtype == "sparse") {
+        Minhash mh(dims);
+        LSHForest lf(dims, n_trees, true, file_backed, false);
+
+        auto vecs = convert_array<uint32_t>(arr);
+        auto hashes = mh.BatchFromSparseBinaryArray(vecs);
+        lf.BatchAdd(hashes);
+        lf.Index();
+        result = LayoutFromLSHForestNative(lf, config);
+    } else if (dtype == "weighted") {
+        auto vecs = convert_array_to_float<T>(arr);
+
+        Minhash mh(vecs[0].size(), seed, dims);
+        LSHForest lf(dims * 2, n_trees, true, file_backed, true);
+
+        auto hashes = mh.BatchFromWeightArray(vecs);
+        std::cout << "Have hashes" << std::endl;
+        std::cout << vecs[0].size() << std::endl;
+        lf.BatchAdd(hashes);
+        std::cout << "added to lf" << std::endl;
+        lf.Index();
+        std::cout << "indexed" << std::endl;
+        auto r = LayoutFromLSHForest(lf);
+        std::cout << "have result in" << std::endl;
+        result = LayoutFromLSHForestNative(lf, config);
+        std::cout << "have result" << std::endl;
+    } else {
+        throw std::invalid_argument("dtype has to be 'binary', 'sparse', or 'weighted'");
+    }
+
+    return result;
 }
 
 PYBIND11_MODULE(tmap, m)
@@ -276,8 +397,35 @@ PYBIND11_MODULE(tmap, m)
     .def_readonly("n_isolated_vertices", &GraphProperties::n_isolated_vertices)
     .def_readonly("degrees", &GraphProperties::degrees)
     .def_readonly("adjacency_list", &GraphProperties::adjacency_list);
+  
+    m.def("map",
+        &map<double>,
+        py::arg("arr"),
+        py::arg("dims") = 128,
+        py::arg("n_trees") = 8,
+        py::arg("dtype") = "binary",
+        py::arg("config") = LayoutConfiguration(),
+        py::arg("file_backed") = false,
+        py::arg("seed") = 42,
+        R"pbdoc(
+        Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
+        
+        Arguments:
+            arr (:obj:`Array`): A numpy :obj:`Array` instance
+        
+        Keyword Arguments:
+            dims (:obj:`int`, optional): The number of permutations to use for the MinHash algorithm
+            n_trees (:obj:`int`, optional): The number of forests to use in the LSHForest data structure
+            dtype (:obj:`str`, optional): The type of data that is supplied, can be 'binary', 'sparse', or 'weighted'
+            config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
+            file_backed (:obj:`bool`) Whether to store the data on disk rather than in main memory (experimental)
+            seed (:obj:`int`): The seed used for the random number generator(s)
 
-  m.def("layout_from_lsh_forest",
+        Returns:
+            :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    )pbdoc");
+
+    m.def("layout_from_lsh_forest",
         &LayoutFromLSHForest,
         py::arg("lsh_forest"),
         py::arg("config") = LayoutConfiguration(),
@@ -291,8 +439,8 @@ PYBIND11_MODULE(tmap, m)
         
         Keyword Arguments:
             config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
-            create_mst (:obj:`bool`): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
-            clear_lsh_forest (:obj:`bool`): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
+            create_mst (:obj:`bool`, optional): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
+            clear_lsh_forest (:obj:`bool`, optional): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
 
         Returns:
             :obj:`Tuple[VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
@@ -312,8 +460,8 @@ PYBIND11_MODULE(tmap, m)
         
         Keyword Arguments:
             config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
-            create_mst (:obj:`bool`): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
-            clear_lsh_forest (:obj:`bool`): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
+            create_mst (:obj:`bool`, optional): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
+            clear_lsh_forest (:obj:`bool`, optional): Whether to run :obj:`clear()` on the :obj:`LSHForest` instance after k-nearest negihbor graph and MST creation and before layout
 
         Returns:
             :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
@@ -332,7 +480,7 @@ PYBIND11_MODULE(tmap, m)
             int k (:obj:`int`): The number of nearest neighbors used to create the k-nearest neighbor graph
         
         Keyword Arguments:
-            int kc (:obj:`int`): The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned
+            int kc (:obj:`int`, optional): The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned
 
         Returns:
             :obj:`Tuple[VectorUint, VectorUint]`: the topology of the minimum spanning tree of the data indexed in the LSH forest
@@ -766,6 +914,16 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
     .def("batch_from_binary_array", 
+         py::overload_cast<py::array_t<uint8_t>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+            Create MinHash vectors from binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`Array`): A 2D array containing binary values
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_binary_array", 
          py::overload_cast<std::vector<std::vector<uint8_t>>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
             Create MinHash vectors from binary arrays (parallelized).
 
@@ -802,6 +960,17 @@ PYBIND11_MODULE(tmap, m)
 
             Arguments:
                 vec (:obj:`List` of :obj:`List`): A list of Python lists containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_sparse_binary_array",
+         py::overload_cast<py::array_t<uint32_t>&>(&PyMinhash::BatchFromSparseBinaryArray),
+         R"pbdoc(
+            Create MinHash vectors from sparse binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`Array`): A 2D array containing indices of ones in a binary array
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
@@ -876,6 +1045,38 @@ PYBIND11_MODULE(tmap, m)
 
             Arguments:
                 vecs (:obj:`List` of :obj:`List`): A list of Python lists containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         py::overload_cast<py::array_t<float, 32>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`Array`): A 2D array containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         py::overload_cast<py::array_t<double>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`Array`): A 2D array containing :obj:`float` values
 
             Keyword Arguments:
                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)

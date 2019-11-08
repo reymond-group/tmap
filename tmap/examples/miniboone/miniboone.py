@@ -36,7 +36,7 @@ def main():
     # Creating the tmap layout
     x, y, s, t, _ = tm.layout_from_edge_list(len(DATA), annoy_graph)
 
-    faerun = Faerun(view="front", coords=False, title="MiniBooNE")
+    faerun = Faerun(view="front", coords=False)
     faerun.add_scatter(
         "MINIBOONE",
         {"x": x, "y": y, "c": LABELS, "labels": LABELS},

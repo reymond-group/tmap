@@ -72,7 +72,7 @@ def main():
         (9, "Ankle boot"),
     ]
 
-    faerun = Faerun("FMNIST", clear_color="#111111", view="front", coords=False)
+    faerun = Faerun(clear_color="#111111", view="front", coords=False)
     faerun.add_scatter(
         "FMNIST",
         {"x": x, "y": y, "c": LABELS, "labels": IMAGE_LABELS},

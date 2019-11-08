@@ -15,8 +15,8 @@ def main():
 
     # Initialize and configure tmap
     dims = 2048
-    enc = tm.Minhash(dims)
-    lf = tm.LSHForest(dims, 128, store=True)
+    enc = tm.Minhash(16384, 42, dims)
+    lf = tm.LSHForest(dims * 2, 128, weighted=True)
 
     images = []
     labels = []
@@ -38,14 +38,14 @@ def main():
     tmp = []
     for _, image in enumerate(images):
         avg = sum(image) / sum([1 if x > 0 else 0 for x in image])
-        tmp.append(tm.VectorUchar([1 if x >= avg else 0 for x in image]))
-        # tmp.append(tmap.VectorUchar([1 if x_tmap >= 122 else 0 for x_tmap in image]))
-    lf.batch_add(enc.batch_from_binary_array(tmp))
+        tmp.append([i / 255 for i in image])
+
+    lf.batch_add(enc.batch_from_weight_array(tmp))
     lf.index()
 
     x, y, s, t, _ = tm.layout_from_lsh_forest(lf)
 
-    faerun = Faerun("COIL20", clear_color="#111111", view="front", coords=False)
+    faerun = Faerun(clear_color="#111111", view="front", coords=False)
     faerun.add_scatter(
         "COIL20",
         {"x": x, "y": y, "c": labels, "labels": image_labels},

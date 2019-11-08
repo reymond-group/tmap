@@ -29,15 +29,15 @@ def main():
     """ Main function """
 
     # Initialize and configure tmap
-    dims = 128
+    dims = 256
     enc = tm.Minhash(len(DATA.columns), 42, dims)
-    lf = tm.LSHForest(dims, 32, weighted=True)
+    lf = tm.LSHForest(dims * 2, 32, weighted=True)
 
     fps = []
     for _, row in DATA.iterrows():
         fps.append(tm.VectorFloat(list(row)))
 
-    lf.batch_add(enc.batch_from_weight_array(fps, method="I2CWS"))
+    lf.batch_add(enc.batch_from_weight_array(fps))
     lf.index()
 
     x, y, s, t, _ = tm.layout_from_lsh_forest(lf, CFG_TMAP)
@@ -46,12 +46,7 @@ def main():
     legend_labels = {(1, "PRAD"), (2, "LUAD"), (3, "BRCA"), (4, "KIRC"), (5, "COAD")}
 
     # Create the plot
-    faerun = Faerun(
-        view="front",
-        coords=False,
-        title="Gene Expression Cancer RNA-Seq",
-        legend_title="",
-    )
+    faerun = Faerun(view="front", coords=False, legend_title="")
     faerun.add_scatter(
         "RNASEQ",
         {"x": x, "y": y, "c": LABELS, "labels": LABELS},

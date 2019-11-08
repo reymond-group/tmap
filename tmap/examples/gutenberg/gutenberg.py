@@ -36,7 +36,13 @@ with open("books_labels_all.csv", "r") as f:
         author_title = line.split(",")
         LABELS.append(author_title[0])
         fl = author_title[1] + " (" + author_title[0] + ")"
-        FAERUN_LABELS.append(fl.replace("'", ""))
+        FAERUN_LABELS.append(
+            fl.replace("'", "")
+            + "__"
+            + author_title[0].replace("'", "")
+            + "__"
+            + author_title[1].replace("'", "")
+        )
 
 labels_unique = set(LABELS)
 labels_map = {}
@@ -108,7 +114,6 @@ def main():
     ]
 
     faerun = Faerun(
-        "Gutenberg",
         clear_color="#111111",
         view="front",
         coords=False,
@@ -126,6 +131,7 @@ def main():
         legend_title="Authors",
         legend_labels=legend_labels,
         shader="smoothCircle",
+        selected_labels=["Author", "Title"],
     )
     faerun.add_tree(
         "gutenberg_tree",
