@@ -93,14 +93,14 @@
     <member refid="classtmap_1_1Minhash_1a34a66e3017e7af70512345fb25561df7" kind="variable"><name>sample_size_</name></member>
     <member refid="classtmap_1_1Minhash_1aca2956f403e064b190f167b97ab277f3" kind="variable"><name>prime_</name></member>
     <member refid="classtmap_1_1Minhash_1a9896333e6380782f7dfb2302c637505a" kind="variable"><name>max_hash_</name></member>
-    <member refid="classtmap_1_1Minhash_1ad520a822758d7a21c30ce2c357d2256f" kind="variable"><name>perms_a_</name></member>
-    <member refid="classtmap_1_1Minhash_1aa17875b6bd063dceab5421e44550d8e8" kind="variable"><name>perms_b_</name></member>
-    <member refid="classtmap_1_1Minhash_1aa69b61510f378880238f6c80739859e8" kind="variable"><name>rs_</name></member>
-    <member refid="classtmap_1_1Minhash_1af359adc42ba921a684cf46f8afedc567" kind="variable"><name>rs_2_</name></member>
-    <member refid="classtmap_1_1Minhash_1a1d0729379f4a17b8d3668a2fee71621f" kind="variable"><name>ln_cs_</name></member>
-    <member refid="classtmap_1_1Minhash_1a7c94b59844d5e2f2dc00742fb7679a95" kind="variable"><name>cs_</name></member>
-    <member refid="classtmap_1_1Minhash_1a57ba77382d9ae6d5b472b9204deba311" kind="variable"><name>betas_</name></member>
-    <member refid="classtmap_1_1Minhash_1a12f2664a59d0390ae26987bec1d0029e" kind="variable"><name>betas_2_</name></member>
+    <member refid="classtmap_1_1Minhash_1a67d1b6d94080d20888ae25fde75d3941" kind="variable"><name>perms_a_</name></member>
+    <member refid="classtmap_1_1Minhash_1a097cf4cd5ec9731f5eb061f3b53711f2" kind="variable"><name>perms_b_</name></member>
+    <member refid="classtmap_1_1Minhash_1ad51be5206578c57ca45f7baf205344b6" kind="variable"><name>rs_</name></member>
+    <member refid="classtmap_1_1Minhash_1abef43298c2889da9de094897d1b9efc8" kind="variable"><name>rs_2_</name></member>
+    <member refid="classtmap_1_1Minhash_1a366d3b79ee13101a80753dfa469e6095" kind="variable"><name>ln_cs_</name></member>
+    <member refid="classtmap_1_1Minhash_1a5719677882fe15a61ed11d0daf33a537" kind="variable"><name>cs_</name></member>
+    <member refid="classtmap_1_1Minhash_1a4dad5a6e6735703ead3fa28a5124580e" kind="variable"><name>betas_</name></member>
+    <member refid="classtmap_1_1Minhash_1aa8faf32a7794599509d3a1178cd61586" kind="variable"><name>betas_2_</name></member>
     <member refid="classtmap_1_1Minhash_1aa6803c60bdf58ddaa0a52a703efb7d87" kind="variable"><name>hasher</name></member>
     <member refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" kind="function"><name>Minhash</name></member>
     <member refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" kind="function"><name>FromBinaryArray</name></member>
@@ -117,6 +117,18 @@
     <member refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" kind="function"><name>GetWeightedDistance</name></member>
     <member refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" kind="function"><name>~Minhash</name></member>
     <member refid="classtmap_1_1Minhash_1a0f5968ec8e66d65ca8fa529f0f658b26" kind="function"><name>fast_mod_long</name></member>
+  </compound>
+  <compound refid="classPyMinhash" kind="class"><name>PyMinhash</name>
+    <member refid="classPyMinhash_1ad90bf2b578244a5ab49bed93c50b2c5c" kind="function"><name>FromBinaryArray</name></member>
+    <member refid="classPyMinhash_1a0ed8bc7f03dc4fd0638d1274c5158ef4" kind="function"><name>BatchFromBinaryArray</name></member>
+    <member refid="classPyMinhash_1adb43eab41ec783bc7caac0cad029749e" kind="function"><name>BatchFromBinaryArray</name></member>
+    <member refid="classPyMinhash_1ab1434ef92950763cac462e591679b553" kind="function"><name>FromSparseBinaryArray</name></member>
+    <member refid="classPyMinhash_1a1f7a0ff1ea829e0da4dab4277329d1ad" kind="function"><name>BatchFromSparseBinaryArray</name></member>
+    <member refid="classPyMinhash_1ad16c38d3fe7c6dcb23149fc9c9125a84" kind="function"><name>BatchFromSparseBinaryArray</name></member>
+    <member refid="classPyMinhash_1a86b2a0927921bb605cae28dab2e11f81" kind="function"><name>FromWeightArray</name></member>
+    <member refid="classPyMinhash_1a32bd86d40bf8173477f10b06cf3321b2" kind="function"><name>BatchFromWeightArray</name></member>
+    <member refid="classPyMinhash_1aa214ae51325792ad8f0f8b353e3899cc" kind="function"><name>BatchFromWeightArray</name></member>
+    <member refid="classPyMinhash_1aaa75407ee290d581d24e1a56943e2e66" kind="function"><name>BatchFromWeightArray</name></member>
   </compound>
   <compound refid="structtmap_1_1SimpleHash" kind="struct"><name>tmap::SimpleHash</name>
     <member refid="structtmap_1_1SimpleHash_1a2246e182ae49e4ff363d6c3344aa97cf" kind="function"><name>operator()</name></member>
@@ -171,13 +183,22 @@
     <member refid="layout_8hh_1a033d33fa567d893125d956e56933335f" kind="function"><name>MSTFromLSHForest</name></member>
     <member refid="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" kind="function"><name>LayoutFromEdgeList</name></member>
     <member refid="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" kind="function"><name>LayoutInternal</name></member>
+    <member refid="layout_8hh_1aeb4ec1a90d58bc1ba5f54412124cbf21" kind="function"><name>MakeEdgeList</name></member>
   </compound>
   <compound refid="bindings_8cc" kind="file"><name>bindings.cc</name>
+    <member refid="bindings_8cc_1aa35cb02b50ba480c64efbb4bc86032ac" kind="function"><name>convert_list</name></member>
+    <member refid="bindings_8cc_1aa4a4a91ef3efb196f029c025de4a6f69" kind="function"><name>convert_list_of_lists</name></member>
+    <member refid="bindings_8cc_1a1ba98f6b35774cb8b8ce378bca840013" kind="function"><name>convert_array</name></member>
+    <member refid="bindings_8cc_1a520b6bfa4ff9476676e154992ae11a95" kind="function"><name>convert_array_to_float</name></member>
     <member refid="bindings_8cc_1a8cc96963394e1bf2d1f2c8c298a8961f" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
     <member refid="bindings_8cc_1adf1d3c96cae502b5022e395df7c8f792" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
     <member refid="bindings_8cc_1a27eff19ba73a3e99fe1f7951db3a05a9" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
     <member refid="bindings_8cc_1a0ac4737d613502a5272d1c7c55c75000" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
     <member refid="bindings_8cc_1adc31052ce19269023b82cb33511fbc37" kind="function"><name>PYBIND11_MAKE_OPAQUE</name></member>
+    <member refid="bindings_8cc_1a5f4ea1a5f55756d0cb9d5b31695f4d17" kind="function"><name>LayoutFromLSHForestNative</name></member>
+    <member refid="bindings_8cc_1a7f0be4f32b6644866d034184943e77cd" kind="function"><name>LayoutFromEdgeListNative</name></member>
+    <member refid="bindings_8cc_1a62a50449e3bb33a83f118e7c56237056" kind="function"><name>MakeEdgeListNative</name></member>
+    <member refid="bindings_8cc_1abca58d4008fc1c8e9dda41db68318fb7" kind="function"><name>map</name></member>
     <member refid="bindings_8cc_1a4274a51ba9942c31b5553c1678c70e1c" kind="function"><name>PYBIND11_MODULE</name></member>
   </compound>
   <compound refid="fnv_8hh" kind="file"><name>fnv.hh</name>

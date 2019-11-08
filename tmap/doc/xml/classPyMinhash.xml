@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classPyMinhash" kind="class" language="C++" prot="public">
+    <compoundname>PyMinhash</compoundname>
+    <basecompoundref refid="classtmap_1_1Minhash" prot="public" virt="non-virtual">tmap::Minhash</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPyMinhash_1ad90bf2b578244a5ab49bed93c50b2c5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt;uint32_t&gt; PyMinhash::FromBinaryArray</definition>
+        <argsstring>(py::list &amp;list)</argsstring>
+        <name>FromBinaryArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="109" column="1" bodyfile="tmap/bindings.cc" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1a0ed8bc7f03dc4fd0638d1274c5158ef4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromBinaryArray</definition>
+        <argsstring>(py::list &amp;list)</argsstring>
+        <name>BatchFromBinaryArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="114" column="1" bodyfile="tmap/bindings.cc" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1adb43eab41ec783bc7caac0cad029749e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromBinaryArray</definition>
+        <argsstring>(py::array_t&lt; uint8_t &gt; &amp;arr)</argsstring>
+        <name>BatchFromBinaryArray</name>
+        <param>
+          <type>py::array_t&lt; uint8_t &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="119" column="1" bodyfile="tmap/bindings.cc" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1ab1434ef92950763cac462e591679b553" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt;uint32_t&gt; PyMinhash::FromSparseBinaryArray</definition>
+        <argsstring>(py::list &amp;list)</argsstring>
+        <name>FromSparseBinaryArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="124" column="1" bodyfile="tmap/bindings.cc" bodystart="124" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1a1f7a0ff1ea829e0da4dab4277329d1ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromSparseBinaryArray</definition>
+        <argsstring>(py::list &amp;list)</argsstring>
+        <name>BatchFromSparseBinaryArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="129" column="1" bodyfile="tmap/bindings.cc" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1ad16c38d3fe7c6dcb23149fc9c9125a84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromSparseBinaryArray</definition>
+        <argsstring>(py::array_t&lt; uint32_t &gt; &amp;arr)</argsstring>
+        <name>BatchFromSparseBinaryArray</name>
+        <param>
+          <type>py::array_t&lt; uint32_t &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="134" column="1" bodyfile="tmap/bindings.cc" bodystart="134" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1a86b2a0927921bb605cae28dab2e11f81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt;uint32_t&gt; PyMinhash::FromWeightArray</definition>
+        <argsstring>(py::list &amp;list, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>FromWeightArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="139" column="1" bodyfile="tmap/bindings.cc" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1a32bd86d40bf8173477f10b06cf3321b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromWeightArray</definition>
+        <argsstring>(py::list &amp;list, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>BatchFromWeightArray</name>
+        <param>
+          <type>py::list &amp;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="144" column="1" bodyfile="tmap/bindings.cc" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1aa214ae51325792ad8f0f8b353e3899cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromWeightArray</definition>
+        <argsstring>(py::array_t&lt; float, 32 &gt; &amp;arr, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>BatchFromWeightArray</name>
+        <param>
+          <type>py::array_t&lt; float, 32 &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="149" column="1" bodyfile="tmap/bindings.cc" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classPyMinhash_1aaa75407ee290d581d24e1a56943e2e66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::vector&lt; uint32_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;uint32_t&gt; &gt; PyMinhash::BatchFromWeightArray</definition>
+        <argsstring>(py::array_t&lt; double &gt; &amp;arr, const std::string &amp;method=&quot;ICWS&quot;)</argsstring>
+        <name>BatchFromWeightArray</name>
+        <param>
+          <type>py::array_t&lt; double &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>method</declname>
+          <defval>&quot;ICWS&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/bindings.cc" line="154" column="1" bodyfile="tmap/bindings.cc" bodystart="154" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11">
+        <label>PyMinhash</label>
+        <link refid="classPyMinhash"/>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>tmap::Minhash</label>
+        <link refid="classtmap_1_1Minhash"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13">
+        <label>PyMinhash</label>
+        <link refid="classPyMinhash"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>tmap::Minhash</label>
+        <link refid="classtmap_1_1Minhash"/>
+      </node>
+    </collaborationgraph>
+    <location file="tmap/bindings.cc" line="99" column="1" bodyfile="tmap/bindings.cc" bodystart="99" bodyend="158"/>
+    <listofallmembers>
+      <member refid="classPyMinhash_1a0ed8bc7f03dc4fd0638d1274c5158ef4" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromBinaryArray</name></member>
+      <member refid="classPyMinhash_1adb43eab41ec783bc7caac0cad029749e" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a083c1328a9830ec585613c213b1730cc" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>BatchFromBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a1f2ae587c6b9e98be1cbdc7e9a81c2e7" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromIntWeightArray</name></member>
+      <member refid="classPyMinhash_1a1f7a0ff1ea829e0da4dab4277329d1ad" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromSparseBinaryArray</name></member>
+      <member refid="classPyMinhash_1ad16c38d3fe7c6dcb23149fc9c9125a84" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a490cf682e7445393fcf2908d74498ea5" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>BatchFromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a9382e443b9f622c4564449373051d006" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromStringArray</name></member>
+      <member refid="classPyMinhash_1a32bd86d40bf8173477f10b06cf3321b2" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromWeightArray</name></member>
+      <member refid="classPyMinhash_1aa214ae51325792ad8f0f8b353e3899cc" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromWeightArray</name></member>
+      <member refid="classPyMinhash_1aaa75407ee290d581d24e1a56943e2e66" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>BatchFromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a8fe5c588003e8a3089d0a04df7b0f6e9" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>BatchFromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a5419c90e01785149b570f94308e82430" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>ExpandIntWeightArray</name></member>
+      <member refid="classPyMinhash_1ad90bf2b578244a5ab49bed93c50b2c5c" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>FromBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a1418049bb8c8f70255c336e58a9b9fec" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>FromBinaryArray</name></member>
+      <member refid="classPyMinhash_1ab1434ef92950763cac462e591679b553" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>FromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1aec48525d1c8006f573b0c534e53d894a" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>FromSparseBinaryArray</name></member>
+      <member refid="classtmap_1_1Minhash_1ab21e92280c7265a8df9477734361b8fc" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>FromStringArray</name></member>
+      <member refid="classPyMinhash_1a86b2a0927921bb605cae28dab2e11f81" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>FromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1aac0a45bdf6a6517e711a171357c8c73b" prot="public" virt="non-virtual" ambiguityscope="tmap::Minhash::"><scope>PyMinhash</scope><name>FromWeightArray</name></member>
+      <member refid="classtmap_1_1Minhash_1a21df254dd86462a1dcbe45285c747e71" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>GetDistance</name></member>
+      <member refid="classtmap_1_1Minhash_1a7a8090c1629a6783fe0e17b227bd59ca" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>GetWeightedDistance</name></member>
+      <member refid="classtmap_1_1Minhash_1ae35f57de5ec2316538384c9d2f588d52" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>Minhash</name></member>
+      <member refid="classtmap_1_1Minhash_1ae5e1e056f6a1179651b7fa6c196bf220" prot="public" virt="non-virtual"><scope>PyMinhash</scope><name>~Minhash</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

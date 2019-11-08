@@ -91,7 +91,9 @@ std\+::tuple$<$ std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\
 std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, Graph\+Properties $>$ \hyperlink{layout_8hh_a780993ad8dd7e349b77f55895cc33451}{tmap\+::\+Layout\+From\+Edge\+List} (uint32\+\_\+t vertex\+\_\+count, const std\+::vector$<$ std\+::tuple$<$ uint32\+\_\+t, uint32\+\_\+t, float $>$$>$ \&edges, Layout\+Configuration config=Layout\+Configuration(), bool create\+\_\+mst=true)
 \begin{DoxyCompactList}\small\item\em Genereates coordinates, edges and properties of a M\+ST from an edge list. \end{DoxyCompactList}\item 
 std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ uint32\+\_\+t $>$, std\+::vector$<$ uint32\+\_\+t $>$, Graph\+Properties $>$ \hyperlink{layout_8hh_a126dbc6ec8355732c528abb2877e60d4}{tmap\+::\+Layout\+Internal} (ogdf\+::\+Edge\+Weighted\+Graph$<$ float $>$ \&g, uint32\+\_\+t vertex\+\_\+count, Layout\+Configuration config, Graph\+Properties \&gp)
-\begin{DoxyCompactList}\small\item\em Laying out an O\+G\+DF graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Laying out an O\+G\+DF graph. \end{DoxyCompactList}\item 
+std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ float $>$ $>$ \hyperlink{layout_8hh_aeb4ec1a90d58bc1ba5f54412124cbf21}{tmap\+::\+Make\+Edge\+List} (std\+::vector$<$ float $>$ x, std\+::vector$<$ float $>$ y, std\+::vector$<$ uint32\+\_\+t $>$ s, std\+::vector$<$ uint32\+\_\+t $>$ t)
+\begin{DoxyCompactList}\small\item\em Creates an edge list from x, y coordinates and edge indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -180,6 +182,30 @@ Laying out an O\+G\+DF graph.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$uint32\+\_\+t$>$, std\+::vector$<$uint32\+\_\+t$>$, Graph\+Properties$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{layout_8hh_file_aeb4ec1a90d58bc1ba5f54412124cbf21}\label{layout_8hh_file_aeb4ec1a90d58bc1ba5f54412124cbf21}} 
+\index{layout.\+hh@{layout.\+hh}!Make\+Edge\+List@{Make\+Edge\+List}}
+\index{Make\+Edge\+List@{Make\+Edge\+List}!layout.\+hh@{layout.\+hh}}
+\subsubsection{\texorpdfstring{Make\+Edge\+List()}{MakeEdgeList()}}
+{\footnotesize\ttfamily std\+::tuple$<$ std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ float $>$, std\+::vector$<$ float $>$ $>$ tmap\+::\+Make\+Edge\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{x,  }\item[{std\+::vector$<$ float $>$}]{y,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$}]{s,  }\item[{std\+::vector$<$ uint32\+\_\+t $>$}]{t }\end{DoxyParamCaption})}
+
+
+
+Creates an edge list from x, y coordinates and edge indices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinates \\
+\hline
+{\em y} & The y coordinates \\
+\hline
+{\em s} & The indices of the from vertices \\
+\hline
+{\em t} & The indices of the to vertices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::tuple$<$std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$float$>$, std\+::vector$<$float$>$$>$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{layout_8hh_file_a033d33fa567d893125d956e56933335f}\label{layout_8hh_file_a033d33fa567d893125d956e56933335f}} 
 \index{layout.\+hh@{layout.\+hh}!M\+S\+T\+From\+L\+S\+H\+Forest@{M\+S\+T\+From\+L\+S\+H\+Forest}}

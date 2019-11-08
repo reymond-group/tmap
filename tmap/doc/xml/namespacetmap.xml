@@ -271,7 +271,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="245" column="1" bodyfile="tmap/layout.cc" bodystart="200" bodyend="254"/>
+        <location file="tmap/layout.hh" line="245" column="1" bodyfile="tmap/layout.cc" bodystart="197" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a033d33fa567d893125d956e56933335f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt; &gt;</type>
@@ -320,7 +320,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="261" column="1" bodyfile="tmap/layout.cc" bodystart="161" bodyend="193"/>
+        <location file="tmap/layout.hh" line="261" column="1" bodyfile="tmap/layout.cc" bodystart="158" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a780993ad8dd7e349b77f55895cc33451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -381,7 +381,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/layout.hh" line="279" column="1" bodyfile="tmap/layout.cc" bodystart="261" bodyend="330"/>
+        <location file="tmap/layout.hh" line="279" column="1" bodyfile="tmap/layout.cc" bodystart="258" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="layout_8hh_1a126dbc6ec8355732c528abb2877e60d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; uint32_t &gt;, std::vector&lt; uint32_t &gt;, <ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref> &gt;</type>
@@ -441,6 +441,65 @@
         <inbodydescription>
         </inbodydescription>
         <location file="tmap/layout.hh" line="300" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="layout_8hh_1aeb4ec1a90d58bc1ba5f54412124cbf21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; float &gt; &gt;</type>
+        <definition>std::tuple&lt; std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; float &gt;, std::vector&lt; float &gt; &gt; tmap::MakeEdgeList</definition>
+        <argsstring>(std::vector&lt; float &gt; x, std::vector&lt; float &gt; y, std::vector&lt; uint32_t &gt; s, std::vector&lt; uint32_t &gt; t)</argsstring>
+        <name>MakeEdgeList</name>
+        <param>
+          <type>std::vector&lt; float &gt;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Creates an edge list from x, y coordinates and edge indices. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The indices of the from vertices </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The indices of the to vertices </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::tuple&lt;std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;float&gt;, std::vector&lt;float&gt;&gt; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="tmap/layout.hh" line="319" column="1" bodyfile="tmap/layout.cc" bodystart="496" bodyend="513"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

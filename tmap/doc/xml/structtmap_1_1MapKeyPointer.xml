@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="59" column="1" bodyfile="tmap/lshforest.hh" bodystart="59" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="60" column="1" bodyfile="tmap/lshforest.hh" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="66" column="1" bodyfile="tmap/lshforest.hh" bodystart="66" bodyend="-1"/>
+        <location file="tmap/lshforest.hh" line="67" column="1" bodyfile="tmap/lshforest.hh" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="60" column="1" bodyfile="tmap/lshforest.hh" bodystart="60" bodyend="62"/>
+        <location file="tmap/lshforest.hh" line="61" column="1" bodyfile="tmap/lshforest.hh" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="structtmap_1_1MapKeyPointer_1ad69cc205a77366ea584d3b273798dd0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="63" column="1" bodyfile="tmap/lshforest.hh" bodystart="63" bodyend="63"/>
+        <location file="tmap/lshforest.hh" line="64" column="1" bodyfile="tmap/lshforest.hh" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="structtmap_1_1MapKeyPointer_1ade7f29bcf8ac9ec5875f1152d50912e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; uint8_t &gt; &amp;</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="64" column="1" bodyfile="tmap/lshforest.hh" bodystart="64" bodyend="64"/>
+        <location file="tmap/lshforest.hh" line="65" column="1" bodyfile="tmap/lshforest.hh" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="structtmap_1_1MapKeyPointer_1ab681e8610b86e353af4feb6ea0ef8a9a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; uint8_t &gt; *</type>
@@ -88,14 +88,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="tmap/lshforest.hh" line="65" column="1" bodyfile="tmap/lshforest.hh" bodystart="65" bodyend="65"/>
+        <location file="tmap/lshforest.hh" line="66" column="1" bodyfile="tmap/lshforest.hh" bodystart="66" bodyend="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>The pointer map used for pointing to the keys from the sorted hash map. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="tmap/lshforest.hh" line="57" column="1" bodyfile="tmap/lshforest.hh" bodystart="56" bodyend="67"/>
+    <location file="tmap/lshforest.hh" line="58" column="1" bodyfile="tmap/lshforest.hh" bodystart="57" bodyend="68"/>
     <listofallmembers>
       <member refid="structtmap_1_1MapKeyPointer_1a7e5f9fcf74a41f693afd2a727a2997d5" prot="public" virt="non-virtual"><scope>tmap::MapKeyPointer</scope><name>it</name></member>
       <member refid="structtmap_1_1MapKeyPointer_1a236dc7396d6a4dca2a942196aa536f56" prot="public" virt="non-virtual"><scope>tmap::MapKeyPointer</scope><name>iterator</name></member>

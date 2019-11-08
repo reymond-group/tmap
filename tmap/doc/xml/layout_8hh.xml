@@ -33,47 +33,81 @@
     <includedby refid="lshforest_8hh" local="yes">tmap/lshforest.hh</includedby>
     <includedby refid="layout_8cc" local="yes">tmap/layout.cc</includedby>
     <incdepgraph>
-      <node id="146">
+      <node id="147">
         <label>ogdf/packing/TileToRowsCCPacker.h</label>
       </node>
-      <node id="125">
+      <node id="126">
         <label>stdint.h</label>
       </node>
-      <node id="145">
+      <node id="146">
         <label>ogdf/packing/ComponentSplitterLayout.h</label>
       </node>
-      <node id="143">
+      <node id="144">
         <label>ogdf/energybased/multilevel_mixer/SolarMerger.h</label>
       </node>
-      <node id="138">
+      <node id="139">
         <label>ogdf/energybased/multilevel_mixer/SolarPlacer.h</label>
       </node>
-      <node id="130">
+      <node id="131">
         <label>ogdf/basic/extended_graph_alg.h</label>
       </node>
-      <node id="128">
+      <node id="129">
         <label>ogdf/basic/Graph.h</label>
       </node>
-      <node id="149">
+      <node id="150">
         <label>fstream</label>
       </node>
-      <node id="133">
+      <node id="134">
         <label>ogdf/energybased/multilevel_mixer/ScalingLayout.h</label>
       </node>
-      <node id="132">
+      <node id="133">
         <label>ogdf/energybased/FastMultipoleEmbedder.h</label>
       </node>
-      <node id="147">
+      <node id="148">
         <label>ogdf/energybased/FMMMLayout.h</label>
       </node>
-      <node id="148">
+      <node id="149">
         <label>ogdf/energybased/SpringEmbedderGridVariant.h</label>
       </node>
-      <node id="124">
+      <node id="152">
+        <label>typeinfo</label>
+      </node>
+      <node id="127">
+        <label>tuple</label>
+      </node>
+      <node id="145">
+        <label>ogdf/basic/PreprocessorLayout.h</label>
+      </node>
+      <node id="142">
+        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
+      </node>
+      <node id="128">
+        <label>vector</label>
+      </node>
+      <node id="140">
+        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
+      </node>
+      <node id="137">
+        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
+      </node>
+      <node id="135">
+        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
+      </node>
+      <node id="151">
+        <label>iostream</label>
+      </node>
+      <node id="130">
+        <label>ogdf/basic/GraphAttributes.h</label>
+      </node>
+      <node id="132">
+        <label>ogdf/fileformats/GraphIO.h</label>
+      </node>
+      <node id="138">
+        <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
+      </node>
+      <node id="125">
         <label>tmap/layout.hh</label>
         <link refid="layout_8hh"/>
-        <childnode refid="125" relation="include">
-        </childnode>
         <childnode refid="126" relation="include">
         </childnode>
         <childnode refid="127" relation="include">
@@ -126,85 +160,51 @@
         </childnode>
         <childnode refid="151" relation="include">
         </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
       </node>
-      <node id="151">
-        <label>typeinfo</label>
-      </node>
-      <node id="126">
-        <label>tuple</label>
-      </node>
-      <node id="144">
-        <label>ogdf/basic/PreprocessorLayout.h</label>
-      </node>
-      <node id="141">
-        <label>ogdf/energybased/multilevel_mixer/IndependentSetMerger.h</label>
-      </node>
-      <node id="127">
-        <label>vector</label>
-      </node>
-      <node id="139">
-        <label>ogdf/energybased/multilevel_mixer/ZeroPlacer.h</label>
-      </node>
-      <node id="136">
-        <label>ogdf/energybased/multilevel_mixer/MedianPlacer.h</label>
-      </node>
-      <node id="134">
-        <label>ogdf/energybased/multilevel_mixer/BarycenterPlacer.h</label>
-      </node>
-      <node id="150">
-        <label>iostream</label>
-      </node>
-      <node id="129">
-        <label>ogdf/basic/GraphAttributes.h</label>
-      </node>
-      <node id="131">
-        <label>ogdf/fileformats/GraphIO.h</label>
-      </node>
-      <node id="137">
-        <label>ogdf/energybased/multilevel_mixer/RandomPlacer.h</label>
-      </node>
-      <node id="142">
+      <node id="143">
         <label>ogdf/energybased/multilevel_mixer/LocalBiconnectedMerger.h</label>
       </node>
-      <node id="135">
+      <node id="136">
         <label>ogdf/energybased/multilevel_mixer/CirclePlacer.h</label>
       </node>
-      <node id="140">
+      <node id="141">
         <label>ogdf/energybased/multilevel_mixer/EdgeCoverMerger.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="156">
+        <label>tmap/layout.cc</label>
+        <link refid="layout_8cc"/>
+      </node>
+      <node id="154">
+        <label>tmap/bindings.cc</label>
+        <link refid="bindings_8cc"/>
+      </node>
+      <node id="157">
         <label>tmap/lshforest.cc</label>
         <link refid="lshforest_8cc"/>
       </node>
-      <node id="154">
+      <node id="155">
         <label>tmap/lshforest.hh</label>
         <link refid="lshforest_8hh"/>
-        <childnode refid="153" relation="include">
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>tmap/layout.hh</label>
+        <link refid="layout_8hh"/>
+        <childnode refid="154" relation="include">
         </childnode>
         <childnode refid="155" relation="include">
         </childnode>
         <childnode refid="156" relation="include">
         </childnode>
-      </node>
-      <node id="153">
-        <label>tmap/bindings.cc</label>
-        <link refid="bindings_8cc"/>
-      </node>
-      <node id="152">
-        <label>tmap/layout.hh</label>
-        <link refid="layout_8hh"/>
-        <childnode refid="153" relation="include">
-        </childnode>
-        <childnode refid="154" relation="include">
-        </childnode>
-        <childnode refid="155" relation="include">
-        </childnode>
-      </node>
-      <node id="155">
-        <label>tmap/layout.cc</label>
-        <link refid="layout_8cc"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structtmap_1_1LayoutConfiguration" prot="public">tmap::LayoutConfiguration</innerclass>
@@ -412,8 +412,16 @@
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>vertex_count,</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1LayoutConfiguration" kindref="compound">LayoutConfiguration</ref><sp/>config,</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtmap_1_1GraphProperties" kindref="compound">GraphProperties</ref>&amp;<sp/>gp);</highlight></codeline>
-<codeline lineno="304"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tmap</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal">std::tuple&lt;std::vector&lt;float&gt;,</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;,</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;,</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;&gt;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><ref refid="layout_8hh_1aeb4ec1a90d58bc1ba5f54412124cbf21" kindref="member">MakeEdgeList</ref>(std::vector&lt;float&gt;<sp/>x,<sp/>std::vector&lt;float&gt;<sp/>y,</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>s,<sp/>std::vector&lt;uint32_t&gt;<sp/>t);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tmap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="tmap/layout.hh"/>
   </compounddef>

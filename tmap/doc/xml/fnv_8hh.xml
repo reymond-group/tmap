@@ -7,15 +7,6 @@
     <includes local="no">stdint.h</includes>
     <includedby refid="minhash_8hh" local="yes">tmap/minhash.hh</includedby>
     <incdepgraph>
-      <node id="76">
-        <label>stdint.h</label>
-      </node>
-      <node id="74">
-        <label>cassert</label>
-      </node>
-      <node id="75">
-        <label>string</label>
-      </node>
       <node id="73">
         <label>tmap/fnv.hh</label>
         <link refid="fnv_8hh"/>
@@ -26,11 +17,30 @@
         <childnode refid="76" relation="include">
         </childnode>
       </node>
+      <node id="76">
+        <label>stdint.h</label>
+      </node>
+      <node id="74">
+        <label>cassert</label>
+      </node>
+      <node id="75">
+        <label>string</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="80">
+        <label>tmap/minhash.cc</label>
+        <link refid="minhash_8cc"/>
+      </node>
       <node id="79">
         <label>tmap/bindings.cc</label>
         <link refid="bindings_8cc"/>
+      </node>
+      <node id="77">
+        <label>tmap/fnv.hh</label>
+        <link refid="fnv_8hh"/>
+        <childnode refid="78" relation="include">
+        </childnode>
       </node>
       <node id="78">
         <label>tmap/minhash.hh</label>
@@ -38,16 +48,6 @@
         <childnode refid="79" relation="include">
         </childnode>
         <childnode refid="80" relation="include">
-        </childnode>
-      </node>
-      <node id="80">
-        <label>tmap/minhash.cc</label>
-        <link refid="minhash_8cc"/>
-      </node>
-      <node id="77">
-        <label>tmap/fnv.hh</label>
-        <link refid="fnv_8hh"/>
-        <childnode refid="78" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

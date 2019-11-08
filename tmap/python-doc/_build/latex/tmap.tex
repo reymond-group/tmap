@@ -71,7 +71,7 @@
 
 
 \title{TMAP}
-\date{Aug 13, 2019}
+\date{Nov 08, 2019}
 \release{0.2.0}
 \author{Daniel Probst (Reymond Group, University of Bern)}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -457,19 +457,58 @@ Constructor for the class {\hyperref[\detokenize{documentation:tmap.Minhash}]{\s
 \index{batch\_from\_binary\_array() (tmap.Minhash method)@\spxentry{batch\_from\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_binary\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorUchar{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_binary\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+batch\_from\_binary\_array(self: tmap.Minhash, arg0: list) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
 Create MinHash vectors from binary arrays (parallelized).
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vec}} (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUchar}}) \textendash{} A list of vectors containing binary values
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{List}}): A list of lists containing binary values
 
-\item[{Returns}] \leavevmode
-A list of MinHash vectors
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\item {} 
+batch\_from\_binary\_array(self: tmap.Minhash, arg0: numpy.ndarray{[}uint8{]}) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from binary arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{Array}}): A 2D array containing binary values
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\item {} 
+batch\_from\_binary\_array(self: tmap.Minhash, arg0: List{[}tmap.VectorUchar{]}) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from binary arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUchar}}): A list of vectors containing binary values
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\end{enumerate}
 
 \end{fulllineitems}
 
@@ -501,19 +540,58 @@ A list of MinHash vectors
 \index{batch\_from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{batch\_from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_sparse\_binary\_array}}}{\emph{self: tmap.Minhash, arg0: List{[}tmap.VectorUint{]}}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_sparse\_binary\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+batch\_from\_sparse\_binary\_array(self: tmap.Minhash, arg0: list) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
 Create MinHash vectors from sparse binary arrays (parallelized).
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vec}} (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}) \textendash{} A list of vectors containing indices of ones in a binary array
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{List}}): A list of Python lists containing indices of ones in a binary array
 
-\item[{Returns}] \leavevmode
-A list of MinHash vectors
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\item {} 
+batch\_from\_sparse\_binary\_array(self: tmap.Minhash, arg0: numpy.ndarray{[}uint32{]}) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from sparse binary arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{Array}}): A 2D array containing indices of ones in a binary array
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\item {} 
+batch\_from\_sparse\_binary\_array(self: tmap.Minhash, arg0: List{[}tmap.VectorUint{]}) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from sparse binary arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}): A list of vectors containing indices of ones in a binary array
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\end{enumerate}
 
 \end{fulllineitems}
 
@@ -539,60 +617,171 @@ A list of MinHash vectors
 \index{batch\_from\_weight\_array() (tmap.Minhash method)@\spxentry{batch\_from\_weight\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_weight\_array}}}{\emph{self: tmap.Minhash, vecs: List{[}tmap.VectorFloat{]}, method: str='ICWS'}}{{ $\rightarrow$ List{[}tmap.VectorUint{]}}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.batch_from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{batch\_from\_weight\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+batch\_from\_weight\_array(self: tmap.Minhash, vecs: list, method: str=’ICWS’) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
 Create MinHash vectors from \sphinxcode{\sphinxupquote{float}} arrays (parallelized).
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vecs}} (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorFloat}}) \textendash{} A list of vectors containing \sphinxcode{\sphinxupquote{float}} values
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vecs (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{List}}): A list of Python lists containing \sphinxcode{\sphinxupquote{float}} values
 
-\item[{Keyword Arguments}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{method}} (\sphinxcode{\sphinxupquote{str}}) \textendash{} The weighted hashing method to use (ICWS or I2CWS)
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
 
-\item[{Returns}] \leavevmode
-A list of MinHash vectors
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\item {} 
+batch\_from\_weight\_array(self: tmap.Minhash, vecs: numpy.ndarray{[}float32{]}, method: str=’ICWS’) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from \sphinxcode{\sphinxupquote{float}} arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vecs (\sphinxcode{\sphinxupquote{Array}}): A 2D array containing \sphinxcode{\sphinxupquote{float}} values
+
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\item {} 
+batch\_from\_weight\_array(self: tmap.Minhash, vecs: numpy.ndarray{[}float64{]}, method: str=’ICWS’) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from \sphinxcode{\sphinxupquote{float}} arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vecs (\sphinxcode{\sphinxupquote{Array}}): A 2D array containing \sphinxcode{\sphinxupquote{float}} values
+
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\item {} 
+batch\_from\_weight\_array(self: tmap.Minhash, vecs: List{[}tmap.VectorFloat{]}, method: str=’ICWS’) -\textgreater{} List{[}tmap.VectorUint{]}
+\begin{quote}
+
+Create MinHash vectors from \sphinxcode{\sphinxupquote{float}} arrays (parallelized).
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vecs (\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorFloat}}): A list of vectors containing \sphinxcode{\sphinxupquote{float}} values
+
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{List}} of \sphinxcode{\sphinxupquote{VectorUint}}: A list of MinHash vectors
+
+\end{description}
+\end{quote}
+
+\end{enumerate}
 
 \end{fulllineitems}
 
 \index{from\_binary\_array() (tmap.Minhash method)@\spxentry{from\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_binary\_array}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUchar}}{{ $\rightarrow$ tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_binary\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+from\_binary\_array(self: tmap.Minhash, arg0: list) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
 Create a MinHash vector from a binary array.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vec}} (\sphinxcode{\sphinxupquote{VectorUchar}}) \textendash{} A vector containing binary values
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}}): A Python list containing binary values
 
-\item[{Returns}] \leavevmode
-A MinHash vector
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\item {} 
+from\_binary\_array(self: tmap.Minhash, arg0: tmap.VectorUchar) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
+Create a MinHash vector from a binary array.
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{VectorUchar}}): A vector containing binary values
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
+
+\end{description}
+\end{quote}
+
+\end{enumerate}
 
 \end{fulllineitems}
 
 \index{from\_sparse\_binary\_array() (tmap.Minhash method)@\spxentry{from\_sparse\_binary\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_sparse\_binary\_array}}}{\emph{self: tmap.Minhash}, \emph{arg0: tmap.VectorUint}}{{ $\rightarrow$ tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_sparse_binary_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_sparse\_binary\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+from\_sparse\_binary\_array(self: tmap.Minhash, arg0: list) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
 Create a MinHash vector from a sparse binary array.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vec}} (\sphinxcode{\sphinxupquote{VectorUint}}) \textendash{} A vector containing indices of ones in a binary array
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}}): A Python list containing indices of ones in a binary array
 
-\item[{Returns}] \leavevmode
-A MinHash vector
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\item {} 
+from\_sparse\_binary\_array(self: tmap.Minhash, arg0: tmap.VectorUint) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
+Create a MinHash vector from a sparse binary array.
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{VectorUint}}): A Python list containing indices of ones in a binary array
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
+
+\end{description}
+\end{quote}
+
+\end{enumerate}
 
 \end{fulllineitems}
 
@@ -618,22 +807,49 @@ A MinHash vector
 \index{from\_weight\_array() (tmap.Minhash method)@\spxentry{from\_weight\_array()}\spxextra{tmap.Minhash method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_weight\_array}}}{\emph{self: tmap.Minhash}, \emph{vec: tmap.VectorFloat}, \emph{method: str='ICWS'}}{{ $\rightarrow$ tmap.VectorUint}}
+\phantomsection\label{\detokenize{documentation:tmap.Minhash.from_weight_array}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{from\_weight\_array}}}{\emph{*args}, \emph{**kwargs}}{}
+Overloaded function.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+from\_weight\_array(self: tmap.Minhash, vec: list, method: str=’ICWS’) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
+Create a MinHash vector from a \sphinxcode{\sphinxupquote{List}}.
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{List}}): A Python list containing \sphinxcode{\sphinxupquote{float}} values
+
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
+
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
+
+\end{description}
+\end{quote}
+
+\item {} 
+from\_weight\_array(self: tmap.Minhash, vec: tmap.VectorFloat, method: str=’ICWS’) -\textgreater{} tmap.VectorUint
+\begin{quote}
+
 Create a MinHash vector from a \sphinxcode{\sphinxupquote{float}} array.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{vec}} (\sphinxcode{\sphinxupquote{VectorFloat}}) \textendash{} A vector containing \sphinxcode{\sphinxupquote{float}} values
+\begin{description}
+\item[{Arguments:}] \leavevmode
+vec (\sphinxcode{\sphinxupquote{VectorFloat}}): A vector containing \sphinxcode{\sphinxupquote{float}} values
 
-\item[{Keyword Arguments}] \leavevmode
-\sphinxstyleliteralstrong{\sphinxupquote{method}} (\sphinxcode{\sphinxupquote{str}}) \textendash{} The weighted hashing method to use (ICWS or I2CWS)
+\item[{Keyword Arguments:}] \leavevmode
+method (\sphinxcode{\sphinxupquote{str}}): The weighted hashing method to use (ICWS or I2CWS)
 
-\item[{Returns}] \leavevmode
-A MinHash vector
+\item[{Returns:}] \leavevmode
+\sphinxcode{\sphinxupquote{VectorUint}}: A MinHash vector
 
-\item[{Return type}] \leavevmode
-\sphinxcode{\sphinxupquote{VectorUint}}
+\end{description}
+\end{quote}
 
-\end{description}\end{quote}
+\end{enumerate}
 
 \end{fulllineitems}
 
@@ -1325,8 +1541,8 @@ lsh\_forest ({\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossr
 
 \item[{Keyword Arguments:}] \leavevmode
 config ({\hyperref[\detokenize{documentation:tmap.LayoutConfiguration}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LayoutConfiguration}}}}}, optional): An {\hyperref[\detokenize{documentation:tmap.LayoutConfiguration}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LayoutConfiguration}}}}} instance
-create\_mst (\sphinxcode{\sphinxupquote{bool}}): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
-clear\_lsh\_forest (\sphinxcode{\sphinxupquote{bool}}): Whether to run \sphinxcode{\sphinxupquote{clear()}} on the {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} instance after k-nearest negihbor graph and MST creation and before layout
+create\_mst (\sphinxcode{\sphinxupquote{bool}}, optional): Whether to create a minimum spanning tree or to return coordinates and topology for the k-nearest neighbor graph
+clear\_lsh\_forest (\sphinxcode{\sphinxupquote{bool}}, optional): Whether to run \sphinxcode{\sphinxupquote{clear()}} on the {\hyperref[\detokenize{documentation:tmap.LSHForest}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{LSHForest}}}}} instance after k-nearest negihbor graph and MST creation and before layout
 
 \item[{Returns:}] \leavevmode
 \sphinxcode{\sphinxupquote{Tuple{[}VectorFloat, VectorFloat, VectorUint, VectorUint, GraphProperties{]}}} The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
