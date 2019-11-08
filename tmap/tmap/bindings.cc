@@ -204,6 +204,8 @@ py::tuple MakeEdgeListNative(std::vector<float> x, std::vector<float> y,
     return py::make_tuple(x1, y1, x2, y2, py::cast(x), py::cast(y));
 }
 
+// Windows and Mac compiles complained about dtype being non const
+
 // // Make life easier for R people
 // template <class T>
 // py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
@@ -397,7 +399,8 @@ PYBIND11_MODULE(tmap, m)
     .def_readonly("n_isolated_vertices", &GraphProperties::n_isolated_vertices)
     .def_readonly("degrees", &GraphProperties::degrees)
     .def_readonly("adjacency_list", &GraphProperties::adjacency_list);
-  
+    
+
     // m.def("map",
     //     &map<double>,
     //     py::arg("arr"),
