@@ -204,55 +204,55 @@ py::tuple MakeEdgeListNative(std::vector<float> x, std::vector<float> y,
     return py::make_tuple(x1, y1, x2, y2, py::cast(x), py::cast(y));
 }
 
-// Make life easier for R people
-template <class T>
-py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
-              std::string& dtype = "binary",
-              LayoutConfiguration config = LayoutConfiguration(),
-              bool file_backed = false, 
-              unsigned int seed = 42) {
-    py::tuple result;
-    if (dtype == "binary") {
-        Minhash mh(dims);
-        LSHForest lf(dims, n_trees, true, file_backed, false);
+// // Make life easier for R people
+// template <class T>
+// py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
+//               std::string& dtype = "binary",
+//               LayoutConfiguration config = LayoutConfiguration(),
+//               bool file_backed = false, 
+//               unsigned int seed = 42) {
+//     py::tuple result;
+//     if (dtype == "binary") {
+//         Minhash mh(dims);
+//         LSHForest lf(dims, n_trees, true, file_backed, false);
 
-        auto vecs = convert_array<uint8_t>(arr);
-        auto hashes = mh.BatchFromBinaryArray(vecs);
-        lf.BatchAdd(hashes);
-        lf.Index();
-        result = LayoutFromLSHForestNative(lf, config);
-    } else if (dtype == "sparse") {
-        Minhash mh(dims);
-        LSHForest lf(dims, n_trees, true, file_backed, false);
+//         auto vecs = convert_array<uint8_t>(arr);
+//         auto hashes = mh.BatchFromBinaryArray(vecs);
+//         lf.BatchAdd(hashes);
+//         lf.Index();
+//         result = LayoutFromLSHForestNative(lf, config);
+//     } else if (dtype == "sparse") {
+//         Minhash mh(dims);
+//         LSHForest lf(dims, n_trees, true, file_backed, false);
 
-        auto vecs = convert_array<uint32_t>(arr);
-        auto hashes = mh.BatchFromSparseBinaryArray(vecs);
-        lf.BatchAdd(hashes);
-        lf.Index();
-        result = LayoutFromLSHForestNative(lf, config);
-    } else if (dtype == "weighted") {
-        auto vecs = convert_array_to_float<T>(arr);
+//         auto vecs = convert_array<uint32_t>(arr);
+//         auto hashes = mh.BatchFromSparseBinaryArray(vecs);
+//         lf.BatchAdd(hashes);
+//         lf.Index();
+//         result = LayoutFromLSHForestNative(lf, config);
+//     } else if (dtype == "weighted") {
+//         auto vecs = convert_array_to_float<T>(arr);
 
-        Minhash mh(vecs[0].size(), seed, dims);
-        LSHForest lf(dims * 2, n_trees, true, file_backed, true);
+//         Minhash mh(vecs[0].size(), seed, dims);
+//         LSHForest lf(dims * 2, n_trees, true, file_backed, true);
 
-        auto hashes = mh.BatchFromWeightArray(vecs);
-        std::cout << "Have hashes" << std::endl;
-        std::cout << vecs[0].size() << std::endl;
-        lf.BatchAdd(hashes);
-        std::cout << "added to lf" << std::endl;
-        lf.Index();
-        std::cout << "indexed" << std::endl;
-        auto r = LayoutFromLSHForest(lf);
-        std::cout << "have result in" << std::endl;
-        result = LayoutFromLSHForestNative(lf, config);
-        std::cout << "have result" << std::endl;
-    } else {
-        throw std::invalid_argument("dtype has to be 'binary', 'sparse', or 'weighted'");
-    }
+//         auto hashes = mh.BatchFromWeightArray(vecs);
+//         std::cout << "Have hashes" << std::endl;
+//         std::cout << vecs[0].size() << std::endl;
+//         lf.BatchAdd(hashes);
+//         std::cout << "added to lf" << std::endl;
+//         lf.Index();
+//         std::cout << "indexed" << std::endl;
+//         auto r = LayoutFromLSHForest(lf);
+//         std::cout << "have result in" << std::endl;
+//         result = LayoutFromLSHForestNative(lf, config);
+//         std::cout << "have result" << std::endl;
+//     } else {
+//         throw std::invalid_argument("dtype has to be 'binary', 'sparse', or 'weighted'");
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 PYBIND11_MODULE(tmap, m)
 {
@@ -398,32 +398,32 @@ PYBIND11_MODULE(tmap, m)
     .def_readonly("degrees", &GraphProperties::degrees)
     .def_readonly("adjacency_list", &GraphProperties::adjacency_list);
   
-    m.def("map",
-        &map<double>,
-        py::arg("arr"),
-        py::arg("dims") = 128,
-        py::arg("n_trees") = 8,
-        py::arg("dtype") = "binary",
-        py::arg("config") = LayoutConfiguration(),
-        py::arg("file_backed") = false,
-        py::arg("seed") = 42,
-        R"pbdoc(
-        Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
+    // m.def("map",
+    //     &map<double>,
+    //     py::arg("arr"),
+    //     py::arg("dims") = 128,
+    //     py::arg("n_trees") = 8,
+    //     py::arg("dtype") = "binary",
+    //     py::arg("config") = LayoutConfiguration(),
+    //     py::arg("file_backed") = false,
+    //     py::arg("seed") = 42,
+    //     R"pbdoc(
+    //     Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
         
-        Arguments:
-            arr (:obj:`Array`): A numpy :obj:`Array` instance
+    //     Arguments:
+    //         arr (:obj:`Array`): A numpy :obj:`Array` instance
         
-        Keyword Arguments:
-            dims (:obj:`int`, optional): The number of permutations to use for the MinHash algorithm
-            n_trees (:obj:`int`, optional): The number of forests to use in the LSHForest data structure
-            dtype (:obj:`str`, optional): The type of data that is supplied, can be 'binary', 'sparse', or 'weighted'
-            config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
-            file_backed (:obj:`bool`) Whether to store the data on disk rather than in main memory (experimental)
-            seed (:obj:`int`): The seed used for the random number generator(s)
+    //     Keyword Arguments:
+    //         dims (:obj:`int`, optional): The number of permutations to use for the MinHash algorithm
+    //         n_trees (:obj:`int`, optional): The number of forests to use in the LSHForest data structure
+    //         dtype (:obj:`str`, optional): The type of data that is supplied, can be 'binary', 'sparse', or 'weighted'
+    //         config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
+    //         file_backed (:obj:`bool`) Whether to store the data on disk rather than in main memory (experimental)
+    //         seed (:obj:`int`): The seed used for the random number generator(s)
 
-        Returns:
-            :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
-    )pbdoc");
+    //     Returns:
+    //         :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    // )pbdoc");
 
     m.def("layout_from_lsh_forest",
         &LayoutFromLSHForest,

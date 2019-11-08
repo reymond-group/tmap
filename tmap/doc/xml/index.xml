@@ -198,7 +198,6 @@
     <member refid="bindings_8cc_1a5f4ea1a5f55756d0cb9d5b31695f4d17" kind="function"><name>LayoutFromLSHForestNative</name></member>
     <member refid="bindings_8cc_1a7f0be4f32b6644866d034184943e77cd" kind="function"><name>LayoutFromEdgeListNative</name></member>
     <member refid="bindings_8cc_1a62a50449e3bb33a83f118e7c56237056" kind="function"><name>MakeEdgeListNative</name></member>
-    <member refid="bindings_8cc_1abca58d4008fc1c8e9dda41db68318fb7" kind="function"><name>map</name></member>
     <member refid="bindings_8cc_1a4274a51ba9942c31b5553c1678c70e1c" kind="function"><name>PYBIND11_MODULE</name></member>
   </compound>
   <compound refid="fnv_8hh" kind="file"><name>fnv.hh</name>
