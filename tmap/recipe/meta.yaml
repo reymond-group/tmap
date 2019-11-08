@@ -24,11 +24,13 @@ requirements:
     - ogdf
   host:
     - vs2015_runtime # [win]
+    - llvm-openmp # [osx]
     - python
     - pip
     - ogdf
   run:
     - vs2015_runtime # [win]
+    - llvm-openmp # [osx]
     - python
     - ogdf
 
