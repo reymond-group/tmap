@@ -52,7 +52,11 @@ jobs:
       - bash: cd tmap
       - script: |
           conda activate tmbuild
-          conda build .
+          conda build  ogdf-conda
+        displayName: "Conda build ogdf"
+      - script: |
+          conda activate tmbuild
+          conda build tmap
         displayName: "Conda build tmap"
       - task: CopyFiles@2
         displayName: "Copy Files to: $(build.artifactStagingDirectory)"
@@ -95,7 +99,12 @@ jobs:
       - script: |
           source ${CONDA}/etc/profile.d/conda.sh
           conda activate tmbuild
-          conda build .
+          conda build ogdf-conda
+        displayName: "Conda build conda"
+      - script: |
+          source ${CONDA}/etc/profile.d/conda.sh
+          conda activate tmbuild
+          conda build tmap
         displayName: "Conda build tmap"
       - task: CopyFiles@2
         displayName: "Copy Files to: $(build.artifactStagingDirectory)"
