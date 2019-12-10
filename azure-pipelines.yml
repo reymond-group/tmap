@@ -100,7 +100,7 @@ jobs:
           source ${CONDA}/etc/profile.d/conda.sh
           conda activate tmbuild
           conda build ogdf-conda
-        displayName: "Conda build conda"
+        displayName: "Conda build ogdf"
       - script: |
           source ${CONDA}/etc/profile.d/conda.sh
           conda activate tmbuild

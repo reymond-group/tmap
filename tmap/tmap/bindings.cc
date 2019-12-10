@@ -405,32 +405,32 @@ PYBIND11_MODULE(tmap, m)
     .def_readonly("adjacency_list_knn", &GraphProperties::adjacency_list_knn);
     
 
-    // m.def("map",
-    //     &map<double>,
-    //     py::arg("arr"),
-    //     py::arg("dims") = 128,
-    //     py::arg("n_trees") = 8,
-    //     py::arg("dtype") = "binary",
-    //     py::arg("config") = LayoutConfiguration(),
-    //     py::arg("file_backed") = false,
-    //     py::arg("seed") = 42,
-    //     R"pbdoc(
-    //     Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
+    m.def("map",
+        &map<double>,
+        py::arg("arr"),
+        py::arg("dims") = 128,
+        py::arg("n_trees") = 8,
+        py::arg("dtype") = "binary",
+        py::arg("config") = LayoutConfiguration(),
+        py::arg("file_backed") = false,
+        py::arg("seed") = 42,
+        R"pbdoc(
+        Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an :obj:`LSHForest` instance. This method returns native python lists and objects.
         
-    //     Arguments:
-    //         arr (:obj:`Array`): A numpy :obj:`Array` instance
+        Arguments:
+            arr (:obj:`Array`): A numpy :obj:`Array` instance
         
-    //     Keyword Arguments:
-    //         dims (:obj:`int`, optional): The number of permutations to use for the MinHash algorithm
-    //         n_trees (:obj:`int`, optional): The number of forests to use in the LSHForest data structure
-    //         dtype (:obj:`str`, optional): The type of data that is supplied, can be 'binary', 'sparse', or 'weighted'
-    //         config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
-    //         file_backed (:obj:`bool`) Whether to store the data on disk rather than in main memory (experimental)
-    //         seed (:obj:`int`): The seed used for the random number generator(s)
+        Keyword Arguments:
+            dims (:obj:`int`, optional): The number of permutations to use for the MinHash algorithm
+            n_trees (:obj:`int`, optional): The number of forests to use in the LSHForest data structure
+            dtype (:obj:`str`, optional): The type of data that is supplied, can be 'binary', 'sparse', or 'weighted'
+            config (:obj:`LayoutConfiguration`, optional): An :obj:`LayoutConfiguration` instance
+            file_backed (:obj:`bool`) Whether to store the data on disk rather than in main memory (experimental)
+            seed (:obj:`int`): The seed used for the random number generator(s)
 
-    //     Returns:
-    //         :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
-    // )pbdoc");
+        Returns:
+            :obj:`Tuple[List, List, List, List, Object]` The x and y coordinates of the vertices, the ids of the vertices spanning the edges, and information on the graph
+    )pbdoc");
 
     m.def("layout_from_lsh_forest",
         &LayoutFromLSHForest,
