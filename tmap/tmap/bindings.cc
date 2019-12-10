@@ -10,6 +10,7 @@
 #include "layout.hh"
 #include "lshforest.hh"
 #include "minhash.hh"
+#include "analyse.hh"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
@@ -170,9 +171,10 @@ PYBIND11_MAKE_OPAQUE(std::vector<float>);
 // std vectors are implemented.
 py::tuple LayoutFromLSHForestNative(LSHForest& lsh_forest,
                                     LayoutConfiguration config = LayoutConfiguration(),
+                                    bool keep_knn = false,
                                     bool create_mst = true,
                                     bool clear_lsh_forest = false) {
-    auto result = LayoutFromLSHForest(lsh_forest, config, create_mst, clear_lsh_forest);
+    auto result = LayoutFromLSHForest(lsh_forest, config, keep_knn, create_mst, clear_lsh_forest);
     py::list x = py::cast(std::get<0>(result));
     py::list y = py::cast(std::get<1>(result));
     py::list s = py::cast(std::get<2>(result));
@@ -182,10 +184,11 @@ py::tuple LayoutFromLSHForestNative(LSHForest& lsh_forest,
 }
 
 py::tuple LayoutFromEdgeListNative(uint32_t vertex_count,
-                                   const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
+                                   std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
                                    LayoutConfiguration config = LayoutConfiguration(),
+                                   bool keep_knn = false,
                                    bool create_mst = true) {
-    auto result = LayoutFromEdgeList(vertex_count, edges, config, create_mst);
+    auto result = LayoutFromEdgeList(vertex_count, edges, config, keep_knn, create_mst);
     py::list x = py::cast(std::get<0>(result));
     py::list y = py::cast(std::get<1>(result));
     py::list s = py::cast(std::get<2>(result));
@@ -206,55 +209,55 @@ py::tuple MakeEdgeListNative(std::vector<float> x, std::vector<float> y,
 
 // Windows and Mac compiles complained about dtype being non const
 
-// // Make life easier for R people
-// template <class T>
-// py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
-//               std::string& dtype = "binary",
-//               LayoutConfiguration config = LayoutConfiguration(),
-//               bool file_backed = false, 
-//               unsigned int seed = 42) {
-//     py::tuple result;
-//     if (dtype == "binary") {
-//         Minhash mh(dims);
-//         LSHForest lf(dims, n_trees, true, file_backed, false);
+// Make life easier for R people
+template <class T>
+py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8, 
+              const std::string& dtype = "binary",
+              LayoutConfiguration config = LayoutConfiguration(),
+              bool file_backed = false, 
+              unsigned int seed = 42) {
+    py::tuple result;
+    if (dtype == "binary") {
+        Minhash mh(dims);
+        LSHForest lf(dims, n_trees, true, file_backed, false);
 
-//         auto vecs = convert_array<uint8_t>(arr);
-//         auto hashes = mh.BatchFromBinaryArray(vecs);
-//         lf.BatchAdd(hashes);
-//         lf.Index();
-//         result = LayoutFromLSHForestNative(lf, config);
-//     } else if (dtype == "sparse") {
-//         Minhash mh(dims);
-//         LSHForest lf(dims, n_trees, true, file_backed, false);
+        auto vecs = convert_array<uint8_t>(arr);
+        auto hashes = mh.BatchFromBinaryArray(vecs);
+        lf.BatchAdd(hashes);
+        lf.Index();
+        result = LayoutFromLSHForestNative(lf, config);
+    } else if (dtype == "sparse") {
+        Minhash mh(dims);
+        LSHForest lf(dims, n_trees, true, file_backed, false);
 
-//         auto vecs = convert_array<uint32_t>(arr);
-//         auto hashes = mh.BatchFromSparseBinaryArray(vecs);
-//         lf.BatchAdd(hashes);
-//         lf.Index();
-//         result = LayoutFromLSHForestNative(lf, config);
-//     } else if (dtype == "weighted") {
-//         auto vecs = convert_array_to_float<T>(arr);
+        auto vecs = convert_array<uint32_t>(arr);
+        auto hashes = mh.BatchFromSparseBinaryArray(vecs);
+        lf.BatchAdd(hashes);
+        lf.Index();
+        result = LayoutFromLSHForestNative(lf, config);
+    } else if (dtype == "weighted") {
+        auto vecs = convert_array_to_float<T>(arr);
 
-//         Minhash mh(vecs[0].size(), seed, dims);
-//         LSHForest lf(dims * 2, n_trees, true, file_backed, true);
+        Minhash mh(vecs[0].size(), seed, dims);
+        LSHForest lf(dims * 2, n_trees, true, file_backed, true);
 
-//         auto hashes = mh.BatchFromWeightArray(vecs);
-//         std::cout << "Have hashes" << std::endl;
-//         std::cout << vecs[0].size() << std::endl;
-//         lf.BatchAdd(hashes);
-//         std::cout << "added to lf" << std::endl;
-//         lf.Index();
-//         std::cout << "indexed" << std::endl;
-//         auto r = LayoutFromLSHForest(lf);
-//         std::cout << "have result in" << std::endl;
-//         result = LayoutFromLSHForestNative(lf, config);
-//         std::cout << "have result" << std::endl;
-//     } else {
-//         throw std::invalid_argument("dtype has to be 'binary', 'sparse', or 'weighted'");
-//     }
+        auto hashes = mh.BatchFromWeightArray(vecs);
+        std::cout << "Have hashes" << std::endl;
+        std::cout << vecs[0].size() << std::endl;
+        lf.BatchAdd(hashes);
+        std::cout << "added to lf" << std::endl;
+        lf.Index();
+        std::cout << "indexed" << std::endl;
+        auto r = LayoutFromLSHForest(lf);
+        std::cout << "have result in" << std::endl;
+        result = LayoutFromLSHForestNative(lf, config);
+        std::cout << "have result" << std::endl;
+    } else {
+        throw std::invalid_argument("dtype has to be 'binary', 'sparse', or 'weighted'");
+    }
 
-//     return result;
-// }
+    return result;
+}
 
 PYBIND11_MODULE(tmap, m)
 {
@@ -398,7 +401,8 @@ PYBIND11_MODULE(tmap, m)
                   &GraphProperties::n_connected_components)
     .def_readonly("n_isolated_vertices", &GraphProperties::n_isolated_vertices)
     .def_readonly("degrees", &GraphProperties::degrees)
-    .def_readonly("adjacency_list", &GraphProperties::adjacency_list);
+    .def_readonly("adjacency_list", &GraphProperties::adjacency_list)
+    .def_readonly("adjacency_list_knn", &GraphProperties::adjacency_list_knn);
     
 
     // m.def("map",
@@ -432,6 +436,7 @@ PYBIND11_MODULE(tmap, m)
         &LayoutFromLSHForest,
         py::arg("lsh_forest"),
         py::arg("config") = LayoutConfiguration(),
+        py::arg("keep_knn") = false,
         py::arg("create_mst") = true,
         py::arg("clear_lsh_forest") = false,
         R"pbdoc(
@@ -453,6 +458,7 @@ PYBIND11_MODULE(tmap, m)
         &LayoutFromLSHForestNative,
         py::arg("lsh_forest"),
         py::arg("config") = LayoutConfiguration(),
+        py::arg("keep_knn") = false,
         py::arg("create_mst") = true,
         py::arg("clear_lsh_forest") = false,
         R"pbdoc(
@@ -486,7 +492,7 @@ PYBIND11_MODULE(tmap, m)
             int kc (:obj:`int`, optional): The scalar by which k is multiplied before querying the LSH forest. The results are then ordered decreasing based on linear-scan distances and the top k results returned
 
         Returns:
-            :obj:`Tuple[VectorUint, VectorUint]`: the topology of the minimum spanning tree of the data indexed in the LSH forest
+            :obj:`Tuple[VectorUint, VectorUint, VectorFloat]`: the topology of the minimum spanning tree of the data indexed in the LSH forest
     )pbdoc");
 
   m.def("layout_from_edge_list",
@@ -494,6 +500,7 @@ PYBIND11_MODULE(tmap, m)
         py::arg("vertex_count"),
         py::arg("edges"),
         py::arg("config") = LayoutConfiguration(),
+        py::arg("keep_knn") = false,
         py::arg("create_mst") = true,
         R"pbdoc(
         Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an edge list.
@@ -515,6 +522,7 @@ PYBIND11_MODULE(tmap, m)
         py::arg("vertex_count"),
         py::arg("edges"),
         py::arg("config") = LayoutConfiguration(),
+        py::arg("keep_knn") = false,
         py::arg("create_mst") = true,
         R"pbdoc(
         Create minimum spanning tree or k-nearest neighbor graph coordinates and topology from an edge list. This method returns native python lists and objects.
@@ -567,6 +575,49 @@ PYBIND11_MODULE(tmap, m)
         
         Returns:
             :obj:`Tuple[List, List, List, List, List, List]`: Coordinates in edge list form and the vertex coordinates
+    )pbdoc");
+
+  m.def("vertex_quality",
+        &VertexQuality,
+        py::arg("gp"),
+        py::arg("v"),
+        R"pbdoc(
+        brief Computes the visualization quality of a vertex based on it's true nearest neighbors and their distribution in the tree.
+        
+        Arguments:
+            gp (:obj:`VectorFloat`): A GraphProperties object
+            v (:obj:`int`): The vertex id of the node to be analysed
+        
+        Returns:
+            :obj:`List[Tuple[int, float, int]]`: The qualities based on the degrees in the knn graph.
+    )pbdoc");
+
+  m.def("mean_quality",
+        &MeanQuality,
+        py::arg("gp"),
+        R"pbdoc(
+        brief Calculates the mean quality of all vertices based on the actual nearest neighbors and the topological distances in the spanning tree.
+        
+        Arguments:
+            gp (:obj:`VectorFloat`): A GraphProperties object
+        
+        Returns:
+            :obj:`List[float]`: The average topological distances ordered by k-nearest neighbor.
+    )pbdoc");
+
+  m.def("get_topological_distances",
+        &GetTopologicalDistances,
+        py::arg("gp"),
+        py::arg("v"),
+        R"pbdoc(
+        brief Gets the topological distances of a vertex to all other vertices.
+        
+        Arguments:
+            gp (:obj:`VectorFloat`): A GraphProperties object
+            v (:obj:`int`): The vertex id of the node to be analysed
+        
+        Returns:
+            :obj:`List[int]`: The topological distances to vertex v.
     )pbdoc");
 
   py::class_<LSHForest>(m, "LSHForest", R"pbdoc(
@@ -1137,4 +1188,32 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`float` The Jaccard distance
         )pbdoc");
+
+  m.def("get_clusters",
+        &GetClusters,
+        py::arg("gp"),
+        py::arg("classes"),
+        R"pbdoc(
+        brief Creates clusters from a minimum spanning tree.
+        
+        Arguments:
+            gp (:obj:`GraphProperties`): A GraphProperties object
+            classes (:obj:`VectorUint`): The classes of the vertices
+        
+        Returns:
+          :obj:`float` The Jaccard distance
+      )pbdoc");
+
+  m.def("MSDR",
+        &MSDR,
+        py::arg("gp"),
+        R"pbdoc(
+        brief Implementation of the MSDR clustering algorithm.
+        
+        Arguments:
+            gp (:obj:`GraphProperties`): A GraphProperties object
+        
+        Returns:
+          :obj:`VectorUint[VectorUint]` The vertex ids divided in clusters
+      )pbdoc");
 }

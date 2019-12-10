@@ -16,8 +16,11 @@
 #define LAYOUT_H
 
 #include <stdint.h>
+#include <utility>
 #include <tuple>
 #include <vector>
+#include <queue>
+#include <algorithm>
 
 #include <ogdf/basic/Graph.h>
 #include <ogdf/basic/GraphAttributes.h>
@@ -220,8 +223,10 @@ struct GraphProperties
   uint32_t n_connected_components = 0; ///< The number of connected components.
   uint32_t n_isolated_vertices = 0; ///< The number of isolated (lone) vertices.
   std::vector<uint32_t> degrees; ///< The degrees of the vertices in the graph.
-  std::vector<std::vector<uint32_t>>
+  std::vector<std::vector<std::pair<uint32_t, float>>>
     adjacency_list; ///< The adjacency list of the spanning tree.
+  std::vector<std::vector<std::pair<uint32_t, float>>>
+    adjacency_list_knn; ///< The adjacency list of the knn graph.
 };
 
 /**
@@ -231,6 +236,7 @@ struct GraphProperties
  * @param lsh_forest An LSHForest instance which is used to construct the kNN
  * graph.
  * @param config A LayoutConfiguration instance.
+ * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
  * @param create_mst Whether to create an MST before laying out the graph.
  * @param clear_lsh_forest Whether to clear the LSHForest after it's use (might
  * save memory).
@@ -244,6 +250,7 @@ std::tuple<std::vector<float>,
            GraphProperties>
 LayoutFromLSHForest(LSHForest& lsh_forest,
                     LayoutConfiguration config = LayoutConfiguration(),
+                    bool keep_knn = false,
                     bool create_mst = true,
                     bool clear_lsh_forest = false);
 
@@ -255,9 +262,9 @@ LayoutFromLSHForest(LSHForest& lsh_forest,
  * @param k The number of nearest neighbors used to create the kNN graph.
  * @param kc The factor by which k is multiplied when retrieving nearest
  * neighbors.
- * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+ * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
  */
-std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
 MSTFromLSHForest(LSHForest& lsh_forest, uint32_t k, uint32_t kc = 10);
 
 /**
@@ -267,6 +274,7 @@ MSTFromLSHForest(LSHForest& lsh_forest, uint32_t k, uint32_t kc = 10);
  * @param vertex_count The number of vertices in the input graph.
  * @param edges An edge list in the form of [(from, to, weight)].
  * @param config A LayoutConfiguration instance.
+ * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
  * @param create_mst Whether to create an MST before laying out the graph.
  * @return std::tuple<std::vector<float>, std::vector<float>,
  * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
@@ -280,6 +288,7 @@ LayoutFromEdgeList(
   uint32_t vertex_count,
   const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
   LayoutConfiguration config = LayoutConfiguration(),
+  bool keep_knn = false,
   bool create_mst = true);
 
 /**
@@ -301,6 +310,36 @@ LayoutInternal(ogdf::EdgeWeightedGraph<float>& g,
                uint32_t vertex_count,
                LayoutConfiguration config,
                GraphProperties& gp);
+
+
+/**
+ * @brief Calculates the quality of the vertex based on the actual nearest neighbors and the topological distances in the spanning tree.
+ *
+ * @param gp A GraphProperties object.
+ * @param v The id of a vertex / data point.
+ * @return std::vector<std::tuple<uint32_t, float, uint32_t>>
+ */
+std::vector<std::tuple<uint32_t, float, uint32_t>>
+VertexQuality(GraphProperties& gp, uint32_t v);
+
+/**
+ * @brief Calculates the mean quality of all vertices based on the actual nearest neighbors and the topological distances in the spanning tree.
+ *
+ * @param gp A GraphProperties object.
+ * @return std::vector<float>
+ */
+std::vector<float>
+MeanQuality(GraphProperties& gp);
+
+/**
+ * @brief Gets the topological distances of a vertex to all other vertices.
+ *
+ * @param gp A GraphProperties object.
+ * @param v The id of a vertex / data point.
+ * @return std::vector<uint32_t>
+ */
+std::vector<uint32_t>
+GetTopologicalDistances(GraphProperties& gp, uint32_t v);
 
 /**
  * @brief Creates an edge list from x, y coordinates and edge indices.

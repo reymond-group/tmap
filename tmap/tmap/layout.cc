@@ -154,7 +154,95 @@ ConnectGraph(Graph& g,
   }
 }
 
-std::tuple<std::vector<uint32_t>, std::vector<uint32_t>>
+std::vector<std::pair<uint32_t, uint32_t>>
+BFS(tmap::GraphProperties gp, uint32_t source, 
+    const std::vector<uint32_t>& targets)
+{
+  std::vector<std::pair<uint32_t, uint32_t>> result;
+  std::vector<bool> visited(gp.adjacency_list.size(), false);
+  std::queue<uint32_t> q;
+
+  // Using max as the level delimiter
+  uint32_t max = std::numeric_limits<uint32_t>::max();
+
+  visited[source] = true;
+  q.push(source);
+  q.push(max);
+
+  uint32_t depth = 0;
+  while(q.size() > 1) {
+    auto s = q.front();
+    q.pop();
+    
+    if (s == max) {
+      depth++;
+      q.push(max);
+      continue;
+    }
+
+    visited[s] = true;
+
+    if(std::find(targets.begin(), targets.end(), s) != targets.end())
+      result.push_back(std::make_pair(s, depth));
+
+    if (result.size() == targets.size())
+      break;
+
+    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++) {
+      uint32_t t = gp.adjacency_list[s][i].first;
+
+      if (visited[t])
+        continue;
+
+      q.push(t);
+    }
+  }
+
+  return result; 
+}
+
+std::vector<uint32_t>
+BFSAll(tmap::GraphProperties& gp, uint32_t source)
+{
+  std::vector<uint32_t> result(gp.adjacency_list.size(), 0);
+  std::vector<bool> visited(gp.adjacency_list.size(), false);
+  std::queue<uint32_t> q;
+
+  // Using max as the level delimiter
+  uint32_t max = std::numeric_limits<uint32_t>::max();
+
+  visited[source] = true;
+  q.push(source);
+  q.push(max);
+
+  uint32_t depth = 0;
+  while(q.size() > 1) {
+    auto s = q.front();
+    q.pop();
+    
+    if (s == max) {
+      depth++;
+      q.push(max);
+      continue;
+    }
+
+    visited[s] = true;
+    result[s] = depth;
+
+    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++) {
+      uint32_t t = gp.adjacency_list[s][i].first;
+
+      if (visited[t])
+        continue;
+
+      q.push(t);
+    }
+  }
+
+  return result; 
+}
+
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
 tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
                        uint32_t k,
                        uint32_t kc)
@@ -176,17 +264,20 @@ tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
   for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
     g.newEdge(index_to_node[from[i]], index_to_node[to[i]], weight[i]);
 
-  ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+  ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
+  ogdf::makeMinimumSpanningTree(g, edge_weights);
 
   std::vector<uint32_t> x;
   std::vector<uint32_t> y;
+  std::vector<float> w;
 
   for (edge e : g.edges) {
     x.emplace_back(e->source()->index());
     y.emplace_back(e->target()->index());
+    w.emplace_back(edge_weights[e]);
   }
 
-  return std::make_tuple(x, y);
+  return std::make_tuple(x, y, w);
 }
 
 std::tuple<std::vector<float>,
@@ -196,6 +287,7 @@ std::tuple<std::vector<float>,
            tmap::GraphProperties>
 tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
                           tmap::LayoutConfiguration config,
+                          bool keep_knn,
                           bool create_mst,
                           bool clear_lsh_forest)
 {
@@ -207,7 +299,7 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
   std::vector<uint32_t> to;
   std::vector<float> weight;
   std::vector<uint32_t> degrees(vertex_count);
-  std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
+  std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list(vertex_count);
 
   lsh_forest.GetKNNGraph(from, to, weight, config.k, config.kc);
 
@@ -225,22 +317,48 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
 
   ogdf::makeLoopFree(g);
   ogdf::makeParallelFreeUndirected(g);
+  ogdf:EdgeArray<float> edge_weights = g.edgeWeights();
 
   uint32_t i = 0;
+
+  // Get the adjancency list for the knn graph
+  if (keep_knn) {
+    std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list_knn(vertex_count);
+    i = 0;
+    for (node v : g.nodes) {
+      adjacency_list_knn[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
+      int j = 0;
+      for (adjEntry adj : v->adjEntries) {
+        uint32_t neighbor = adj->theEdge()->opposite(v)->index();
+        float edge_weight = edge_weights[adj->theEdge()];
+        adjacency_list_knn[i][j++] = std::make_pair(neighbor, edge_weight);
+      }
+
+      i++;
+    }
+
+    gp.adjacency_list_knn = adjacency_list_knn;
+  }
+
+  i = 0;
   for (node v : g.nodes)
     degrees[i++] = v->degree();
 
   gp.degrees = degrees;
 
-  if (create_mst)
-    gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+  if (create_mst) {
+    gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
+  }
 
   i = 0;
   for (node v : g.nodes) {
-    adjacency_list[i] = std::vector<uint32_t>(v->adjEntries.size());
+    adjacency_list[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
     int j = 0;
-    for (adjEntry adj : v->adjEntries)
-      adjacency_list[i][j++] = adj->theEdge()->opposite(v)->index();
+    for (adjEntry adj : v->adjEntries) {
+      uint32_t neighbor = adj->theEdge()->opposite(v)->index();
+      float edge_weight = edge_weights[adj->theEdge()];
+      adjacency_list[i][j++] = std::make_pair(neighbor, edge_weight);
+    }
 
     i++;
   }
@@ -259,41 +377,75 @@ tmap::LayoutFromEdgeList(
   uint32_t vertex_count,
   const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
   tmap::LayoutConfiguration config,
+  bool keep_knn,
   bool create_mst)
 {
   tmap::GraphProperties gp;
   EdgeWeightedGraph<float> g;
 
-  std::vector<std::vector<uint32_t>> adjacency_list(vertex_count);
+  std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list(vertex_count);
   std::vector<uint32_t> degrees(vertex_count);
   std::vector<node> index_to_node(vertex_count);
 
   for (uint32_t i = 0; i < vertex_count; i++)
     index_to_node[i] = g.newNode();
 
+
+  // Normalize the edge weights, edge weights need to be positive
+  float max_weight = 0.0f;
+  for (size_t i = 0; i < edges.size(); i++)
+    if (max_weight < std::get<2>(edges[i]))
+      max_weight = std::get<2>(edges[i]);
+
   for (size_t i = 0; i < edges.size(); i++)
     g.newEdge(index_to_node[std::get<0>(edges[i])],
               index_to_node[std::get<1>(edges[i])],
-              std::get<2>(edges[i]));
+              std::get<2>(edges[i]) / max_weight);
 
   ogdf::makeLoopFree(g);
   ogdf::makeParallelFreeUndirected(g);
+  ogdf:EdgeArray<float> edge_weights = g.edgeWeights();
 
   uint32_t i = 0;
+
+  // Get the adjancency list for the knn graph
+  if (keep_knn) {
+    std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list_knn(vertex_count);
+    i = 0;
+    for (node v : g.nodes) {
+      adjacency_list_knn[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
+      int j = 0;
+      for (adjEntry adj : v->adjEntries) {
+        uint32_t neighbor = adj->theEdge()->opposite(v)->index();
+        float edge_weight = edge_weights[adj->theEdge()];
+        adjacency_list_knn[i][j++] = std::make_pair(neighbor, edge_weight);
+      }
+
+      i++;
+    }
+
+    gp.adjacency_list_knn = adjacency_list_knn;
+  }
+
+  i = 0;
   for (node v : g.nodes)
     degrees[i++] = v->degree();
 
   gp.degrees = degrees;
 
-  if (create_mst)
-    gp.mst_weight = ogdf::makeMinimumSpanningTree(g, g.edgeWeights());
+  if (create_mst) {
+    gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
+  }
 
   i = 0;
   for (node v : g.nodes) {
-    adjacency_list[i] = std::vector<uint32_t>(v->adjEntries.size());
+    adjacency_list[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
     int j = 0;
-    for (adjEntry adj : v->adjEntries)
-      adjacency_list[i][j++] = adj->theEdge()->opposite(v)->index();
+    for (adjEntry adj : v->adjEntries) {
+      uint32_t neighbor = adj->theEdge()->opposite(v)->index();
+      float edge_weight = edge_weights[adj->theEdge()];
+      adjacency_list[i][j++] = std::make_pair(neighbor, edge_weight);
+    }
 
     i++;
   }
@@ -487,6 +639,66 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   }
 
   return std::make_tuple(x, y, s, t, gp);
+}
+
+std::vector<std::tuple<uint32_t, float, uint32_t>>
+tmap::VertexQuality(tmap::GraphProperties& gp, uint32_t v)
+{
+  if (gp.adjacency_list_knn.size() < 1)
+    throw std::runtime_error("The GraphProperties object does not contain an adjancency list of the original knn graph. Run layout with 'keep_knn' set to true.");
+
+  if (v >= gp.adjacency_list_knn.size())
+    throw std::runtime_error("The argument v is out of range.");
+
+  std::vector<std::tuple<uint32_t, float, uint32_t>> result(gp.adjacency_list_knn[v].size());
+  std::vector<uint32_t> targets(gp.adjacency_list_knn[v].size());
+
+  for (size_t i = 0; i < gp.adjacency_list_knn[v].size(); i++)
+    targets[i] = gp.adjacency_list_knn[v][i].first;
+
+  auto bfs = BFS(gp, v, targets);
+
+  for (size_t i = 0; i < bfs.size(); i++) {
+    result[i] = std::make_tuple(bfs[i].first, gp.adjacency_list_knn[v][i].second, bfs[i].second);
+  }
+
+  // Sort the targets by distance
+  std::sort(result.begin(), result.end(), [](auto& left, auto& right) {
+    return std::get<1>(left) < std::get<1>(right);
+  });
+
+  return result;
+}
+
+std::vector<float>
+tmap::MeanQuality(GraphProperties& gp)
+{
+  // Get the max adjacency list knn size, as they can differ
+  size_t max_size = 0;
+  for (size_t i = 0; i < gp.adjacency_list_knn.size(); i++)
+    if (gp.adjacency_list_knn[i].size() > max_size)
+      max_size = gp.adjacency_list_knn[i].size();
+
+  std::vector<float> result(max_size, 0.0);
+  std::vector<uint32_t> counts(max_size, 0);
+
+  for (size_t i = 0; i < gp.adjacency_list.size(); i++) {
+    auto r = tmap::VertexQuality(gp, i);
+    for (size_t j = 0; j < r.size(); j++) {
+      result[j] += std::get<2>(r[j]);
+      counts[j] += 1;
+    }
+  }
+
+  for (size_t i = 0; i < max_size; i++)
+    result[i] /= counts[i];
+
+  return result;
+}
+
+std::vector<uint32_t>
+tmap::GetTopologicalDistances(tmap::GraphProperties& gp, uint32_t v) {
+  return BFSAll(gp, v);
 }
 
 std::tuple<std::vector<float>,
