@@ -219,7 +219,6 @@ BFSAll(tmap::GraphProperties& gp, uint32_t source)
   while(q.size() > 1) {
     auto s = q.front();
     q.pop();
-    
     if (s == max) {
       depth++;
       q.push(max);
