@@ -131,6 +131,7 @@ tmap::LSHForest::Predict(std::vector<std::vector<uint32_t>>& vecs,
 #pragma omp parallel for
   for (size_t i = 0; i < vecs.size(); i++) {
     auto nn = QueryLinearScan(vecs[i], k, kc);
+
     std::sort(nn.begin(), nn.end(), [this](auto &left, auto &right) {
       return labels_[left.second] < labels_[right.second];
     });
@@ -141,12 +142,14 @@ tmap::LSHForest::Predict(std::vector<std::vector<uint32_t>>& vecs,
 
 
     for (size_t j = 1; j < nn.size(); j++) {
-      if (labels_[nn[j].second] ==  labels_[nn[j-1].second]) {
+      if (labels_[nn[j].second] == labels_[nn[j-1].second]) {
         count++;
         if (count > max_count) {
           max_count = count;
           max_element = labels_[nn[j].second];
         }
+      } else {
+        count = 1;
       }
     }
 
