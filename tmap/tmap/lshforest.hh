@@ -149,6 +149,27 @@ public:
   void BatchAdd(std::vector<std::vector<uint32_t>>& vecs);
 
   /**
+   * @brief Add Minhashes with labels to this LSHForest (parallelized).
+   *
+   * @param vecs A vector containing MinHash vectors.
+   * @param labels A vector containing labels.
+   */
+  void Fit(std::vector<std::vector<uint32_t>>& vecs, std::vector<uint32_t>& labels);
+
+  /**
+   * @brief Predict labels of Minhashes using the kNN algorithm (parallelized).
+   *
+   * @param vecs A vector containing MinHash vectors.
+   * @param k The degree of the kNN algorithm.
+   * @param kc The scalar by which k is multiplied before querying the LSH
+   * 
+   * @return std::vector<uint32_t> The predicted labels.
+   */
+  std::vector<uint32_t> Predict(std::vector<std::vector<uint32_t>>& vecs,
+                                unsigned int k = 10,
+                                unsigned int kc = 10);
+
+  /**
    * @brief Create the index (trees).
    *
    */
@@ -443,6 +464,7 @@ private:
   std::vector<std::tuple<uint32_t, uint32_t>> hashranges_;
   std::vector<std::vector<MapKeyPointer>> sorted_hashtable_pointers_;
   std::vector<std::vector<uint32_t>> data_;
+  std::vector<uint32_t> labels_;
 
   /**
    * @brief Byteswap a 32-bit unsigned integer.

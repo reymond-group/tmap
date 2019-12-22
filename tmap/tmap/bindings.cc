@@ -650,6 +650,23 @@ PYBIND11_MODULE(tmap, m)
             Arguments:
                 vecs (:obj:`List` of :obj:`VectorUint`): A list of MinHash vectors that is to be added to the LSH forest
         )pbdoc")
+    .def("fit", &LSHForest::Fit, R"pbdoc(
+            Add Minhashes with labels to this LSHForest (parallelized).
+
+            Arguments:
+                vecs (:obj:`List` of :obj:`VectorUint`): A list of MinHash vectors that is to be added to the LSH forest
+                labels (:obj:`VectorUint`) A vector containing labels.
+        )pbdoc")
+    .def("predict", &LSHForest::Predict, R"pbdoc(
+            Predict labels of Minhashes using the kNN algorithm (parallelized).
+
+            Arguments:
+                vecs (:obj:`List` of :obj:`VectorUint`): A list of MinHash vectors that is to be added to the LSH forest
+                k (:obj:`int`) The degree of the kNN algorithm
+                kc (:obj:`int`) The scalar by which k is multiplied before querying the LSH
+            Returns:
+                :obj:`VectorUint` The predicted labels
+        )pbdoc")
     .def("index", &LSHForest::Index, R"pbdoc(
             Index the LSH forest. This has to be run after each time new MinHashes were added.
         )pbdoc")

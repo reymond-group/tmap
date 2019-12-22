@@ -106,6 +106,57 @@ tmap::LSHForest::BatchAdd(std::vector<std::vector<uint32_t>>& vecs)
 }
 
 void
+tmap::LSHForest::Fit(std::vector<std::vector<uint32_t>>& vecs,
+                     std::vector<uint32_t>& labels)
+{
+  if (labels_.size() != data_.size())
+    throw std::runtime_error("LSHForest contains unlabelled entries.");
+  
+  if (vecs.size() != labels.size())
+    throw std::runtime_error("The input sizes of vectors and labels has to match.");
+
+  BatchAdd(vecs);
+  for (size_t i = 0; i < labels.size(); i++)
+    labels_.emplace_back(labels[i]);
+  clean_ = false;
+}
+
+std::vector<uint32_t> 
+tmap::LSHForest::Predict(std::vector<std::vector<uint32_t>>& vecs,
+                         unsigned int k,
+                         unsigned int kc)
+{
+  std::vector<uint32_t> pred_labels(vecs.size());
+
+#pragma omp parallel for
+  for (size_t i = 0; i < vecs.size(); i++) {
+    auto nn = QueryLinearScan(vecs[i], k, kc);
+    std::sort(nn.begin(), nn.end(), [this](auto &left, auto &right) {
+      return labels_[left.second] < labels_[right.second];
+    });
+
+    uint32_t max_element = labels_[nn[0].second];
+    uint32_t max_count = 1;
+    uint32_t count = 1;
+
+
+    for (size_t j = 1; j < nn.size(); j++) {
+      if (labels_[nn[j].second] ==  labels_[nn[j-1].second]) {
+        count++;
+        if (count > max_count) {
+          max_count = count;
+          max_element = labels_[nn[j].second];
+        }
+      }
+    }
+
+    pred_labels[i] = max_element;
+  }
+
+  return pred_labels;
+}
+
+void
 tmap::LSHForest::Index()
 {
 #pragma omp parallel for
@@ -151,7 +202,7 @@ tmap::LSHForest::Store(const std::string& path)
 {
   std::ofstream file(path, std::ios::binary);
   cereal::BinaryOutputArchive output(file);
-  output(hashtables_, hashranges_, data_, store_, l_, d_, k_, clean_, size_);
+  output(hashtables_, hashranges_, data_, labels_, store_, l_, d_, k_, clean_, size_);
   file.close();
 }
 
@@ -161,7 +212,7 @@ tmap::LSHForest::Restore(const std::string& path)
   Clear();
   std::ifstream file(path, std::ios::binary);
   cereal::BinaryInputArchive input(file);
-  input(hashtables_, hashranges_, data_, store_, l_, d_, k_, clean_, size_);
+  input(hashtables_, hashranges_, data_, labels_, store_, l_, d_, k_, clean_, size_);
   file.close();
 
   sorted_hashtable_pointers_ = std::vector<std::vector<MapKeyPointer>>(l_);
@@ -644,6 +695,7 @@ tmap::LSHForest::Clear()
                                                  SimpleHash>>();
   hashranges_ = std::vector<std::tuple<uint32_t, uint32_t>>();
   data_ = std::vector<std::vector<uint32_t>>();
+  labels_ = std::vector<uint32_t>();
   sorted_hashtable_pointers_ = std::vector<std::vector<MapKeyPointer>>();
 
   hashtables_.clear();
@@ -655,6 +707,9 @@ tmap::LSHForest::Clear()
   data_.clear();
   data_.shrink_to_fit();
 
+  labels_.clear();
+  labels_.shrink_to_fit();
+
   sorted_hashtable_pointers_.clear();
   sorted_hashtable_pointers_.shrink_to_fit();
 
@@ -664,6 +719,7 @@ tmap::LSHForest::Clear()
     .swap(hashtables_);
   std::vector<std::tuple<uint32_t, uint32_t>>().swap(hashranges_);
   std::vector<std::vector<uint32_t>>().swap(data_);
+  std::vector<uint32_t>().swap(labels_);
   std::vector<std::vector<MapKeyPointer>>().swap(sorted_hashtable_pointers_);
 }
 
