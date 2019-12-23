@@ -124,36 +124,67 @@ tmap::LSHForest::Fit(std::vector<std::vector<uint32_t>>& vecs,
 std::vector<uint32_t> 
 tmap::LSHForest::Predict(std::vector<std::vector<uint32_t>>& vecs,
                          unsigned int k,
-                         unsigned int kc)
+                         unsigned int kc,
+                         bool weighted)
 {
   std::vector<uint32_t> pred_labels(vecs.size());
 
+  if (!weighted) {
 #pragma omp parallel for
-  for (size_t i = 0; i < vecs.size(); i++) {
-    auto nn = QueryLinearScan(vecs[i], k, kc);
+    for (size_t i = 0; i < vecs.size(); i++) {
+      auto nn = QueryLinearScan(vecs[i], k, kc);
 
-    std::sort(nn.begin(), nn.end(), [this](auto &left, auto &right) {
-      return labels_[left.second] < labels_[right.second];
-    });
+      std::sort(nn.begin(), nn.end(), [this](auto &left, auto &right) {
+        return labels_[left.second] < labels_[right.second];
+      });
 
-    uint32_t max_element = labels_[nn[0].second];
-    uint32_t max_count = 1;
-    uint32_t count = 1;
+      uint32_t max_element = labels_[nn[0].second];
+      uint32_t max_count = 1;
+      uint32_t count = 1;
 
 
-    for (size_t j = 1; j < nn.size(); j++) {
-      if (labels_[nn[j].second] == labels_[nn[j-1].second]) {
-        count++;
-        if (count > max_count) {
-          max_count = count;
-          max_element = labels_[nn[j].second];
+      for (size_t j = 1; j < nn.size(); j++) {
+        if (labels_[nn[j].second] == labels_[nn[j-1].second]) {
+          count++;
+          if (count > max_count) {
+            max_count = count;
+            max_element = labels_[nn[j].second];
+          }
+        } else {
+          count = 1;
         }
-      } else {
-        count = 1;
       }
-    }
 
-    pred_labels[i] = max_element;
+      pred_labels[i] = max_element;
+    }
+  } else {
+#pragma omp parallel for
+    for (size_t i = 0; i < vecs.size(); i++) {
+      auto nn = QueryLinearScan(vecs[i], k, kc);
+
+      std::sort(nn.begin(), nn.end(), [this](auto &left, auto &right) {
+        return labels_[left.second] < labels_[right.second];
+      });
+
+      uint32_t max_element = labels_[nn[0].second];
+      double max_count = 1.0 / (nn[0].first * nn[0].first);
+      double count = max_count;
+
+
+      for (size_t j = 1; j < nn.size(); j++) {
+        if (labels_[nn[j].second] == labels_[nn[j-1].second]) {
+          count += 1.0 / (nn[j].first * nn[j].first);
+          if (count > max_count) {
+            max_count = count;
+            max_element = labels_[nn[j].second];
+          }
+        } else {
+          count = 1.0 / (nn[j].first * nn[j].first);
+        }
+      }
+
+      pred_labels[i] = max_element;
+    }
   }
 
   return pred_labels;

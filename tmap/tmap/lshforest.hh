@@ -162,12 +162,14 @@ public:
    * @param vecs A vector containing MinHash vectors.
    * @param k The degree of the kNN algorithm.
    * @param kc The scalar by which k is multiplied before querying the LSH
+   * @param weighted Whether distances are used as weights by the knn algorithm
    * 
    * @return std::vector<uint32_t> The predicted labels.
    */
   std::vector<uint32_t> Predict(std::vector<std::vector<uint32_t>>& vecs,
                                 unsigned int k = 10,
-                                unsigned int kc = 10);
+                                unsigned int kc = 10,
+                                bool weighted = false);
 
   /**
    * @brief Create the index (trees).
