@@ -11,15 +11,6 @@ else()
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
 endif(MSVC)
 
-
-if (DEFINED ENV{CONDA_PREFIX})
-    SET(OGDF_INCLUDE "$ENV{CONDA_PREFIX}/include")
-    SET(OGDF_LIB "$ENV{CONDA_PREFIX}/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-endif()
-
 # find_package(OpenMP)
 # if (OPENMP_FOUND)
 #    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
