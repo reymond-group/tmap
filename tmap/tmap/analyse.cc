@@ -30,7 +30,7 @@ namespace {
 
     std::vector<float> diff(weights.size());
     std::transform(weights.begin(), weights.end(), diff.begin(),
-                  std::bind2nd(std::minus<float>(), mean));
+                  std::bind(std::minus<float>(), std::placeholders::_1, mean));
     float sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
     float stdev = std::sqrt(sq_sum / weights.size());
 
@@ -64,7 +64,7 @@ namespace {
 
       std::vector<float> diff(weights.size());
       std::transform(weights.begin(), weights.end(), diff.begin(),
-                    std::bind2nd(std::minus<float>(), mean));
+                    std::bind(std::minus<float>(), std::placeholders::_1, mean));
       float sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
       float stdev = std::sqrt(sq_sum / weights.size());
 
