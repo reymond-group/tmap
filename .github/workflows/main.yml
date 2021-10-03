@@ -142,8 +142,8 @@ jobs:
         run: |
           conda activate tmbuild
           conda build ogdf-conda
-      - name: Upload ogdf package
-          uses: actions/upload-artifact@v2
-          with:
-            name: ogdf-conda-package
-            path: /usr/share/miniconda/envs/tmbuild/conda-bld/
+      # - name: Upload ogdf package
+      #     uses: actions/upload-artifact@v2
+      #     with:
+      #       name: ogdf-conda-package
+      #       path: /usr/share/miniconda/envs/tmbuild/conda-bld/
