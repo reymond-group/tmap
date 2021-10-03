@@ -134,7 +134,6 @@ jobs:
         shell: bash -l {0}
         run: |
           conda config --set always_yes yes --set changeps1 no
-          conda update -q conda
           conda create --name tmbuild
           conda activate tmbuild
           conda install -y conda-build
