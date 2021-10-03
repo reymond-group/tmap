@@ -1,6 +1,9 @@
 md build
 cd build
 
+echo "This is the Path:"
+echo %cd%
+
 REM MSBUILD version
 msbuild -version
 
