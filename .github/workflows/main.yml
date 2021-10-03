@@ -138,4 +138,6 @@ jobs:
           conda activate tmbuild
           conda install -y conda-build
       - name: Build OGDF
-        run: conda build ogdf-conda
+        run: |
+          conda activate tmbuild
+          conda build ogdf-conda
