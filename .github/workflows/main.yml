@@ -166,7 +166,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: ogdf-conda-package-win
-          path: "/usr/share/miniconda/envs/tmbuild/conda-bld/"
+          path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
 
   # build_macos:
   #   runs-on: macos-latest
