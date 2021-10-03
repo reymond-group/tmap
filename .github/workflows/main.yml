@@ -157,7 +157,6 @@ jobs:
         shell: bash -l {0}
         run: |
           wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.15.sdk.tar.xz
-          sudo mkdir /opt
           sudo install -d -m 0777 /opt
           tar Jxvf MacOSX10.15.sdk.tar.xz -C /opt
       - name: Setup conda environment
