@@ -1,2 +1,8 @@
 CONDA_BUILD_SYSROOT:
   - /opt/MacOSX10.15.sdk [osx]
+cross_compiler_target_platform: # [win]
+  - win-64                      # [win]
+c_compiler:                     # [win]
+  - vs2017                      # [win]
+cxx_compiler:                   # [win]
+  - vs2017                      # [win]
