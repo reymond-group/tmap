@@ -123,34 +123,34 @@ name: Build on Ubuntu, Windows, and MacOS
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build_ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          auto-update-conda: true
-      - name: Setup conda environment
-        shell: bash -l {0}
-        run: |
-          conda config --set always_yes yes --set changeps1 no
-          conda create --name tmbuild
-          conda activate tmbuild
-          conda install -y conda-build
-      - name: Build OGDF
-        shell: bash -l {0}
-        run: |
-          conda activate tmbuild
-          conda build ogdf-conda
-      - name: Build TMAP
-        shell: bash -l {0}
-        run: |
-          conda activate tmbuild
-          conda build tmap
-      - uses: actions/upload-artifact@v2
-        with:
-          name: ogdf-conda-package-linux
-          path: "/usr/share/miniconda/envs/tmbuild/conda-bld/"
+  # build_ubuntu:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: conda-incubator/setup-miniconda@v2
+  #       with:
+  #         auto-update-conda: true
+  #     - name: Setup conda environment
+  #       shell: bash -l {0}
+  #       run: |
+  #         conda config --set always_yes yes --set changeps1 no
+  #         conda create --name tmbuild
+  #         conda activate tmbuild
+  #         conda install -y conda-build
+  #     - name: Build OGDF
+  #       shell: bash -l {0}
+  #       run: |
+  #         conda activate tmbuild
+  #         conda build ogdf-conda
+  #     - name: Build TMAP
+  #       shell: bash -l {0}
+  #       run: |
+  #         conda activate tmbuild
+  #         conda build tmap
+  #     - uses: actions/upload-artifact@v2
+  #       with:
+  #         name: ogdf-conda-package-linux
+  #         path: "/usr/share/miniconda/envs/tmbuild/conda-bld/"
 
   # build_windows:
   #   runs-on: windows-latest
@@ -174,32 +174,37 @@ jobs:
   #         name: ogdf-conda-package-windows
   #         path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
 
-  # build_macos:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: conda-incubator/setup-miniconda@v2
-  #       with:
-  #         auto-update-conda: true
-  #     - name: Install MacOSX 10.15 SDK
-  #       shell: bash -l {0}
-  #       run: |
-  #         wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.15.sdk.tar.xz
-  #         sudo install -d -m 0777 /opt
-  #         tar Jxvf MacOSX10.15.sdk.tar.xz -C /opt
-  #     - name: Setup conda environment
-  #       shell: bash -l {0}
-  #       run: |
-  #         conda config --set always_yes yes --set changeps1 no
-  #         conda create --name tmbuild
-  #         conda activate tmbuild
-  #         conda install -y conda-build
-  #     - name: Build OGDF
-  #       shell: bash -l {0}
-  #       run: |
-  #         conda activate tmbuild
-  #         conda build ogdf-conda
-  #     - uses: actions/upload-artifact@v2
-  #       with:
-  #         name: ogdf-conda-package-macos
-  #         path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
+  build_macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+      - name: Install MacOSX 10.15 SDK
+        shell: bash -l {0}
+        run: |
+          wget https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.15.sdk.tar.xz
+          sudo install -d -m 0777 /opt
+          tar Jxvf MacOSX10.15.sdk.tar.xz -C /opt
+      - name: Setup conda environment
+        shell: bash -l {0}
+        run: |
+          conda config --set always_yes yes --set changeps1 no
+          conda create --name tmbuild
+          conda activate tmbuild
+          conda install -y conda-build
+      - name: Build OGDF
+        shell: bash -l {0}
+        run: |
+          conda activate tmbuild
+          conda build ogdf-conda
+      - name: Build TMAP
+        shell: bash -l {0}
+        run: |
+          conda activate tmbuild
+          conda build tmap
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: ogdf-conda-package-macos
+      #     path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
