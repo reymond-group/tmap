@@ -1,6 +1,5 @@
-trigger:
-  - master
-
+name: Build on Ubuntu, Windows, and MacOS
+on: [push, pull_request]
 jobs:
   - job: Ubuntu
     pool:
