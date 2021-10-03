@@ -4,12 +4,11 @@ cd build
 REM MSBUILD version
 msbuild -version
 
-cmake .. -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%PREFIX%
+cmake .. -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%PREFIX%
 REM -DCMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG=%PREFIX%
 REM -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=%PREFIX% 
 REM -DBUILD_SHARED_LIBS=ON
 
-type C:/Miniconda/envs/tmbuild/conda-bld/ogdf_1633272988774/work/build/CMakeFiles/CMakeOutput.log
 
 REM REM Make sure that msbuild is in the PATH and its version matches the compiler's
 
