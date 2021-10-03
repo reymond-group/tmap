@@ -131,6 +131,7 @@ jobs:
         with:
           auto-update-conda: true
       - name: Setup conda environment
+        shell: bash -l {0}
         run: |
           conda config --set always_yes yes --set changeps1 no
           conda update -q conda
