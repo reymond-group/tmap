@@ -1,9 +1,6 @@
 md build
 cd build
 
-echo "This is the Path:"
-echo %cd%
-
 REM MSBUILD version
 msbuild -version
 
@@ -11,6 +8,8 @@ cmake .. -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTA
 REM -DCMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG=%PREFIX%
 REM -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=%PREFIX% 
 REM -DBUILD_SHARED_LIBS=ON
+
+type C:/Miniconda/envs/tmbuild/conda-bld/ogdf_1633272988774/work/build/CMakeFiles/CMakeOutput.log
 
 REM REM Make sure that msbuild is in the PATH and its version matches the compiler's
 
