@@ -144,7 +144,7 @@ jobs:
           conda build ogdf-conda
       - name: Build TMAP
         shell: bash -l {0}
-      - run: |
+        run: |
           conda activate tmbuild
           conda build tmap
       - uses: actions/upload-artifact@v2
