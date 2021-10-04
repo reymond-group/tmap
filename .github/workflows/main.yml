@@ -152,27 +152,31 @@ jobs:
           name: ogdf-conda-package-linux
           path: "/usr/share/miniconda/envs/tmbuild/conda-bld/"
 
-  # build_windows:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: conda-incubator/setup-miniconda@v2
-  #       with:
-  #         auto-update-conda: true
-  #     - name: Setup conda environment
-  #       run: |
-  #         conda config --set always_yes yes --set changeps1 no
-  #         conda create --name tmbuild
-  #         conda activate tmbuild
-  #         conda install -y conda-build
-  #     - name: Build OGDF
-  #       run: |
-  #         conda activate tmbuild
-  #         conda build ogdf-conda
-  #     - uses: actions/upload-artifact@v2
-  #       with:
-  #         name: ogdf-conda-package-windows
-  #         path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+      - name: Setup conda environment
+        run: |
+          conda config --set always_yes yes --set changeps1 no
+          conda create --name tmbuild
+          conda activate tmbuild
+          conda install -y conda-build
+      - name: Build OGDF
+        run: |
+          conda activate tmbuild
+          conda build ogdf-conda
+      - name: Build TMAP
+        run: |
+          conda activate tmbuild
+          conda build tmap
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ogdf-conda-package-windows
+          path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
 
   build_macos:
     runs-on: macos-latest
@@ -204,7 +208,7 @@ jobs:
         run: |
           conda activate tmbuild
           conda build tmap
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     name: ogdf-conda-package-macos
-      #     path: "C:\\Miniconda\\envs\\tmbuild\\conda-bld"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ogdf-conda-package-macos
+          path: "/usr/local/miniconda/envs/tmbuild/conda-bld/"
