@@ -41,11 +41,11 @@ SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR
 add_subdirectory(lib/pybind11)
 
 pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
-if(MSVC)
-target_link_libraries(tmap PRIVATE OGDF.lib COIN.lib)
-else()
+# if(MSVC)
+# target_link_libraries(tmap PRIVATE OGDF.lib COIN.lib)
+# else()
 target_link_libraries(tmap PRIVATE OGDF COIN)
-endif(MSVC)
+# endif(MSVC)
 
 target_link_libraries(tmap PRIVATE Threads::Threads)
 target_link_libraries(tmap PRIVATE ${OpenMP_CXX_FLAGS})
