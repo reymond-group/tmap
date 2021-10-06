@@ -54,8 +54,9 @@ class CMakeBuild(build_ext):
             cmake_args += [
                 "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
             ]
-            if sys.maxsize > 2 ** 32:
-                cmake_args += ["-A", "x64"]
+            cmake_args += ["-DCMAKE_GENERATOR=Visual Studio 14"]
+            cmake_args += ["-DCMAKE_GENERATOR_PLATFORM=x64"]
+            # cmake_args += ["-A", "x64"]
             build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']

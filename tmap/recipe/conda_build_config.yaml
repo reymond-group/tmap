@@ -5,5 +5,5 @@ python:
   - 3.6
   - 3.7
 
-cxx_compiler:
-  - vs2015                     # [win]
+# cxx_compiler:
+#   - vs2015                     # [win]
