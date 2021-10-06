@@ -6,4 +6,4 @@ python:
   - 3.7
 
 cxx_compiler:
-  - vc2017                     # [win]
+  - vs2017                     # [win]
