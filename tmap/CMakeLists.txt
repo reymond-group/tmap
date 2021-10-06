@@ -38,7 +38,9 @@ include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
 
 # Generate python module
-add_subdirectory(lib/pybind11)
+# add_subdirectory(lib/pybind11)
+find_package(pybind11 CONFIG REQUIRED)
+message(STATUS "Found pybind11 v${pybind11_VERSION}: ${pybind11_INCLUDE_DIRS}")
 
 pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
 if(MSVC)
