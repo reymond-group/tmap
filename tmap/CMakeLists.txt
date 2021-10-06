@@ -45,7 +45,7 @@ if(MSVC)
 target_link_libraries(tmap PRIVATE OGDF.lib COIN.lib)
 else()
 target_link_libraries(tmap PRIVATE OGDF COIN)
-# endif(MSVC)
+endif(MSVC)
 
 target_link_libraries(tmap PRIVATE Threads::Threads)
 target_link_libraries(tmap PRIVATE ${OpenMP_CXX_FLAGS})
