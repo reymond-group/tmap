@@ -58,7 +58,7 @@ class CMakeBuild(build_ext):
             # cmake_args += ["-DCMAKE_GENERATOR_PLATFORM=x64"]
             cmake_args += ["-G", "Ninja"]
             # cmake_args += ["-A", "x64"]
-            build_args += ["--", "/m"]
+            # build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
             cmake_args += ['-DOpenMP_CXX_FLAG=-fopenmp']
