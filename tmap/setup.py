@@ -54,7 +54,7 @@ class CMakeBuild(build_ext):
             cmake_args += [
                 "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
             ]
-            cmake_args += ["-DCMAKE_GENERATOR=Visual Studio 14"]
+            cmake_args += ["-DCMAKE_GENERATOR=Visual Studio 15"]
             cmake_args += ["-DCMAKE_GENERATOR_PLATFORM=x64"]
             # cmake_args += ["-A", "x64"]
             build_args += ["--", "/m"]
