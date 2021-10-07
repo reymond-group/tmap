@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 project(tmap)
 
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_DEBUG "/openmp /O2")
-    set(CMAKE_CXX_FLAGS_RELEASE "/openmp /O2")
+    set(CMAKE_CXX_FLAGS_DEBUG "/openmp:llvm /O2")
+    set(CMAKE_CXX_FLAGS_RELEASE "/openmp:llvm /O2")
 else()
     set(CMAKE_CXX_FLAGS_DEBUG "-O3 -funroll-loops -fopenmp")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
@@ -38,9 +38,7 @@ include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
 
 # Generate python module
-# add_subdirectory(lib/pybind11)
 find_package(pybind11 CONFIG REQUIRED)
-message(STATUS "Found pybind11 v${pybind11_VERSION}: ${pybind11_INCLUDE_DIRS}")
 
 pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
 if(MSVC)
