@@ -56,8 +56,8 @@ class CMakeBuild(build_ext):
             ]
             # cmake_args += ["-DCMAKE_GENERATOR=Visual Studio 15"]
             # cmake_args += ["-DCMAKE_GENERATOR_PLATFORM=x64"]
-            cmake_args += ["-G", "Ninja"]
-            # cmake_args += ["-A", "x64"]
+            cmake_args += ["-G", "Visual Studio 15"]
+            cmake_args += ["-A", "x64"]
             # build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
