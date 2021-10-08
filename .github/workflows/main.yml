@@ -41,6 +41,8 @@ jobs:
       - name: Setup conda environment
         run: |
           conda config --set always_yes yes --set changeps1 no
+          conda config --add channels conda-forge
+          conda config --set channel_priority strict
           conda create --name tmbuild
           conda activate tmbuild
           conda install -y conda-build

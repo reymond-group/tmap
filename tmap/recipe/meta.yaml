@@ -18,6 +18,7 @@ requirements:
     - {{ compiler('cxx') }}
     - llvm-openmp # [osx]
     - ninja  # [win]
+    - vs2019_win-64 # [win]
     - cmake
     - python {{ python }}
     - setuptools
