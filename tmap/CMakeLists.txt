@@ -30,7 +30,9 @@ endif()
 find_package(OpenMP REQUIRED)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
+
 find_package(Threads REQUIRED)
+include_directories(${pybind11_INCLUDE_DIRS})
 
 SET(SOURCE_DIR "tmap")
 # Tell cmake that headers are in alse in source_dir
