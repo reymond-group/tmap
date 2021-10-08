@@ -7,3 +7,6 @@ python:
 
 cxx_compiler:
   - vs2019                     # [win]
+
+c_compiler:
+  - vs2019                     # [win]
