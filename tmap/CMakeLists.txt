@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(tmap)
 
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_DEBUG "/openmp:llvm /O2 /permissive /std:c++latest /wd4013")
-    set(CMAKE_CXX_FLAGS_RELEASE "/openmp:llvm /O2 /permissive /std:c++latest /wd4013")
+    set(CMAKE_CXX_FLAGS_DEBUG "/openmp:llvm /O2 /permissive")
+    set(CMAKE_CXX_FLAGS_RELEASE "/openmp:llvm /O2 /permissive")
 else()
     set(CMAKE_CXX_FLAGS_DEBUG "-O3 -funroll-loops -fopenmp")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
