@@ -9,9 +9,9 @@
 
 #include "analyse.hh"
 
-typedef std::vector<std::vector<std::pair<size_t, float>>> AdjacencyList;
-typedef std::tuple<size_t, size_t, float> Edge;
-typedef std::vector<std::vector<size_t>> ConnectedComponents;
+typedef std::vector<std::vector<std::pair<uint32_t, float>>> AdjacencyList;
+typedef std::tuple<uint32_t, uint32_t, float> Edge;
+typedef std::vector<std::vector<uint32_t>> ConnectedComponents;
 
 // Private helper functions
 namespace {
@@ -25,13 +25,13 @@ namespace {
         if (adjacency_list[i][j].first > i)
           weights.emplace_back(adjacency_list[i][j].second);
 
-    float sum = (float)std::accumulate(weights.begin(), weights.end(), 0.0);
+    float sum = std::accumulate(weights.begin(), weights.end(), 0.0);
     float mean = sum / weights.size();
 
     std::vector<float> diff(weights.size());
     std::transform(weights.begin(), weights.end(), diff.begin(),
                   std::bind(std::minus<float>(), std::placeholders::_1, mean));
-    float sq_sum = (float)std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
+    float sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
     float stdev = std::sqrt(sq_sum / weights.size());
 
     return std::make_tuple(mean, stdev);
@@ -44,7 +44,7 @@ namespace {
   {
     std::vector<std::vector<float>> cc_weights(connected_components.size());
     std::vector<float> stdevs(connected_components.size());
-    std::vector<size_t> cc_map(adjacency_list.size());
+    std::vector<uint32_t> cc_map(adjacency_list.size());
     
     for (size_t i = 0; i < connected_components.size(); i++)
       for (size_t j = 0; j < connected_components[i].size(); j++)
@@ -87,8 +87,8 @@ namespace {
 
   std::tuple<Edge, Edge>
   get_edge(const AdjacencyList& adjacency_list, 
-    size_t u, 
-    size_t v)
+    uint32_t u, 
+    uint32_t v)
   {
     Edge a;
     Edge b;
@@ -107,15 +107,15 @@ namespace {
   std::tuple<Edge, Edge>
   remove_edge(
     AdjacencyList& adjacency_list,
-    size_t u,
-    size_t v)
+    uint32_t u,
+    uint32_t v)
   {
     auto removed_edges = get_edge(adjacency_list, u, v);
 
     adjacency_list[u].erase(
       std::remove_if(
         adjacency_list[u].begin(), adjacency_list[u].end(),
-        [v](std::pair<size_t, float> p) {
+        [v](std::pair<uint32_t, float> p) {
           return p.first == v;
         }
       ), adjacency_list[u].end()
@@ -124,7 +124,7 @@ namespace {
     adjacency_list[v].erase(
       std::remove_if(
         adjacency_list[v].begin(), adjacency_list[v].end(),
-        [u](std::pair<size_t, float> p) {
+        [u](std::pair<uint32_t, float> p) {
           return p.first == u;
         }
       ), adjacency_list[v].end()
@@ -153,16 +153,16 @@ namespace {
       if (visited[v] == 1)
         continue;
       
-      std::vector<size_t> connected_component;
+      std::vector<uint32_t> connected_component;
 
       // Do a BFS, so let's use a queue
-      std::queue<size_t> q;
+      std::queue<uint32_t> q;
       q.push(v);
       visited[v] = 1;
       connected_component.emplace_back(v);
 
       while(!q.empty()) {
-        size_t w = q.front();
+        uint32_t w = q.front();
         q.pop();
 
         for (size_t i = 0; i < adjacency_list[w].size(); i++) {
@@ -183,12 +183,12 @@ namespace {
   }
 }
 
-std::vector<std::tuple<size_t, std::vector<size_t>>>
+std::vector<std::tuple<uint32_t, std::vector<uint32_t>>>
 tmap::GetClusters(
   const tmap::GraphProperties& gp,
-  const std::vector<size_t>& classes) 
+  const std::vector<uint32_t>& classes) 
 {
-  std::vector<std::tuple<size_t, std::vector<size_t>>> result;
+  std::vector<std::tuple<uint32_t, std::vector<uint32_t>>> result;
   std::vector<uint8_t> visited(gp.adjacency_list.size(), 0);
 
   for (size_t i = 0; i < gp.adjacency_list.size(); i++) {
@@ -197,16 +197,16 @@ tmap::GetClusters(
     
     visited[i] = 1;
     // If this vertex hasn't been visited yet, create a new cluster with it's class
-    auto cluster = std::make_tuple(i, std::vector<size_t>());
+    auto cluster = std::make_tuple(i, std::vector<uint32_t>());
     std::get<1>(cluster).push_back(i);
 
 
-    std::stack<size_t> stack;
+    std::stack<uint32_t> stack;
     stack.push(i);
 
     // Kick off the discovery
     while (!stack.empty()) {
-      size_t v = stack.top();
+      uint32_t v = stack.top();
       stack.pop();
 
       for (size_t j = 0; j < gp.adjacency_list[v].size(); j++) {
@@ -227,10 +227,10 @@ tmap::GetClusters(
   return result;
 }
 
-std::vector<std::vector<size_t>>
+std::vector<std::vector<uint32_t>>
 tmap::MSDR(tmap::GraphProperties gp)
 {
-  size_t u_remove, v_remove;
+  uint32_t u_remove, v_remove;
   float mean, stdev, temp;
   std::tie(mean, stdev) = mean_stdev(gp.adjacency_list);
   auto cc = get_connected_components(gp.adjacency_list);
@@ -248,7 +248,7 @@ tmap::MSDR(tmap::GraphProperties gp)
     // Remove the edge which removal leads to the maximal stdev reduction
     for (size_t u = 0; u < gp.adjacency_list.size(); u++) {
       for (size_t j = 0; j < gp.adjacency_list[u].size(); j++) {
-        size_t v = gp.adjacency_list[u][j].first;
+        uint32_t v = gp.adjacency_list[u][j].first;
 
         // Do not consider leafs
         if (gp.adjacency_list[u].size() == 1 || gp.adjacency_list[v].size() == 1)
