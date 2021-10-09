@@ -35,21 +35,21 @@ namespace tmap {
  * @param t Edge vertex b.
  * @param classes The classes according to which clusters are defined.
  * @param vectex_count The number of vertices in the graph.
- * @return std::vector<std::tuple<size_t, std::vector<size_t>>>
+ * @return std::vector<std::tuple<uint32_t, std::vector<uint32_t>>>
  */
-std::vector<std::tuple<size_t, std::vector<size_t>>>
+std::vector<std::tuple<uint32_t, std::vector<uint32_t>>>
 GetClusters(
   const tmap::GraphProperties& gp,
-  const std::vector<size_t>& classes);
+  const std::vector<uint32_t>& classes);
 
 /**
  * @brief Hierarchical MST clustering (HEMST).
  *
  * @param gp A TMAP GraphProperties object.
  * @param k THe number of clusters.
- * @return std::vector<std::vector<size_t>>
+ * @return std::vector<std::vector<uint32_t>>
  */
-std::vector<std::vector<size_t>>
+std::vector<std::vector<uint32_t>>
 MSDR(tmap::GraphProperties gp);
 
 }; // namespace tmap
