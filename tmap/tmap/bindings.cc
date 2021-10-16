@@ -946,7 +946,7 @@ PYBIND11_MODULE(tmap, m)
             Clears all the added data and computed indices from this :obj:`LSHForest` instance.
         )pbdoc");
 
-  py::class_<PyMinhash>(m, "Minhash", R"pbdoc(
+  py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
     )pbdoc")
     .def(py::init<unsigned int, unsigned int, unsigned int>(),
