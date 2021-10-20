@@ -98,12 +98,12 @@ std::vector<std::vector<float>> convert_array_to_float(py::array_t<T> arr) {
 class TestSuper {
     public:
         int x;
-}
+};
 
 class TestSub : public TestSuper {
     public:
         int y;
-}
+};
 
 // Extending the Minhash class to allow for passing lists as well as
 // opaque types
@@ -958,7 +958,7 @@ PYBIND11_MODULE(tmap, m)
 
     py::class_<TestSub>(m, "TestSub", R"pbdoc(
         A test.
-    )pbdoc")
+    )pbdoc");
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
