@@ -95,68 +95,78 @@ std::vector<std::vector<float>> convert_array_to_float(py::array_t<T> arr) {
     return vecs;
 }
 
+class TestSuper {
+    public:
+        int x;
+}
+
+class TestSub : public TestSuper {
+    public:
+        int y;
+}
+
 // Extending the Minhash class to allow for passing lists as well as
 // opaque types
-class PyMinhash : public Minhash {
-public:
-    using Minhash::Minhash;
-    using Minhash::FromBinaryArray;
-    using Minhash::BatchFromBinaryArray;
-    using Minhash::FromSparseBinaryArray;
-    using Minhash::BatchFromSparseBinaryArray;
-    using Minhash::FromWeightArray;
-    using Minhash::BatchFromWeightArray;
+// class PyMinhash : public Minhash {
+// public:
+//     using Minhash::Minhash;
+//     using Minhash::FromBinaryArray;
+//     using Minhash::BatchFromBinaryArray;
+//     using Minhash::FromSparseBinaryArray;
+//     using Minhash::BatchFromSparseBinaryArray;
+//     using Minhash::FromWeightArray;
+//     using Minhash::BatchFromWeightArray;
 
-    std::vector<uint32_t> FromBinaryArray(py::list& list) {
-        std::vector<uint8_t> vec = convert_list<uint8_t>(list);
-        return Minhash::FromBinaryArray(vec);
-    }
+//     std::vector<uint32_t> FromBinaryArray(py::list& list) {
+//         std::vector<uint8_t> vec = convert_list<uint8_t>(list);
+//         return Minhash::FromBinaryArray(vec);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::list& list) {
-        std::vector<std::vector<uint8_t>> vecs = convert_list_of_lists<uint8_t>(list);
-        return Minhash::BatchFromBinaryArray(vecs);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::list& list) {
+//         std::vector<std::vector<uint8_t>> vecs = convert_list_of_lists<uint8_t>(list);
+//         return Minhash::BatchFromBinaryArray(vecs);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::array_t<uint8_t>& arr) {
-        std::vector<std::vector<uint8_t>> vecs = convert_array<uint8_t>(arr);
-        return Minhash::BatchFromBinaryArray(vecs);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromBinaryArray(py::array_t<uint8_t>& arr) {
+//         std::vector<std::vector<uint8_t>> vecs = convert_array<uint8_t>(arr);
+//         return Minhash::BatchFromBinaryArray(vecs);
+//     }
     
-    std::vector<uint32_t> FromSparseBinaryArray(py::list& list) {
-        std::vector<uint32_t> vec = convert_list<uint32_t>(list);
-        return Minhash::FromSparseBinaryArray(vec);
-    }
+//     std::vector<uint32_t> FromSparseBinaryArray(py::list& list) {
+//         std::vector<uint32_t> vec = convert_list<uint32_t>(list);
+//         return Minhash::FromSparseBinaryArray(vec);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::list& list) {
-        std::vector<std::vector<uint32_t>> vecs = convert_list_of_lists<uint32_t>(list);
-        return Minhash::BatchFromSparseBinaryArray(vecs);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::list& list) {
+//         std::vector<std::vector<uint32_t>> vecs = convert_list_of_lists<uint32_t>(list);
+//         return Minhash::BatchFromSparseBinaryArray(vecs);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::array_t<uint32_t>& arr) {
-        std::vector<std::vector<uint32_t>> vecs = convert_array<uint32_t>(arr);
-        return Minhash::BatchFromSparseBinaryArray(vecs);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromSparseBinaryArray(py::array_t<uint32_t>& arr) {
+//         std::vector<std::vector<uint32_t>> vecs = convert_array<uint32_t>(arr);
+//         return Minhash::BatchFromSparseBinaryArray(vecs);
+//     }
     
-    std::vector<uint32_t> FromWeightArray(py::list& list, const std::string& method = "ICWS") {
-        std::vector<float> vec = convert_list<float>(list);
-        return Minhash::FromWeightArray(vec, method);
-    }
+//     std::vector<uint32_t> FromWeightArray(py::list& list, const std::string& method = "ICWS") {
+//         std::vector<float> vec = convert_list<float>(list);
+//         return Minhash::FromWeightArray(vec, method);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::list& list, const std::string& method = "ICWS") {
-        std::vector<std::vector<float>> vecs = convert_list_of_lists<float>(list);
-        return Minhash::BatchFromWeightArray(vecs, method);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::list& list, const std::string& method = "ICWS") {
+//         std::vector<std::vector<float>> vecs = convert_list_of_lists<float>(list);
+//         return Minhash::BatchFromWeightArray(vecs, method);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<float, 32>& arr, const std::string& method = "ICWS") {
-        std::vector<std::vector<float>> vecs = convert_array<float>(arr);
-        return Minhash::BatchFromWeightArray(vecs, method);
-    }
+//     std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<float, 32>& arr, const std::string& method = "ICWS") {
+//         std::vector<std::vector<float>> vecs = convert_array<float>(arr);
+//         return Minhash::BatchFromWeightArray(vecs, method);
+//     }
 
-    std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<double>& arr, const std::string& method = "ICWS") {
-        std::vector<std::vector<float>> vecs = convert_array_to_float<double>(arr);
-        return Minhash::BatchFromWeightArray(vecs, method);
-    }
-};
+//     std::vector<std::vector<uint32_t>> BatchFromWeightArray(py::array_t<double>& arr, const std::string& method = "ICWS") {
+//         std::vector<std::vector<float>> vecs = convert_array_to_float<double>(arr);
+//         return Minhash::BatchFromWeightArray(vecs, method);
+//     }
+// };
 
 
 // Defining opaque types (see bindings below as well)
@@ -945,6 +955,10 @@ PYBIND11_MODULE(tmap, m)
     .def("clear", &LSHForest::Clear, R"pbdoc(
             Clears all the added data and computed indices from this :obj:`LSHForest` instance.
         )pbdoc");
+
+    py::class_<TestSub>(m, "TestSub", R"pbdoc(
+        A test.
+    )pbdoc")
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
