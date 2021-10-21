@@ -962,7 +962,19 @@ PYBIND11_MODULE(tmap, m)
 
     py::class_<PyMinhash>(m, "Minhash", R"pbdoc(
         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
-    )pbdoc");
+    )pbdoc")
+    .def(py::init<unsigned int, unsigned int, unsigned int>(),
+         py::arg("d") = 128,
+         py::arg("seed") = 42,
+         py::arg("sample_size") = 128,
+         R"pbdoc(
+            Constructor for the class :obj:`Minhash`.
+
+            Keyword Arguments:
+                d (:obj:`int`): The number of permutations used for hashing
+                seed (:obj:`int`): The seed used for the random number generator(s)
+                sample_size (:obj:`int`): The sample size when generating a weighted MinHash
+        )pbdoc");
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
