@@ -984,6 +984,16 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_binary_array", 
+         py::overload_cast<std::vector<uint8_t>&>(&PyMinhash::FromBinaryArray), R"pbdoc(
+            Create a MinHash vector from a binary array.
+
+            Arguments:
+                vec (:obj:`VectorUchar`): A vector containing binary values
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
         )pbdoc");
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
