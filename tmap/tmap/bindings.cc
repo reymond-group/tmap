@@ -974,6 +974,16 @@ PYBIND11_MODULE(tmap, m)
                 d (:obj:`int`): The number of permutations used for hashing
                 seed (:obj:`int`): The seed used for the random number generator(s)
                 sample_size (:obj:`int`): The sample size when generating a weighted MinHash
+        )pbdoc")
+    .def("from_binary_array", 
+         py::overload_cast<py::list&>(&PyMinhash::FromBinaryArray), R"pbdoc(
+            Create a MinHash vector from a binary array.
+
+            Arguments:
+                vec (:obj:`List`): A Python list containing binary values
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
         )pbdoc");
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
