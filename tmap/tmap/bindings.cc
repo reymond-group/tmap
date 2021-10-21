@@ -960,6 +960,10 @@ PYBIND11_MODULE(tmap, m)
         A test.
     )pbdoc");
 
+    py::class_<PyMinhash>(m, "Minhash", R"pbdoc(
+        A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
+    )pbdoc");
+
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
 //     )pbdoc")
