@@ -1004,6 +1004,27 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::array_t<uint8_t>&)>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+         py::overload_cast<py::array_t<uint8_t>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+            Create MinHash vectors from binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`Array`): A 2D array containing binary values
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<uint8_t>>&)>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+            Create MinHash vectors from binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`VectorUchar`): A list of vectors containing binary values
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc");
 
 
