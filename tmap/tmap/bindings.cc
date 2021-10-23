@@ -1025,6 +1025,26 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("from_sparse_binary_array",
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+            Create a MinHash vector from a sparse binary array.
+
+            Arguments:
+                vec (:obj:`List`): A Python list containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_sparse_binary_array", 
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<uint32_t>&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+            Create a MinHash vector from a sparse binary array.
+
+            Arguments:
+                vec (:obj:`VectorUint`): A Python list containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
         )pbdoc");
 
 
