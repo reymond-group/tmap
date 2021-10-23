@@ -1045,127 +1045,46 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("batch_from_sparse_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::list&)>(&PyMinhash::BatchFromSparseBinaryArray), R"pbdoc(
+         R"pbdoc(
+            Create MinHash vectors from sparse binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`List`): A list of Python lists containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_sparse_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::array_t<uint32_t>&)>(&PyMinhash::BatchFromSparseBinaryArray), R"pbdoc(
+         py::overload_cast<>(&PyMinhash::BatchFromSparseBinaryArray),
+         R"pbdoc(
+            Create MinHash vectors from sparse binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`Array`): A 2D array containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_sparse_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<std::vector<uint32_t>>&)>(&PyMinhash::BatchFromSparseBinaryArray), R"pbdoc(
+         R"pbdoc(
+            Create MinHash vectors from sparse binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`VectorUint`): A list of vectors containing indices of ones in a binary array
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc");
 
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
 //     )pbdoc")
-//     .def(py::init<unsigned int, unsigned int, unsigned int>(),
-//          py::arg("d") = 128,
-//          py::arg("seed") = 42,
-//          py::arg("sample_size") = 128,
-//          R"pbdoc(
-//             Constructor for the class :obj:`Minhash`.
-
-//             Keyword Arguments:
-//                 d (:obj:`int`): The number of permutations used for hashing
-//                 seed (:obj:`int`): The seed used for the random number generator(s)
-//                 sample_size (:obj:`int`): The sample size when generating a weighted MinHash
-//         )pbdoc")
-//     .def("from_binary_array", 
-//          py::overload_cast<py::list&>(&PyMinhash::FromBinaryArray), R"pbdoc(
-//             Create a MinHash vector from a binary array.
-
-//             Arguments:
-//                 vec (:obj:`List`): A Python list containing binary values
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("from_binary_array", 
-//          py::overload_cast<std::vector<uint8_t>&>(&PyMinhash::FromBinaryArray), R"pbdoc(
-//             Create a MinHash vector from a binary array.
-
-//             Arguments:
-//                 vec (:obj:`VectorUchar`): A vector containing binary values
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("batch_from_binary_array", 
-//          py::overload_cast<py::list&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
-//             Create MinHash vectors from binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`List`): A list of lists containing binary values
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_binary_array", 
-//          py::overload_cast<py::array_t<uint8_t>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
-//             Create MinHash vectors from binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`Array`): A 2D array containing binary values
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_binary_array", 
-//          py::overload_cast<std::vector<std::vector<uint8_t>>&>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
-//             Create MinHash vectors from binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`VectorUchar`): A list of vectors containing binary values
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("from_sparse_binary_array",
-//          py::overload_cast<py::list&>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
-//             Create a MinHash vector from a sparse binary array.
-
-//             Arguments:
-//                 vec (:obj:`List`): A Python list containing indices of ones in a binary array
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("from_sparse_binary_array", 
-//          py::overload_cast<std::vector<uint32_t>&>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
-//             Create a MinHash vector from a sparse binary array.
-
-//             Arguments:
-//                 vec (:obj:`VectorUint`): A Python list containing indices of ones in a binary array
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("batch_from_sparse_binary_array",
-//          py::overload_cast<py::list&>(&PyMinhash::BatchFromSparseBinaryArray),
-//          R"pbdoc(
-//             Create MinHash vectors from sparse binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`List`): A list of Python lists containing indices of ones in a binary array
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_sparse_binary_array",
-//          py::overload_cast<py::array_t<uint32_t>&>(&PyMinhash::BatchFromSparseBinaryArray),
-//          R"pbdoc(
-//             Create MinHash vectors from sparse binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`Array`): A 2D array containing indices of ones in a binary array
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_sparse_binary_array",
-//          py::overload_cast<std::vector<std::vector<uint32_t>>&>(&PyMinhash::BatchFromSparseBinaryArray),
-//          R"pbdoc(
-//             Create MinHash vectors from sparse binary arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`VectorUint`): A list of vectors containing indices of ones in a binary array
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
 //     .def("from_string_array", &PyMinhash::FromStringArray, R"pbdoc(
 //             Create a MinHash vector from a string array.
 
