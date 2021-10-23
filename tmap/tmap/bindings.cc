@@ -975,7 +975,8 @@ PYBIND11_MODULE(tmap, m)
                 seed (:obj:`int`): The seed used for the random number generator(s)
                 sample_size (:obj:`int`): The sample size when generating a weighted MinHash
         )pbdoc")
-    .def("from_binary_array", static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&)>(&PyMinhash::FromBinaryArray), R"pbdoc(
+    .def("from_binary_array", 
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&)>(&PyMinhash::FromBinaryArray), R"pbdoc(
             Create a MinHash vector from a binary array.
 
             Arguments:
@@ -984,7 +985,8 @@ PYBIND11_MODULE(tmap, m)
             Returns:
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
-    .def("from_binary_array", static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<uint8_t>&)>(&PyMinhash::FromBinaryArray), R"pbdoc(
+    .def("from_binary_array", 
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<uint8_t>&)>(&PyMinhash::FromBinaryArray), R"pbdoc(
             Create a MinHash vector from a binary array.
 
             Arguments:
@@ -992,27 +994,17 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("batch_from_binary_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::list&)>(&PyMinhash::BatchFromBinaryArray), R"pbdoc(
+            Create MinHash vectors from binary arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`List`): A list of lists containing binary values
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc");
-    // .def("from_binary_array", 
-    //      py::overload_cast<py::list&>(&PyMinhash::FromBinaryArray), R"pbdoc(
-    //         Create a MinHash vector from a binary array.
-
-    //         Arguments:
-    //             vec (:obj:`List`): A Python list containing binary values
-            
-    //         Returns:
-    //             :obj:`VectorUint`: A MinHash vector
-    //     )pbdoc")
-    // .def("from_binary_array", 
-    //      py::overload_cast<std::vector<uint8_t>&>(&PyMinhash::FromBinaryArray), R"pbdoc(
-    //         Create a MinHash vector from a binary array.
-
-    //         Arguments:
-    //             vec (:obj:`VectorUchar`): A vector containing binary values
-            
-    //         Returns:
-    //             :obj:`VectorUint`: A MinHash vector
-    //     )pbdoc");
 
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
