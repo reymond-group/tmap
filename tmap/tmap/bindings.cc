@@ -1079,30 +1079,32 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("from_string_array", 
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<std::string>&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+            Create a MinHash vector from a string array.
+
+            Arguments:
+                vec (:obj:`List` of :obj:`str`): A vector containing strings
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("batch_from_string_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<std::vector<std::string>>&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+            Create MinHash vectors from string arrays (parallelized).
+
+            Arguments:
+                vec (:obj:`List` of :obj:`List` of :obj:`str`): A list of list of strings
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc");
 
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
 //     )pbdoc")
-//     .def("from_string_array", &PyMinhash::FromStringArray, R"pbdoc(
-//             Create a MinHash vector from a string array.
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`str`): A vector containing strings
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("batch_from_string_array", &PyMinhash::BatchFromStringArray, R"pbdoc(
-//             Create MinHash vectors from string arrays (parallelized).
-
-//             Arguments:
-//                 vec (:obj:`List` of :obj:`List` of :obj:`str`): A list of list of strings
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
 //     .def("from_weight_array",
 //          py::overload_cast<py::list&, const std::string&>(&PyMinhash::FromWeightArray),
 //          py::arg("vec"),
