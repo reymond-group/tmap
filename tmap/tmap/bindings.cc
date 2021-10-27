@@ -1081,7 +1081,7 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
     .def("from_string_array", 
-         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<std::string>&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<std::string>&)>(&PyMinhash::FromStringArray), R"pbdoc(
             Create a MinHash vector from a string array.
 
             Arguments:
@@ -1091,7 +1091,7 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
     .def("batch_from_string_array",
-         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<std::vector<std::string>>&)>(&PyMinhash::FromSparseBinaryArray), R"pbdoc(
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<std::vector<std::string>>&)>(&PyMinhash::BatchFromStringArray), R"pbdoc(
             Create MinHash vectors from string arrays (parallelized).
 
             Arguments:
