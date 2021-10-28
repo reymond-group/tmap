@@ -1115,6 +1115,22 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("from_weight_array",
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&, const std::string&)>(&PyMinhash::FromWeightArray),
+         py::arg("vec"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create a MinHash vector from a :obj:`float` array.
+
+            Arguments:
+                vec (:obj:`VectorFloat`): A vector containing :obj:`float` values
+            
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`VectorUint`: A MinHash vector
         )pbdoc");
 
 
