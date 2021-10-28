@@ -1101,7 +1101,7 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc")
     .def("from_weight_array",
-         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<float>&, const std::string&)>(&PyMinhash::FromWeightArray),
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&, const std::string&)>(&PyMinhash::FromWeightArray),
          py::arg("vec"),
          py::arg("method") = "ICWS",
          R"pbdoc(
@@ -1117,7 +1117,7 @@ PYBIND11_MODULE(tmap, m)
                 :obj:`VectorUint`: A MinHash vector
         )pbdoc")
     .def("from_weight_array",
-         static_cast<std::vector<uint32_t>(PyMinhash::*)(py::list&, const std::string&)>(&PyMinhash::FromWeightArray),
+         static_cast<std::vector<uint32_t>(PyMinhash::*)(std::vector<float>&, const std::string&)>(&PyMinhash::FromWeightArray),
          py::arg("vec"),
          py::arg("method") = "ICWS",
          R"pbdoc(
@@ -1131,108 +1131,76 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`VectorUint`: A MinHash vector
+        )pbdoc")
+    .def("batch_from_weight_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::list&, const std::string&)>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`List` of :obj:`List`): A list of Python lists containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::array_t<float, 32>&, const std::string&)>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`Array`): A 2D array containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(py::array_t<double>&, const std::string&)>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`Array`): A 2D array containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("batch_from_weight_array",
+         static_cast<std::vector<std::vector<uint32_t>>(PyMinhash::*)(std::vector<std::vector<float>>&, const std::string&)>(&PyMinhash::BatchFromWeightArray),
+         py::arg("vecs"),
+         py::arg("method") = "ICWS",
+         R"pbdoc(
+            Create MinHash vectors from :obj:`float` arrays (parallelized).
+
+            Arguments:
+                vecs (:obj:`List` of :obj:`VectorFloat`): A list of vectors containing :obj:`float` values
+
+            Keyword Arguments:
+                method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
+            
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
         )pbdoc");
 
 
 //   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
 //         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
 //     )pbdoc")
-//     .def("from_weight_array",
-//          py::overload_cast<py::list&, const std::string&>(&PyMinhash::FromWeightArray),
-//          py::arg("vec"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create a MinHash vector from a :obj:`List`.
-
-//             Arguments:
-//                 vec (:obj:`List`): A Python list containing :obj:`float` values
-            
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("from_weight_array",
-//          py::overload_cast<std::vector<float>&, const std::string&>(&PyMinhash::FromWeightArray),
-//          py::arg("vec"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create a MinHash vector from a :obj:`float` array.
-
-//             Arguments:
-//                 vec (:obj:`VectorFloat`): A vector containing :obj:`float` values
-            
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`VectorUint`: A MinHash vector
-//         )pbdoc")
-//     .def("batch_from_weight_array",
-//          py::overload_cast<py::list&, const std::string&>(&PyMinhash::BatchFromWeightArray),
-//          py::arg("vecs"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create MinHash vectors from :obj:`float` arrays (parallelized).
-
-//             Arguments:
-//                 vecs (:obj:`List` of :obj:`List`): A list of Python lists containing :obj:`float` values
-
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_weight_array",
-//          py::overload_cast<py::array_t<float, 32>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
-//          py::arg("vecs"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create MinHash vectors from :obj:`float` arrays (parallelized).
-
-//             Arguments:
-//                 vecs (:obj:`Array`): A 2D array containing :obj:`float` values
-
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_weight_array",
-//          py::overload_cast<py::array_t<double>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
-//          py::arg("vecs"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create MinHash vectors from :obj:`float` arrays (parallelized).
-
-//             Arguments:
-//                 vecs (:obj:`Array`): A 2D array containing :obj:`float` values
-
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("batch_from_weight_array",
-//          py::overload_cast<std::vector<std::vector<float>>&, const std::string&>(&PyMinhash::BatchFromWeightArray),
-//          py::arg("vecs"),
-//          py::arg("method") = "ICWS",
-//          R"pbdoc(
-//             Create MinHash vectors from :obj:`float` arrays (parallelized).
-
-//             Arguments:
-//                 vecs (:obj:`List` of :obj:`VectorFloat`): A list of vectors containing :obj:`float` values
-
-//             Keyword Arguments:
-//                 method (:obj:`str`): The weighted hashing method to use (ICWS or I2CWS)
-            
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
 //     .def("batch_from_int_weight_array",
 //          &PyMinhash::BatchFromIntWeightArray,
 //          py::arg("vecs"),
