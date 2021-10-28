@@ -1195,46 +1195,41 @@ PYBIND11_MODULE(tmap, m)
             
             Returns:
                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-        )pbdoc");
+        )pbdoc")
+    .def("batch_from_int_weight_array",
+         &PyMinhash::BatchFromIntWeightArray,
+         py::arg("vecs"),
+         py::arg("divide_by") = 0,
+         R"pbdoc(
+            Create MinHash vectors from :obj:`int` arrays, where entries are weights rather than indices of ones (parallelized).
 
-
-//   py::class_<PyMinhash, Minhash>(m, "Minhash", R"pbdoc(
-//         A generator for MinHash vectors that supports binary, indexed, string and also :obj:`int` and :obj:`float` weighted vectors as input.
-//     )pbdoc")
-//     .def("batch_from_int_weight_array",
-//          &PyMinhash::BatchFromIntWeightArray,
-//          py::arg("vecs"),
-//          py::arg("divide_by") = 0,
-//          R"pbdoc(
-//             Create MinHash vectors from :obj:`int` arrays, where entries are weights rather than indices of ones (parallelized).
-
-//             Arguments:
-//                 vecs (:obj:`List` of :obj:`VectorUint`): A list of vectors containing :obj:`int` values
-//                 divide_by (:obj:`int`): A integer by which each value of each vector is divided. Information is lost, but the running time will be lowered. Faster if :obj:`divide_by` is a power of two.
+            Arguments:
+                vecs (:obj:`List` of :obj:`VectorUint`): A list of vectors containing :obj:`int` values
+                divide_by (:obj:`int`): A integer by which each value of each vector is divided. Information is lost, but the running time will be lowered. Faster if :obj:`divide_by` is a power of two.
             
-//             Returns:
-//                 :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
-//         )pbdoc")
-//     .def("get_distance", &PyMinhash::GetDistance, R"pbdoc(
-//             Calculate the Jaccard distance between two MinHash vectors.
+            Returns:
+                :obj:`List` of :obj:`VectorUint`: A list of MinHash vectors
+        )pbdoc")
+    .def("get_distance", &PyMinhash::GetDistance, R"pbdoc(
+            Calculate the Jaccard distance between two MinHash vectors.
 
-//             Arguments:
-//                 vec_a (:obj:`VectorUint`): A MinHash vector
-//                 vec_b (:obj:`VectorUint`): A MinHash vector
+            Arguments:
+                vec_a (:obj:`VectorUint`): A MinHash vector
+                vec_b (:obj:`VectorUint`): A MinHash vector
 
-//             Returns:
-//                 :obj:`float` The Jaccard distance
-//         )pbdoc")
-//     .def("get_weighted_distance", &PyMinhash::GetWeightedDistance, R"pbdoc(
-//             Calculate the weighted Jaccard distance between two MinHash vectors.
+            Returns:
+                :obj:`float` The Jaccard distance
+        )pbdoc")
+    .def("get_weighted_distance", &PyMinhash::GetWeightedDistance, R"pbdoc(
+            Calculate the weighted Jaccard distance between two MinHash vectors.
 
-//             Arguments:
-//                 vec_a (:obj:`VectorUint`): A weighted MinHash vector
-//                 vec_b (:obj:`VectorUint`): A weighted MinHash vector
+            Arguments:
+                vec_a (:obj:`VectorUint`): A weighted MinHash vector
+                vec_b (:obj:`VectorUint`): A weighted MinHash vector
 
-//             Returns:
-//                 :obj:`float` The Jaccard distance
-//         )pbdoc");
+            Returns:
+                :obj:`float` The Jaccard distance
+        )pbdoc");
 
   m.def("get_clusters",
         &GetClusters,
