@@ -37,10 +37,12 @@ requirements:
     - ogdf
 
 test:
+  requires:
+    - pytest
   imports:
     - tmap
-#   requires:
-#     - pytest
+  commands:
+    - pytest
 
 about:
   home: http://gdb.tools
