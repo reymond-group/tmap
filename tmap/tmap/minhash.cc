@@ -274,7 +274,7 @@ tmap::Minhash::FromWeightArray(std::vector<float>& vec,
         ln_a[i] = ln_cs[i] - ln_y - rs[i];
       }
 
-      uint32_t k_star = std::min_element(ln_a.begin(), ln_a.end()) - ln_a.begin();
+      uint32_t k_star = *std::min_element(ln_a.begin(), ln_a.end()) - ln_a.begin();
 
       mh[2 * s] = k_star;
       mh[2 * s + 1] = (uint32_t)vec_tmp[k_star];
@@ -297,7 +297,7 @@ tmap::Minhash::FromWeightArray(std::vector<float>& vec,
         a[i] = cs[i] / z;
       }
 
-      uint32_t k_star = std::min_element(a.begin(), a.end()) - a.begin();
+      uint32_t k_star = *std::min_element(a.begin(), a.end()) - a.begin();
       uint32_t t_k = std::floor((log(vec[k_star]) / rs[k_star]) + betas[k_star]);
 
       mh[2 * s] = k_star;

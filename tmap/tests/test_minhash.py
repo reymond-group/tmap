@@ -28,9 +28,9 @@ class TestMinhash:
         assert len(a) == 8
         assert round(mh.get_distance(a, b), 3) == 0.375
 
-    def test_from_weight_array(self):
-        mh = tm.Minhash(8, 42, 64)
-        a = mh.from_weight_array(tm.VectorFloat([0.2, 0.6, 0.22, 0.26, 0.62, 0.66]))
-        b = mh.from_weight_array(tm.VectorFloat([0.26, 0.6, 0.22, 0.26, 0.62, 1.0]))
-        assert len(a) == 128
-        assert round(mh.get_weighted_distance(a, b), 3) == 0.094
+    # def test_from_weight_array(self):
+    #     mh = tm.Minhash(8, 42, 64)
+    #     a = mh.from_weight_array(tm.VectorFloat([0.2, 0.6, 0.22, 0.26, 0.62, 0.66]))
+    #     b = mh.from_weight_array(tm.VectorFloat([0.26, 0.6, 0.22, 0.26, 0.62, 1.0]))
+    #     assert len(a) == 128
+    #     assert round(mh.get_weighted_distance(a, b), 3) == 0.094
