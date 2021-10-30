@@ -56,12 +56,15 @@ tmap::Minhash::Minhash(unsigned int d,
     perms_b_[i] = b;
   }
 
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
   // This is for the weighted minhash
-  std::default_random_engine rand_gamma;
+  std::mt19937 rand_gamma;
   rand_gamma.seed(seed);
-  std::default_random_engine rand_gamma_2;
+  std::mt19937 rand_gamma_2;
   rand_gamma_2.seed(seed * 2);
-  std::default_random_engine rand_gamma_3;
+  std::mt19937 rand_gamma_3;
   rand_gamma_3.seed(seed * 4);
   std::gamma_distribution<float> gamma_dist(2.0, 1.0);
   std::gamma_distribution<float> gamma_dist_2(2.0, 1.0);
