@@ -339,12 +339,12 @@ float
 tmap::Minhash::GetWeightedDistance(std::vector<uint32_t>& vec_a,
                                    std::vector<uint32_t>& vec_b)
 {
-  float intersect = 0;
+  float intersect = 0.0f;
   size_t length = vec_a.size();
 
   for (unsigned int i = 0; i < length; i += 2)
     if (vec_a[i] == vec_b[i] && vec_a[i + 1] == vec_b[i + 1])
-      intersect++;
+      intersect += 1.0f;
 
-  return 1.0f - 2.0f * intersect / length;
+  return 1.0f - ((2.0f * intersect) / (float)length);
 }
