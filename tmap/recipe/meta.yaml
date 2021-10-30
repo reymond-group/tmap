@@ -36,9 +36,9 @@ requirements:
     - python
     - ogdf
 
-# test:
-#   imports:
-#     - tmap
+test:
+  imports:
+    - tmap
 #   requires:
 #     - pytest
 
