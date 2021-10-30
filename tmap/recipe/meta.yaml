@@ -41,6 +41,10 @@ test:
     - pytest
   imports:
     - tmap
+  source_files:
+  - tests/test_layout.py
+  - tests/test_lsh_forest.py
+  - tests/test_minhash.py
   commands:
     - pytest
 
