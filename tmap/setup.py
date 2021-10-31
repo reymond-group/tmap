@@ -48,9 +48,9 @@ class CMakeBuild(build_ext):
             "-DPYBIND11_CPP_STANDARD=/std:c++17"
         ]
 
-        print(f"Setup.py cfg: {self.debug}")
-
         cfg = "Debug" if self.debug else "Release"
+        print(f"Setup.py cfg: {self.debug}")
+        
         build_args = ["--config", cfg]
 
         if platform.system() == "Windows":
