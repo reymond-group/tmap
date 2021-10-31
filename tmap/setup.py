@@ -49,7 +49,7 @@ class CMakeBuild(build_ext):
         ]
 
         cfg = "Debug" if self.debug else "Release"
-        print(f"Setup.py cfg: {self.debug}")
+        print(f"Setup.py cfg: {cfg}")
 
         build_args = ["--config", cfg]
 
