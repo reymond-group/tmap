@@ -50,7 +50,7 @@ class CMakeBuild(build_ext):
 
         cfg = "Debug" if self.debug else "Release"
         print(f"Setup.py cfg: {self.debug}")
-        
+
         build_args = ["--config", cfg]
 
         if platform.system() == "Windows":
@@ -62,6 +62,7 @@ class CMakeBuild(build_ext):
             ]
             cmake_args += ["-G", "Visual Studio 16 2019"]
             cmake_args += ["-A", "x64"]
+            cmake_args += ["-T", "llvm"]
             # build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
