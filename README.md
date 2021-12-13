@@ -4,6 +4,8 @@ tmap is a very fast visualization library for large, high-dimensional data sets.
 ### Tutorial and Documentation
 See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 
+## Notebook
+
 ## Examples
 <img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg" height="290px"/>  <img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/mnist/mnist.jpg" height="290px" />
 
