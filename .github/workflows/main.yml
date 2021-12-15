@@ -51,7 +51,6 @@ jobs:
           conda activate tmbuild
           conda build ogdf-conda
       - name: Build TMAP
-        continue-on-error: true
         run: |
           conda activate tmbuild
           conda build tmap
