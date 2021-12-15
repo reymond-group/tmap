@@ -63,7 +63,7 @@ class CMakeBuild(build_ext):
             cmake_args += ["-G", "Visual Studio 16 2019"]
             cmake_args += ["-A", "x64"]
             cmake_args += ["-T", "ClangCL"]
-            # build_args += ["--", "/m"]
+            build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
             cmake_args += ['-DOpenMP_CXX_FLAG=-fopenmp']
