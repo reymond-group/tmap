@@ -45,17 +45,24 @@ class CMakeBuild(build_ext):
         cmake_args = [
             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + extdir,
             "-DPYTHON_EXECUTABLE=" + sys.executable,
+            "-DPYBIND11_CPP_STANDARD=/std:c++17"
         ]
 
         cfg = "Debug" if self.debug else "Release"
+        print(f"Setup.py cfg: {cfg}")
+
         build_args = ["--config", cfg]
 
         if platform.system() == "Windows":
             cmake_args += [
                 "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
             ]
-            if sys.maxsize > 2 ** 32:
-                cmake_args += ["-A", "x64"]
+            cmake_args += [
+                "-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
+            ]
+            cmake_args += ["-G", "Visual Studio 16 2019"]
+            cmake_args += ["-A", "x64"]
+            cmake_args += ["-T", "ClangCL"]
             build_args += ["--", "/m"]
         elif platform.system() == 'Darwin':
             cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
@@ -83,7 +90,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name="tmap",
-    version="1.0.0",
+    version="1.0.6",
     author="Daniel Probst",
     author_email="daenuprobst@gmail.com",
     description="A Python package for visualizing large, high-dimensional data sets.",

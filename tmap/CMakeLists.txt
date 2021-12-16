@@ -1,11 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(MSVC)
+    set(CMAKE_GENERATOR_TOOLSET "ClangCL")
+endif(MSVC)
 
 project(tmap)
 
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_DEBUG "/openmp /O2")
-    set(CMAKE_CXX_FLAGS_RELEASE "/openmp /O2")
+    # set(CMAKE_CXX_FLAGS_DEBUG "/O2 /permissive /std:c++17")
+    # set(CMAKE_CXX_FLAGS_RELEASE "/O2 /permissive /std:c++17 /wd4068 /wd4305 /wd4267 /wd4244")
 else()
     set(CMAKE_CXX_FLAGS_DEBUG "-O3 -funroll-loops -fopenmp")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
@@ -30,7 +36,9 @@ endif()
 find_package(OpenMP REQUIRED)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
+
 find_package(Threads REQUIRED)
+# include_directories(${pybind11_INCLUDE_DIRS})
 
 SET(SOURCE_DIR "tmap")
 # Tell cmake that headers are in alse in source_dir
@@ -38,7 +46,7 @@ include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
 
 # Generate python module
-add_subdirectory(lib/pybind11)
+find_package(pybind11 CONFIG REQUIRED)
 
 pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
 if(MSVC)

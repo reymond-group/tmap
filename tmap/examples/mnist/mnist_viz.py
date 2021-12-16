@@ -14,7 +14,7 @@ import tmap as tm
 
 
 # Load the data
-MN = MNIST("./python-mnist/data")
+MN = MNIST("./python-mnist/bin/data")
 IMAGES_TRAIN, LABELS_TRAIN = MN.load_training()
 IMAGES_TEST, LABELS_TEST = MN.load_testing()
 

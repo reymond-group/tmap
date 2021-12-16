@@ -316,7 +316,7 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
 
   ogdf::makeLoopFree(g);
   ogdf::makeParallelFreeUndirected(g);
-  ogdf:EdgeArray<float> edge_weights = g.edgeWeights();
+  ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
 
   uint32_t i = 0;
 
@@ -403,7 +403,7 @@ tmap::LayoutFromEdgeList(
 
   ogdf::makeLoopFree(g);
   ogdf::makeParallelFreeUndirected(g);
-  ogdf:EdgeArray<float> edge_weights = g.edgeWeights();
+  ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
 
   uint32_t i = 0;
 
