@@ -7,7 +7,7 @@ if(MSVC)
     set(CMAKE_GENERATOR_TOOLSET "ClangCL")
 endif(MSVC)
 
-project(tmap)
+project(_tmap)
 
 if(MSVC)
     # set(CMAKE_CXX_FLAGS_DEBUG "/O2 /permissive /std:c++17")
@@ -40,7 +40,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 # include_directories(${pybind11_INCLUDE_DIRS})
 
-SET(SOURCE_DIR "src/tmap")
+SET(SOURCE_DIR "src/_tmap")
 # Tell cmake that headers are in alse in source_dir
 include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
@@ -48,12 +48,12 @@ SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR
 # Generate python module
 find_package(pybind11 CONFIG REQUIRED)
 
-pybind11_add_module(tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
+pybind11_add_module(_tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")
 if(MSVC)
-target_link_libraries(tmap PRIVATE OGDF.lib COIN.lib)
+target_link_libraries(_tmap PRIVATE OGDF.lib COIN.lib)
 else()
-target_link_libraries(tmap PRIVATE OGDF COIN)
+target_link_libraries(_tmap PRIVATE OGDF COIN)
 endif(MSVC)
 
-target_link_libraries(tmap PRIVATE Threads::Threads)
-target_link_libraries(tmap PRIVATE ${OpenMP_CXX_FLAGS})
+target_link_libraries(_tmap PRIVATE Threads::Threads)
+target_link_libraries(_tmap PRIVATE ${OpenMP_CXX_FLAGS})

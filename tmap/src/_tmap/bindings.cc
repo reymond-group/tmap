@@ -269,7 +269,7 @@ py::tuple map(py::array_t<T> arr, uint32_t dims = 128, uint32_t n_trees = 8,
     return result;
 }
 
-PYBIND11_MODULE(tmap, m)
+PYBIND11_MODULE(_tmap, m)
 {
   py::bind_vector<std::vector<uint8_t>>(
     m, "VectorUchar", "Unsigned 8-bit int vector.");
