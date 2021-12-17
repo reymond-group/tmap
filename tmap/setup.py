@@ -96,7 +96,7 @@ setup(
     description="A Python package for visualizing large, high-dimensional data sets.",
     long_description="",
     packages=find_packages("tmap"),
-    package_dir={"": "tmap"},
+    package_dir={"": "src"},
     ext_modules=[CMakeExtension("tmap")],
     cmdclass=dict(build_ext=CMakeBuild),
     test_suite="tests",
