@@ -24,17 +24,25 @@ requirements:
     - setuptools
     - pybind11
     - ogdf
+    - scipy
+    - attrs
   host:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
     - pip
     - ogdf
+    - python-annoy
+    - scipy
+    - attrs
   run:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
     - ogdf
+    - python-annoy
+    - scipy
+    - attrs
 
 test:
   requires:

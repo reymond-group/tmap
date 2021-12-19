@@ -1,4 +1,8 @@
 from _tmap import *
-
-def test():
-    print("Hello World!")
+from .embedding import embed
+from .plotting import plot
+from tmap.layout_generators import (
+    BaseLayoutGenerator,
+    BuiltinLayoutGenerator,
+    AnnoyLayoutGenerator,
+)
