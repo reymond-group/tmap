@@ -13,7 +13,7 @@ def random_vectors(n: int = 10, dims=4096) -> np.ndarray:
 
 def main():
     data = random_vectors(1000)
-    te = tm.embed(data, layout_generator=tm.AnnoyLayoutGenerator())
+    te = tm.embed(data, layout_generator=tm.layout_generators.AnnoyLayoutGenerator())
     tm.plot(
         te,
         show=True,
