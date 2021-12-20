@@ -24,7 +24,6 @@ requirements:
     - setuptools
     - pybind11
     - ogdf
-    - python-annoy
     - scipy
     - attrs
   host:
@@ -33,7 +32,6 @@ requirements:
     - python
     - pip
     - ogdf
-    - python-annoy
     - scipy
     - attrs
   run:
@@ -41,7 +39,6 @@ requirements:
     - llvm-openmp # [osx]
     - python
     - ogdf
-    - python-annoy
     - scipy
     - attrs
 
