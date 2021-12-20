@@ -16,6 +16,7 @@ jobs:
           conda create --name tmbuild
           conda activate tmbuild
           conda install -y conda-build
+          conda install -y -c conda-forge python-annoy
       - name: Build OGDF
         shell: bash -l {0}
         run: |
@@ -46,6 +47,7 @@ jobs:
           conda create --name tmbuild
           conda activate tmbuild
           conda install -y conda-build
+          conda install -y -c conda-forge python-annoy
       - name: Build OGDF
         run: |
           conda activate tmbuild
@@ -79,6 +81,7 @@ jobs:
           conda create --name tmbuild
           conda activate tmbuild
           conda install -y conda-build
+          conda install -y -c conda-forge python-annoy
       - name: Build OGDF
         shell: bash -l {0}
         run: |
