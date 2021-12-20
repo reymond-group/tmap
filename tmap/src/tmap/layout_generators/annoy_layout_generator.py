@@ -31,5 +31,5 @@ try:
 
             return self.layout_from_edge_list(n, edge_list, create_mst, keep_knn)
 
-except ImportError:
+except ModuleNotFoundError:
     ...
