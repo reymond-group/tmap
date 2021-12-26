@@ -40,7 +40,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 # include_directories(${pybind11_INCLUDE_DIRS})
 
-SET(SOURCE_DIR "_tmap")
+SET(SOURCE_DIR "src/_tmap")
 # Tell cmake that headers are in alse in source_dir
 include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
