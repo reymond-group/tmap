@@ -20,17 +20,20 @@ requirements:
     - setuptools
     - pybind11
     - ogdf
+    - attrs
   host:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
     - pip
     - ogdf
+    - attrs
   run:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
     - ogdf
+    - attrs
 
 test:
   requires:
