@@ -7,9 +7,6 @@ build:
   binary_relocation: False # [osx]
   skip: True  # [py<35]
 
-extra:
-  - conda-forge
-
 source:
   path: ..
   
@@ -17,7 +14,6 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - llvm-openmp # [osx]
-    - ninja  # [win]
     - vs2019_win-64 # [win]
     - cmake
     - python {{ python }}
