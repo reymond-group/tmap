@@ -45,7 +45,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + extdir,
             "-DPYTHON_EXECUTABLE=" + sys.executable,
-            "-DPYBIND11_CPP_STANDARD=/std:c++17"
+            "-DPYBIND11_CPP_STANDARD=/std:c++17",
         ]
 
         cfg = "Debug" if self.debug else "Release"
@@ -64,11 +64,11 @@ class CMakeBuild(build_ext):
             cmake_args += ["-A", "x64"]
             cmake_args += ["-T", "ClangCL"]
             build_args += ["--", "/m"]
-        elif platform.system() == 'Darwin':
-            cmake_args += ['-DOpenMP_C_FLAG=-fopenmp']
-            cmake_args += ['-DOpenMP_CXX_FLAG=-fopenmp']
-            cmake_args += ['-DCMAKE_BUILD_TYPE=' + cfg]
-            build_args += ['--', '-j2']
+        elif platform.system() == "Darwin":
+            cmake_args += ["-DOpenMP_C_FLAG=-fopenmp"]
+            cmake_args += ["-DOpenMP_CXX_FLAG=-fopenmp"]
+            cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
+            build_args += ["--", "-j2"]
         else:
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
             build_args += ["--", "-j2"]
@@ -95,7 +95,7 @@ setup(
     author_email="daenuprobst@gmail.com",
     description="A Python package for visualizing large, high-dimensional data sets.",
     long_description="",
-    packages=find_packages(),
+    packages=find_packages("src"),
     package_dir={"": "src"},
     ext_modules=[CMakeExtension("_tmap")],
     cmdclass=dict(build_ext=CMakeBuild),
