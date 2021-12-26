@@ -21,6 +21,7 @@ requirements:
     - pybind11
     - ogdf
     - attrs
+    - matplotlib
   host:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
@@ -28,12 +29,14 @@ requirements:
     - pip
     - ogdf
     - attrs
+    - matplotlib
   run:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
     - ogdf
     - attrs
+    - matplotlib
 
 test:
   requires:
