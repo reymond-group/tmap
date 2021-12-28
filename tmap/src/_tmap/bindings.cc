@@ -536,6 +536,21 @@ PYBIND11_MODULE(_tmap, m)
             :obj:`Tuple[VectorUint, VectorUint, VectorFloat]`: the topology of the minimum spanning tree of the data indexed in the LSH forest
     )pbdoc");
 
+    m.def("mst_from_edge_list",
+          &MSTFromEdgeList,
+          py::arg("vertex_count"),
+          py::arg("edges"),
+          R"pbdoc(
+        Create minimum spanning tree topology from an edge list.
+        
+        Arguments:
+            vertex_count (:obj:`int`): The number of vertices in the edge list
+            edges (:obj:`List` of :obj:`Tuple[int, int, float]`): An edge list defining a graph
+
+        Returns:
+            :obj:`Tuple[VectorUint, VectorUint, VectorFloat]`: the topology of the minimum spanning tree of the data from the edge list
+    )pbdoc");
+
     m.def("layout_from_edge_list",
           &LayoutFromEdgeList,
           py::arg("vertex_count"),
@@ -587,7 +602,7 @@ PYBIND11_MODULE(_tmap, m)
           py::arg("s"),
           py::arg("t"),
           R"pbdoc(
-        brief Creates an edge list from x, y coordinates and edge indices.
+        Creates an edge list from x, y coordinates and edge indices.
         
         Arguments:
             x (:obj:`VectorFloat`): The x coordinates

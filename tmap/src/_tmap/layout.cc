@@ -13,78 +13,78 @@
 
 using namespace ogdf;
 
-template<class T>
-static MultilevelBuilder*
+template <class T>
+static MultilevelBuilder *
 GetFactoredAdjustedMerger(double factor = 2.0, int adjustment = 0)
 {
-  T* merger = new T();
+  T *merger = new T();
   merger->setFactor(factor);
   merger->setEdgeLengthAdjustment(adjustment);
   return merger;
 }
 
-template<class T>
-static MultilevelBuilder*
+template <class T>
+static MultilevelBuilder *
 GetAdjustedMerger(int adjustment = 0)
 {
-  T* merger = new T();
+  T *merger = new T();
   merger->setEdgeLengthAdjustment(adjustment);
   return merger;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetBarycenterPlacer()
 {
-  BarycenterPlacer* placer = new BarycenterPlacer();
+  BarycenterPlacer *placer = new BarycenterPlacer();
   placer->weightedPositionPriority(true);
   return placer;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetSolarPlacer()
 {
-  SolarPlacer* placer = new SolarPlacer();
+  SolarPlacer *placer = new SolarPlacer();
   return placer;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetCirclePlacer()
 {
-  CirclePlacer* placer = new CirclePlacer();
+  CirclePlacer *placer = new CirclePlacer();
   return placer;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetMedianPlacer()
 {
-  MedianPlacer* placer = new MedianPlacer();
+  MedianPlacer *placer = new MedianPlacer();
   return placer;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetRandomPlacer()
 {
-  RandomPlacer* placer = new RandomPlacer();
+  RandomPlacer *placer = new RandomPlacer();
   return placer;
 }
 
-static InitialPlacer*
+static InitialPlacer *
 GetZeroPlacer()
 {
-  ZeroPlacer* placer = new ZeroPlacer();
+  ZeroPlacer *placer = new ZeroPlacer();
   return placer;
 }
 
 std::vector<std::vector<uint32_t>>
-GetTreesFromForest(const Graph& g)
+GetTreesFromForest(const Graph &g)
 {
   NodeArray<int> connected_component_ids(g);
   List<node> isolated_nodes;
   int n_connected_components =
-    connectedComponents(g, connected_component_ids, &isolated_nodes);
+      connectedComponents(g, connected_component_ids, &isolated_nodes);
 
   std::vector<std::vector<uint32_t>> connected_components(
-    n_connected_components);
+      n_connected_components);
 
   for (int i = 0; i < n_connected_components; i++)
     connected_components[i] = std::vector<uint32_t>();
@@ -95,15 +95,15 @@ GetTreesFromForest(const Graph& g)
 
   std::sort(connected_components.begin(),
             connected_components.end(),
-            [](const std::vector<uint32_t>& a, const std::vector<uint32_t>& b) {
+            [](const std::vector<uint32_t> &a, const std::vector<uint32_t> &b)
+            {
               return a.size() > b.size();
             });
 
   return connected_components;
 }
 
-void
-RemoveDisconnectedComponents(Graph& g)
+void RemoveDisconnectedComponents(Graph &g)
 {
   GraphCopy t;
   Graph::CCsInfo info(g);
@@ -112,34 +112,39 @@ RemoveDisconnectedComponents(Graph& g)
   int cc = 0;
   int num_ccs = info.numberOfCCs();
 
-  for (int i = 0; i < num_ccs; i++) {
+  for (int i = 0; i < num_ccs; i++)
+  {
     int cc_size = info.numberOfNodes(i);
-    if (cc_size > max) {
+    if (cc_size > max)
+    {
       max = cc_size;
       cc = i;
     }
   }
 
-  for (int i = 0; i < num_ccs; i++) {
+  for (int i = 0; i < num_ccs; i++)
+  {
     if (i == cc)
       continue;
 
-    for (int j = info.startNode(i); j < info.stopNode(i); ++j) {
+    for (int j = info.startNode(i); j < info.stopNode(i); ++j)
+    {
       node v = info.v(j);
       g.delNode(v);
     }
   }
 }
 
-void
-ConnectGraph(Graph& g,
-             std::vector<node>& index_to_node,
-             tmap::LSHForest& lsh_forest)
+void ConnectGraph(Graph &g,
+                  std::vector<node> &index_to_node,
+                  tmap::LSHForest &lsh_forest)
 {
   auto trees = GetTreesFromForest(g);
 
-  for (size_t i = 1; i < trees.size(); i++) {
-    for (uint32_t v : trees[i]) {
+  for (size_t i = 1; i < trees.size(); i++)
+  {
+    for (uint32_t v : trees[i])
+    {
       auto nns = lsh_forest.QueryLinearScanExcludeById(v, 1, trees[i], 10);
 
       if (nns.size() == 0)
@@ -155,8 +160,8 @@ ConnectGraph(Graph& g,
 }
 
 std::vector<std::pair<uint32_t, uint32_t>>
-BFS(tmap::GraphProperties gp, uint32_t source, 
-    const std::vector<uint32_t>& targets)
+BFS(tmap::GraphProperties gp, uint32_t source,
+    const std::vector<uint32_t> &targets)
 {
   std::vector<std::pair<uint32_t, uint32_t>> result;
   std::vector<bool> visited(gp.adjacency_list.size(), false);
@@ -170,11 +175,13 @@ BFS(tmap::GraphProperties gp, uint32_t source,
   q.push(max);
 
   uint32_t depth = 0;
-  while(q.size() > 1) {
+  while (q.size() > 1)
+  {
     auto s = q.front();
     q.pop();
-    
-    if (s == max) {
+
+    if (s == max)
+    {
       depth++;
       q.push(max);
       continue;
@@ -182,13 +189,14 @@ BFS(tmap::GraphProperties gp, uint32_t source,
 
     visited[s] = true;
 
-    if(std::find(targets.begin(), targets.end(), s) != targets.end())
+    if (std::find(targets.begin(), targets.end(), s) != targets.end())
       result.push_back(std::make_pair(s, depth));
 
     if (result.size() == targets.size())
       break;
 
-    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++) {
+    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++)
+    {
       uint32_t t = gp.adjacency_list[s][i].first;
 
       if (visited[t])
@@ -198,11 +206,11 @@ BFS(tmap::GraphProperties gp, uint32_t source,
     }
   }
 
-  return result; 
+  return result;
 }
 
 std::vector<uint32_t>
-BFSAll(tmap::GraphProperties& gp, uint32_t source)
+BFSAll(tmap::GraphProperties &gp, uint32_t source)
 {
   std::vector<uint32_t> result(gp.adjacency_list.size(), 0);
   std::vector<bool> visited(gp.adjacency_list.size(), false);
@@ -216,10 +224,12 @@ BFSAll(tmap::GraphProperties& gp, uint32_t source)
   q.push(max);
 
   uint32_t depth = 0;
-  while(q.size() > 1) {
+  while (q.size() > 1)
+  {
     auto s = q.front();
     q.pop();
-    if (s == max) {
+    if (s == max)
+    {
       depth++;
       q.push(max);
       continue;
@@ -228,7 +238,8 @@ BFSAll(tmap::GraphProperties& gp, uint32_t source)
     visited[s] = true;
     result[s] = depth;
 
-    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++) {
+    for (size_t i = 0; i < gp.adjacency_list[s].size(); i++)
+    {
       uint32_t t = gp.adjacency_list[s][i].first;
 
       if (visited[t])
@@ -238,11 +249,11 @@ BFSAll(tmap::GraphProperties& gp, uint32_t source)
     }
   }
 
-  return result; 
+  return result;
 }
 
 std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
-tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
+tmap::MSTFromLSHForest(tmap::LSHForest &lsh_forest,
                        uint32_t k,
                        uint32_t kc)
 {
@@ -270,7 +281,52 @@ tmap::MSTFromLSHForest(tmap::LSHForest& lsh_forest,
   std::vector<uint32_t> y;
   std::vector<float> w;
 
-  for (edge e : g.edges) {
+  for (edge e : g.edges)
+  {
+    x.emplace_back(e->source()->index());
+    y.emplace_back(e->target()->index());
+    w.emplace_back(edge_weights[e]);
+  }
+
+  return std::make_tuple(x, y, w);
+}
+
+std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
+tmap::MSTFromEdgeList(
+    uint32_t vertex_count,
+    const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges)
+{
+  tmap::GraphProperties gp;
+  EdgeWeightedGraph<float> g;
+
+  std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list(vertex_count);
+  std::vector<node> index_to_node(vertex_count);
+
+  for (uint32_t i = 0; i < vertex_count; i++)
+    index_to_node[i] = g.newNode();
+
+  // Normalize the edge weights, edge weights need to be positive
+  float max_weight = 0.0f;
+  for (size_t i = 0; i < edges.size(); i++)
+    if (max_weight < std::get<2>(edges[i]))
+      max_weight = std::get<2>(edges[i]);
+
+  for (size_t i = 0; i < edges.size(); i++)
+    g.newEdge(index_to_node[std::get<0>(edges[i])],
+              index_to_node[std::get<1>(edges[i])],
+              std::get<2>(edges[i]) / max_weight);
+
+  ogdf::makeLoopFree(g);
+  ogdf::makeParallelFreeUndirected(g);
+  ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
+  ogdf::makeMinimumSpanningTree(g, edge_weights);
+
+  std::vector<uint32_t> x;
+  std::vector<uint32_t> y;
+  std::vector<float> w;
+
+  for (edge e : g.edges)
+  {
     x.emplace_back(e->source()->index());
     y.emplace_back(e->target()->index());
     w.emplace_back(edge_weights[e]);
@@ -284,7 +340,7 @@ std::tuple<std::vector<float>,
            std::vector<uint32_t>,
            std::vector<uint32_t>,
            tmap::GraphProperties>
-tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
+tmap::LayoutFromLSHForest(tmap::LSHForest &lsh_forest,
                           tmap::LayoutConfiguration config,
                           bool keep_knn,
                           bool create_mst,
@@ -321,13 +377,16 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
   uint32_t i = 0;
 
   // Get the adjancency list for the knn graph
-  if (keep_knn) {
+  if (keep_knn)
+  {
     std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list_knn(vertex_count);
     i = 0;
-    for (node v : g.nodes) {
+    for (node v : g.nodes)
+    {
       adjacency_list_knn[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
       int j = 0;
-      for (adjEntry adj : v->adjEntries) {
+      for (adjEntry adj : v->adjEntries)
+      {
         uint32_t neighbor = adj->theEdge()->opposite(v)->index();
         float edge_weight = edge_weights[adj->theEdge()];
         adjacency_list_knn[i][j++] = std::make_pair(neighbor, edge_weight);
@@ -345,15 +404,18 @@ tmap::LayoutFromLSHForest(tmap::LSHForest& lsh_forest,
 
   gp.degrees = degrees;
 
-  if (create_mst) {
+  if (create_mst)
+  {
     gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
   }
 
   i = 0;
-  for (node v : g.nodes) {
+  for (node v : g.nodes)
+  {
     adjacency_list[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
     int j = 0;
-    for (adjEntry adj : v->adjEntries) {
+    for (adjEntry adj : v->adjEntries)
+    {
       uint32_t neighbor = adj->theEdge()->opposite(v)->index();
       float edge_weight = edge_weights[adj->theEdge()];
       adjacency_list[i][j++] = std::make_pair(neighbor, edge_weight);
@@ -373,11 +435,11 @@ std::tuple<std::vector<float>,
            std::vector<uint32_t>,
            tmap::GraphProperties>
 tmap::LayoutFromEdgeList(
-  uint32_t vertex_count,
-  const std::vector<std::tuple<uint32_t, uint32_t, float>>& edges,
-  tmap::LayoutConfiguration config,
-  bool keep_knn,
-  bool create_mst)
+    uint32_t vertex_count,
+    const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges,
+    tmap::LayoutConfiguration config,
+    bool keep_knn,
+    bool create_mst)
 {
   tmap::GraphProperties gp;
   EdgeWeightedGraph<float> g;
@@ -388,7 +450,6 @@ tmap::LayoutFromEdgeList(
 
   for (uint32_t i = 0; i < vertex_count; i++)
     index_to_node[i] = g.newNode();
-
 
   // Normalize the edge weights, edge weights need to be positive
   float max_weight = 0.0f;
@@ -408,13 +469,16 @@ tmap::LayoutFromEdgeList(
   uint32_t i = 0;
 
   // Get the adjancency list for the knn graph
-  if (keep_knn) {
+  if (keep_knn)
+  {
     std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list_knn(vertex_count);
     i = 0;
-    for (node v : g.nodes) {
+    for (node v : g.nodes)
+    {
       adjacency_list_knn[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
       int j = 0;
-      for (adjEntry adj : v->adjEntries) {
+      for (adjEntry adj : v->adjEntries)
+      {
         uint32_t neighbor = adj->theEdge()->opposite(v)->index();
         float edge_weight = edge_weights[adj->theEdge()];
         adjacency_list_knn[i][j++] = std::make_pair(neighbor, edge_weight);
@@ -432,15 +496,18 @@ tmap::LayoutFromEdgeList(
 
   gp.degrees = degrees;
 
-  if (create_mst) {
+  if (create_mst)
+  {
     gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
   }
 
   i = 0;
-  for (node v : g.nodes) {
+  for (node v : g.nodes)
+  {
     adjacency_list[i] = std::vector<std::pair<uint32_t, float>>(v->adjEntries.size());
     int j = 0;
-    for (adjEntry adj : v->adjEntries) {
+    for (adjEntry adj : v->adjEntries)
+    {
       uint32_t neighbor = adj->theEdge()->opposite(v)->index();
       float edge_weight = edge_weights[adj->theEdge()];
       adjacency_list[i][j++] = std::make_pair(neighbor, edge_weight);
@@ -450,7 +517,7 @@ tmap::LayoutFromEdgeList(
   }
 
   gp.adjacency_list = adjacency_list;
-  
+
   GraphAttributes graph_attributes(g);
   MultilevelGraph mlg(g);
 
@@ -462,17 +529,17 @@ std::tuple<std::vector<float>,
            std::vector<uint32_t>,
            std::vector<uint32_t>,
            tmap::GraphProperties>
-tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
+tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
                      uint32_t vertex_count,
                      LayoutConfiguration config,
-                     GraphProperties& gp)
+                     GraphProperties &gp)
 {
   // Check for isolated nodes. If there are isolated nodes,
   // call placement step later on.
   NodeArray<int> connected_components(g);
   List<node> isolated_nodes;
   int n_connected_components =
-    connectedComponents(g, connected_components, &isolated_nodes);
+      connectedComponents(g, connected_components, &isolated_nodes);
   gp.n_connected_components = n_connected_components;
   gp.n_isolated_vertices = isolated_nodes.size();
 
@@ -488,7 +555,7 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   MultilevelGraph mlg(ga);
 
   // The FastMultipoleEmbedder is used for the single level layout.
-  FastMultipoleEmbedder* fme = new FastMultipoleEmbedder();
+  FastMultipoleEmbedder *fme = new FastMultipoleEmbedder();
   fme->setNumIterations(config.fme_iterations);
   fme->setRandomize(config.fme_randomize);
   // fme->setNumberOfThreads(config.fme_threads);
@@ -498,70 +565,73 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
 
   // To minimize dispersion of the graph when more nodes are added, a
   // ScalingLayout can be used to scale up the graph on each level.
-  ScalingLayout* sl = new ScalingLayout();
+  ScalingLayout *sl = new ScalingLayout();
   sl->setLayoutRepeats(config.sl_repeats);
   sl->setSecondaryLayout(fme);
 
   // Used for the placement.
-  InitialPlacer* placer = GetBarycenterPlacer();
-  switch (config.placer) {
-    case Placer::Barycenter:
-      placer = GetBarycenterPlacer();
-      break;
-    case Placer::Circle:
-      placer = GetCirclePlacer();
-      break;
-    case Placer::Median:
-      placer = GetMedianPlacer();
-      break;
-    case Placer::Random:
-      placer = GetRandomPlacer();
-      break;
-    case Placer::Solar:
-      placer = GetSolarPlacer();
-      break;
-    case Placer::Zero:
-      placer = GetZeroPlacer();
-      break;
+  InitialPlacer *placer = GetBarycenterPlacer();
+  switch (config.placer)
+  {
+  case Placer::Barycenter:
+    placer = GetBarycenterPlacer();
+    break;
+  case Placer::Circle:
+    placer = GetCirclePlacer();
+    break;
+  case Placer::Median:
+    placer = GetMedianPlacer();
+    break;
+  case Placer::Random:
+    placer = GetRandomPlacer();
+    break;
+  case Placer::Solar:
+    placer = GetSolarPlacer();
+    break;
+  case Placer::Zero:
+    placer = GetZeroPlacer();
+    break;
   }
 
   // Used for the coarsening phase.
-  MultilevelBuilder* merger = GetFactoredAdjustedMerger<EdgeCoverMerger>();
-  switch (config.merger) {
-    case Merger::EdgeCover:
-      merger = GetFactoredAdjustedMerger<EdgeCoverMerger>(
+  MultilevelBuilder *merger = GetFactoredAdjustedMerger<EdgeCoverMerger>();
+  switch (config.merger)
+  {
+  case Merger::EdgeCover:
+    merger = GetFactoredAdjustedMerger<EdgeCoverMerger>(
         config.merger_factor, config.merger_adjustment);
-      break;
-    case Merger::LocalBiconnected:
-      merger = GetFactoredAdjustedMerger<LocalBiconnectedMerger>(
+    break;
+  case Merger::LocalBiconnected:
+    merger = GetFactoredAdjustedMerger<LocalBiconnectedMerger>(
         config.merger_factor, config.merger_adjustment);
-      break;
-    case Merger::Solar:
-      merger = GetAdjustedMerger<SolarMerger>(config.merger_adjustment);
-      break;
-    case Merger::IndependentSet:
-      merger =
+    break;
+  case Merger::Solar:
+    merger = GetAdjustedMerger<SolarMerger>(config.merger_adjustment);
+    break;
+  case Merger::IndependentSet:
+    merger =
         GetAdjustedMerger<IndependentSetMerger>(config.merger_adjustment);
-      break;
+    break;
   }
 
   // Get the scaling type. As I do not want to expose any OGDF to Python,
   // there is this intermediate step.
   ScalingLayout::ScalingType scaling_type =
-    ScalingLayout::ScalingType::RelativeToDrawing;
-  switch (config.sl_scaling_type) {
-    case ScalingType::Absolute:
-      scaling_type = ScalingLayout::ScalingType::Absolute;
-      break;
-    case ScalingType::RelativeToAvgLength:
-      scaling_type = ScalingLayout::ScalingType::RelativeToAvgLength;
-      break;
-    case ScalingType::RelativeToDesiredLength:
-      scaling_type = ScalingLayout::ScalingType::RelativeToDesiredLength;
-      break;
-    case ScalingType::RelativeToDrawing:
-      scaling_type = ScalingLayout::ScalingType::RelativeToDrawing;
-      break;
+      ScalingLayout::ScalingType::RelativeToDrawing;
+  switch (config.sl_scaling_type)
+  {
+  case ScalingType::Absolute:
+    scaling_type = ScalingLayout::ScalingType::Absolute;
+    break;
+  case ScalingType::RelativeToAvgLength:
+    scaling_type = ScalingLayout::ScalingType::RelativeToAvgLength;
+    break;
+  case ScalingType::RelativeToDesiredLength:
+    scaling_type = ScalingLayout::ScalingType::RelativeToDesiredLength;
+    break;
+  case ScalingType::RelativeToDrawing:
+    scaling_type = ScalingLayout::ScalingType::RelativeToDrawing;
+    break;
   }
 
   // Postprocessing is applied at each level after the single level layout.
@@ -572,7 +642,7 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   sl->setScaling(config.sl_scaling_min, config.sl_scaling_max);
 
   // Then the ModularMultilevelMixer is created.
-  ModularMultilevelMixer* mmm = new ModularMultilevelMixer;
+  ModularMultilevelMixer *mmm = new ModularMultilevelMixer;
   mmm->setLayoutRepeats(config.mmm_repeats);
   // The single level layout, the placer and the merger are set.
   mmm->setLevelLayoutModule(sl);
@@ -582,13 +652,14 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   if (config.sl_scaling_type == ScalingType::Absolute)
     sl->setMMM(mmm);
 
-  if (n_connected_components > 1) {
+  if (n_connected_components > 1)
+  {
     // Since energybased algorithms are not doing well for disconnected
     // graphs, the ComponentSplitterLayout is used to split the graph and
     // computation is done separately for each connected component.
-    ComponentSplitterLayout* csl = new ComponentSplitterLayout;
+    ComponentSplitterLayout *csl = new ComponentSplitterLayout;
     // The TileToRowsPacker merges these connected components after computation.
-    TileToRowsCCPacker* ttrccp = new TileToRowsCCPacker;
+    TileToRowsCCPacker *ttrccp = new TileToRowsCCPacker;
     csl->setPacker(ttrccp);
     csl->setLayoutModule(mmm);
 
@@ -598,7 +669,8 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
     ppl.setRandomizePositions(false);
 
     ppl.call(mlg);
-  } else
+  }
+  else
     mmm->call(mlg);
 
   mlg.exportAttributes(ga);
@@ -610,7 +682,8 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   std::vector<uint32_t> t(g.edges.size());
 
   int i = 0;
-  for (node v : g.nodes) {
+  for (node v : g.nodes)
+  {
     x[i] = ga.x(v);
     y[i] = ga.y(v);
     i++;
@@ -625,13 +698,15 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
   float diff_x = max_x - min_x;
   float diff_y = max_y - min_y;
 
-  for (size_t i = 0; i < x.size(); i++) {
+  for (size_t i = 0; i < x.size(); i++)
+  {
     x[i] = (x[i] - min_x) / diff_x - 0.5;
     y[i] = (y[i] - min_y) / diff_y - 0.5;
   }
 
   i = 0;
-  for (edge e : g.edges) {
+  for (edge e : g.edges)
+  {
     s[i] = e->source()->index();
     t[i] = e->target()->index();
     i++;
@@ -641,7 +716,7 @@ tmap::LayoutInternal(EdgeWeightedGraph<float>& g,
 }
 
 std::vector<std::tuple<uint32_t, float, uint32_t>>
-tmap::VertexQuality(tmap::GraphProperties& gp, uint32_t v)
+tmap::VertexQuality(tmap::GraphProperties &gp, uint32_t v)
 {
   if (gp.adjacency_list_knn.size() < 1)
     throw std::runtime_error("The GraphProperties object does not contain an adjancency list of the original knn graph. Run layout with 'keep_knn' set to true.");
@@ -657,20 +732,20 @@ tmap::VertexQuality(tmap::GraphProperties& gp, uint32_t v)
 
   auto bfs = BFS(gp, v, targets);
 
-  for (size_t i = 0; i < bfs.size(); i++) {
+  for (size_t i = 0; i < bfs.size(); i++)
+  {
     result[i] = std::make_tuple(bfs[i].first, gp.adjacency_list_knn[v][i].second, bfs[i].second);
   }
 
   // Sort the targets by distance
-  std::sort(result.begin(), result.end(), [](auto& left, auto& right) {
-    return std::get<1>(left) < std::get<1>(right);
-  });
+  std::sort(result.begin(), result.end(), [](auto &left, auto &right)
+            { return std::get<1>(left) < std::get<1>(right); });
 
   return result;
 }
 
 std::vector<float>
-tmap::MeanQuality(GraphProperties& gp)
+tmap::MeanQuality(GraphProperties &gp)
 {
   // Get the max adjacency list knn size, as they can differ
   size_t max_size = 0;
@@ -681,9 +756,11 @@ tmap::MeanQuality(GraphProperties& gp)
   std::vector<float> result(max_size, 0.0);
   std::vector<uint32_t> counts(max_size, 0);
 
-  for (size_t i = 0; i < gp.adjacency_list.size(); i++) {
+  for (size_t i = 0; i < gp.adjacency_list.size(); i++)
+  {
     auto r = tmap::VertexQuality(gp, i);
-    for (size_t j = 0; j < r.size(); j++) {
+    for (size_t j = 0; j < r.size(); j++)
+    {
       result[j] += std::get<2>(r[j]);
       counts[j] += 1;
     }
@@ -696,7 +773,8 @@ tmap::MeanQuality(GraphProperties& gp)
 }
 
 std::vector<uint32_t>
-tmap::GetTopologicalDistances(tmap::GraphProperties& gp, uint32_t v) {
+tmap::GetTopologicalDistances(tmap::GraphProperties &gp, uint32_t v)
+{
   return BFSAll(gp, v);
 }
 
@@ -705,15 +783,16 @@ std::tuple<std::vector<float>,
            std::vector<float>,
            std::vector<float>>
 tmap::MakeEdgeList(
-  std::vector<float> x, std::vector<float> y,
-  std::vector<uint32_t> s, std::vector<uint32_t> t) 
+    std::vector<float> x, std::vector<float> y,
+    std::vector<uint32_t> s, std::vector<uint32_t> t)
 {
   std::vector<float> x1(s.size());
   std::vector<float> y1(s.size());
   std::vector<float> x2(s.size());
   std::vector<float> y2(s.size());
 
-  for (size_t i = 0; i < s.size(); i++) {
+  for (size_t i = 0; i < s.size(); i++)
+  {
     x1[i] = x[s[i]];
     y1[i] = y[s[i]];
     x2[i] = x[t[i]];
