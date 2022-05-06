@@ -11,7 +11,7 @@ from lipinski import lipinski_pass
 
 
 def main():
-    """ The main function """
+    """The main function"""
     df = pd.read_csv("drugbank.csv").dropna(subset=["SMILES"]).reset_index(drop=True)
     enc = MHFPEncoder()
     lf = tm.LSHForest(2048, 128)

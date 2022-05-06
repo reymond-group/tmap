@@ -27,9 +27,8 @@
 #include <ogdf/basic/extended_graph_alg.h>
 #include <ogdf/fileformats/GraphIO.h>
 
-#include <ogdf/energybased/FastMultipoleEmbedder.h>
+// #include <ogdf/energybased/FastMultipoleEmbedder.h>
 #include <ogdf/energybased/multilevel_mixer/ScalingLayout.h>
-
 #include <ogdf/energybased/multilevel_mixer/BarycenterPlacer.h>
 #include <ogdf/energybased/multilevel_mixer/CirclePlacer.h>
 #include <ogdf/energybased/multilevel_mixer/MedianPlacer.h>
@@ -46,8 +45,20 @@
 #include <ogdf/packing/ComponentSplitterLayout.h>
 #include <ogdf/packing/TileToRowsCCPacker.h>
 
+#include <ogdf/energybased/DavidsonHarelLayout.h>
+// #include <ogdf/energyb¦ased/DTreeMultilevelEmbedder.h>
+#include <ogdf/energybased/FastMultipoleEmbedder.h>
 #include <ogdf/energybased/FMMMLayout.h>
+#include <ogdf/energybased/GEMLayout.h>
+#include <ogdf/energybased/MultilevelLayout.h>
+#include <ogdf/energybased/PivotMDS.h>
+#include <ogdf/energybased/SpringEmbedderFRExact.h>
 #include <ogdf/energybased/SpringEmbedderGridVariant.h>
+#include <ogdf/energybased/SpringEmbedderKK.h>
+#include <ogdf/energybased/StressMinimization.h>
+#include <ogdf/energybased/TutteLayout.h>
+
+#include <ogdf/energybased/NodeRespecterLayout.h>
 
 #include <fstream>
 #include <iostream>

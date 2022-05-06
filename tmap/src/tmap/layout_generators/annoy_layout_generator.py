@@ -27,7 +27,7 @@ try:
 
             for i in range(n):
                 for j in index.get_nns_by_item(i, self.k):
-                    edge_list.append((i, j, cosine_distance(X[i], X[j])))
+                    edge_list.append((i, j, self.distance_function(X[i], X[j])))
 
             return self.layout_from_edge_list(n, edge_list, create_mst, keep_knn)
 

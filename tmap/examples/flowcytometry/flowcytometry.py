@@ -27,20 +27,21 @@ def load_data(sample: fk.Sample):
     channel_data = []
 
     for channel in channels:
-        channel_data.append(np.array(sample.get_channel_data(channel, source="raw")))
+        channel_data.append(np.array(sample.get_channel_events(channel, source="raw")))
 
     return np.array(channel_data).T
 
 
 def load_time(sample: fk.Sample):
-    """ Assuming the time is channel 0 """
-    return np.array(sample.get_channel_data(0, source="raw"))
+    """Assuming the time is channel 0"""
+    return np.array(sample.get_channel_events(0, source="raw"))
 
 
 def main():
-    """ Main function """
+    """Main function"""
     data = []
     time = []
+
     for path in PATHS:
         sample = fk.Sample(path)
         data.append(load_data(sample))

@@ -27,14 +27,14 @@ requirements:
     - llvm-openmp # [osx]
     - python
     - pip
-    - ogdf
+    # - ogdf
     - attrs
     - matplotlib
   run:
     - vs2015_runtime # [win]
     - llvm-openmp # [osx]
     - python
-    - ogdf
+    # - ogdf
     - attrs
     - matplotlib
 

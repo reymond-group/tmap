@@ -3,7 +3,6 @@ import tmap as tm
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # import s_gd2
 #  = [0,1,2,3,4]
 # J = [1,2,3,4,0]
@@ -13,25 +12,25 @@ import matplotlib.pyplot as plt
 def random_vectors(n: int = 10, dims=4096) -> np.ndarray:
     vecs = []
 
-    for _ in range(n):
-        vecs.append(np.random.choice(2, dims))
+    for i in range(n):
+        vec = np.random.choice(2, dims)
+
+        if i % 2 == 0:
+            vec[:2000] = 1
+
+        vecs.append(vec)
 
     return np.array(vecs)
 
 
-def test_graph() -> List[Tuple[int, int, float]]:
-    return [
-        (0, 1, 0.1),
-        (1, 2, 1.0),
-        (2, 0, 2.0),
-        (2, 3, 0.1),
-        (3, 0, 1.0),
-    ]
-
-
 def main():
-    data = random_vectors(10000)
-    te = tm.embed(data, layout_generator=tm.layout_generators.BuiltinLayoutGenerator())
+    data = random_vectors(1000)
+    te = tm.embed(
+        data,
+        # layout_generator=tm.layout_generators.AnnoyLayoutGenerator(),
+        layout_generator=tm.layout_generators.BuiltinLayoutGenerator(),
+        keep_knn=True,
+    )
 
     tm.plot(
         te,

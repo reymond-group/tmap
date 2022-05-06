@@ -374,6 +374,26 @@ tmap::LayoutFromLSHForest(tmap::LSHForest &lsh_forest,
   ogdf::makeParallelFreeUndirected(g);
   ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
 
+  std::priority_queue<
+      std::tuple<float, uint32_t, uint32_t>,
+      std::vector<std::tuple<float, uint32_t, uint32_t>>,
+      std::less<std::tuple<float, uint32_t, uint32_t>>>
+      pq;
+
+  // for (std::vector<uint32_t>::size_type i = 0; i != from.size(); i++)
+  // {
+  //   if (weight[i] < 0.0f)
+  //     continue;
+
+  //   pq.push(std::make_tuple(
+  //       weight[i],
+  //       from[i],
+  //       to[i]));
+
+  //   if (pq.size() > 999)
+  //     pq.pop();
+  // }
+
   uint32_t i = 0;
 
   // Get the adjancency list for the knn graph
@@ -408,6 +428,21 @@ tmap::LayoutFromLSHForest(tmap::LSHForest &lsh_forest,
   {
     gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
   }
+
+  while (!pq.empty())
+  {
+    std::tuple<float, uint32_t, uint32_t> edge_tuple = pq.top();
+
+    // std::cout << std::get<0>(edge_tuple) << ' ' << std::get<1>(edge_tuple) << ' ' << std::get<2>(edge_tuple) << std::endl;
+
+    g.newEdge(index_to_node[std::get<0>(edge_tuple)],
+              index_to_node[std::get<1>(edge_tuple)],
+              std::get<2>(edge_tuple));
+
+    pq.pop();
+  }
+  ogdf::makeLoopFree(g);
+  ogdf::makeParallelFreeUndirected(g);
 
   i = 0;
   for (node v : g.nodes)
@@ -453,9 +488,29 @@ tmap::LayoutFromEdgeList(
 
   // Normalize the edge weights, edge weights need to be positive
   float max_weight = 0.0f;
+  // std::priority_queue<
+  //     std::tuple<float, uint32_t, uint32_t>,
+  //     std::vector<std::tuple<float, uint32_t, uint32_t>>,
+  //     std::less<std::tuple<float, uint32_t, uint32_t>>>
+  //     pq;
+
   for (size_t i = 0; i < edges.size(); i++)
-    if (max_weight < std::get<2>(edges[i]))
-      max_weight = std::get<2>(edges[i]);
+  {
+    float edge_weight = std::get<2>(edges[i]);
+    // if (edge_weight > 0.0f)
+    // {
+    //   pq.push(std::make_tuple(
+    //       edge_weight,
+    //       std::get<0>(edges[i]),
+    //       std::get<1>(edges[i])));
+
+    //   if (pq.size() > 9)
+    //     pq.pop();
+    // }
+
+    if (max_weight < edge_weight)
+      max_weight = edge_weight;
+  }
 
   for (size_t i = 0; i < edges.size(); i++)
     g.newEdge(index_to_node[std::get<0>(edges[i])],
@@ -466,9 +521,8 @@ tmap::LayoutFromEdgeList(
   ogdf::makeParallelFreeUndirected(g);
   ogdf::EdgeArray<float> edge_weights = g.edgeWeights();
 
-  uint32_t i = 0;
-
   // Get the adjancency list for the knn graph
+  uint32_t i = 0;
   if (keep_knn)
   {
     std::vector<std::vector<std::pair<uint32_t, float>>> adjacency_list_knn(vertex_count);
@@ -500,6 +554,21 @@ tmap::LayoutFromEdgeList(
   {
     gp.mst_weight = ogdf::makeMinimumSpanningTree(g, edge_weights);
   }
+
+  // while (!pq.empty())
+  // {
+  //   std::tuple<float, uint32_t, uint32_t> edge_tuple = pq.top();
+
+  //   // std::cout << std::get<0>(edge_tuple) << ' ' << std::get<1>(edge_tuple) << ' ' << std::get<2>(edge_tuple) << std::endl;
+
+  //   g.newEdge(index_to_node[std::get<0>(edge_tuple)],
+  //             index_to_node[std::get<1>(edge_tuple)],
+  //             std::get<2>(edge_tuple));
+
+  //   pq.pop();
+  // }
+  // ogdf::makeLoopFree(g);
+  // ogdf::makeParallelFreeUndirected(g);
 
   i = 0;
   for (node v : g.nodes)
@@ -548,8 +617,8 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
   ga.setAllHeight(config.node_size);
   ga.setAllWidth(config.node_size);
 
-  for (edge e : g.edges)
-    g.setWeight(e, 1.0);
+  // for (edge e : g.edges)
+  //   g.setWeight(e, 1.0);
 
   // Starting the layout
   MultilevelGraph mlg(ga);
@@ -562,6 +631,13 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
   fme->setMultipolePrec(config.fme_precision);
   fme->setDefaultEdgeLength(1);
   fme->setDefaultNodeSize(1);
+
+  // FMMMLayout *fme = new FMMMLayout();
+
+  // fme->useHighLevelOptions(true);
+  // // fme->unitEdgeLength(15.0);
+  // fme->newInitialPlacement(true);
+  // fme->qualityVersusSpeed(FMMMOptions::QualityVsSpeed::GorgeousAndEfficient);
 
   // To minimize dispersion of the graph when more nodes are added, a
   // ScalingLayout can be used to scale up the graph on each level.
@@ -675,7 +751,23 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
 
   mlg.exportAttributes(ga);
 
-  std::vector<float> x(vertex_count);
+  // GraphAttributes ga(g);
+  // for (node v : g.nodes)
+  //   ga.width(v) = ga.height(v) = 0.1;
+
+  // FMMMLayout fmmm;
+
+  // fmmm.useHighLevelOptions(true);
+  // fmmm.unitEdgeLength(15.0);
+  // fmmm.newInitialPlacement(true);
+  // fmmm.qualityVersusSpeed(FMMMOptions::QualityVsSpeed::GorgeousAndEfficient);
+
+  // fmmm.call(ga);
+  // SpringEmbedderFRExact layout;
+  // layout.call(ga);
+
+  std::vector<float>
+      x(vertex_count);
   std::vector<float> y(vertex_count);
 
   std::vector<uint32_t> s(g.edges.size());
@@ -686,6 +778,7 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
   {
     x[i] = ga.x(v);
     y[i] = ga.y(v);
+    std::cout << x[i] << std::endl;
     i++;
   }
 
