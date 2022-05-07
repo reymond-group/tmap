@@ -169,5 +169,8 @@ python-mnist
 *.png
 *.faerun
 
-#vscode
+# vscode
 .vscode
+
+# wheels
+wheelhouse
