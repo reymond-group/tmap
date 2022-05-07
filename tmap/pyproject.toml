@@ -3,3 +3,16 @@
 
 # Skip 32-bit builds, musl build
 skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*"]
+
+
+[tool.cibuildwheel.linux]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
+  make -j4 && \
+  make install && \
+  cd .. && \
+  rm -r build\
+  """
