@@ -1,0 +1,36 @@
+
+# {% set version = "1.2.11" %}
+
+package:
+    name: ogdf
+    version: 1.2.0
+
+source:
+    path: ../src
+
+build:
+    number: 0
+
+extra:
+    - conda-forge
+
+requirements:
+    build:
+        - {{ compiler('cxx') }}
+        - cmake
+
+about:
+    home: http://www.ogdf.net/
+    license: GPLv3
+    summary: OGDF is a self-contained C++ class library for the automatic layout of diagrams
+    # license_family: Other
+    # license_file: license.txt
+    
+    description: |
+      OGDF is a self-contained C++ class library for the automatic layout of diagrams.
+    doc_url: http://www.ogdf.net/doku.php
+    dev_url: https://github.com/ogdf/ogdf
+
+extra:
+    recipe-maintainers:
+        - daenuprobst

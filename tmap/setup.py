@@ -37,6 +37,9 @@ class CMakeBuild(build_ext):
             if cmake_version < "3.1.0":
                 raise RuntimeError("CMake >= 3.1.0 is required on Windows")
 
+        print("======================TEST======================")
+        subprocess.check_call(["sh", "build.sh"], cwd="./ogdf-conda/src")
+
         for ext in self.extensions:
             self.build_extension(ext)
 
