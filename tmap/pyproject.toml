@@ -23,11 +23,22 @@ before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} -DBUILD_SHARED_LIBS=ON && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
   make -j4 && \
   make install && \
   cd .. && \
   rm -r build\
+  """
+
+[tool.cibuildwheel.windows]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%PREFIX% && \
+  cmake --build . --config Release --target install -- /m && \
+  cd .. && \
+  rmdir /Q /S build\
   """
 
 [tool.cibuildwheel.macos.environment]
