@@ -43,5 +43,6 @@ before-build = """\
 
 [tool.cibuildwheel.macos.environment]
 LDFLAGS = "-L/usr/local/lib"
+CFLAGS = "-I/usr/local/include"
 CXX = "/usr/local/opt/llvm/bin/clang++"
 CC = "/usr/local/opt/llvm/bin/clang"
