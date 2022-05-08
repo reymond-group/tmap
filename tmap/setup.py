@@ -37,8 +37,6 @@ class CMakeBuild(build_ext):
             if cmake_version < "3.1.0":
                 raise RuntimeError("CMake >= 3.1.0 is required on Windows")
             subprocess.check_call(["cmd", "bld.bat"], cwd="./ogdf-conda/src")
-        # else:
-        #     subprocess.check_call(["sh", "build.sh"], cwd="./ogdf-conda/src")
 
         for ext in self.extensions:
             self.build_extension(ext)
@@ -68,8 +66,8 @@ class CMakeBuild(build_ext):
             cmake_args += ["-T", "ClangCL"]
             build_args += ["--", "/m"]
         elif platform.system() == "Darwin":
-            cmake_args += ["-DOpenMP_C_FLAG=-fopenmp"]
-            cmake_args += ["-DOpenMP_CXX_FLAG=-fopenmp"]
+            cmake_args += ["-DOpenMP_C_FLAG=-Xclang -fopenmp"]
+            cmake_args += ["-DOpenMP_CXX_FLAG=-Xclang -fopenmp"]
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
             build_args += ["--", "-j2"]
         else:

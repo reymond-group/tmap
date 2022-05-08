@@ -16,3 +16,15 @@ before-build = """\
   cd .. && \
   rm -r build\
   """
+
+[tool.cibuildwheel.macos]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} -DBUILD_SHARED_LIBS=ON && \
+  make -j4 && \
+  make install && \
+  cd .. && \
+  rm -r build\
+  """
