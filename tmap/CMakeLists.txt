@@ -18,11 +18,19 @@ else()
 endif(MSVC)
 
 
-SET(OGDF_INCLUDE "/include")
-SET(OGDF_LIB "/lib")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    SET(OGDF_INCLUDE "/usr/local/include")
+    SET(OGDF_LIB "/usr/local/lib")
 
-include_directories(${OGDF_INCLUDE})
-link_directories(${OGDF_LIB})
+    include_directories(${OGDF_INCLUDE})
+    link_directories(${OGDF_LIB})
+else()
+    SET(OGDF_INCLUDE "/include")
+    SET(OGDF_LIB "/lib")
+
+    include_directories(${OGDF_INCLUDE})
+    link_directories(${OGDF_LIB})
+endif()
 
 # find_package(OpenMP)
 # if (OPENMP_FOUND)
