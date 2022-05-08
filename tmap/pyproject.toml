@@ -18,7 +18,7 @@ before-build = """\
   """
 
 [tool.cibuildwheel.macos]
-before-all = ["brew install llvm libomp"]
+before-all = ["brew install libomp"]
 before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
