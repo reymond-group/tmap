@@ -24,6 +24,12 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
     include_directories(${OGDF_INCLUDE})
     link_directories(${OGDF_LIB})
+elseif(WIN32)
+    SET(OGDF_INCLUDE "C:/ogdf/include")
+    SET(OGDF_LIB "C:/ogdf/lib")
+
+    include_directories(${OGDF_INCLUDE})
+    link_directories(${OGDF_LIB})
 else()
     SET(OGDF_INCLUDE "/include")
     SET(OGDF_LIB "/lib")
@@ -44,7 +50,6 @@ find_package(OpenMP REQUIRED)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(Threads REQUIRED)
-# include_directories(${pybind11_INCLUDE_DIRS})
 
 SET(SOURCE_DIR "src/_tmap")
 # Tell cmake that headers are in alse in source_dir
@@ -52,7 +57,6 @@ include_directories(${SOURCE_DIR})
 SET(SOURCES "${SOURCE_DIR}/layout.cc" "${SOURCE_DIR}/lshforest.cc" "${SOURCE_DIR}/minhash.cc" "${SOURCE_DIR}/analyse.cc")
 
 # Generate python module
-# find_package(pybind11 CONFIG REQUIRED)
 add_subdirectory(pybind11)
 
 pybind11_add_module(_tmap ${SOURCES} "${SOURCE_DIR}/bindings.cc")

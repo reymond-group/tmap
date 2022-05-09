@@ -34,19 +34,23 @@ repair-wheel-command = [
   "DYLD_LIBRARY_PATH=/usr/local/lib delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel}",
 ]
 
-[tool.cibuildwheel.windows]
-before-build = """\
-  cd ./ogdf-conda/src && \
-  mkdir build && \
-  cd build && \
-  cmake .. -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
-  cmake --build . --config Release --target install -- /m && \
-  cd .. && \
-  rmdir /Q /S build\
-  """
-
 [tool.cibuildwheel.macos.environment]
 LDFLAGS = "-L/usr/local/lib"
 CFLAGS = "-I/usr/local/include"
 CXX = "/usr/local/opt/llvm/bin/clang++"
 CC = "/usr/local/opt/llvm/bin/clang"
+
+[tool.cibuildwheel.windows]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_INSTALL_PREFIX=C:/ogdf/ -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
+  cmake --build . --config Release --target install -- /m && \
+  cd .. && \
+  rmdir /Q /S build\
+  """
+
+[tool.cibuildwheel.windows.environment]
+LDFLAGS = "-LC:/ogdf/lib"
+CFLAGS = "-IC:/ogdf/include"
