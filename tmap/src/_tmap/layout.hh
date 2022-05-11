@@ -25,7 +25,7 @@
 #include <ogdf/basic/Graph.h>
 #include <ogdf/basic/GraphAttributes.h>
 #include <ogdf/basic/extended_graph_alg.h>
-// #include <ogdf/fileformats/GraphIO.h>
+#include <ogdf/fileformats/GraphIO.h>
 
 // #include <ogdf/energybased/FastMultipoleEmbedder.h>
 #include <ogdf/energybased/multilevel_mixer/ScalingLayout.h>
