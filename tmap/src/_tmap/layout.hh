@@ -25,7 +25,7 @@
 #include <ogdf/basic/Graph.h>
 #include <ogdf/basic/GraphAttributes.h>
 #include <ogdf/basic/extended_graph_alg.h>
-#include <ogdf/fileformats/GraphIO.h>
+// #include <ogdf/fileformats/GraphIO.h>
 
 // #include <ogdf/energybased/FastMultipoleEmbedder.h>
 #include <ogdf/energybased/multilevel_mixer/ScalingLayout.h>
@@ -70,9 +70,9 @@ namespace tmap
   class LSHForest;
 
   /**
- * @brief The placers available in OGDF.
- *
- */
+   * @brief The placers available in OGDF.
+   *
+   */
   enum struct Placer
   {
     Barycenter =
@@ -93,9 +93,9 @@ namespace tmap
                                               "Median", "Random", "Zero"};
 
   /**
- * @brief The mergers available in OGDF.
- *
- */
+   * @brief The mergers available in OGDF.
+   *
+   */
   enum struct Merger
   {
     EdgeCover =
@@ -118,9 +118,9 @@ namespace tmap
                                               "IndependentSet"};
 
   /**
- * @brief The scaling types available in OGDF.
- *
- */
+   * @brief The scaling types available in OGDF.
+   *
+   */
   enum struct ScalingType
   {
     Absolute = 0, ///< Absolute factor, can be used to scale relative to level
@@ -137,26 +137,26 @@ namespace tmap
                                                      "RelativeToDrawing"};
 
   /**
- * @brief A struct containing all the configuration options available for and
- * applied to a layout.
- *
- */
+   * @brief A struct containing all the configuration options available for and
+   * applied to a layout.
+   *
+   */
   struct LayoutConfiguration
   {
     /**
-   * @brief Construct a new Layout Configuration object.
-   *
-   */
+     * @brief Construct a new Layout Configuration object.
+     *
+     */
     LayoutConfiguration()
         : k(10), kc(10), fme_iterations(1000), fme_randomize(false), fme_threads(4), fme_precision(4), sl_repeats(1), sl_extra_scaling_steps(2), sl_scaling_min(1.0), sl_scaling_max(1.0), sl_scaling_type(ScalingType::RelativeToDrawing), mmm_repeats(1), placer(Placer::Barycenter), merger(Merger::LocalBiconnected), merger_factor(2.0), merger_adjustment(0), node_size(1.0 / 65.0)
     {
     }
 
     /**
-   * @brief Returns a string describing the set options.
-   *
-   * @return std::string
-   */
+     * @brief Returns a string describing the set options.
+     *
+     * @return std::string
+     */
     std::string ToString() const
     {
       return std::string("k: ") + std::to_string(k) + '\n' +
@@ -210,10 +210,10 @@ namespace tmap
   };
 
   /**
- * @brief The properties of a generated graph. An instance of this struct is
- * returned from the layout functions.
- *
- */
+   * @brief The properties of a generated graph. An instance of this struct is
+   * returned from the layout functions.
+   *
+   */
   struct GraphProperties
   {
     float mst_weight = 0.0;              ///< The total weight of the created spanning tree.
@@ -227,19 +227,19 @@ namespace tmap
   };
 
   /**
- * @brief Genereates coordinates, edges and properties of a MST (via a kNN
- * graph) from an LSHForest instance.
- *
- * @param lsh_forest An LSHForest instance which is used to construct the kNN
- * graph.
- * @param config A LayoutConfiguration instance.
- * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
- * @param create_mst Whether to create an MST before laying out the graph.
- * @param clear_lsh_forest Whether to clear the LSHForest after it's use (might
- * save memory).
- * @return std::tuple<std::vector<float>, std::vector<float>,
- * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
- */
+   * @brief Genereates coordinates, edges and properties of a MST (via a kNN
+   * graph) from an LSHForest instance.
+   *
+   * @param lsh_forest An LSHForest instance which is used to construct the kNN
+   * graph.
+   * @param config A LayoutConfiguration instance.
+   * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
+   * @param create_mst Whether to create an MST before laying out the graph.
+   * @param clear_lsh_forest Whether to clear the LSHForest after it's use (might
+   * save memory).
+   * @return std::tuple<std::vector<float>, std::vector<float>,
+   * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+   */
   std::tuple<std::vector<float>,
              std::vector<float>,
              std::vector<uint32_t>,
@@ -252,40 +252,40 @@ namespace tmap
                       bool clear_lsh_forest = false);
 
   /**
- * @brief Generates an MST (via a kNN graph) from an LSHForest instance.
- *
- * @param lsh_forest An LSHForest instance which is used to construct the kNN
- * graph.
- * @param k The number of nearest neighbors used to create the kNN graph.
- * @param kc The factor by which k is multiplied when retrieving nearest
- * neighbors.
- * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
- */
+   * @brief Generates an MST (via a kNN graph) from an LSHForest instance.
+   *
+   * @param lsh_forest An LSHForest instance which is used to construct the kNN
+   * graph.
+   * @param k The number of nearest neighbors used to create the kNN graph.
+   * @param kc The factor by which k is multiplied when retrieving nearest
+   * neighbors.
+   * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
+   */
   std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
   MSTFromLSHForest(LSHForest &lsh_forest, uint32_t k, uint32_t kc = 10);
 
   /**
- * @brief Generates an MST from an edge list.
- *
- * @param vertex_count The number of vertices in the input graph.
- * @param edges An edge list in the form of [(from, to, weight)].
- * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
- */
+   * @brief Generates an MST from an edge list.
+   *
+   * @param vertex_count The number of vertices in the input graph.
+   * @param edges An edge list in the form of [(from, to, weight)].
+   * @return std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
+   */
   std::tuple<std::vector<uint32_t>, std::vector<uint32_t>, std::vector<float>>
   MSTFromEdgeList(uint32_t vertex_count, const std::vector<std::tuple<uint32_t, uint32_t, float>> &edges);
 
   /**
- * @brief Genereates coordinates, edges and properties of a MST from an edge
- * list.
- *
- * @param vertex_count The number of vertices in the input graph.
- * @param edges An edge list in the form of [(from, to, weight)].
- * @param config A LayoutConfiguration instance.
- * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
- * @param create_mst Whether to create an MST before laying out the graph.
- * @return std::tuple<std::vector<float>, std::vector<float>,
- * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
- */
+   * @brief Genereates coordinates, edges and properties of a MST from an edge
+   * list.
+   *
+   * @param vertex_count The number of vertices in the input graph.
+   * @param edges An edge list in the form of [(from, to, weight)].
+   * @param config A LayoutConfiguration instance.
+   * @param keep_knn Whether to keep the knn graph information as an adjacency list in GraphProperties.
+   * @param create_mst Whether to create an MST before laying out the graph.
+   * @return std::tuple<std::vector<float>, std::vector<float>,
+   * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+   */
   std::tuple<std::vector<float>,
              std::vector<float>,
              std::vector<uint32_t>,
@@ -299,15 +299,15 @@ namespace tmap
       bool create_mst = true);
 
   /**
- * @brief Laying out an OGDF graph.
- *
- * @param g An OGDF Graph instance
- * @param vertex_count The number of vertices in the graph.
- * @param config A LayoutConfiguration instance.
- * @param gp An instance of a GraphProperties struct.
- * @return std::tuple<std::vector<float>, std::vector<float>,
- * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
- */
+   * @brief Laying out an OGDF graph.
+   *
+   * @param g An OGDF Graph instance
+   * @param vertex_count The number of vertices in the graph.
+   * @param config A LayoutConfiguration instance.
+   * @param gp An instance of a GraphProperties struct.
+   * @return std::tuple<std::vector<float>, std::vector<float>,
+   * std::vector<uint32_t>, std::vector<uint32_t>, GraphProperties>
+   */
   std::tuple<std::vector<float>,
              std::vector<float>,
              std::vector<uint32_t>,
@@ -319,44 +319,44 @@ namespace tmap
                  GraphProperties &gp);
 
   /**
- * @brief Calculates the quality of the vertex based on the actual nearest neighbors and the topological distances in the spanning tree.
- *
- * @param gp A GraphProperties object.
- * @param v The id of a vertex / data point.
- * @return std::vector<std::tuple<uint32_t, float, uint32_t>>
- */
+   * @brief Calculates the quality of the vertex based on the actual nearest neighbors and the topological distances in the spanning tree.
+   *
+   * @param gp A GraphProperties object.
+   * @param v The id of a vertex / data point.
+   * @return std::vector<std::tuple<uint32_t, float, uint32_t>>
+   */
   std::vector<std::tuple<uint32_t, float, uint32_t>>
   VertexQuality(GraphProperties &gp, uint32_t v);
 
   /**
- * @brief Calculates the mean quality of all vertices based on the actual nearest neighbors and the topological distances in the spanning tree.
- *
- * @param gp A GraphProperties object.
- * @return std::vector<float>
- */
+   * @brief Calculates the mean quality of all vertices based on the actual nearest neighbors and the topological distances in the spanning tree.
+   *
+   * @param gp A GraphProperties object.
+   * @return std::vector<float>
+   */
   std::vector<float>
   MeanQuality(GraphProperties &gp);
 
   /**
- * @brief Gets the topological distances of a vertex to all other vertices.
- *
- * @param gp A GraphProperties object.
- * @param v The id of a vertex / data point.
- * @return std::vector<uint32_t>
- */
+   * @brief Gets the topological distances of a vertex to all other vertices.
+   *
+   * @param gp A GraphProperties object.
+   * @param v The id of a vertex / data point.
+   * @return std::vector<uint32_t>
+   */
   std::vector<uint32_t>
   GetTopologicalDistances(GraphProperties &gp, uint32_t v);
 
   /**
- * @brief Creates an edge list from x, y coordinates and edge indices.
- *
- * @param x The x coordinates
- * @param y The y coordinates
- * @param s The indices of the from vertices
- * @param t The indices of the to vertices
- * @return std::tuple<std::vector<float>, std::vector<float>,
- * std::vector<float>, std::vector<float>>
- */
+   * @brief Creates an edge list from x, y coordinates and edge indices.
+   *
+   * @param x The x coordinates
+   * @param y The y coordinates
+   * @param s The indices of the from vertices
+   * @param t The indices of the to vertices
+   * @return std::tuple<std::vector<float>, std::vector<float>,
+   * std::vector<float>, std::vector<float>>
+   */
   std::tuple<std::vector<float>,
              std::vector<float>,
              std::vector<float>,
