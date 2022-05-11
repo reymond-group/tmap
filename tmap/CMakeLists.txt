@@ -13,8 +13,8 @@ if(MSVC)
     # set(CMAKE_CXX_FLAGS_DEBUG "/O2 /permissive /std:c++17")
     # set(CMAKE_CXX_FLAGS_RELEASE "/O2 /permissive /std:c++17 /wd4068 /wd4305 /wd4267 /wd4244")
 else()
-    set(CMAKE_CXX_FLAGS_DEBUG "-O3 -funroll-loops -fopenmp")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -funroll-loops -fopenmp")
+    set(CMAKE_CXX_FLAGS_DEBUG "-O2 -fopenmp")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O2 -fopenmp")
 endif(MSVC)
 
 
