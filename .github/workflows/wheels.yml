@@ -17,9 +17,9 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.5.0
         with:
-          package-dir: ./tmap
-          output-dir: ./tmap/wheelhouse
+          package-dir: ./
+          output-dir: ./wheelhouse
 
       - uses: actions/upload-artifact@v2
         with:
-          path: ./tmap/wheelhouse/*.whl
+          path: ./wheelhouse/*.whl
