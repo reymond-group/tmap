@@ -1,29 +1,49 @@
 import _tmap as tm
 from typing import Iterable, List, Tuple
 
-import attr
 from tmap.core import TMAPEmbedding
 
 
 class BaseLayoutGenerator:
-    create_mst: bool = True
-    keep_knn: bool = False
-    k: int = 10
-    kc: int = 10
-    fme_iterations: int = 100
-    fme_threads: int = 4
-    fme_precision: int = 4
-    sl_repeats: int = 1
-    sl_extra_scaling_steps: int = 2
-    sl_scaling_min: float = 1.0
-    sl_scaling_max: float = 1.0
-    sl_scaling_type: tm.ScalingType = tm.ScalingType.RelativeToDrawing
-    mmm_repeats: int = 1
-    placer: tm.Placer = tm.Placer.Barycenter
-    merger: tm.Merger = tm.LocalBiconnected
-    merger_factor: float = 2.0
-    merger_adjustment: int = 0
-    node_size: float = 1.0 / 65.0
+    def __init__(
+        self,
+        create_mst: bool = True,
+        keep_knn: bool = False,
+        k: int = 10,
+        kc: int = 10,
+        fme_iterations: int = 100,
+        fme_threads: int = 4,
+        fme_precision: int = 4,
+        sl_repeats: int = 1,
+        sl_extra_scaling_steps: int = 2,
+        sl_scaling_min: float = 1.0,
+        sl_scaling_max: float = 1.0,
+        sl_scaling_type: tm.ScalingType = tm.ScalingType.RelativeToDrawing,
+        mmm_repeats: int = 1,
+        placer: tm.Placer = tm.Placer.Barycenter,
+        merger: tm.Merger = tm.LocalBiconnected,
+        merger_factor: float = 2.0,
+        merger_adjustment: int = 0,
+        node_size: float = 1.0 / 65.0,
+    ) -> None:
+        self.create_mst = create_mst
+        self.keep_knn = keep_knn
+        self.k = k
+        self.kc = kc
+        self.fme_iterations = fme_iterations
+        self.fme_threads = fme_threads
+        self.fme_precision = fme_precision
+        self.sl_repeats = sl_repeats
+        self.sl_extra_scaling_steps = sl_extra_scaling_steps
+        self.sl_scaling_min = sl_scaling_min
+        self.sl_scaling_max = sl_scaling_max
+        self.sl_scaling_type = sl_scaling_type
+        self.mmm_repeats = mmm_repeats
+        self.placer = placer
+        self.merger = merger
+        self.merger_factor = merger_factor
+        self.merger_adjustment = merger_adjustment
+        self.node_size = node_size
 
     def layout(self, X: Iterable, create_mst: bool, keep_knn: bool) -> TMAPEmbedding:
         raise NotImplementedError()

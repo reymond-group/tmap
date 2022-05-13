@@ -3,11 +3,6 @@ import tmap as tm
 import numpy as np
 import matplotlib.pyplot as plt
 
-# import s_gd2
-#  = [0,1,2,3,4]
-# J = [1,2,3,4,0]
-# X = Is_gd2.layout(, J)
-
 
 def random_vectors(n: int = 10, dims=4096) -> np.ndarray:
     vecs = []
@@ -28,7 +23,9 @@ def main():
     te = tm.embed(
         data,
         # layout_generator=tm.layout_generators.AnnoyLayoutGenerator(),
-        layout_generator=tm.layout_generators.BuiltinLayoutGenerator(),
+        layout_generator=tm.layout_generators.BuiltinLayoutGenerator(
+            merger=tm.Merger.EdgeCover
+        ),
         keep_knn=True,
     )
 
