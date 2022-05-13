@@ -1,11 +1,9 @@
-import attr
 from typing import Dict, Any, Iterable
 from tmap.core import TMAPEmbedding
 from _tmap import Minhash, LSHForest, VectorUchar, layout_from_lsh_forest
 from .base_layout_generator import BaseLayoutGenerator
 
 
-@attr.s(auto_attribs=True)
 class BuiltinLayoutGenerator(BaseLayoutGenerator):
     n_permutations: int = 2048
     n_trees: int = 128

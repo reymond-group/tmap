@@ -1,13 +1,11 @@
 import _tmap as tm
-from abc import ABC, abstractmethod
 from typing import Iterable, List, Tuple
 
 import attr
 from tmap.core import TMAPEmbedding
 
 
-@attr.s(auto_attribs=True)
-class BaseLayoutGenerator(ABC):
+class BaseLayoutGenerator:
     create_mst: bool = True
     keep_knn: bool = False
     k: int = 10
@@ -27,7 +25,6 @@ class BaseLayoutGenerator(ABC):
     merger_adjustment: int = 0
     node_size: float = 1.0 / 65.0
 
-    @abstractmethod
     def layout(self, X: Iterable, create_mst: bool, keep_knn: bool) -> TMAPEmbedding:
         raise NotImplementedError()
 

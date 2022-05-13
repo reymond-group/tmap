@@ -1,14 +1,12 @@
 # This is an optional feature
 try:
     from typing import Iterable, Callable
-    import attr
     import tmap as tm
     from tmap.core import TMAPEmbedding
     from .base_layout_generator import BaseLayoutGenerator
     from scipy.spatial.distance import cosine as cosine_distance
     from annoy import AnnoyIndex
 
-    @attr.s(auto_attribs=True)
     class AnnoyLayoutGenerator(BaseLayoutGenerator):
         n_trees: int = 10
         metric: str = "angular"
