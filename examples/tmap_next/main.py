@@ -24,7 +24,7 @@ def random_vectors(n: int = 10, dims=4096) -> np.ndarray:
 
 
 def main():
-    data = random_vectors(1000)
+    data = random_vectors(100)
     te = tm.embed(
         data,
         # layout_generator=tm.layout_generators.AnnoyLayoutGenerator(),
