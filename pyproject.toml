@@ -9,8 +9,8 @@ dependencies = ["attrs", 'matplotlib']
 dynamic = ["version"]
 
 [tool.cibuildwheel]
-# Skip 32-bit builds, musl build
-skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*", "*-cp*"]
+# Skip 32-bit builds, musl build, and pypy builds
+skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*", "*pypy*"]
 
 
 [tool.cibuildwheel.linux]
