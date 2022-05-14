@@ -10,7 +10,7 @@ dynamic = ["version"]
 
 [tool.cibuildwheel]
 # Skip 32-bit builds, musl build
-skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*"]
+skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*", "*-cp*"]
 
 
 [tool.cibuildwheel.linux]
