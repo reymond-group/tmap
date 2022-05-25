@@ -1,4 +1,4 @@
-from typing import Optional, Dict, Any
+from typing import Iterable, Optional, Dict, Any
 from matplotlib import pyplot as plt
 from tmap.core import TMAPEmbedding
 from matplotlib.axes import Axes
@@ -10,6 +10,7 @@ def plot(
     ax: Optional[Axes] = None,
     draw_edges: bool = True,
     show: bool = False,
+    aspect: str = "equal",
     line_kws: Dict[str, Any] = None,
     scatter_kws: Dict[str, Any] = None,
 ):
@@ -26,6 +27,7 @@ def plot(
             ax.plot([line.x1, line.x2], [line.y1, line.y2], zorder=1, **line_kws)
 
     ax.scatter(tmap_embedding.x, tmap_embedding.y, zorder=2, **scatter_kws)
+    ax.set_aspect(aspect)
 
     if show:
         plt.show()
