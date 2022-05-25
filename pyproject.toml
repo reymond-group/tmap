@@ -5,7 +5,7 @@ readme = "README.md"
 # keywords = ["one", "two"]
 # license = { text = "BSD 3-Clause License" }
 # classifiers = ["Framework :: Django", "Programming Language :: Python :: 3"]
-dependencies = ["attrs", 'matplotlib']
+dependencies = ["matplotlib", "annoy ~= 1.17.0"]
 dynamic = ["version"]
 
 [tool.cibuildwheel]
