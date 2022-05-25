@@ -1,5 +1,5 @@
 [project]
-name = "tmap"
+name = "tmap-viz"
 description = "A Python package for visualizing large, high-dimensional data sets."
 readme = "README.md"
 # keywords = ["one", "two"]

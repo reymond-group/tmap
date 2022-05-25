@@ -89,7 +89,7 @@ class CMakeBuild(build_ext):
 
 
 setup(
-    name="tmap",
+    name="tmap-viz",
     version="1.0.15",
     author="Daniel Probst",
     author_email="daenuprobst@gmail.com",
