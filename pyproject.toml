@@ -19,6 +19,8 @@ maintainers = [
 skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
 
 [tool.cibuildwheel.linux]
+# Build `aarch64` (arm64) and `amd64` on linux
+archs = ["x86_64", "aarch64"]
 before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
