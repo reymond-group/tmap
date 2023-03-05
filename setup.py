@@ -90,7 +90,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name="tmap",
-    version="1.0.11",
+    version="1.0.12",
     author="Daniel Probst",
     author_email="daenuprobst@gmail.com",
     description="A Python package for visualizing large, high-dimensional data sets.",
