@@ -7,6 +7,12 @@ readme = "README.md"
 # classifiers = ["Framework :: Django", "Programming Language :: Python :: 3"]
 dependencies = ["matplotlib", "annoy ~= 1.17.0"]
 dynamic = ["version"]
+authors = [
+  {"name" = "Daniel Probst", "email" = "daenuprobst@gmail.com"},
+]
+maintainers = [
+  {"name" = "Frank Harrison", "email" = "doublethefish@gmail.com"},
+]
 
 [tool.cibuildwheel]
 # Skip 32-bit builds, musl build, and pypy builds
