@@ -42,7 +42,7 @@ using energybased::fmmm::numexcept;
 
 FMMMLayout::FMMMLayout()
 {
-	initialize_all_options();
+	resetOptions();
 }
 
 
@@ -260,7 +260,7 @@ void FMMMLayout::call_POSTPROCESSING_step(
 }
 
 
-void FMMMLayout::initialize_all_options()
+void FMMMLayout::resetOptions()
 {
 	//setting high level options
 	useHighLevelOptions(false);
@@ -325,19 +325,6 @@ void FMMMLayout::initialize_all_options()
 
 void FMMMLayout::update_low_level_options_due_to_high_level_options_settings()
 {
-	FMMMOptions::PageFormatType pf = pageFormat();
-	double uel = unitEdgeLength();
-	bool nip = newInitialPlacement();
-	FMMMOptions::QualityVsSpeed qvs = qualityVersusSpeed();
-
-	//update
-	initialize_all_options();
-	useHighLevelOptions(true);
-	pageFormat(pf);
-	unitEdgeLength(uel);
-	newInitialPlacement(nip);
-	qualityVersusSpeed(qvs);
-
 	switch (pageFormat()) {
 	case FMMMOptions::PageFormatType::Square:
 		pageRatio(1.0);

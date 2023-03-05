@@ -1,0 +1,64 @@
+[project]
+name = "tmap-viz"
+description = "A Python package for visualizing large, high-dimensional data sets."
+readme = "README.md"
+# keywords = ["one", "two"]
+# license = { text = "BSD 3-Clause License" }
+# classifiers = ["Framework :: Django", "Programming Language :: Python :: 3"]
+dependencies = ["matplotlib", "annoy ~= 1.17.0"]
+dynamic = ["version"]
+
+[tool.cibuildwheel]
+# Skip 32-bit builds, musl build, and pypy builds
+skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*", "*pypy*"]
+
+
+[tool.cibuildwheel.linux]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
+  make -j4 && \
+  make install && \
+  cd .. && \
+  rm -r build\
+  """
+
+[tool.cibuildwheel.macos]
+before-all = ["brew install libomp"]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=ON && \
+  make -j4 && \
+  make install && \
+  cd .. && \
+  rm -r build\
+  """
+repair-wheel-command = [
+  "DYLD_LIBRARY_PATH=/usr/local/lib delocate-listdeps {wheel}",
+  "DYLD_LIBRARY_PATH=/usr/local/lib delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel}",
+]
+
+[tool.cibuildwheel.macos.environment]
+LDFLAGS = "-L/usr/local/lib"
+CFLAGS = "-I/usr/local/include"
+CXX = "/usr/local/opt/llvm/bin/clang++"
+CC = "/usr/local/opt/llvm/bin/clang"
+
+[tool.cibuildwheel.windows]
+before-build = """\
+  cd ./ogdf-conda/src && \
+  mkdir build && \
+  cd build && \
+  cmake .. -DCMAKE_GENERATOR="Visual Studio 16 2019" -DCMAKE_INSTALL_PREFIX=C:/ogdf/ -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
+  cmake --build . --config Release --target install -- /m && \
+  cd .. && \
+  rmdir /Q /S build\
+  """
+
+[tool.cibuildwheel.windows.environment]
+LDFLAGS = "-LC:/ogdf/lib"
+CFLAGS = "-IC:/ogdf/include"
