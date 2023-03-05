@@ -34,13 +34,13 @@ before-build = """\
 before-all = ["brew install libomp"]
 before-build = """\
   cd ./ogdf-conda/src && \
-  mkdir build && \
+  mkdir -p build && \
   cd build && \
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=ON && \
   make -j4 && \
   make install && \
   cd .. && \
-  rm -r build\
+  rm -r build \
   """
 repair-wheel-command = [
   "DYLD_LIBRARY_PATH=/usr/local/lib delocate-listdeps {wheel}",
