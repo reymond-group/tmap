@@ -33,6 +33,9 @@ before-build = """\
   """
 
 [tool.cibuildwheel.macos]
+# Build `universal2` which contains `arm64` and `intel` wheels but only works with
+# pip 20.3+
+archs = ["universal2"]
 before-all = ["brew install libomp"]
 before-build = """\
   cd ./ogdf-conda/src && \
