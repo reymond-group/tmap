@@ -34,9 +34,9 @@ before-build = """\
 LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
 
 [tool.cibuildwheel.macos]
-# Build `universal2` which contains `arm64` and `intel` wheels but only works with
-# pip 20.3+
-archs = ["universal2"]
+# For now build `x86_64` and `arm64` instead of `universal2` because we currently do
+# not build /usr/local/lib/libOGDF.dylib under `arm64` for some reason.
+archs = ["x86_64", "arm64"]
 before-all = ["brew install libomp"]
 before-build = """\
   mkdir -p $LIBOGDF_INSTALL_PATH && \
