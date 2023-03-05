@@ -60,7 +60,7 @@ class CMakeBuild(build_ext):
             cmake_args += [
                 "-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
             ]
-            cmake_args += ["-G", "Visual Studio 16 2019"]
+            cmake_args += ["-G", "Visual Studio 17 2022"]
             cmake_args += ["-A", "x64"]
             cmake_args += ["-T", "ClangCL"]
             build_args += ["--", "/m"]
