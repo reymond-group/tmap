@@ -18,7 +18,7 @@ before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_BUILD_TYPE=Debug -DOGDF_MEMORY_MANAGER=MALLOC_TS -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
+  cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
   make -j4 && \
   make install && \
   cd .. && \
