@@ -33,12 +33,13 @@ before-build = """\
 [tool.cibuildwheel.macos]
 before-all = ["brew install libomp"]
 before-build = """\
+  mkdir -p $LIBOGDF_INSTALL_PATH && \
   cd ./ogdf-conda/src && \
   mkdir -p build && \
   cd build && \
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DCMAKE_INSTALL_PREFIX=$LIBOGDF_INSTALL_PATH \
         -DBUILD_SHARED_LIBS=ON \
         && \
   make -j4 && \
@@ -52,8 +53,10 @@ repair-wheel-command = [
 ]
 
 [tool.cibuildwheel.macos.environment]
-LDFLAGS = "-L$(brew --prefix)/lib"
-CFLAGS = "-I$(brew --prefix)/include"
+LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
+LDFLAGS = "-L$(brew --prefix)/lib -L$LIBOGDF_INSTALL_PATH/lib"
+CFLAGS = "-I$(brew --prefix)/include -I$LIBOGDF_INSTALL_PATH/include"
+CPPFLAGS = "$CFLAGS"
 CXX="$(brew --prefix llvm)/bin/clang++"
 CC="$(brew --prefix llvm)/bin/clang"
 
