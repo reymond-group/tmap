@@ -778,7 +778,6 @@ tmap::LayoutInternal(EdgeWeightedGraph<float> &g,
   {
     x[i] = ga.x(v);
     y[i] = ga.y(v);
-    std::cout << x[i] << std::endl;
     i++;
   }
 
