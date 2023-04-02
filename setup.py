@@ -44,6 +44,7 @@ class CMakeBuild(build_ext):
         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
         cmake_args = [
             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + extdir,
+            "-DCMAKE_OSX_ARCHITECTURES=\"x86_64;arm64\"",
             "-DPYTHON_EXECUTABLE=" + sys.executable,
             "-DPYBIND11_CPP_STANDARD=/std:c++17",
         ]
