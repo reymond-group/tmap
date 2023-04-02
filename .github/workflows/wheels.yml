@@ -1,3 +1,4 @@
+## IMPORTANT: the configuration for cibuildwheel is kept in pyproject.toml
 name: wheels
 
 on: [push, pull_request]
@@ -34,7 +35,6 @@ jobs:
       fail-fast: false
       matrix:
         include: ${{ fromJson(needs.generate-wheels-matrix.outputs.include) }}
-
     steps:
       - uses: actions/checkout@v2
 

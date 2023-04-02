@@ -16,8 +16,7 @@ maintainers = [
 
 [tool.cibuildwheel]
 # Skip 32-bit builds, musl build, and pypy builds
-skip = ["*-win32", "*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
-
+skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
 
 [tool.cibuildwheel.linux]
 before-build = """\
@@ -35,13 +34,17 @@ before-build = """\
 before-all = ["brew install libomp"]
 before-build = """\
   cd ./ogdf-conda/src && \
-  mkdir build && \
+  mkdir -p build && \
   cd build && \
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=ON && \
+  cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DBUILD_SHARED_LIBS=ON \
+        && \
   make -j4 && \
   make install && \
   cd .. && \
-  rm -r build\
+  rm -r build \
   """
 repair-wheel-command = [
   "DYLD_LIBRARY_PATH=/usr/local/lib delocate-listdeps {wheel}",
@@ -55,6 +58,7 @@ CXX = "/usr/local/opt/llvm/bin/clang++"
 CC = "/usr/local/opt/llvm/bin/clang"
 
 [tool.cibuildwheel.windows]
+archs = ["AMD64"]
 before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
