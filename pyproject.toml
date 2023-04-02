@@ -17,6 +17,7 @@ maintainers = [
 [tool.cibuildwheel]
 # Skip 32-bit builds, musl build, and pypy builds
 skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
+build = "cp310-*"
 
 [tool.cibuildwheel.linux]
 # Build `aarch64` (arm64) and `amd64` on linux
