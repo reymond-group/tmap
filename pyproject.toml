@@ -43,6 +43,7 @@ before-build = """\
   cd build && \
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" \
         -DCMAKE_INSTALL_PREFIX=/usr/local \
         -DBUILD_SHARED_LIBS=ON \
         && \
