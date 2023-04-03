@@ -9,6 +9,9 @@ endif(MSVC)
 
 project(_tmap)
 
+# Put LIBOGDF on the include- and lib-path
+include_directories($ENV{LIBOGDF_INSTALL_PATH}/include)
+link_directories($ENV{LIBOGDF_INSTALL_PATH}/lib)
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /O2")
@@ -43,27 +46,6 @@ else()
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fopenmp")
   endif()
 endif(MSVC)
-
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    SET(OGDF_INCLUDE "/usr/local/include")
-    SET(OGDF_LIB "/usr/local/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-elseif(WIN32)
-    SET(OGDF_INCLUDE "C:/ogdf/include")
-    SET(OGDF_LIB "C:/ogdf/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-else()
-    SET(OGDF_INCLUDE "/include")
-    SET(OGDF_LIB "/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-endif()
 
 find_package(OpenMP REQUIRED)
 

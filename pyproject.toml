@@ -53,9 +53,6 @@ repair-wheel-command = [
 
 [tool.cibuildwheel.macos.environment]
 LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
-LDFLAGS = "-L$(brew --prefix)/lib -L$LIBOGDF_INSTALL_PATH/lib"
-CFLAGS = "-I$(brew --prefix)/include -I$LIBOGDF_INSTALL_PATH/include"
-CPPFLAGS = "$CFLAGS"
 CXX="$(brew --prefix llvm)/bin/clang++"
 CC="$(brew --prefix llvm)/bin/clang"
 
