@@ -23,12 +23,15 @@ before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${LIBOGDF_INSTALL_PATH} -DBUILD_SHARED_LIBS=ON && \
   make -j4 && \
   make install && \
   cd .. && \
   rm -r build\
   """
+
+[tool.cibuildwheel.linux.environment]
+LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
 
 [tool.cibuildwheel.macos]
 before-all = ["brew install libomp"]
