@@ -55,7 +55,6 @@ class CMakeBuild(build_ext):
         build_args = ["--config", cfg]
         num_cores = multiprocessing.cpu_count()
 
-
         if platform.system() == "Windows":
             cmake_args += [
                 "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
