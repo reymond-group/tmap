@@ -44,8 +44,7 @@ before-build = """\
         && \
   make -j4 && \
   make install && \
-  cd .. && \
-  rm -r build \
+  cd ..
   """
 repair-wheel-command = [
   "DYLD_LIBRARY_PATH=$(brew --prefix)/lib delocate-listdeps {wheel}",
