@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 
+import multiprocessing
 import os
 import re
 import sys
@@ -52,6 +53,8 @@ class CMakeBuild(build_ext):
         print(f"Setup.py cfg: {cfg}")
 
         build_args = ["--config", cfg]
+        num_cores = multiprocessing.cpu_count()
+
 
         if platform.system() == "Windows":
             cmake_args += [
@@ -68,10 +71,10 @@ class CMakeBuild(build_ext):
             cmake_args += ["-DOpenMP_C_FLAG=-fopenmp"]
             cmake_args += ["-DOpenMP_CXX_FLAG=-fopenmp"]
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
-            build_args += ["--", "-j2"]
+            build_args += ["--", f"-j{num_cores}"]
         else:
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
-            build_args += ["--", "-j2"]
+            build_args += ["--", f"-j{num_cores}"]
 
         env = os.environ.copy()
         env["CXXFLAGS"] = '{} -DVERSION_INFO=\\"{}\\"'.format(
