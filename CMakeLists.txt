@@ -40,7 +40,7 @@ else()
     set(OpenMP_libiomp5_LIBRARY ${OpenMP_CXX_LIB_NAMES})
   else()
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fopenmp")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -fopenmp")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fopenmp")
   endif()
 endif(MSVC)
 
