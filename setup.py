@@ -55,6 +55,11 @@ class CMakeBuild(build_ext):
         build_args = ["--config", cfg]
         num_cores = multiprocessing.cpu_count()
 
+        env = os.environ.copy()
+        env[
+            "CXXFLAGS"
+        ] = f'{env.get("CXXFLAGS", "")} -DVERSION_INFO="{self.distribution.get_version()}"'
+
         if platform.system() == "Windows":
             cmake_args += [
                 "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}".format(cfg.upper(), extdir)
@@ -75,10 +80,6 @@ class CMakeBuild(build_ext):
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
             build_args += ["--", f"-j{num_cores}"]
 
-        env = os.environ.copy()
-        env["CXXFLAGS"] = '{} -DVERSION_INFO=\\"{}\\"'.format(
-            env.get("CXXFLAGS", ""), self.distribution.get_version()
-        )
         if not os.path.exists(self.build_temp):
             os.makedirs(self.build_temp)
         subprocess.check_call(
