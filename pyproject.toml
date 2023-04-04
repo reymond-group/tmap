@@ -23,52 +23,56 @@ before-build = """\
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_SHARED_LIBS=ON && \
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${LIBOGDF_INSTALL_PATH} -DBUILD_SHARED_LIBS=ON && \
   make -j4 && \
   make install && \
   cd .. && \
   rm -r build\
   """
 
+[tool.cibuildwheel.linux.environment]
+LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
+
 [tool.cibuildwheel.macos]
 before-all = ["brew install libomp"]
 before-build = """\
+  mkdir -p $LIBOGDF_INSTALL_PATH && \
   cd ./ogdf-conda/src && \
   mkdir -p build && \
   cd build && \
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DCMAKE_INSTALL_PREFIX=$LIBOGDF_INSTALL_PATH \
         -DBUILD_SHARED_LIBS=ON \
         && \
   make -j4 && \
   make install && \
-  cd .. && \
-  rm -r build \
+  cd ..
   """
 repair-wheel-command = [
-  "DYLD_LIBRARY_PATH=$(brew --prefix)/lib delocate-listdeps {wheel}",
-  "DYLD_LIBRARY_PATH=$(brew --prefix)/lib delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel}",
+  "DYLD_LIBRARY_PATH=$LIBOGDF_INSTALL_PATH/lib delocate-listdeps {wheel}",
+  "DYLD_LIBRARY_PATH=$LIBOGDF_INSTALL_PATH/lib delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel}",
 ]
 
 [tool.cibuildwheel.macos.environment]
-LDFLAGS = "-L$(brew --prefix)/lib"
-CFLAGS = "-I$(brew --prefix)/include"
+LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
 CXX="$(brew --prefix llvm)/bin/clang++"
 CC="$(brew --prefix llvm)/bin/clang"
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
 before-build = """\
+  echo %LIBOGDF_INSTALL_PATH% && \
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_GENERATOR="Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=C:/ogdf/ -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
+  cmake .. -DCMAKE_GENERATOR="Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=%LIBOGDF_INSTALL_PATH% -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
   cmake --build . --config Release --target install -- /m && \
   cd .. && \
   rmdir /Q /S build\
   """
 
 [tool.cibuildwheel.windows.environment]
-LDFLAGS = "-LC:/ogdf/lib"
-CFLAGS = "-IC:/ogdf/include"
+# NOTE: if building locally you will have to build here or fixup the script to build
+#       into the tmap-viz directory.
+LIBOGDF_INSTALL_PATH="c:/libOGDF"

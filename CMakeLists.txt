@@ -9,36 +9,43 @@ endif(MSVC)
 
 project(_tmap)
 
+# Put LIBOGDF on the include- and lib-path
+include_directories($ENV{LIBOGDF_INSTALL_PATH}/include)
+link_directories($ENV{LIBOGDF_INSTALL_PATH}/lib)
+
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_DEBUG "/O2")
-    set(CMAKE_CXX_FLAGS_RELEASE "/O2")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /O2")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
     # set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /permissive /std:c++17")
     # set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /permissive /std:c++17 /wd4068 /wd4305 /wd4267 /wd4244")
 else()
-    set(CMAKE_CXX_FLAGS_DEBUG "-O2 -fopenmp")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O2 -fopenmp")
+  # Set O2 optimisations, the more stable option
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O2")
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+
+  if(CMAKE_C_COMPILER_ID MATCHES "Clang")
+    set(OpenMP_C "${CMAKE_C_COMPILER}")
+    # set(OpenMP_C_FLAGS "-fopenmp=libomp -Wno-unused-command-line-argument")
+    set(OpenMP_C_FLAGS "-Wno-unused-command-line-argument")
+    set(OpenMP_C_LIB_NAMES "libomp" "libgomp" "libiomp5")
+    set(OpenMP_libomp_LIBRARY ${OpenMP_C_LIB_NAMES})
+    set(OpenMP_libgomp_LIBRARY ${OpenMP_C_LIB_NAMES})
+    set(OpenMP_libiomp5_LIBRARY ${OpenMP_C_LIB_NAMES})
+  endif()
+
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(OpenMP_CXX "${CMAKE_CXX_COMPILER}")
+    #set(OpenMP_CXX_FLAGS "-fopenmp=libomp -Wno-unused-command-line-argument")
+    set(OpenMP_CXX_FLAGS "-Wno-unused-command-line-argument")
+    set(OpenMP_CXX_LIB_NAMES "libomp" "libgomp" "libiomp5")
+    set(OpenMP_libomp_LIBRARY ${OpenMP_CXX_LIB_NAMES})
+    set(OpenMP_libgomp_LIBRARY ${OpenMP_CXX_LIB_NAMES})
+    set(OpenMP_libiomp5_LIBRARY ${OpenMP_CXX_LIB_NAMES})
+  else()
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fopenmp")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fopenmp")
+  endif()
 endif(MSVC)
-
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    SET(OGDF_INCLUDE "/usr/local/include")
-    SET(OGDF_LIB "/usr/local/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-elseif(WIN32)
-    SET(OGDF_INCLUDE "C:/ogdf/include")
-    SET(OGDF_LIB "C:/ogdf/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-else()
-    SET(OGDF_INCLUDE "/include")
-    SET(OGDF_LIB "/lib")
-
-    include_directories(${OGDF_INCLUDE})
-    link_directories(${OGDF_LIB})
-endif()
 
 find_package(OpenMP REQUIRED)
 

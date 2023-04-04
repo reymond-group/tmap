@@ -55,6 +55,13 @@ class CMakeBuild(build_ext):
         build_args = ["--config", cfg]
         num_cores = multiprocessing.cpu_count()
 
+        env = os.environ.copy()
+        env[
+            "CXXFLAGS"
+        ] = f'{env.get("CXXFLAGS", "")} -DVERSION_INFO="{self.distribution.get_version()}"'
+
+        # enable post-command args
+        build_args += ["--"]
 
         if platform.system() == "Windows":
             cmake_args += [
@@ -66,20 +73,23 @@ class CMakeBuild(build_ext):
             cmake_args += ["-G", "Visual Studio 17 2022"]
             cmake_args += ["-A", "x64"]
             cmake_args += ["-T", "ClangCL"]
-            build_args += ["--", "/m"]
+
+            # increase job count on windows
+            build_args += ["/m"]
         elif platform.system() == "Darwin":
             cmake_args += ["-DOpenMP_C_FLAG=-fopenmp"]
             cmake_args += ["-DOpenMP_CXX_FLAG=-fopenmp"]
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
-            build_args += ["--", f"-j{num_cores}"]
+
+            # increase job count on OSX
+            build_args += [f"-j{num_cores}"]
         else:
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
-            build_args += ["--", f"-j{num_cores}"]
 
-        env = os.environ.copy()
-        env["CXXFLAGS"] = '{} -DVERSION_INFO=\\"{}\\"'.format(
-            env.get("CXXFLAGS", ""), self.distribution.get_version()
-        )
+            # increase job count on linux
+            build_args += [f"-j{num_cores}"]
+
+
         if not os.path.exists(self.build_temp):
             os.makedirs(self.build_temp)
         subprocess.check_call(
