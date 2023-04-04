@@ -1,3 +1,4 @@
+# message( FATAL_ERROR "some error")
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -6,6 +7,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 if(MSVC)
     set(CMAKE_GENERATOR_TOOLSET "ClangCL")
 endif(MSVC)
+
+if(DEFINED ENV{ARCHFLAGS})
+  # Parse the cibuildwheel ARCHFLAGS env variable as something we can understand on
+  #  OSX, initially.
+  string(REPLACE "-arch " "" NEW_ARCHFLAGS $ENV{ARCHFLAGS})
+  string(REPLACE " " ";" NEW_ARCHFLAGS "${NEW_ARCHFLAGS}")
+
+  # The following, CMAKE_OSX_ARCHITECTURES, is ignored on non-osx platforms
+  set(CMAKE_OSX_ARCHITECTURES "${NEW_ARCHFLAGS}")
+endif(DEFINED ENV{ARCHFLAGS})
 
 project(_tmap)
 
