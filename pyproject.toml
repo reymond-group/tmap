@@ -62,15 +62,17 @@ CC="$(brew --prefix llvm)/bin/clang"
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
 before-build = """\
+  echo %LIBOGDF_INSTALL_PATH% && \
   cd ./ogdf-conda/src && \
   mkdir build && \
   cd build && \
-  cmake .. -DCMAKE_GENERATOR="Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=C:/ogdf/ -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
+  cmake .. -DCMAKE_GENERATOR="Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=%LIBOGDF_INSTALL_PATH% -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
   cmake --build . --config Release --target install -- /m && \
   cd .. && \
   rmdir /Q /S build\
   """
 
 [tool.cibuildwheel.windows.environment]
-LDFLAGS = "-LC:/ogdf/lib"
-CFLAGS = "-IC:/ogdf/include"
+# NOTE: if building locally you will have to build here or fixup the script to build
+#       into the tmap-viz directory.
+LIBOGDF_INSTALL_PATH="c:/libOGDF"
