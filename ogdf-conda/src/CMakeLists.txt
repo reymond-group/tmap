@@ -4,6 +4,16 @@ project(OGDF-PROJECT CXX)
 set(module_dir "${PROJECT_SOURCE_DIR}/cmake")
 list(INSERT CMAKE_MODULE_PATH 0 "${module_dir}" )
 
+if(DEFINED ENV{ARCHFLAGS})
+  # Parse the cibuildwheel ARCHFLAGS env variable as something we can understand on
+  #  OSX, initially.
+  string(REPLACE "-arch " "" NEW_ARCHFLAGS $ENV{ARCHFLAGS})
+  string(REPLACE " " ";" NEW_ARCHFLAGS "${NEW_ARCHFLAGS}")
+
+  # The following, CMAKE_OSX_ARCHITECTURES, is ignored on non-osx platforms
+  set(CMAKE_OSX_ARCHITECTURES "${NEW_ARCHFLAGS}")
+endif(DEFINED ENV{ARCHFLAGS})
+
 # build type configuration
 set(BUILD_TYPES Debug Release)
 if(CMAKE_CONFIGURATION_TYPES)

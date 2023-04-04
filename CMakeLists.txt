@@ -8,6 +8,16 @@ if(MSVC)
     set(CMAKE_GENERATOR_TOOLSET "ClangCL")
 endif(MSVC)
 
+if(DEFINED ENV{ARCHFLAGS})
+  # Parse the cibuildwheel ARCHFLAGS env variable as something we can understand on
+  #  OSX, initially.
+  string(REPLACE "-arch " "" NEW_ARCHFLAGS $ENV{ARCHFLAGS})
+  string(REPLACE " " ";" NEW_ARCHFLAGS "${NEW_ARCHFLAGS}")
+
+  # The following, CMAKE_OSX_ARCHITECTURES, is ignored on non-osx platforms
+  set(CMAKE_OSX_ARCHITECTURES "${NEW_ARCHFLAGS}")
+endif(DEFINED ENV{ARCHFLAGS})
+
 project(_tmap)
 
 # Put LIBOGDF on the include- and lib-path
