@@ -174,3 +174,6 @@ python-mnist
 
 # wheels
 wheelhouse
+
+# the intermediate build of OGDF
+libOGDF
