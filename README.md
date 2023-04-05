@@ -22,18 +22,17 @@ See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 
 
 ### Availability
-| Language | Operating System       | Status                  |
-| -------- | ---------------------- | ----------------------- |
-| Python   | Linux (x86_64)         | Available               |
-|          | Linux (arm64)          | Unavailable<sup>1</sup> |
-|          | Windows                | Available<sup>2</sup>   |
-|          | macOS (intel)          | Available               |
-|          | macOS (silicon/arm64)  | Unavailable<sup>1</sup> |
-| R        |                        | Unavailable<sup>3</sup> |
+| Language | Operating System | Status                 |
+| -------- | ---------------- | ---------------------- |
+| Python   | Linux            | Available              |
+|          | Windows          | Available<sup>1</sup>  |
+|          | macOS            | Available<sup>2</sup>              |
+| R        |                  | Unvailable<sup>3</sup> |
 
-<span class="small"><sup>1</sup>Arm64 build support is in the works. PRs welcome!</span>
-<span class="small"><sup>2</sup>Works with
-[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>
+<span class="small"><sup>1</sup>Works with
+[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>  
+<span class="small"><sup>2</sup>Pip 20.3+ is required as we build universal2 for M1 support
+[cibuildwheel](https://cibuildwheel.readthedocs.io/en/stable/faq/)\!</span>
 <span class="small"><sup>3</sup>FOSS R developers
 [wanted](https://github.com/reymond-group/tmap)\!</span>
 
