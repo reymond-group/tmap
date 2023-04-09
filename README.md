@@ -26,14 +26,12 @@ See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 | -------- | ---------------- | ---------------------- |
 | Python   | Linux            | Available              |
 |          | Windows          | Available<sup>1</sup>  |
-|          | macOS            | Available<sup>2</sup>              |
-| R        |                  | Unvailable<sup>3</sup> |
+|          | macOS            | Available              |
+| R        |                  | Unvailable<sup>2</sup> |
 
 <span class="small"><sup>1</sup>Works with
-[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>  
-<span class="small"><sup>2</sup>Pip 20.3+ is required as we build universal2 for M1 support
-[cibuildwheel](https://cibuildwheel.readthedocs.io/en/stable/faq/)\!</span>
-<span class="small"><sup>3</sup>FOSS R developers
+[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)</span>
+<span class="small"><sup>2</sup>FOSS R developers
 [wanted](https://github.com/reymond-group/tmap)\!</span>
 
 ### Installation
