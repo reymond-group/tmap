@@ -38,6 +38,8 @@ LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
 # not build /usr/local/lib/libOGDF.dylib under `arm64` for some reason.
 archs = ["x86_64", "arm64"]
 before-all = ["brew install libomp"]
+# NOTE: we delete build/ here as we're build multiple wheels and we support
+#       different SIMD commands on different platforms.
 before-build = """\
   mkdir -p $LIBOGDF_INSTALL_PATH && \
   cd ./ogdf-conda/src && \
@@ -50,7 +52,8 @@ before-build = """\
         && \
   make -j4 && \
   make install && \
-  cd ..
+  cd .. && \
+  rm -rf build \
   """
 repair-wheel-command = [
   "DYLD_LIBRARY_PATH=$LIBOGDF_INSTALL_PATH/lib delocate-listdeps {wheel}",
