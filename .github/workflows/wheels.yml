@@ -40,6 +40,14 @@ jobs:
       # Used to host cibuildwheel
       - uses: actions/setup-python@v3
 
+      - name: OSX Arm64 env variables
+        if: ${{ contains(matrix.only, 'macosx_arm64') }}
+        run: |
+            echo 'CMAKE_OSX_ARCHITECTURES=arm64' >> $GITHUB_ENV
+
+      - name: Env variable ${{ matrix.only }} for build
+        run: echo "CIBW_BUILD=${{ matrix.only }}"  >> $GITHUB_ENV
+
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel==2.11.2
 
