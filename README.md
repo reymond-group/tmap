@@ -7,7 +7,7 @@ See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 ## Notebook
 
 ## Examples
-<img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/drugbank/drugbank.jpg" height="290px"/>  <img src="https://raw.githubusercontent.com/reymond-group/tmap/master/tmap/examples/mnist/mnist.jpg" height="290px" />
+<img src="examples/drugbank/drugbank.jpg" height="290px"/>  <img src="examples/mnist/mnist.jpg" height="290px" />
 
 | Name | Description |   |
 | ---- | ----------- | - |
