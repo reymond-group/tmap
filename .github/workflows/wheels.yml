@@ -10,6 +10,7 @@ jobs:
     outputs:
       include: ${{ steps.set-matrix.outputs.include }}
     steps:
+      - uses: actions/checkout@v4
       - name: Install cibuildwheel
         run: pipx install cibuildwheel==2.22.0
       - id: set-matrix
