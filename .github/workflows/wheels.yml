@@ -10,7 +10,6 @@ jobs:
     outputs:
       include: ${{ steps.set-matrix.outputs.include }}
     steps:
-      - uses: actions/checkout@v3
       - name: Install cibuildwheel
         run: pipx install cibuildwheel==2.22.0
       - id: set-matrix
@@ -20,7 +19,9 @@ jobs:
               cibuildwheel --print-build-identifiers --platform linux \
               | jq -nRc '{"only": inputs, "os": "ubuntu-latest"}' \
               && cibuildwheel --print-build-identifiers --platform macos \
-              | jq -nRc '{"only": inputs, "os": "macos-latest"}' \
+              | jq -nRc '{"only": inputs, "os": "macos-13"}' \
+              && cibuildwheel --print-build-identifiers --platform macos \
+              | jq -nRc '{"only": inputs, "os": "macos-14"}' \
               && cibuildwheel --print-build-identifiers --platform windows \
               | jq -nRc '{"only": inputs, "os": "windows-latest"}'
             } | jq -sc
@@ -35,7 +36,7 @@ jobs:
       matrix:
         include: ${{ fromJson(needs.generate-wheels-matrix.outputs.include) }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22.0
@@ -44,7 +45,7 @@ jobs:
           output-dir: ./wheelhouse
           only: ${{ matrix.only }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
-
