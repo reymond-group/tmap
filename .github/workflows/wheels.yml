@@ -48,6 +48,7 @@ jobs:
         with:
           package-dir: ./
           output-dir: ./wheelhouse
+          only: ${{ matrix.only }}
 
       - uses: actions/upload-artifact@v3
         with:
