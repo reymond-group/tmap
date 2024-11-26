@@ -41,6 +41,8 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22.0
+        with:
+          only: {{ matrix.only }}
 
       - uses: actions/upload-artifact@v4
         with:
