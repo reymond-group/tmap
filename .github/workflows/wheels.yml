@@ -1,7 +1,7 @@
 ## IMPORTANT: the configuration for cibuildwheel is kept in pyproject.toml
 name: wheels
 
-on: [push, pull_request]
+on: [push]  # on: [push, pull_request]
 
 jobs:
   generate-wheels-matrix:
@@ -42,7 +42,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22.0
         with:
-          only: {{ matrix.only }}
+          only: ${{ matrix.only }}
 
       - uses: actions/upload-artifact@v4
         with:
