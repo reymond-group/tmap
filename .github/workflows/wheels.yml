@@ -1,7 +1,7 @@
 ## IMPORTANT: the configuration for cibuildwheel is kept in pyproject.toml
 name: wheels
 
-on: [push]  # on: [push, pull_request]
+on: [push, pull_request]
 
 jobs:
   generate-wheels-matrix:
