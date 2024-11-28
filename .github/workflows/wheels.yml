@@ -58,7 +58,10 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.only }}
+          # We need the subdir to workaround updload-artifact@v4 erroring on
+          # duplicate path creations, which is very annoying. There is probably
+          # a better way of doing this, or one will be added soon.
+          name: tmap-wheels-for-${{ matrix.only }}
           path: ./wheelhouse/*.whl
 
   collate-wheels:
