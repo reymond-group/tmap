@@ -22,8 +22,12 @@ maintainers = [
 # tmap's developement in the future.
 # This may change, and probably should.
 build = "cp3*"
-# Skip 32-bit builds, musl build, and pypy builds
-skip = ["*-manylinux_i686", "*-musllinux_*", "pp*"]
+# Skip
+# - 32-bit builds
+# - musl build
+# - pypy builds
+# - arm64 for build for python 3.8 and earlier
+skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "cp3{6,7,8}*arm64", "cp38*arm64" ]
 
 [tool.cibuildwheel.linux]
 before-build = """\
