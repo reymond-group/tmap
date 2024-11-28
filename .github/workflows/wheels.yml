@@ -76,15 +76,13 @@ jobs:
         with:
           path: wheelhouse
 
-      - name: Compress wheels
+      - name: Flatten wheels
         run: |
-          find .
-          tar -czvf wheels-archive.tar.gz -C wheelhouse .
-          zip -r wheels-archive.zip wheelhouse
+          mv $(find wheelhouse -type f) wheelhouse
+          find wheelhouse -empty -type d -delete
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wheels-archive
+          name: wheelhouse
           path: |
-            wheels-archive.tar.gz
-            wheels-archive.zip
+            wheelhouse/*.whl
