@@ -1,7 +1,13 @@
 ## IMPORTANT: the configuration for cibuildwheel is kept in pyproject.toml
 name: wheels
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      # on push, only build on wip chore/cicd branches so we can test in those
+      # contexts without triggering pull-requests.
+      - chore/cicd/*
+  pull_request:
 
 jobs:
   generate-wheels-matrix:
