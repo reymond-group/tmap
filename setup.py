@@ -111,6 +111,5 @@ setup(
     package_dir={"": "src"},
     ext_modules=[CMakeExtension("_tmap")],
     cmdclass=dict(build_ext=CMakeBuild),
-    test_suite="tests",
     zip_safe=False,
 )
