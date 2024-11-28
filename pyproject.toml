@@ -15,8 +15,15 @@ maintainers = [
 ]
 
 [tool.cibuildwheel]
+# Build all available c-python versions, for now.
+# Define a range of python version, going as far back as possiblem because
+# often the Phd-type developer that use tools like tmap don't update their tool
+# chains very often, supporting them means that they might better support
+# tmap's developement in the future.
+# This may change, and probably should.
+build = "cp3*"
 # Skip 32-bit builds, musl build, and pypy builds
-skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
+skip = ["*-manylinux_i686", "*-musllinux_*", "pp*"]
 
 [tool.cibuildwheel.linux]
 before-build = """\

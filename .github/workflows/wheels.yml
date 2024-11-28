@@ -21,6 +21,12 @@ jobs:
         run: pipx install cibuildwheel==2.22.0
       - id: set-matrix
         run: |
+          # Some notes on this:
+          # - macos-13 is a amd64 builder.
+          # - maxos-14 is the default builder which is arm64, probably because
+          #   it's more effecient.
+          # - We don't yet specifiy arm64 versions on linux, even though AWS
+          #   provides cheaper ec2 instaces running on arm64 cores. /FIXME
           MATRIX=$(
             {
               cibuildwheel --print-build-identifiers --platform linux \
