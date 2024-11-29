@@ -22,11 +22,12 @@ See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 
 
 ### Availability
-| Language | Operating System | Status                 |
+| Language | Operating System | Supported Python versions |
 | -------- | ---------------- | ---------------------- |
-| Python   | Linux            | Available              |
-|          | Windows          | Available<sup>1</sup>  |
-|          | macOS            | Available              |
+| Python   | Linux            | CPython 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13              |
+|          | Windows          | CPython 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13<sup>1</sup>  |
+|          | macOS amd64      | CPython 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13              |
+|          | macOS arm        | CPython 3.9, 3.10, 3.11, 3.12, 3.13              |
 | R        |                  | Unvailable<sup>2</sup> |
 
 <span class="small"><sup>1</sup>Works with
