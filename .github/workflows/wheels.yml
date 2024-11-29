@@ -78,6 +78,7 @@ jobs:
 
       - name: Compress wheels
         run: |
+          find .
           tar -czvf wheels-archive.tar.gz -C wheelhouse .
           zip -r wheels-archive.zip wheelhouse
 
