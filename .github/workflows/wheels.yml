@@ -7,6 +7,7 @@ on:
       # on push, only build on wip chore/cicd branches so we can test in those
       # contexts without triggering pull-requests.
       - chore/cicd/*
+      - ogdf_submodule
   pull_request:
 
 jobs:
