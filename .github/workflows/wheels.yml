@@ -30,10 +30,6 @@ jobs:
           #   it's more effecient.
           # - We don't yet specifiy arm64 versions on linux, even though AWS
           #   provides cheaper ec2 instaces running on arm64 cores. /FIXME
-          # Testing linux and macos builds only
-          # \
-          #     && cibuildwheel --print-build-identifiers --platform windows \
-          #     | jq -nRc '{"only": inputs, "os": "windows-latest"}'
           MATRIX=$(
             {
               cibuildwheel --print-build-identifiers --platform linux \
@@ -41,7 +37,9 @@ jobs:
               && cibuildwheel --print-build-identifiers --platform macos --arch x86_64 \
               | jq -nRc '{"only": inputs, "os": "macos-13"}' \
               && cibuildwheel --print-build-identifiers --platform macos --arch arm64 \
-              | jq -nRc '{"only": inputs, "os": "macos-14"}'
+              | jq -nRc '{"only": inputs, "os": "macos-14"}' \
+              && cibuildwheel --print-build-identifiers --platform windows \
+              | jq -nRc '{"only": inputs, "os": "windows-latest"}'
             } | jq -sc
           )
           echo "include=$MATRIX" >> $GITHUB_OUTPUT
