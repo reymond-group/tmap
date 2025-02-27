@@ -1,0 +1,3 @@
+[submodule "ogdf"]
+	path = ogdf
+	url = https://github.com/ogdf/ogdf.git
