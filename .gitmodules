@@ -1,3 +1,7 @@
 [submodule "ogdf"]
-	path = ogdf
+	path = extern/ogdf
 	url = https://github.com/ogdf/ogdf.git
+[submodule "extern/pybind11"]
+	path = extern/pybind11
+	url = https://github.com/pybind/pybind11.git
+	branch = stable
