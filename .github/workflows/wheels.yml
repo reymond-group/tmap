@@ -7,7 +7,9 @@ on:
       # on push, only build on wip chore/cicd branches so we can test in those
       # contexts without triggering pull-requests.
       - chore/cicd/*
+      - ogdf_submodule
   pull_request:
+  workflow_dispatch:
 
 jobs:
   generate-wheels-matrix:
@@ -17,6 +19,8 @@ jobs:
       include: ${{ steps.set-matrix.outputs.include }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Install cibuildwheel
         run: pipx install cibuildwheel==2.22.0
       - id: set-matrix
@@ -50,6 +54,8 @@ jobs:
         include: ${{ fromJson(needs.generate-wheels-matrix.outputs.include) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22.0
@@ -70,6 +76,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Download all wheel artifacts
         uses: actions/download-artifact@v4

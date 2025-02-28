@@ -26,8 +26,10 @@
 #include <ogdf/basic/GraphAttributes.h>
 #include <ogdf/basic/extended_graph_alg.h>
 #include <ogdf/fileformats/GraphIO.h>
+#include <ogdf/graphalg/steiner_tree/EdgeWeightedGraph.h>
 
 // #include <ogdf/energybased/FastMultipoleEmbedder.h>
+#include <ogdf/energybased/multilevel_mixer/ModularMultilevelMixer.h>
 #include <ogdf/energybased/multilevel_mixer/ScalingLayout.h>
 #include <ogdf/energybased/multilevel_mixer/BarycenterPlacer.h>
 #include <ogdf/energybased/multilevel_mixer/CirclePlacer.h>

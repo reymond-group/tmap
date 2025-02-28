@@ -27,11 +27,13 @@ build = "cp3*"
 # - musl build
 # - pypy builds
 # - arm64 for build for python 3.8 and earlier
-skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "cp3{6,7,8}*arm64", "cp38*arm64" ]
+skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "cp38*arm64", "cp3{6,7}*" ]
+test-requires = "pytest"
+test-command = "pytest {project}/tests"
 
 [tool.cibuildwheel.linux]
 before-build = """\
-  cd ./ogdf-conda/src && \
+  cd ./extern/ogdf && \
   mkdir build && \
   cd build && \
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${LIBOGDF_INSTALL_PATH} -DBUILD_SHARED_LIBS=ON && \
@@ -55,7 +57,7 @@ before-all = ["brew install libomp llvm"]
 #       different SIMD commands on different platforms.
 before-build = """\
   mkdir -p $LIBOGDF_INSTALL_PATH && \
-  cd ./ogdf-conda/src && \
+  cd ./extern/ogdf && \
   mkdir -p build && \
   cd build && \
   cmake .. \
@@ -82,7 +84,7 @@ CC="$(brew --prefix llvm)/bin/clang"
 archs = ["AMD64"]
 before-build = """\
   echo %LIBOGDF_INSTALL_PATH% && \
-  cd ./ogdf-conda/src && \
+  cd ./extern/ogdf && \
   mkdir build && \
   cd build && \
   cmake .. -DCMAKE_GENERATOR="Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=%LIBOGDF_INSTALL_PATH% -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release && \
