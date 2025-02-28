@@ -28,6 +28,8 @@ build = "cp3*"
 # - pypy builds
 # - arm64 for build for python 3.8 and earlier
 skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "cp38*arm64", "cp3{6,7}*" ]
+test-requires = "pytest"
+test-command = "pytest {project}/tests"
 
 [tool.cibuildwheel.linux]
 before-build = """\
