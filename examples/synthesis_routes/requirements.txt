@@ -1,0 +1,6 @@
+tmap>=1.0.0
+matplotlib>=3.0.0
+numpy>=1.17.0
+pandas>=1.0.0
+# For Tree Edit Distance calculations
+apted>=1.0.3 
