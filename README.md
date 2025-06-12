@@ -47,3 +47,15 @@ We suggest using faerun to plot the data layed out by tmap. But you can of cours
 pip install faerun
 # pip install matplotlib
 ```
+
+## BIGHAT
+* cd ogdf-conda/src
+* cmake .
+* make -j12
+* mkdir lib
+* cp *.a lib
+* cd ../..
+* python setup.py build
+* python setup.py install # then test that the import works outside this directory
+* python setup.py bdist_wheel
+* # the dist folder has what you need
