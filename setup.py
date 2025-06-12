@@ -80,11 +80,15 @@ class CMakeBuild(build_ext):
             cmake_args += ["-DOpenMP_C_FLAG=-fopenmp"]
             cmake_args += ["-DOpenMP_CXX_FLAG=-fopenmp"]
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
+            env["LIBOGDF_INSTALL_PATH"] = os.path.join(os.path.split(__file__)[0],
+                                                       "ogdf-conda/src")
 
             # increase job count on OSX
             build_args += [f"-j{num_cores}"]
         else:
             cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
+            env["LIBOGDF_INSTALL_PATH"] = os.path.join(os.path.split(__file__)[0],
+                                                       "ogdf-conda/src")
 
             # increase job count on linux
             build_args += [f"-j{num_cores}"]

@@ -3,6 +3,7 @@ project(OGDF-PROJECT CXX)
 
 set(module_dir "${PROJECT_SOURCE_DIR}/cmake")
 list(INSERT CMAKE_MODULE_PATH 0 "${module_dir}" )
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(DEFINED ENV{ARCHFLAGS})
   # Parse the cibuildwheel ARCHFLAGS env variable as something we can understand on
