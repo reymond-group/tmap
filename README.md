@@ -1,3 +1,7 @@
+# For the updated version of TMAP check [TMAP2](https://github.com/afloresep/tmap2) 
+
+This repository is no longer supported. 
+
 # tmap
 tmap is a very fast visualization library for large, high-dimensional data sets. Currently, tmap is available for Python. tmaps graph layouts are based on the [OGDF](https://ogdf.uos.de/) library.
 
