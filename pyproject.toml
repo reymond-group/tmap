@@ -7,16 +7,21 @@ readme = "README.md"
 # classifiers = ["Framework :: Django", "Programming Language :: Python :: 3"]
 dependencies = ["matplotlib", "annoy ~= 1.17.0", "scipy"]
 dynamic = ["version"]
-authors = [
-  {"name" = "Daniel Probst", "email" = "daenuprobst@gmail.com"},
-]
+authors = [{ "name" = "Daniel Probst", "email" = "daenuprobst@gmail.com" }]
 maintainers = [
-  {"name" = "Frank Harrison", "email" = "doublethefish@gmail.com"},
+  { "name" = "Frank Harrison", "email" = "doublethefish@gmail.com" },
 ]
 
 [tool.cibuildwheel]
 # Skip 32-bit builds, musl build, and pypy builds
-skip = ["*-manylinux_i686", "*-musllinux_*", "pp*", "*p36-*", "*p37-*", "*p38-*"]
+skip = [
+  "*-manylinux_i686",
+  "*-musllinux_*",
+  "pp*",
+  "*p36-*",
+  "*p37-*",
+  "*p38-*",
+]
 
 [tool.cibuildwheel.linux]
 before-build = """\
@@ -31,7 +36,7 @@ before-build = """\
   """
 
 [tool.cibuildwheel.linux.environment]
-LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
+LIBOGDF_INSTALL_PATH = "$(pwd)/libOGDF"
 
 [tool.cibuildwheel.macos]
 # For now build `x86_64` and `arm64` instead of `universal2` because we currently do
@@ -61,9 +66,9 @@ repair-wheel-command = [
 ]
 
 [tool.cibuildwheel.macos.environment]
-LIBOGDF_INSTALL_PATH="$(pwd)/libOGDF"
-CXX="$(brew --prefix llvm)/bin/clang++"
-CC="$(brew --prefix llvm)/bin/clang"
+LIBOGDF_INSTALL_PATH = "$(pwd)/libOGDF"
+CXX = "$(brew --prefix llvm)/bin/clang++"
+CC = "$(brew --prefix llvm)/bin/clang"
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
@@ -81,4 +86,4 @@ before-build = """\
 [tool.cibuildwheel.windows.environment]
 # NOTE: if building locally you will have to build here or fixup the script to build
 #       into the tmap-viz directory.
-LIBOGDF_INSTALL_PATH="c:/libOGDF"
+LIBOGDF_INSTALL_PATH = "c:/libOGDF"
