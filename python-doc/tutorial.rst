@@ -142,6 +142,22 @@ to your linking. See :ref:`layout-doc` for the descriptions of all
 available parameters.
 
 
+The Riemann Proof Map
+^^^^^^^^^^^^^^^^^^^^^
+The `interactive map <https://riemannmap.mireklzicar.com/>`_ shows the
+1,265,231 Lean declarations reachable by following references from
+``riemannHypothesis``. Each point is a declaration. Select one to read its
+Lean source or trace a path of references to it from the root.
+
+The `layout script <https://github.com/mireklzicar/riemann-proof-map/blob/v0.2.0/scripts/tmap_layout.py>`_
+starts with the immediate-dominator tree of the reference graph.
+In this tree, each parent is the nearest declaration that every path
+from the root to its child must pass through. Where a parent has more
+than 12 children, the script uses MinHash similarity of declaration names
+and module paths to group siblings. It passes the resulting tree to
+``layout_from_edge_list`` with ``create_mst=False``.
+
+
 MinHash
 ^^^^^^^
 In order to enable the visualization of larger data sets, it is

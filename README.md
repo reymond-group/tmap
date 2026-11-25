@@ -23,6 +23,7 @@ See <a href="http://tmap.gdb.tools">http://tmap.gdb.tools</a>
 | RNAseq | RNA sequencing data of tumor samples. Visualized using tmap. | [view](http://tmap.gdb.tools/src/rnaseq/rnaseq.html) |
 | Flowcytometry | Flowcytometry data visualized using tmap. | [view](http://tmap.gdb.tools/src/flowcytometry/cyto.html) |
 | MiniBooNE | tmap data visualization of a particle detection physics experiment.  | [view](http://tmap.gdb.tools/src/miniboone/miniboone.html) |
+| Riemann Proof Map | Explore the 1,265,231 Lean declarations reachable from the classical Riemann hypothesis declaration. Select a point to inspect its Lean source. | [view](https://riemannmap.mireklzicar.com/) |
 
 
 ### Availability
